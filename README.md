@@ -92,7 +92,8 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 </script>
 ```
 
-[Demo](https://okapi.kortforsyningen.dk/examples/markers-simple.html)
+[Demo](https://okapi.kortforsyningen.dk/examples/markers-simple.html){:target="_blank"}
+
 
 ### Flere eksempler
 
