@@ -1,0 +1,62 @@
+    <span
+      class="geomarker"
+      data-type="zoo"
+      data-title="Odense Zoo"
+      data-description="Vil du vide, hvad der sker på dagen for dit besøg?
+      Gå til dagsprogram og vælg dato for dit besøg i kalenderen. Så får du en liste over alle de aktiviteter, der sker i haven den dag.
+      </br>
+      </br>
+      <a href='https://www.odensezoo.dk/besoeg-zoo/program/' target='_blank'>Se dagsprogram</a>
+      "
+      data-address="Søndre Boulevard 306, 5000 Odense">
+    </span>
+    <span
+        class="geomarker"
+        data-type="museum"
+        data-title="Danmarks Jernbanemuseum"
+        data-description="På over 10.000 m2 finder du vogne og lokomotiver, busser, færgemodeller, modelbaner, legepladser. Alt i en autentisk jernbanebygning med sport og drejeskiver"
+        data-lat="55.402909"
+        data-lon="10.386536">
+    </span>
+    <span
+      class="geomarker"
+      data-type="museum"
+      data-title="Den Fynske Landsby"
+      data-description="På frilandsmuseet Den Fynske Landsby inviteres du indenfor i en fynsk landsby fra H.C. Andersens tid."
+      data-lat="55.366732"
+      data-lon="10.385352">
+    </span>
+
+    <div
+      id="map"
+      class="geomap"
+      data-type=""
+      data-center="auto"
+      data-zoom="6"
+      data-background="dtk_skaermkort_daempet"
+      data-mylocation="false"
+      data-fullscreen="false"
+      data-zoomslider="false"
+      data-layerswitcher="false"
+      data-token="InsertYourTokenHere">
+    <!--
+    Udskift data-token= med din egen token fra Kortforsyningen.
+    Hvis ikke du har en token så log ind på ’Min side’ https://www.kortforsyningen.dk/indhold/min-side-0
+    Opret en token og brug den i din applikation
+    Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+    English
+    Replace the data-token = with your own token from the Danish map supply.
+    If you do not have a token please log in to "My page" https://www.kortforsyningen.dk/indhold/min-side-0
+    Create a token and use it in your application
+    Token in this example is temporary and solely for test use.
+    -->
+    </div>
+
+    <script>
+      var map = new okapi.Initialize({
+        icons: {
+          'some-type': 'custom.png'
+        }
+      });
+    </script>

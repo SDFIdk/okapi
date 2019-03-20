@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>
+      
+      Tooltip
+    </title>
+    <link href="./prism.css" rel="stylesheet">
+    <link href="./example.css" rel="stylesheet">
+    <script type="text/javascript" src="./clipboard.min.js"></script>
+    <script type="text/javascript" src="./prism.js"></script>
+  <link href="../lib/okapi.css" rel="stylesheet"><script type="text/javascript" src="../lib/okapi.min.js"></script></head>
+  <body>
+    <div>
+          <div id="popup">
+      <a href="#" class="ol-popup-closer closer"></a>
+      <div id="popup-content" class="ol-popup-content"></div>
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="link"></div>
+    </div>
+
+    <span
+      class="geomarker"
+      data-type="museum"
+      data-title="Historiecenter Dybbøl Banke"
+      data-description="Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864."
+      data-link="<a href='https://1864.dk/' target='_blank'>Hjemmeside</a>"
+      data-address="Dybbøl Banke 16, 6400 Sønderborg">
+    </span>
+
+    <div
+      id="map"
+      class="geomap"
+      data-center="auto"
+      data-zoom="5"
+      data-token="InsertYourTokenHere">
+    <!--
+    Udskift data-token= med din egen token fra Kortforsyningen.
+    Hvis ikke du har en token så log ind på ’Min side’ https://www.kortforsyningen.dk/indhold/min-side-0
+    Opret en token og brug den i din applikation
+    Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+    English
+    Replace the data-token = with your own token from the Danish map supply.
+    If you do not have a token please log in to "My page" https://www.kortforsyningen.dk/indhold/min-side-0
+    Create a token and use it in your application
+    Token in this example is temporary and solely for test use.
+    -->
+    </div>
+
+    <script>
+      var map = new okapi.Initialize({
+        popup: document.getElementById('popup')
+      });
+    </script>
+
+    </div>
+    <div>
+      <pre>
+        <code class="language-markup">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Simple&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div id=&quot;popup&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;ol-popup-closer closer&quot;&gt;&lt;/a&gt;
+      &lt;div id=&quot;popup-content&quot; class=&quot;ol-popup-content&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;title&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;description&quot;&gt;&lt;/div&gt;
+      &lt;div class=&quot;link&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;span
+      class=&quot;geomarker&quot;
+      data-type=&quot;museum&quot;
+      data-title=&quot;Historiecenter Dybbøl Banke&quot;
+      data-description=&quot;Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864.&quot;
+      data-link=&quot;&lt;a href=&#39;https://1864.dk/&#39; target=&#39;_blank&#39;&gt;Hjemmeside&lt;/a&gt;&quot;
+      data-address=&quot;Dybbøl Banke 16, 6400 Sønderborg&quot;&gt;
+    &lt;/span&gt;
+
+    &lt;div
+      id=&quot;map&quot;
+      class=&quot;geomap&quot;
+      data-center=&quot;auto&quot;
+      data-zoom=&quot;5&quot;
+      data-token=&quot;InsertYourTokenHere&quot;&gt;
+    &lt;!--
+    Udskift data-token= med din egen token fra Kortforsyningen.
+    Hvis ikke du har en token så log ind på ’Min side’ https://www.kortforsyningen.dk/indhold/min-side-0
+    Opret en token og brug den i din applikation
+    Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+    English
+    Replace the data-token = with your own token from the Danish map supply.
+    If you do not have a token please log in to &quot;My page&quot; https://www.kortforsyningen.dk/indhold/min-side-0
+    Create a token and use it in your application
+    Token in this example is temporary and solely for test use.
+    --&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+      var map = new okapi.Initialize({
+        popup: document.getElementById(&#39;popup&#39;)
+      });
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+        </code>
+      </pre>
+    </div>
+    <script>
+      (function(){
+        Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+          var linkCopy = document.createElement('a');
+          linkCopy.textContent = ' Copy';
+
+          if (!ClipboardJS) {
+            callbacks.push(registerClipboard);
+          } else {
+            registerClipboard();
+          }
+
+          return linkCopy;
+
+          function registerClipboard() {
+            var clip = new ClipboardJS(linkCopy, {
+              'text': function () {
+                return env.code;
+              }
+            });
+
+
+            clip.on('success', function() {
+              linkCopy.textContent = ' Copied!';
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

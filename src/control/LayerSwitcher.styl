@@ -1,0 +1,92 @@
+.ol-layer-switcher .container
+  width: 490px
+  height: 0px
+  background: white
+  position: absolute
+  left: 0
+  bottom: 0
+  padding: 0 5px
+  transition: ease 0.5s height
+  box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2), 0 3px 20px 0 rgba(0,0,0,0.19)
+  overflow-x: auto
+  overflow-y: hidden
+
+.ol-layer-switcher div.expanded
+  height: 130px
+
+#layer-switcher-button
+  width: 90px// 120px
+  height: 35px
+  font-size: 16px
+  background: white
+  position: absolute
+  bottom: 10px
+  left: 10px
+  border: none
+  margin: 0
+  text-align: left
+  padding: 0 10px
+  vertical-align: text-top
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3)
+
+#layer-switcher-button.expanded
+  box-shadow: -1px -1px 2px 0px rgba(0,0,0,0.1), 1px -1px 2px 0px rgba(0,0,0,0.1)
+  bottom: 130px
+
+.ol-layer-switcher div, .ol-layer-switcher button
+  transition: ease 0.5s
+
+.ol-layer-switcher button label
+  font-weight: bold
+  color: black
+  margin-top: 7px
+
+.ol-layer-switcher button label:before
+  content: 'Skift kort'
+
+.ol-layer-switcher button .expanded label:before
+  content: 'Skjul'
+
+.ol-layer-switcher button div
+  //background-image: url('./images/Path small@2x.png')
+  background-size: 10px 18px
+  height: 18px
+  width: 10px
+  float: right
+  transform: rotate(-90deg)
+
+.ol-layer-switcher button.expanded div
+  transform: rotate(90deg)
+  margin-top: 2px
+
+.ol-layer-switcher .wrapper
+  display: inline-block
+  margin: 10px 5px
+  width: 110px
+  height: 110px
+  position: relative
+
+.ol-layer-switcher .image
+  width: 110px
+  height: 110px
+
+.ol-layer-switcher .selected
+  outline: 2px solid red
+  transition: ease 0s
+
+.ol-layer-switcher .wrapper:hover, .ol-layer-switcher .wrapper label
+  cursor: pointer
+
+.ol-layer-switcher .wrapper label
+  color: white
+  margin: 5px
+  position: absolute
+  left: 0
+  bottom: 0
+  font-weight: 700
+
+.ol-layer-switcher .wrapper .white
+  color: white
+
+.ol-layer-switcher .wrapper .black
+  color: black

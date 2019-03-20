@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>
+      
+      Simple
+    </title>
+    <link href="./prism.css" rel="stylesheet">
+    <link href="./example.css" rel="stylesheet">
+    <script type="text/javascript" src="./clipboard.min.js"></script>
+    <script type="text/javascript" src="./prism.js"></script>
+  <link href="../lib/okapi.css" rel="stylesheet"><script type="text/javascript" src="../lib/okapi.min.js"></script></head>
+  <body>
+    <div>
+          <div
+      id="map"
+      class="geomap"
+      data-token="InsertYourTokenHere">
+    <!--
+    Udskift data-token= med din egen token fra Kortforsyningen.
+    Hvis ikke du har en token så log ind på ’Min side’ https://www.kortforsyningen.dk/indhold/min-side-0
+    Opret en token og brug den i din applikation
+    Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+    English
+    Replace the data-token = with your own token from the Danish map supply.
+    If you do not have a token please log in to "My page" https://www.kortforsyningen.dk/indhold/min-side-0
+    Create a token and use it in your application
+    Token in this example is temporary and solely for test use.
+    -->
+    </div>
+
+    <script>
+      var map = new okapi.Initialize({});
+    </script>
+
+    </div>
+    <div>
+      <pre>
+        <code class="language-markup">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Simple&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;div
+      id=&quot;map&quot;
+      class=&quot;geomap&quot;
+      data-token=&quot;InsertYourTokenHere&quot;&gt;
+    &lt;!--
+    Udskift data-token= med din egen token fra Kortforsyningen.
+    Hvis ikke du har en token så log ind på ’Min side’ https://www.kortforsyningen.dk/indhold/min-side-0
+    Opret en token og brug den i din applikation
+    Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+    English
+    Replace the data-token = with your own token from the Danish map supply.
+    If you do not have a token please log in to &quot;My page&quot; https://www.kortforsyningen.dk/indhold/min-side-0
+    Create a token and use it in your application
+    Token in this example is temporary and solely for test use.
+    --&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+      var map = new okapi.Initialize({});
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+        </code>
+      </pre>
+    </div>
+    <script>
+      (function(){
+        Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+          var linkCopy = document.createElement('a');
+          linkCopy.textContent = ' Copy';
+
+          if (!ClipboardJS) {
+            callbacks.push(registerClipboard);
+          } else {
+            registerClipboard();
+          }
+
+          return linkCopy;
+
+          function registerClipboard() {
+            var clip = new ClipboardJS(linkCopy, {
+              'text': function () {
+                return env.code;
+              }
+            });
+
+
+            clip.on('success', function() {
+              linkCopy.textContent = ' Copied!';
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
