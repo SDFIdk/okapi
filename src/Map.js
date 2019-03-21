@@ -208,6 +208,7 @@ export default class Map {
     if (!this.autoZoom) {
       this._map.getView().setZoom(this.zoom)
     }
+    this._map.updateSize()
   }
 
   get olMap() {
