@@ -9,8 +9,9 @@ export default function markerTooltip(map, custom) {
   let closer = document.createElement('a')
   const content = document.createElement('div')
   const title = document.createElement('div')
-  title.className = 'title'
   const description = document.createElement('div')
+
+  title.className = 'title'
   description.className = 'description'
 
   popup.className = 'ol-popup'
@@ -70,5 +71,10 @@ export default function markerTooltip(map, custom) {
       description.innerHTML = feature.get('description') || ''
     }
     overlay.setPosition(feature.getGeometry().getCoordinates())
+  })
+
+  map.olMap.on('pointermove', function (evt) {
+    map.olMap.getTargetElement().style.cursor =
+      map.olMap.hasFeatureAtPixel(evt.pixel) ? 'pointer' : ''
   })
 }

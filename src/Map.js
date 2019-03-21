@@ -15,7 +15,7 @@ import LayerSwitcher from './control/LayerSwitcher'
 import CreateMarkers from './control/markers/CreateMarkers'
 import { fromLonLat } from 'ol/proj'
 import CreateMarkerTooltip from './control/markers/CreateMarkerTooltip'
-import { Center, Extent } from './constants'
+import { Center, Extent, Resolutions, MatrixIds, Size } from './constants'
 
 import 'ol/ol.css'
 import './Map.styl'
@@ -57,8 +57,8 @@ export default class Map {
 
     const tileGrid = new WMTSTileGrid({
       extent: Extent,
-      resolutions: [1638.4, 819.2, 409.6, 204.8, 102.4, 51.2, 25.6, 12.8, 6.4, 3.2, 1.6, 0.8, 0.4, 0.2],
-      matrixIds: ['L00', 'L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13']
+      resolutions: Resolutions,
+      matrixIds: MatrixIds
     })
     const kfLink = 'https://download.kortforsyningen.dk/content/vilk%C3%A5r-og-betingelser'
     const attributionText = '&copy; <a target="_blank" href="' + kfLink +
@@ -86,7 +86,7 @@ export default class Map {
                 format: 'image/jpeg',
                 tileGrid: tileGrid,
                 style: 'default',
-                size: [256, 256]
+                size: Size
               })
             }),
             // Skærmkort Dæmpet [WMTS:topo_skaermkort_daempet]
@@ -106,7 +106,7 @@ export default class Map {
                 format: 'image/jpeg',
                 tileGrid: tileGrid,
                 style: 'default',
-                size: [256, 256]
+                size: Size
               })
             }),
             // Ortofoto [WMTS:orto_foraar]
@@ -126,7 +126,7 @@ export default class Map {
                 visible: 'false',
                 tileGrid: tileGrid,
                 style: 'default',
-                size: [256, 256]
+                size: Size
               })
             }),
             // Forvaltning [WMS:forvaltning]
