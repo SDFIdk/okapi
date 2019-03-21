@@ -76,7 +76,7 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
   data-type="some-type"
   data-title="The marker title"
   data-description="The marker description"
-  data-address="Rentemestervej 8, 2400 København">
+  data-address="The marker address">
 </span>
 
 <div
@@ -93,6 +93,7 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 ```
 
 [Demo](https://okapi.kortforsyningen.dk/examples/markers-simple.html)
+
 
 ### Flere eksempler
 
