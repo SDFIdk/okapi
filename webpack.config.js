@@ -10,15 +10,16 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 let libraryName = 'okapi';
+const version = '1.0';
 
 let outputFile, mode;
 
 if (env === 'build') {
   mode = 'production';
-  outputFile = libraryName + '.min.js';
+  outputFile = libraryName + '-' + version + '.min.js';
 } else {
   mode = 'development';
-  outputFile = libraryName + '.js';
+  outputFile = libraryName + '-' + version + '.js';
 }
 
 const devMode = mode == 'development'
@@ -58,7 +59,12 @@ const config = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: libraryName + '.css'
+      filename: libraryName + '-' + version + '.css'
+    }),
+    new webpack.BannerPlugin({
+      banner: 'okapi. See https://okapi.Kortforsyningen.dk \n' +
+        'License: https://github.com/Kortforsyningen/okapi/blob/master/LICENSE \n' +
+        'Version: v' + version
     })
   ],
 
