@@ -8,7 +8,7 @@ Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsy
 
 <p align="center"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75% /></p>
 
-## 1-2-3 Sådan gør du
+## Sådan gør du
 
 1. Opret en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0)
 2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
