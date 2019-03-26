@@ -8,18 +8,23 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+require('dotenv').config()
 
 let libraryName = 'okapi';
 const version = '1.0';
 
-let outputFile, mode;
+let outputFile, mode, token, example;
 
 if (env === 'build') {
   mode = 'production';
   outputFile = libraryName + '-' + version + '.min.js';
+  token = 'InsertYourTokenHere';
+  example = "examples";
 } else {
   mode = 'development';
   outputFile = libraryName + '-' + version + '.js';
+  token = process.env.TOKEN || 'InsertYourTokenHere';
+  example = "test";
 }
 
 const devMode = mode == 'development'
@@ -51,9 +56,10 @@ const config = {
         "inject"   : "head",
         "template":  __dirname + "/src/examples/template.ejs",
         "templateParameters": {
-          "title" : `${event}`
+          "title" : `${event}`,
+          "token" : token
         },
-        "filename" : __dirname + `/examples/${event}.html`
+        "filename" : __dirname + `/` + example + `/${event}.html`
       })
     }),
     new MiniCssExtractPlugin({
@@ -104,6 +110,10 @@ const config = {
         use: {
           loader: 'html-loader'
         }
+      },
+      {
+        test: /\.(ejs)$/,
+        loader: 'ejs-loader'
       }
     ]
   },
