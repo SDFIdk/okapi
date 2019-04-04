@@ -11,7 +11,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 require('dotenv').config()
 
 let libraryName = 'okapi';
-const version = '1.0';
+const version = '1.1';
 
 let outputFile, mode, token, example;
 
