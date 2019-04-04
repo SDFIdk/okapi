@@ -80,6 +80,7 @@ export default class Map {
               visible: background === 'dtk_skaermkort',
               source: new WMTS({
                 attributions: attributionText,
+                crossOrigin: 'Anonymous',
                 url: this._createUrl('topo_skaermkort'),
                 layer: 'dtk_skaermkort',
                 matrixSet: 'View1',
@@ -100,6 +101,7 @@ export default class Map {
               background !== 'dtk_skaermkort',
               source: new WMTS({
                 attributions: attributionText,
+                crossOrigin: 'Anonymous',
                 url: this._createUrl('topo_skaermkort_daempet'),
                 layer: 'dtk_skaermkort_daempet',
                 matrixSet: 'View1',
@@ -119,6 +121,7 @@ export default class Map {
               opacity: 1.0, // no transparency
               source: new WMTS({
                 attributions: attributionText,
+                crossOrigin: 'Anonymous',
                 url: this._createUrl('orto_foraar'),
                 layer: 'orto_foraar',
                 matrixSet: 'View1',
@@ -139,6 +142,7 @@ export default class Map {
               visible: background === 'forvaltning',
               source: new TileWMS({
                 attributions: attributionText,
+                crossOrigin: 'Anonymous',
                 url: this._createUrl('forvaltning'),
                 params: {
                   'LAYERS': 'basis_kort',
