@@ -35,12 +35,12 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.kortforsyningen.dk/lib/okapi.min.js"></script>
+<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.kortforsyningen.dk/lib/okapi.min.js`
+Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -48,7 +48,7 @@ Download filen: `https://okapi.kortforsyningen.dk/lib/okapi.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi.css`
+Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.css`
 
 ## Anvendelse
 
@@ -199,6 +199,41 @@ data-lon="12.558091"
 #### `data-address` 
 
 Angiver adressen hvor markøren skal placeres. Denne behøves ikke at angives hvis lat og lon er angivet. Adressen vil blive slået op i [DAWA-AWS](https://dawa.aws.dk). Det kan f.eks. være `data-address="Roskildevej 32, 2000 Frederiksberg"`.
+
+## Brugerdefinerede Markører og Tooltips
+Hvis man ønsker selv at vælge markør icon, kan det gøres ved at sende et object der mapper icon navn til en path til et billede.
+
+```html
+<script>
+  var map = new okapi.Initialize({
+    icons: {
+      'museum': 'custom.png'
+    }
+  });
+</script>
+```
+
+[Demo](https://okapi.kortforsyningen.dk/examples/markers-advanced.html)
+
+Det er også muligt selv at lave det html element der skal vises som tooltip når der klikkes på en markør. Hvis man gør det kan man sætte flere parametre på markørene som vil blive vist i tooltippet's element med matchene class navn.
+
+```html
+<div id="popup">
+  <a href="#" class="ol-popup-closer closer"></a>
+  <div id="popup-content" class="ol-popup-content"></div>
+  <div class="title"></div>
+  <div class="description"></div>
+  <div class="link"></div>
+</div>
+
+<script>
+  var map = new okapi.Initialize({
+    popup: document.getElementById('popup')
+  });
+</script>
+```
+
+[Demo](https://okapi.kortforsyningen.dk/examples/tooltip.html)
 
 ## Fremsøgning af koordinater
 

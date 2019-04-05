@@ -30,7 +30,7 @@ export default class Initialize {
       // Filter relevant markers
       const types = (typeof element.dataset.type === 'undefined') ? [''] : element.dataset.type.split(',')
       const filteredMarkers = markers.filter(function (marker) {
-        return marker.type.indexOf(types) > -1
+        return marker.type ? (marker.type.indexOf(types) > -1) : true
       }, types)
 
       const autoView = element.dataset.center === 'auto'
