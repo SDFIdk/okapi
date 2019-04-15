@@ -178,7 +178,7 @@ export default class Map {
     zoomSlider && this._map.addControl(new ZoomSlider())
     fullScreen && this._map.addControl(new FullScreen())
     myLocation && this._map.addControl(new MyLocation())
-    layerSwitcher && this._map.addControl(new LayerSwitcher())
+    this._map.addControl(new LayerSwitcher({ visible: layerSwitcher }))
     this.markerLayers = CreateMarkers(markers, icons, this)
     const _this = this
 

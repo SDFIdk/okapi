@@ -35,12 +35,12 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js"></script>
+<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.2.min.js"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js`
+Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.2.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -48,7 +48,7 @@ Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.css`
+Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.2.css`
 
 ## Anvendelse
 

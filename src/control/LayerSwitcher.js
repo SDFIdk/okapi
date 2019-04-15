@@ -14,6 +14,8 @@ export default class LayerSwitcher extends Control {
       target: options.target
     })
 
+    this.visible = typeof options.visible === 'undefined' ? true : options.visible
+
     const cssClassName = options.className !== undefined ? options.className :
       'ol-layer-switcher ol-unselectable ol-control'
     const label = options.label !== undefined ? options.label : 'Skift kort'
@@ -41,8 +43,10 @@ export default class LayerSwitcher extends Control {
     const element = this.element
 
     element.className = cssClassName
-    element.appendChild(this.button_)
-    element.appendChild(this.panel_)
+    if (this.visible) {
+      element.appendChild(this.button_)
+      element.appendChild(this.panel_)
+    }
   }
 
   setMap(map) {
