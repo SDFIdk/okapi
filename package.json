@@ -27,7 +27,7 @@
     "umd",
     "commonjs"
   ],
-  "author": "Krasimir Tsonev",
+  "author": "SDFE",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/krasimir/webpack-library-starter/issues"

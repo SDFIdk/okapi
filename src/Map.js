@@ -16,6 +16,7 @@ import CreateMarkers from './control/markers/CreateMarkers'
 import { fromLonLat } from 'ol/proj'
 import CreateMarkerTooltip from './control/markers/CreateMarkerTooltip'
 import { Center, Extent, Resolutions, MatrixIds, Size } from './constants'
+import VectorLayer from 'ol/layer/Vector'
 
 import 'ol/ol.css'
 import './Map.styl'
@@ -178,7 +179,8 @@ export default class Map {
     zoomSlider && this._map.addControl(new ZoomSlider())
     fullScreen && this._map.addControl(new FullScreen())
     myLocation && this._map.addControl(new MyLocation())
-    this._map.addControl(new LayerSwitcher({ visible: layerSwitcher }))
+    this._layerSwitcher = new LayerSwitcher({ visible: layerSwitcher })
+    this._map.addControl(this._layerSwitcher)
     this.markerLayers = CreateMarkers(markers, icons, this)
     const _this = this
 
@@ -194,6 +196,14 @@ export default class Map {
 
       focus.blur()
     })
+
+  }
+
+  addVectorLayer(vector, styles) {
+    this._map.addLayer(new VectorLayer({
+      source: vector,
+      style: styles
+    }))
   }
 
   autoCenter() {
@@ -213,6 +223,10 @@ export default class Map {
       this._map.getView().setZoom(this.zoom)
     }
     this._map.updateSize()
+  }
+
+  toggleBackground(background) {
+    this._layerSwitcher.toggleBackground(background)
   }
 
   get olMap() {
