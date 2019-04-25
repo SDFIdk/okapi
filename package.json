@@ -71,11 +71,13 @@
     "instrument": false
   },
   "dependencies": {
+    "array.prototype.find": "^2.0.4",
     "axios": "^0.18.0",
     "dotenv": "^7.0.0",
     "ejs-loader": "^0.3.1",
     "html-loader": "^0.5.5",
     "ol": "^5.3.0",
+    "promise-polyfill": "^8.1.0",
     "style-loader": "^0.23.1"
   }
 }
