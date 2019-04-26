@@ -83,8 +83,6 @@ export default class MyLocation extends Control {
         title: 'Min lokation'
       })
 
-      console.log(_this.getMap().getView().getProjection())
-      console.log(lonlat, xy)
       _this._myLocationVector.clear()
       _this._myLocationVector.addFeature(feature)
       _this.getMap().getView().fit(_this._myLocationVector.getExtent())
