@@ -17,6 +17,7 @@ import { fromLonLat } from 'ol/proj'
 import CreateMarkerTooltip from './control/markers/CreateMarkerTooltip'
 import { Center, Extent, Resolutions, MatrixIds, Size } from './constants'
 import VectorLayer from 'ol/layer/Vector'
+import { any } from './utility/IsMobile'
 
 import 'ol/ol.css'
 import './Map.styl'
@@ -61,9 +62,10 @@ export default class Map {
       resolutions: Resolutions,
       matrixIds: MatrixIds
     })
+    const kfText = any() ? 'SDFE' : 'Styrelsen for Dataforsyning og Effektivisering'
     const kfLink = 'https://download.kortforsyningen.dk/content/vilk%C3%A5r-og-betingelser'
     const attributionText = '&copy; <a target="_blank" href="' + kfLink +
-    '">Styrelsen for Dataforsyning og Effektivisering</a>'
+    '">' + kfText + '</a>'
 
     this._map = new OlMap({
       target: this._target,
