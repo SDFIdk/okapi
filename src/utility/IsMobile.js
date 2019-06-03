@@ -1,5 +1,5 @@
 export const Android = function () {
-  return navigator.userAgent.match(/Android/i)
+  return (navigator.userAgent.match(/Android/i) && navigator.userAgent.match(/Mobile/i))
 }
 
 export const BlackBerry = function () {
