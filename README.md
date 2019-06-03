@@ -13,7 +13,7 @@ Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsy
 1. Opret en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0)
 2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi.min.js"></script>`
+   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.2.min.js"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
    - Husk at indsætte din egen token i `data-token`-attributten.
