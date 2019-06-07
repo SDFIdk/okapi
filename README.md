@@ -38,8 +38,8 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ```html
 <script src="https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js"
-  integrity="sha384-WrRC51sPS5e0dyF2CMTJT/+xPQTQwKUQAQhCoK7ocTpV2pmLSdoR8zPbzMKG4rE4"
-  crossorigin="anonymous"></script>
+integrity="sha384-WrRC51sPS5e0dyF2CMTJT/+xPQTQwKUQAQhCoK7ocTpV2pmLSdoR8zPbzMKG4rE4"
+crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
