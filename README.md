@@ -100,7 +100,7 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 
 ### Brug kort fra Datafordeleren
 
-Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for fra Fortforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Kortforsyningen.
+Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for Fortforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Kortforsyningen.
 
 ```html
 <div
