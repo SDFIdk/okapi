@@ -19,11 +19,15 @@ if (env === 'build') {
   mode = 'production';
   outputFile = libraryName + '-' + version + '.min.js';
   token = 'InsertYourTokenHere';
+  username = 'InsertYourUsernameHere';
+  password = 'InsertYourPasswordHere';
   example = "examples";
 } else {
   mode = 'development';
   outputFile = libraryName + '-' + version + '.js';
   token = process.env.TOKEN || 'InsertYourTokenHere';
+  username = process.env.DFUSERNAME || 'InsertYourUsernameHere';
+  password = process.env.DFPASSWORD || 'InsertYourPasswordHere';
   example = "test";
 }
 
@@ -51,13 +55,15 @@ const config = {
     new webpack.ProvidePlugin({
       _: "lodash"
     }),
-    ...['simple', 'advanced', 'markers-simple', 'markers-advanced', 'double', 'tooltip'].map((event) => {
+    ...['simple', 'advanced', 'markers-simple', 'markers-advanced', 'double', 'tooltip', 'datafordeler'].map((event) => {
       return new HtmlWebpackPlugin({
         "inject"   : "head",
         "template":  __dirname + "/src/examples/template.ejs",
         "templateParameters": {
           "title" : `${event}`,
-          "token" : token
+          "token" : token,
+          "username": username,
+          "password": password
         },
         "filename" : __dirname + `/` + example + `/${event}.html`
       })
