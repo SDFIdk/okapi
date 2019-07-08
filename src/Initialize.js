@@ -51,6 +51,8 @@ export default class Initialize {
       this._map = new Map({
         target: element.id,
         token: element.dataset.token,
+        username: element.dataset.username,
+        password: element.dataset.password,
         background: element.dataset.background,
         icons: opt.icons,
         markers: filteredMarkers,

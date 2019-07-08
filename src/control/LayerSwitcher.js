@@ -110,6 +110,8 @@ export default class LayerSwitcher extends Control {
         this_.toggleBackground(e.get('name'))
         f.preventDefault()
       }
+
+      label.onclick = image.onclick
     })
   }
 
