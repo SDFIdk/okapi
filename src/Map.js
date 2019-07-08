@@ -1,10 +1,7 @@
 import OlMap from 'ol/Map'
 import View from 'ol/View'
 import Group from 'ol/layer/Group'
-import TileLayer from 'ol/layer/Tile'
-import WMTS from 'ol/source/WMTS'
 import WMTSTileGrid from 'ol/tilegrid/WMTS'
-import TileWMS from 'ol/source/TileWMS'
 import proj4 from 'proj4/dist/proj4'
 import { register } from 'ol/proj/proj4'
 import { get as getProjection } from 'ol/proj'
@@ -13,11 +10,11 @@ import {defaults as defaultControls, ScaleLine, ZoomSlider, Attribution, FullScr
 import MyLocation from './control/MyLocation'
 import LayerSwitcher from './control/LayerSwitcher'
 import CreateMarkers from './control/markers/CreateMarkers'
+import { createLayer } from './CreateLayer'
 import { fromLonLat } from 'ol/proj'
 import CreateMarkerTooltip from './control/markers/CreateMarkerTooltip'
 import { Center, Extent, Resolutions, MatrixIds, Size } from './constants'
 import VectorLayer from 'ol/layer/Vector'
-import { any } from './utility/IsMobile'
 
 import 'ol/ol.css'
 import './Map.styl'
@@ -47,7 +44,10 @@ export default class Map {
     const showPopup = typeof opt.showPopup === 'undefined' ? true : opt.showPopup
 
     this._target = opt.target || 'map'
+    this._source = opt.source || 'kf'
     this._token = opt.token || ''
+    this._username = opt.username || ''
+    this._password = opt.password || ''
     this.autocenter = autoCenter
     this.autoZoom = autoZoom
 
@@ -62,101 +62,101 @@ export default class Map {
       resolutions: Resolutions,
       matrixIds: MatrixIds
     })
-    const kfText = any() ? 'SDFE' : 'Styrelsen for Dataforsyning og Effektivisering'
-    const kfLink = 'https://download.kortforsyningen.dk/content/vilk%C3%A5r-og-betingelser'
-    const attributionText = '&copy; <a target="_blank" href="' + kfLink +
-    '">' + kfText + '</a>'
+    const kfAuth = {
+      source: 'kf',
+      token: this._token
+    }
+    const dfAuth = {
+      source: 'df',
+      username: this._username,
+      password: this._password
+    }
+    const layers = []
+    if (this._username && this._password) {
+      layers.push(createLayer({
+        name: 'dtk_skaermkort',
+        type: 'WMTS',
+        title: 'Skærmkort',
+        visible: background === 'dtk_skaermkort',
+        service: 'DKskaermkort/topo_skaermkort_wmts/1.0.0/Wmts',
+        layer: 'dtk_skaermkort',
+        matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: tileGrid,
+        auth: dfAuth
+      }))
+      layers.push(createLayer({
+        name: 'dtk_skaermkort_daempet',
+        type: 'WMTS',
+        title: 'Skærmkort dæmpet',
+        visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
+        background !== 'dtk_skaermkort',
+        service: 'DKskaermkort/topo_skaermkort_daempet/1.0.0/Wmts',
+        layer: 'dtk_skaermkort_daempet',
+        matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: tileGrid,
+        auth: dfAuth
+      }))
+    } else if (this._token) {
+      layers.push(createLayer({
+        name: 'dtk_skaermkort',
+        type: 'WMTS',
+        title: 'Skærmkort',
+        visible: background === 'dtk_skaermkort',
+        service: 'topo_skaermkort',
+        layer: 'dtk_skaermkort',
+        matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: tileGrid,
+        auth: kfAuth
+      }))
+      layers.push(createLayer({
+        name: 'dtk_skaermkort_daempet',
+        type: 'WMTS',
+        title: 'Skærmkort dæmpet',
+        visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
+        background !== 'dtk_skaermkort',
+        service: 'topo_skaermkort_daempet',
+        layer: 'dtk_skaermkort_daempet',
+        matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: tileGrid,
+        auth: kfAuth
+      }))
+    }
+    if (this._token) {
+      layers.push(createLayer({
+        name: 'orto_foraar',
+        type: 'WMTS',
+        title: 'Ortofoto',
+        color: 'white',
+        visible: background === 'orto_foraar',
+        service: 'orto_foraar',
+        layer: 'orto_foraar',
+        matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: tileGrid,
+        auth: kfAuth
+      }))
+      layers.push(createLayer({
+        name: 'forvaltning',
+        type: 'WMS',
+        title: 'Basiskort',
+        visible: background === 'forvaltning',
+        service: 'forvaltning',
+        layer: 'basis_kort',
+        format: 'image/png',
+        auth: kfAuth
+      }))
+    }
 
     this._map = new OlMap({
       target: this._target,
       layers: [
         new Group({
           'title': 'Base maps', // This title of the group is shown in the layer switcher
-          layers: [
-            // Skærmkort [WMTS:topo_skaermkort]
-            new TileLayer({
-              opacity: 1.0,
-              title: 'Skærmkort',
-              name: 'dtk_skaermkort',
-              color: 'black',
-              type: 'base',
-              visible: background === 'dtk_skaermkort',
-              source: new WMTS({
-                attributions: attributionText,
-                crossOrigin: 'Anonymous',
-                url: this._createUrl('topo_skaermkort'),
-                layer: 'dtk_skaermkort',
-                matrixSet: 'View1',
-                format: 'image/jpeg',
-                tileGrid: tileGrid,
-                style: 'default',
-                size: Size
-              })
-            }),
-            // Skærmkort Dæmpet [WMTS:topo_skaermkort_daempet]
-            new TileLayer({
-              opacity: 1.0,
-              title: 'Skærmkort dæmpet',
-              name: 'dtk_skaermkort_daempet',
-              color: 'black',
-              type: 'base',
-              visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
-              background !== 'dtk_skaermkort',
-              source: new WMTS({
-                attributions: attributionText,
-                crossOrigin: 'Anonymous',
-                url: this._createUrl('topo_skaermkort_daempet'),
-                layer: 'dtk_skaermkort_daempet',
-                matrixSet: 'View1',
-                format: 'image/jpeg',
-                tileGrid: tileGrid,
-                style: 'default',
-                size: Size
-              })
-            }),
-            // Ortofoto [WMTS:orto_foraar]
-            new TileLayer({
-              title: 'Ortofoto', // This is the layer title shown in the layer switcher
-              name: 'orto_foraar',
-              color: 'white',
-              type: 'base', // use 'base' for base layers, otherwise 'overlay'
-              visible: background === 'orto_foraar', // by default this layer is not visible
-              opacity: 1.0, // no transparency
-              source: new WMTS({
-                attributions: attributionText,
-                crossOrigin: 'Anonymous',
-                url: this._createUrl('orto_foraar'),
-                layer: 'orto_foraar',
-                matrixSet: 'View1',
-                format: 'image/jpeg',
-                visible: 'false',
-                tileGrid: tileGrid,
-                style: 'default',
-                size: Size
-              })
-            }),
-            // Forvaltning [WMS:forvaltning]
-            new TileLayer({
-              opacity: 1.0,
-              title: 'Basiskort',
-              name: 'forvaltning',
-              color: 'black',
-              type: 'base',
-              visible: background === 'forvaltning',
-              source: new TileWMS({
-                attributions: attributionText,
-                crossOrigin: 'Anonymous',
-                url: this._createUrl('forvaltning'),
-                params: {
-                  'LAYERS': 'basis_kort',
-                  'VERSION': '1.1.1',
-                  'TRANSPARENT': 'true',
-                  'FORMAT': 'image/png',
-                  'STYLES': ''
-                }
-              })
-            })
-          ]
+          layers: layers
         }),
         new Group({
           'title': 'Kort',
@@ -237,11 +237,5 @@ export default class Map {
 
   get target() {
     return this._target
-  }
-
-  _createUrl(service) {
-    const baseUrl = 'https://services.kortforsyningen.dk/'
-
-    return baseUrl + service + '?token=' + this._token
   }
 }
