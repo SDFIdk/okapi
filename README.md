@@ -98,6 +98,24 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 
 [Demo](https://okapi.kortforsyningen.dk/examples/markers-simple.html)
 
+### Brug kort fra Datafordeleren
+
+Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for fra Fortforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Kortforsyningen.
+
+```html
+<div
+  id="map"
+  class="geomap"
+  data-username="InsertYourUsernameHere"
+  data-password="InsertYourPasswordHere">
+</div>
+
+<script>
+  var map = new okapi.Initialize({});
+</script>
+```
+
+[Demo](https://okapi.kortforsyningen.dk/examples/datafordeler.html)
 
 ### Flere eksempler
 
