@@ -8,6 +8,8 @@ import Style from 'ol/style/Style'
 import Icon from 'ol/style/Icon'
 import pin from '../images/pin.png'
 import './CreateMarkers.styl'
+import 'promise-polyfill/src/polyfill'
+require('array.prototype.find').shim()
 
 function createStyle(url) {
   const src = url || pin

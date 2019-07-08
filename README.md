@@ -13,8 +13,8 @@ Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsy
 1. Opret en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0)
 2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js"
-   integrity="sha384-WrRC51sPS5e0dyF2CMTJT/+xPQTQwKUQAQhCoK7ocTpV2pmLSdoR8zPbzMKG4rE4"
+   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.2.min.js"
+  integrity="sha384-5a57mLASpnU+Gillw8f0ROZf7iIk0+mFDHbkQZiMdYegeAB+k6UbovHneBm2/qP9"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -37,14 +37,14 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js"
-integrity="sha384-WrRC51sPS5e0dyF2CMTJT/+xPQTQwKUQAQhCoK7ocTpV2pmLSdoR8zPbzMKG4rE4"
+<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.2.min.js"
+integrity="sha384-5a57mLASpnU+Gillw8f0ROZf7iIk0+mFDHbkQZiMdYegeAB+k6UbovHneBm2/qP9"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js`
+Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.2.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -52,7 +52,7 @@ Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.1.css`
+Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.2.css`
 
 ## Anvendelse
 
@@ -98,6 +98,24 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 
 [Demo](https://okapi.kortforsyningen.dk/examples/markers-simple.html)
 
+### Brug kort fra Datafordeleren
+
+Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for Fortforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Kortforsyningen.
+
+```html
+<div
+  id="map"
+  class="geomap"
+  data-username="InsertYourUsernameHere"
+  data-password="InsertYourPasswordHere">
+</div>
+
+<script>
+  var map = new okapi.Initialize({});
+</script>
+```
+
+[Demo](https://okapi.kortforsyningen.dk/examples/datafordeler.html)
 
 ### Flere eksempler
 

@@ -4,10 +4,20 @@ export default class Initialize {
   constructor(opt) {
 
     // Push the marker DOM elements into an array.
-    const markerElements = document.querySelectorAll('span.geomarker')
+    const markerElementsO = document.querySelectorAll('span.geomarker')
 
     // Target all map dom elements with the geomap class set
-    const mapElements = document.querySelectorAll('div.geomap')
+    const mapElementsO = document.querySelectorAll('div.geomap')
+
+    //IE support
+    const markerElements = []
+    for(let i = 0; i < markerElementsO.length; i++) {
+      markerElements.push(markerElementsO[i])
+    }
+    const mapElements = []
+    for(let i = 0; i < mapElementsO.length; i++) {
+      mapElements.push(mapElementsO[i])
+    }
 
     let markers = []
 
@@ -16,7 +26,6 @@ export default class Initialize {
       let marker = {}
 
       for (let key in dataset) {
-        console.log()
         if (key === 'lat' || key === 'lon') {
           marker[key] = Number(dataset[key])
         } else {
@@ -42,6 +51,8 @@ export default class Initialize {
       this._map = new Map({
         target: element.id,
         token: element.dataset.token,
+        username: element.dataset.username,
+        password: element.dataset.password,
         background: element.dataset.background,
         icons: opt.icons,
         markers: filteredMarkers,

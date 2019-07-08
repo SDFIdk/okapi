@@ -1,15 +1,23 @@
-.ol-layer-switcher .container
-  width: 490px
+.ol-layer-switcher.ol-unselectable.ol-control
+  left 0
+  right 0
+  padding 0
+
+.ol-layer-switcher .container1
+  max-width 100%
   height: 0px
   background: white
   position: absolute
   left: 0
   bottom: 0
-  padding: 0 5px
   transition: ease 0.5s height
   box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2), 0 3px 20px 0 rgba(0,0,0,0.19)
   overflow-x: auto
   overflow-y: hidden
+
+.ol-layer-switcher .container2
+  width max-content
+  padding 0 5px
 
 .ol-layer-switcher div.expanded
   height: 130px
