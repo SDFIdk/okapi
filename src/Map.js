@@ -57,10 +57,15 @@ export default class Map {
 
     projection.setExtent(Extent)
 
-    const tileGrid = new WMTSTileGrid({
+    const kfTileGrid = new WMTSTileGrid({
       extent: Extent,
       resolutions: Resolutions,
       matrixIds: MatrixIds
+    })
+    const dfTileGrid = new WMTSTileGrid({
+      extent: Extent,
+      resolutions: Resolutions,
+      matrixIds: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13']
     })
     const kfAuth = {
       source: 'kf',
@@ -79,10 +84,10 @@ export default class Map {
         title: 'Skærmkort',
         visible: background === 'dtk_skaermkort',
         service: 'DKskaermkort/topo_skaermkort_wmts/1.0.0/Wmts',
-        layer: 'dtk_skaermkort',
+        layer: 'topo_skaermkort',
         matrixSet: 'View1',
         format: 'image/jpeg',
-        tileGrid: tileGrid,
+        tileGrid: dfTileGrid,
         auth: dfAuth
       }))
       layers.push(createLayer({
@@ -92,10 +97,10 @@ export default class Map {
         visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
         background !== 'dtk_skaermkort',
         service: 'DKskaermkort/topo_skaermkort_daempet/1.0.0/Wmts',
-        layer: 'dtk_skaermkort_daempet',
+        layer: 'topo_skaermkort_daempet',
         matrixSet: 'View1',
         format: 'image/jpeg',
-        tileGrid: tileGrid,
+        tileGrid: dfTileGrid,
         auth: dfAuth
       }))
     } else if (this._token) {
@@ -108,7 +113,7 @@ export default class Map {
         layer: 'dtk_skaermkort',
         matrixSet: 'View1',
         format: 'image/jpeg',
-        tileGrid: tileGrid,
+        tileGrid: kfTileGrid,
         auth: kfAuth
       }))
       layers.push(createLayer({
@@ -121,7 +126,7 @@ export default class Map {
         layer: 'dtk_skaermkort_daempet',
         matrixSet: 'View1',
         format: 'image/jpeg',
-        tileGrid: tileGrid,
+        tileGrid: kfTileGrid,
         auth: kfAuth
       }))
     }
@@ -136,7 +141,7 @@ export default class Map {
         layer: 'orto_foraar',
         matrixSet: 'View1',
         format: 'image/jpeg',
-        tileGrid: tileGrid,
+        tileGrid: kfTileGrid,
         auth: kfAuth
       }))
       layers.push(createLayer({
@@ -171,7 +176,7 @@ export default class Map {
       view: new View({
         center: fromLonLat(center, 'EPSG:25832'),
         zoom: this.zoom,
-        resolutions: tileGrid.getResolutions(),
+        resolutions: kfTileGrid.getResolutions(),
         projection: projection,
         extent: Extent
       })
