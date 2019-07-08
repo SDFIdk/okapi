@@ -37,15 +37,19 @@ export default class LayerSwitcher extends Control {
       _this.toggleShow()
     }
 
-    this.panel_ = document.createElement('div')
-    this.panel_.className = 'container'
+    this.panel1_ = document.createElement('div')
+    this.panel1_.className = 'container1'
+
+    this.panel2_ = document.createElement('div')
+    this.panel2_.className = 'container2'
+    this.panel1_.appendChild(this.panel2_)
 
     const element = this.element
 
     element.className = cssClassName
     if (this.visible) {
       element.appendChild(this.button_)
-      element.appendChild(this.panel_)
+      element.appendChild(this.panel1_)
     }
   }
 
@@ -72,8 +76,8 @@ export default class LayerSwitcher extends Control {
     }
     const this_ = this
 
-    while (this.panel_.firstChild) {
-      this.panel_.removeChild(this.panel_.firstChild)
+    while (this.panel2_.firstChild) {
+      this.panel2_.removeChild(this.panel2_.firstChild)
     }
     baseLayers.getLayers().forEach(function (e) {
       const div = document.createElement('div')
@@ -86,7 +90,7 @@ export default class LayerSwitcher extends Control {
       image.appendChild(label)
       div.appendChild(image)
       div.appendChild(label)
-      this_.panel_.appendChild(div)
+      this_.panel2_.appendChild(div)
       if (e.get('visible')) {
         image.classList.add('selected')
       }
@@ -160,11 +164,11 @@ export default class LayerSwitcher extends Control {
   }
 
   toggleShow(e) {
-    if (this.panel_.classList.contains('expanded')) {
-      this.panel_.classList.remove('expanded')
+    if (this.panel1_.classList.contains('expanded')) {
+      this.panel1_.classList.remove('expanded')
       this.button_.classList.remove('expanded')
     } else {
-      this.panel_.classList.add('expanded')
+      this.panel1_.classList.add('expanded')
       this.button_.classList.add('expanded')
     }
   }
