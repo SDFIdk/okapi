@@ -9,13 +9,15 @@ export default class Initialize {
     // Target all map dom elements with the geomap class set
     const mapElementsO = document.querySelectorAll('div.geomap')
 
-    //IE support
+    // IE support
     const markerElements = []
-    for(let i = 0; i < markerElementsO.length; i++) {
+
+    for (let i = 0; i < markerElementsO.length; i++) {
       markerElements.push(markerElementsO[i])
     }
     const mapElements = []
-    for(let i = 0; i < mapElementsO.length; i++) {
+
+    for (let i = 0; i < mapElementsO.length; i++) {
       mapElements.push(mapElementsO[i])
     }
 
@@ -35,12 +37,17 @@ export default class Initialize {
       markers.push(marker)
     }, markers)
 
+    const maps = []
     mapElements.forEach(function (element) {
       // Filter relevant markers
       const types = (typeof element.dataset.type === 'undefined') ? [''] : element.dataset.type.split(',')
       const filteredMarkers = markers.filter(function (marker) {
         return marker.type ? (marker.type.indexOf(types) > -1) : true
       }, types)
+      const overlays = (typeof element.dataset.overlays === 'undefined') ? [''] : element.dataset.overlays.split(',')
+      const filteredOverlays = opt.overlays ? opt.overlays.filter(function (e) {
+        return overlays.includes(e.name)
+      }) : []
 
       const autoView = element.dataset.center === 'auto'
       const center = element.dataset.centerLon ? [
@@ -55,6 +62,7 @@ export default class Initialize {
         password: element.dataset.password,
         background: element.dataset.background,
         icons: opt.icons,
+        overlays: filteredOverlays,
         markers: filteredMarkers,
         popup: opt.popup,
         showPopup: element.dataset.showPopup !== 'false',
@@ -68,7 +76,8 @@ export default class Initialize {
           zoom: element.dataset.zoom
         }
       })
+      maps.push(this._map)
     }, opt, markers)
-
+    return maps
   }
 }

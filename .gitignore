@@ -37,4 +37,4 @@ stats.json
 
 .env
 
-/test
+/test/*.html

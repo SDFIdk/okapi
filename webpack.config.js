@@ -55,7 +55,16 @@ const config = {
     new webpack.ProvidePlugin({
       _: "lodash"
     }),
-    ...['simple', 'advanced', 'markers-simple', 'markers-advanced', 'double', 'tooltip', 'datafordeler'].map((event) => {
+    ...[
+      'simple',
+      'advanced',
+      'markers-simple',
+      'markers-advanced',
+      'double',
+      'tooltip',
+      'datafordeler',
+      'overlay'
+    ].map((event) => {
       return new HtmlWebpackPlugin({
         "inject"   : "head",
         "template":  __dirname + "/src/examples/template.ejs",

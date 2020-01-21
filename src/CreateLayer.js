@@ -1,22 +1,7 @@
-import OlMap from 'ol/Map'
-import View from 'ol/View'
-import Group from 'ol/layer/Group'
 import TileLayer from 'ol/layer/Tile'
 import WMTS from 'ol/source/WMTS'
-import WMTSTileGrid from 'ol/tilegrid/WMTS'
 import TileWMS from 'ol/source/TileWMS'
-import proj4 from 'proj4/dist/proj4'
-import { register } from 'ol/proj/proj4'
-import { get as getProjection } from 'ol/proj'
-import { createEmpty, extend } from 'ol/extent'
-import {defaults as defaultControls, ScaleLine, ZoomSlider, Attribution, FullScreen} from 'ol/control'
-import MyLocation from './control/MyLocation'
-import LayerSwitcher from './control/LayerSwitcher'
-import CreateMarkers from './control/markers/CreateMarkers'
-import { fromLonLat } from 'ol/proj'
-import CreateMarkerTooltip from './control/markers/CreateMarkerTooltip'
 import { Size } from './constants'
-import VectorLayer from 'ol/layer/Vector'
 import { any } from './utility/IsMobile'
 
 const kfText = any() ? 'SDFE' : 'Styrelsen for Dataforsyning og Effektivisering'
@@ -26,6 +11,21 @@ const kfAttributionText = '&copy; <a target="_blank" href="' + kfLink +
 const dfLink = 'https://datafordeler.dk/vejledning/brugervilkaar/sdfe-geografiske-data/'
 const dfAttributionText = '&copy; <a target="_blank" href="' + dfLink +
 '">' + kfText + '</a>'
+
+const createUrl = function (service, auth) {
+  if (auth.source === 'kf') {
+    const baseUrl = 'https://services.kortforsyningen.dk/'
+
+    return baseUrl + service + '?token=' + auth.token
+  } else if (auth.source === 'df') {
+    const baseUrl = 'https://services.datafordeler.dk/'
+
+    return baseUrl + service + '?username=' + auth.username + '&password=' + auth.password
+  } else {
+    console.error('Unknown source: "' + auth.source + '"')
+    return null
+  }
+}
 
 export const createLayer = function (opt) {
   const name = opt.name || ''
@@ -40,9 +40,11 @@ export const createLayer = function (opt) {
   const matrixSet = opt.matrixSet
   const format = opt.format || ''
   const tileGrid = opt.tileGrid
-  const attributionText = opt.auth.source === 'kf' ? kfAttributionText : dfAttributionText
+  const attributionText = opt.auth.source === 'kf' ? kfAttributionText :
+    (opt.auth.source === 'df' ? dfAttributionText : opt.attribution)
 
   let source = null
+
   if (type === 'WMTS') {
     source = new WMTS({
       attributions: attributionText,
@@ -82,19 +84,4 @@ export const createLayer = function (opt) {
     visible: visible,
     source: source
   })
-}
-
-const createUrl = function (service, auth) {
-  if (auth.source === 'kf') {
-    const baseUrl = 'https://services.kortforsyningen.dk/'
-
-    return baseUrl + service + '?token=' + auth.token
-  }
-  else if (auth.source === 'df') {
-    const baseUrl = 'https://services.datafordeler.dk/'
-
-    return baseUrl + service + '?username=' + auth.username + '&password=' + auth.password
-  } else {
-    console.error('Unknown source: "' + auth.source + '"')
-  }
 }
