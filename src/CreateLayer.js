@@ -36,6 +36,7 @@ export const createLayer = function (opt) {
   const auth = opt.auth
   const service = opt.service || ''
   const layer = opt.layer || ''
+  const style = opt.style || 'default'
   const version = opt.version || '1.1.1'
   const matrixSet = opt.matrixSet
   const format = opt.format || ''
@@ -54,7 +55,7 @@ export const createLayer = function (opt) {
       matrixSet: matrixSet,
       format: format,
       tileGrid: tileGrid,
-      style: 'default',
+      style: style,
       size: Size
     })
   } else if (type === 'WMS') {
@@ -67,7 +68,7 @@ export const createLayer = function (opt) {
         'VERSION': version,
         'TRANSPARENT': 'true',
         'FORMAT': format,
-        'STYLES': ''
+        'STYLES': style
       }
     })
   } else {
