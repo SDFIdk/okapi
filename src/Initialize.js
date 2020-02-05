@@ -46,7 +46,7 @@ export default class Initialize {
       }, types)
       const overlays = (typeof element.dataset.overlays === 'undefined') ? [''] : element.dataset.overlays.split(',')
       const filteredOverlays = opt.overlays ? opt.overlays.filter(function (e) {
-        return overlays.includes(e.name)
+        return e.name ? (e.name.indexOf(overlays) > -1) : true
       }) : []
 
       const autoView = element.dataset.center === 'auto'
