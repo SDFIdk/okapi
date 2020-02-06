@@ -222,11 +222,19 @@ export default class Map {
 
   }
 
-  addVectorLayer(vector, styles) {
+  addVectorLayer(vector, styles, name) {
     this._map.addLayer(new VectorLayer({
+      name: name,
+      visible: false,
       source: vector,
       style: styles
     }))
+  }
+
+  getVectorLayer(name) {
+    return this._map.getLayers().getArray().find(function (e) {
+      return e.get('name') === 'name'
+    })
   }
 
   autoCenter() {
@@ -254,6 +262,13 @@ export default class Map {
 
   toggleLayer(layer, value) {
     const layers = this._map.getLayers().getArray()
+    const vectorLayer = layers.find(function (e) {
+      return e.get('name') === layer
+    })
+    if (vectorLayer) {
+      vectorLayer.setVisible(value)
+      return
+    }
     const overlays = layers.find(function (e) {
       return e.get('title') === 'Kort'
     })
