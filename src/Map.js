@@ -250,6 +250,7 @@ export default class Map {
       return
     }
     this._map.getView().fit(extent)
+    this._map.getView().setZoom(Math.floor(this._map.getView().getZoom()))
     if (!this.autoZoom) {
       this._map.getView().setZoom(this.zoom)
     }
