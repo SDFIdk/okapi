@@ -18,6 +18,7 @@ let outputFile, mode, token, example;
 if (env === 'build') {
   mode = 'production';
   outputFile = libraryName + '-' + version + '.min.js';
+  cssFileName = libraryName + '-' + version + '.min.css';
   token = 'InsertYourTokenHere';
   username = 'InsertYourUsernameHere';
   password = 'InsertYourPasswordHere';
@@ -25,6 +26,7 @@ if (env === 'build') {
 } else {
   mode = 'development';
   outputFile = libraryName + '-' + version + '.js';
+  cssFileName = libraryName + '-' + version + '.css';
   token = process.env.TOKEN || 'InsertYourTokenHere';
   username = process.env.DFUSERNAME || 'InsertYourUsernameHere';
   password = process.env.DFPASSWORD || 'InsertYourPasswordHere';
@@ -80,7 +82,7 @@ const config = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: libraryName + '-' + version + '.css'
+      filename: cssFileName
     }),
     new webpack.BannerPlugin({
       banner: 'okapi. See https://okapi.Kortforsyningen.dk \n' +

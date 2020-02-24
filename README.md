@@ -52,7 +52,7 @@ Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.3.css`
+Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.css`
 
 ## Anvendelse
 
