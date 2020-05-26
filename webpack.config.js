@@ -135,7 +135,7 @@ const config = {
     ]
   },
   resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
+    modules: ['node_modules', path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
   }
 };
