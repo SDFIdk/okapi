@@ -9,12 +9,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 require('dotenv').config();
+const fs = require('fs')
 const getSRI = require('get-sri');
 
 let libraryName = 'okapi';
 const version = '1.3';
 
-const min = '!raw-loader!' + './lib/' + libraryName + '-' + version + '.min.js'
+const min = fs.readFileSync('./lib/' + libraryName + '-' + version + '.min.js', 'utf8')
 
 let outputFile, mode, token, example;
 
