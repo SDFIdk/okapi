@@ -9,9 +9,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 require('dotenv').config();
+const getSRI = require('get-sri');
 
 let libraryName = 'okapi';
 const version = '1.3';
+
+const min = '!raw-loader!' + './lib/' + libraryName + '-' + version + '.min.js'
 
 let outputFile, mode, token, example;
 
@@ -74,7 +77,7 @@ const config = {
           "username": username,
           "password": password,
           "version": version,
-          "sri": 'sri'
+          "sri": getSRI(min, getSRI.SHA384, true)
         },
         "filename" : __dirname + `/` + example + `/${event}.html`
       })

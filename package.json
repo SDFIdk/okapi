@@ -4,7 +4,8 @@
   "description": "Produce universal library with webpack and es6",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build",
+    "build": "webpack --env dev && webpack --env build && webpack --env build --config=webpack.config.examples.js",
+    "examples": "webpack --env build --config=webpack.config.examples.js",
     "dev": "webpack --progress --colors --watch --env dev",
     "stats": "webpack --profile --json > stats.json",
     "analyze": "webpack-bundle-analyzer stats.json",
@@ -75,6 +76,7 @@
     "axios": "^0.18.1",
     "dotenv": "^7.0.0",
     "ejs-loader": "^0.3.6",
+    "get-sri": "^1.0.2",
     "html-loader": "^0.5.5",
     "ol": "^6.3.1",
     "promise-polyfill": "^8.1.3",
