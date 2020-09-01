@@ -8,17 +8,16 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-require('dotenv').config();
+require('dotenv').config()
 
 let libraryName = 'okapi';
-const version = '1.3';
+const version = '1.2';
 
 let outputFile, mode, token, example;
 
 if (env === 'build') {
   mode = 'production';
   outputFile = libraryName + '-' + version + '.min.js';
-  cssFileName = libraryName + '-' + version + '.min.css';
   token = 'InsertYourTokenHere';
   username = 'InsertYourUsernameHere';
   password = 'InsertYourPasswordHere';
@@ -26,12 +25,13 @@ if (env === 'build') {
 } else {
   mode = 'development';
   outputFile = libraryName + '-' + version + '.js';
-  cssFileName = libraryName + '-' + version + '.css';
   token = process.env.TOKEN || 'InsertYourTokenHere';
   username = process.env.DFUSERNAME || 'InsertYourUsernameHere';
   password = process.env.DFPASSWORD || 'InsertYourPasswordHere';
   example = "test";
 }
+
+const devMode = mode == 'development'
 
 const config = {
   mode: mode,
@@ -55,26 +55,15 @@ const config = {
     new webpack.ProvidePlugin({
       _: "lodash"
     }),
-    ...[
-      'simple',
-      'advanced',
-      'markers-simple',
-      'markers-advanced',
-      'double',
-      'tooltip',
-      'datafordeler',
-      'overlay'
-    ].map((event) => {
+    ...['simple', 'advanced', 'markers-simple', 'markers-advanced', 'double', 'tooltip', 'datafordeler'].map((event) => {
       return new HtmlWebpackPlugin({
         "inject"   : "head",
         "template":  __dirname + "/src/examples/template.ejs",
         "templateParameters": {
-          "title": `${event}`,
-          "token": token,
+          "title" : `${event}`,
+          "token" : token,
           "username": username,
-          "password": password,
-          "version": version,
-          "sri": 'sri'
+          "password": password
         },
         "filename" : __dirname + `/` + example + `/${event}.html`
       })
@@ -82,7 +71,7 @@ const config = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: cssFileName
+      filename: libraryName + '-' + version + '.css'
     }),
     new webpack.BannerPlugin({
       banner: 'okapi. See https://okapi.Kortforsyningen.dk \n' +
@@ -135,7 +124,7 @@ const config = {
     ]
   },
   resolve: {
-    modules: ['node_modules', path.resolve('./node_modules'), path.resolve('./src')],
+    modules: [path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
   }
 };

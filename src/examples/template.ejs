@@ -22,16 +22,14 @@
   <body>
     <div>
       <% body = require('./' + title + '.ejs') %>
-      <% top = require('./body-top.ejs') %>
-      <% bottom = require('./body-bottom.ejs') %>
       <%= body({ token: token }) %>
     </div>
     <div>
       <pre>
         <code class="language-markup">
-<%- top({ sri: sri, version: version }) %>
+<%- require('./body-top.html') %>
 <%- body({ token: 'InsertYourTokenHere' }) %>
-<%- bottom({}) %>
+<%- require('./body-bottom.html') %>
         </code>
       </pre>
     </div>
