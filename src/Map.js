@@ -13,7 +13,7 @@ import CreateMarkers from './control/markers/CreateMarkers'
 import { createLayer } from './CreateLayer'
 import { fromLonLat } from 'ol/proj'
 import CreateMarkerTooltip from './control/markers/CreateMarkerTooltip'
-import { Center, Extent, Resolutions, MatrixIds, Size } from './constants'
+import { Center, Extent, Resolutions, MatrixIds } from './constants'
 import VectorLayer from 'ol/layer/Vector'
 
 import 'ol/ol.css'
@@ -77,6 +77,7 @@ export default class Map {
       password: this._password
     }
     const layers = []
+
     if (this._username && this._password) {
       layers.push(createLayer({
         name: 'dtk_skaermkort',
@@ -156,6 +157,21 @@ export default class Map {
       }))
     }
 
+    const overlays = []
+
+    if (opt.overlays) {
+      opt.overlays.forEach(function (e) {
+        if (e.source === 'kf') {
+          e.auth = kfAuth
+          e.tileGrid = kfTileGrid
+        } else if (e.source === 'df') {
+          e.auth = dfAuth
+          e.tileGrid = dfTileGrid
+        }
+        overlays.push(createLayer(e))
+      })
+    }
+
     this._map = new OlMap({
       target: this._target,
       layers: [
@@ -165,7 +181,7 @@ export default class Map {
         }),
         new Group({
           'title': 'Kort',
-          layers: []
+          layers: overlays
         }),
         new Group({
           'title': 'Hidden',
@@ -206,15 +222,23 @@ export default class Map {
 
   }
 
-  addVectorLayer(vector, styles) {
+  addVectorLayer(vector, styles, name) {
     this._map.addLayer(new VectorLayer({
+      name: name,
+      visible: false,
       source: vector,
       style: styles
     }))
   }
 
+  getVectorLayer(name) {
+    return this._map.getLayers().getArray().find(function (e) {
+      return e.get('name') === 'name'
+    })
+  }
+
   autoCenter() {
-    if (!this.autoCenter || !this.markerLayers[0]) {
+    if (!this.autocenter || !this.markerLayers[0]) {
       return
     }
     const extent = createEmpty()
@@ -226,6 +250,7 @@ export default class Map {
       return
     }
     this._map.getView().fit(extent)
+    this._map.getView().setZoom(Math.floor(this._map.getView().getZoom()))
     if (!this.autoZoom) {
       this._map.getView().setZoom(this.zoom)
     }
@@ -234,6 +259,26 @@ export default class Map {
 
   toggleBackground(background) {
     this._layerSwitcher.toggleBackground(background)
+  }
+
+  toggleLayer(layer, value) {
+    const layers = this._map.getLayers().getArray()
+    const vectorLayer = layers.find(function (e) {
+      return e.get('name') === layer
+    })
+    if (vectorLayer) {
+      vectorLayer.setVisible(value)
+      return
+    }
+    const overlays = layers.find(function (e) {
+      return e.get('title') === 'Kort'
+    })
+
+    overlays.get('layers').getArray().forEach(function (e, idx, a) {
+      if (e.get('name') === layer) {
+        e.setVisible(value)
+      }
+    })
   }
 
   get olMap() {
