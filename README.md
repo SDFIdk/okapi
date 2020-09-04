@@ -2,7 +2,7 @@
 
 [Kortforsyningen](https://kortforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
 
-Modulet er implementeret i Javascript og er baseret på [OpenLayers 5.3](https://openlayers.org/).
+Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
 
 Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0) og oprette en token.
 
