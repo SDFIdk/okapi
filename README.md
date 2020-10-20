@@ -297,8 +297,8 @@ Returnerer en samling adresser, hvor koordinaterne står i `geometry.coordinates
 
 ### Omregning til decimalgrader
 
-Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Kortforsyningens service: RestGeoKeys. ([Læs mere her](https://kortforsyningen.dk/indhold/geonoegler-rest#koortrans)).
+Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Kortforsyningens service: RestGeoKeys. ([Læs mere her](https://docs.kortforsyningen.dk/#webproj)).
 
 Her er en eksempel-url, man kan sende af sted. Man skal dog indsætte sin egen token først:
 
-https://services.kortforsyningen.dk/?servicename=RestGeokeys_v2&method=koortrans&ingeoref=EPSG:25832&ingeop=550000,6220000&outgeoref=EPSG:4326&token=insertYourToken
+https://services.kortforsyningen.dk/rest/webproj/v1.0/trans/EPSG%3A25832/EPSG%3A4326/550000,6220000?token=InsertYourTokenHere
