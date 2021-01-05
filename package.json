@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "array.prototype.find": "^2.1.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "dotenv": "^7.0.0",
     "ejs-loader": "^0.3.7",
     "get-sri": "^1.0.2",
