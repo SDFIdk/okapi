@@ -34,6 +34,10 @@
     "url": "https://github.com/krasimir/webpack-library-starter/issues"
   },
   "homepage": "https://github.com/krasimir/webpack-library-starter",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.10.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.0",
