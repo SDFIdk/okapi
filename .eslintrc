@@ -19,11 +19,8 @@
     "sinon": true
   },
 
-  "parser": "babel-eslint",
-
-  "plugins": [
-    
-  ],
+  "parser": "@babel/eslint-parser",
+  "plugins": [],
 
   "rules": {
     "block-scoped-var": 1,
@@ -157,7 +154,7 @@
     "quote-props": 0,
     "quotes": [1, "single", "avoid-escape"],
     "radix": 1,
-    "semi": [1, "never", "beforeStatementContinuationChars": "never"],
+    "semi": [1, "never", { "beforeStatementContinuationChars": "always"}],
     "semi-spacing": 0,
     "sort-vars": 0,
     "space-before-blocks": [1, "always"],
