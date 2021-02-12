@@ -4,10 +4,11 @@
   "description": "Produce universal library with webpack and es6",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && webpack --env build --config=webpack.config.examples.js",
+    "build": "webpack --progress --colors --env build && webpack --env build --config=webpack.config.examples.js",
+    "build:new": "webpack --progress --colors --env build --config=webpack.config.examples.js",
     "examples": "webpack --env build --config=webpack.config.examples.js",
     "dev": "webpack --progress --colors --watch --env dev",
-    "dev:new": "cross-env OKAPI_ENV=production OKAPI_MINIFY=true webpack --progress --colors --config=webpack.config.dev.js",
+    "dev:new": "cross-env OKAPI_ENV=production OKAPI_MINIFY=false webpack --progress --colors --config=webpack.config.dev.js",
     "stats": "webpack --profile --json > stats.json",
     "analyze": "webpack-bundle-analyzer stats.json",
     "test": "mocha --require babel-register --colors ./test/*.spec.js",
@@ -66,11 +67,12 @@
     "proj4": "^2.7.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
-    "terser-webpack-plugin": "^5.1.1",
+    "terser-webpack-plugin": "^4.2.3",
     "uglifyjs-webpack-plugin": "^2.0.0",
     "webpack": "^4.46.0",
     "webpack-bundle-analyzer": "^3.9.0",
     "webpack-cli": "^3.3.12",
+    "webpack-subresource-integrity": "^1.5.2",
     "yargs": "^16.2.0"
   },
   "nyc": {

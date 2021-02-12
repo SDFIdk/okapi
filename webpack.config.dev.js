@@ -9,14 +9,14 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-
+const SriPlugin = require('webpack-subresource-integrity');
 
 const OKAPI_ENV = process.env.OKAPI_ENV || 'production';
 const shouldMinify = !!process.env.OKAPI_MINIFY;
 const shouldReportSize = process.env.OKAPI_SIZE_REPORT === "true";
 
 if (['development', 'production'].indexOf(OKAPI_ENV) < 0) {
-  throw new Error("unknown RXP_ENV " + OKAPI_ENV);
+  throw new Error("unknown OKAPI_ENV " + OKAPI_ENV);
 }
 
 const isDevMode = OKAPI_ENV === 'development';
@@ -32,30 +32,34 @@ const plugins = [
   new webpack.ProvidePlugin({
     _: "lodash"
   }),
-    ...[
-  'simple',
-  'advanced',
-  'markers-simple',
-  'markers-advanced',
-  'double',
-  'tooltip',
-  'datafordeler',
-  'overlay'
-].map((event) => {
-  return new HtmlWebpackPlugin({
-    "inject": "head",
-    "template": __dirname + "/src/examples/template.ejs",
-    "templateParameters": {
-      "title": `${event}`,
-      "token": token,
-      "username": username,
-      "password": password,
-      "version": version,
-      "sri": 'sri'
-    },
-    "filename": __dirname + `/` + example + `/${event}.html`
-  })
-}),
+  ...[
+    'simple',
+    'advanced',
+    'markers-simple',
+    'markers-advanced',
+    'double',
+    'tooltip',
+    'datafordeler',
+    'overlay'
+  ].map((event) => {
+    return new HtmlWebpackPlugin({
+      "inject": "head",
+      "template": __dirname + "/src/examples/template.ejs",
+      "templateParameters": {
+        "title": `${event}`,
+        "token": token,
+        "username": username,
+        "password": password,
+        "version": version,
+        "sri": "sri"
+      },
+      "filename": __dirname + `/` + example + `/${event}.html`
+    })
+  }),
+  new SriPlugin({
+    hashFuncNames: ['sha256', 'sha384'],
+    enabled: process.env.OKAPI_ENV === 'production',
+  }),
   new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
     // both options are optional
@@ -66,13 +70,13 @@ const plugins = [
       'License: https://github.com/Kortforsyningen/okapi/blob/master/LICENSE \n' +
       'Version: v' + version
   }),
-  new webpack.DefinePlugin({
-    __DEV__: isDevMode,
-    __LOGGER_LEVEL__: isDevMode ? "\"INFO\"" : "\"DEBUG\"",
-    "process.env": {
-      NODE_ENV: JSON.stringify(isDevMode ? "development" : "production"),
-    },
-  }),
+  // new webpack.DefinePlugin({
+  //   __DEV__: isDevMode,
+  //   __LOGGER_LEVEL__: isDevMode ? "\"INFO\"" : "\"DEBUG\"",
+  //   "process.env": {
+  //     NODE_ENV: JSON.stringify(isDevMode ? "development" : "production"),
+  //   },
+  // }),
 ]
 
 if (shouldReportSize) {
@@ -81,16 +85,17 @@ if (shouldReportSize) {
 
 const config = {
   mode: isDevMode ? 'development' : 'production',
-  entry: './src/Index.js',
+  entry: __dirname + '/src/Index.js',
   devtool: 'inline-source-map',
   output: {
     path: __dirname + '/lib',
+    filename: shouldMinify ? `${libraryName}-${version}.min.js` : `${libraryName}-${version}.js`,
     library: libraryName,
     libraryTarget: 'umd',
     // libraryExport: "default",
-    filename: shouldMinify ? `${libraryName}-${version}.min.js` : `${libraryName}-${version}.js`,
     umdNamedDefine: true,
-    globalObject: "typeof self !== 'undefined' ? self : this"
+    globalObject: "typeof self !== 'undefined' ? self : this",
+    crossOriginLoading: 'anonymous',
   },
   optimization: {
     minimize: shouldMinify,
@@ -103,24 +108,29 @@ const config = {
     maxEntrypointSize: shouldMinify ? 450000 : 2000000,
     maxAssetSize: shouldMinify ? 450000 : 2000000,
   },
-  plugins,
+  plugins: plugins,
   module: {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
         exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true,
-              presets: [
-                ["@babel/env", { loose: true, modules: false}],
-              ],
-              plugins: [["@babel/plugin-transform-runtime"]],
-            }
-          }
-        ],
+        loader: 'babel-loader',
+        // use: [
+        //   {
+        //     // options: {
+        //     //   cacheDirectory: true,
+        //     //   presets: [
+        //     //     ["@babel/env", { loose: true, modules: false}],
+        //     //   ],
+        //     //   plugins: [["@babel/plugin-transform-runtime"]],
+        //     // }
+        //   }
+        // ],
+      },
+      {
+        test: /(\.jsx|\.js)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.styl(us)?$/,
@@ -156,10 +166,13 @@ const config = {
   resolve: {
     modules: ['node_modules', path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
-  },
-  watchOptions: {
-    ignored: /node_modules/,
-  },
+  }
 };
+
+
+// config.plugin("done", stats => {
+//   const mainAssetName = stats.toJson().assetsByChunkName.main;
+//   const integrity = stats.compilation.assets[mainAssetName].integrity;
+// });
 
 module.exports = config;
