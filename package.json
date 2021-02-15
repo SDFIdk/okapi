@@ -5,7 +5,6 @@
   "main": "lib/okapi.js",
   "scripts": {
     "build": "webpack --progress --colors --env build && webpack --env build --config=webpack.config.examples.js",
-    "build:new": "webpack --progress --colors --env build --config=webpack.config.examples.js",
     "examples": "webpack --env build --config=webpack.config.examples.js",
     "dev": "webpack --progress --colors --watch --env dev",
     "dev:new": "cross-env OKAPI_ENV=production OKAPI_MINIFY=false webpack --progress --colors --config=webpack.config.dev.js",

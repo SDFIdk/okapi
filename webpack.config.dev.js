@@ -22,7 +22,7 @@ if (['development', 'production'].indexOf(OKAPI_ENV) < 0) {
 const isDevMode = OKAPI_ENV === 'development';
 
 const libraryName = 'okapi';
-const version = '1.3';
+const version = process.env.npm_package_version;
 const token = process.env.TOKEN || 'InsertYourTokenHere';
 const username = process.env.DFUSERNAME || 'InsertYourUsernameHere';
 const password = process.env.DFPASSWORD || 'InsertYourPasswordHere';
@@ -44,7 +44,7 @@ const plugins = [
   ].map((event) => {
     return new HtmlWebpackPlugin({
       "inject": "head",
-      "template": __dirname + "/src/examples/template.ejs",
+      "template": path.resolve(__dirname, 'src/examples/template.ejs'),
       "templateParameters": {
         "title": `${event}`,
         "token": token,
@@ -53,7 +53,7 @@ const plugins = [
         "version": version,
         "sri": "sri"
       },
-      "filename": __dirname + `/` + example + `/${event}.html`
+      "filename": path.join(__dirname, `${example}/${event}.html`)
     })
   }),
   new SriPlugin({
@@ -70,13 +70,13 @@ const plugins = [
       'License: https://github.com/Kortforsyningen/okapi/blob/master/LICENSE \n' +
       'Version: v' + version
   }),
-  // new webpack.DefinePlugin({
-  //   __DEV__: isDevMode,
-  //   __LOGGER_LEVEL__: isDevMode ? "\"INFO\"" : "\"DEBUG\"",
-  //   "process.env": {
-  //     NODE_ENV: JSON.stringify(isDevMode ? "development" : "production"),
-  //   },
-  // }),
+  new webpack.DefinePlugin({
+    __DEV__: isDevMode,
+    __LOGGER_LEVEL__: isDevMode ? "\"INFO\"" : "\"DEBUG\"",
+    "process.env": {
+      NODE_ENV: JSON.stringify(isDevMode ? "development" : "production"),
+    },
+  }),
 ]
 
 if (shouldReportSize) {
@@ -85,14 +85,13 @@ if (shouldReportSize) {
 
 const config = {
   mode: isDevMode ? 'development' : 'production',
-  entry: __dirname + '/src/Index.js',
+  entry: path.resolve(__dirname, 'src/Index.js'),
   devtool: 'inline-source-map',
   output: {
-    path: __dirname + '/lib',
+    path: path.resolve(__dirname, 'lib'),
     filename: shouldMinify ? `${libraryName}-${version}.min.js` : `${libraryName}-${version}.js`,
     library: libraryName,
     libraryTarget: 'umd',
-    // libraryExport: "default",
     umdNamedDefine: true,
     globalObject: "typeof self !== 'undefined' ? self : this",
     crossOriginLoading: 'anonymous',
@@ -164,15 +163,9 @@ const config = {
     ]
   },
   resolve: {
-    modules: ['node_modules', path.resolve('./node_modules'), path.resolve('./src')],
+    modules: ['node_modules'],
     extensions: ['.json', '.js']
   }
 };
-
-
-// config.plugin("done", stats => {
-//   const mainAssetName = stats.toJson().assetsByChunkName.main;
-//   const integrity = stats.compilation.assets[mainAssetName].integrity;
-// });
 
 module.exports = config;
