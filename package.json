@@ -5,7 +5,7 @@
   "main": "src/Index.js",
   "scripts": {
     "build": "webpack --progress --colors",
-    "build:all": "npm run build && npm run build:min",
+    "build:all": "cross-env OKAPI_ENV=development npm run build && npm run build && npm run build:min",
     "build:min": "cross-env OKAPI_MINIFY=true webpack --progress",
     "build:min:report": "cross-env OKAPI_SIZE_REPORT=true OKAPI_MINIFY=true webpack --progress",
     "build:report": "cross-env OKAPI_SIZE_REPORT=true webpack --progress",
