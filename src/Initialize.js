@@ -38,6 +38,7 @@ export default class Initialize {
     }, markers)
 
     const maps = []
+
     mapElements.forEach(function (element) {
       // Filter relevant markers
       const types = (typeof element.dataset.type === 'undefined') ? [''] : element.dataset.type.split(',')

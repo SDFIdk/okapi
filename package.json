@@ -1,12 +1,12 @@
 {
-  "name": "webpack-library-starter",
-  "version": "1.0.2",
-  "description": "Produce universal library with webpack and es6",
+  "name": "okapi",
+  "version": "1.4.0",
+  "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && webpack --env build --config=webpack.config.examples.js",
     "examples": "webpack --env build --config=webpack.config.examples.js",
-    "dev": "webpack --progress --colors --watch --env dev",
+    "dev": "webpack --progress --watch --env dev",
     "stats": "webpack --profile --json > stats.json",
     "analyze": "webpack-bundle-analyzer stats.json",
     "test": "mocha --require babel-register --colors ./test/*.spec.js",
@@ -17,55 +17,53 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/krasimir/webpack-library-starter.git"
+    "url": "https://github.com/Dataforsyningen/okapi.git"
   },
   "keywords": [
-    "webpack",
-    "es6",
-    "starter",
-    "library",
-    "universal",
-    "umd",
-    "commonjs"
+    "library"
   ],
   "author": "SDFE",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/krasimir/webpack-library-starter/issues"
+    "url": "https://github.com/Dataforsyningen/okapi/issues"
   },
-  "homepage": "https://github.com/krasimir/webpack-library-starter",
+  "homepage": "https://github.com/Dataforsyningen/okapi",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.10.0"
+  },
+  "browserslist": [
+    "defaults"
+  ],
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
     "babel-eslint": "^8.0.3",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^5.2.0",
     "babel-preset-env": "^7.0.0-beta.3",
     "babel-register": "^7.0.0-beta.3",
-    "base64-inline-loader": "^1.1.1",
-    "chai": "^4.1.2",
+    "chai": "^4.3.4",
     "cross-env": "^5.2.1",
-    "css-loader": "^1.0.1",
-    "eslint": "^5.16.0",
-    "eslint-loader": "^2.2.1",
-    "file-loader": "^2.0.0",
-    "html-webpack-plugin": "^3.2.0",
+    "css-loader": "^5.2.6",
+    "eslint": "^7.29.0",
+    "eslint-webpack-plugin": "^2.5.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
     "jsdom": "11.11.0",
     "jsdom-global": "3.0.2",
-    "mini-css-extract-plugin": "^0.5.0",
-    "mocha": "^4.0.1",
+    "mini-css-extract-plugin": "^1.6.1",
+    "mocha": "^9.0.1",
     "nyc": "^14.1.1",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "proj4": "^2.6.2",
+    "proj4": "^2.7.4",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
-    "uglifyjs-webpack-plugin": "^1.3.0",
-    "webpack": "^4.44.1",
-    "webpack-bundle-analyzer": "^3.8.0",
-    "webpack-cli": "^3.3.12",
-    "yargs": "^10.0.3"
+    "webpack": "^5.40.0",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-cli": "^4.7.2",
+    "yargs": "^17.0.1"
   },
   "nyc": {
     "sourceMap": false,
@@ -73,13 +71,13 @@
   },
   "dependencies": {
     "array.prototype.find": "^2.1.1",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "dotenv": "^7.0.0",
     "ejs-loader": "^0.3.7",
     "get-sri": "^1.0.2",
     "html-loader": "^0.5.5",
     "ol": "^6.4.3",
-    "promise-polyfill": "^8.1.3",
+    "promise-polyfill": "^8.2.0",
     "style-loader": "^0.23.1"
   }
 }

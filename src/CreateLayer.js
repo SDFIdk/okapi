@@ -21,10 +21,10 @@ const createUrl = function (service, auth) {
     const baseUrl = 'https://services.datafordeler.dk/'
 
     return baseUrl + service + '?username=' + auth.username + '&password=' + auth.password
-  } else {
-    console.error('Unknown source: "' + auth.source + '"')
-    return null
   }
+  console.error('Unknown source: "' + auth.source + '"')
+  return null
+
 }
 
 export const createLayer = function (opt) {

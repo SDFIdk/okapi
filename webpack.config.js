@@ -4,14 +4,13 @@ const webpack = require('webpack');
 const path = require('path');
 const env = require('yargs').argv.env;
 const pkg = require('./package.json');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ESLintPlugin = require('eslint-webpack-plugin');
 require('dotenv').config();
 
-let libraryName = 'okapi';
-const version = '1.3';
+const libraryName = pkg.name;
+const version = pkg.version;
 
 let outputFile, mode, token, example;
 
@@ -45,13 +44,11 @@ const config = {
     umdNamedDefine: true,
     globalObject: "typeof self !== 'undefined' ? self : this"
   },
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin(),
-      new OptimizeCSSAssetsPlugin({})
-    ],
-  },
   plugins: [
+    new ESLintPlugin(),
+    new MiniCssExtractPlugin({
+      filename: cssFileName
+    }),
     new webpack.ProvidePlugin({
       _: "lodash"
     }),
@@ -67,6 +64,7 @@ const config = {
     ].map((event) => {
       return new HtmlWebpackPlugin({
         "inject"   : "head",
+        "scriptLoading": "blocking",
         "template":  __dirname + "/src/examples/template.ejs",
         "templateParameters": {
           "title": `${event}`,
@@ -78,11 +76,6 @@ const config = {
         },
         "filename" : __dirname + `/` + example + `/${event}.html`
       })
-    }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: cssFileName
     }),
     new webpack.BannerPlugin({
       banner: 'okapi. See https://okapi.Kortforsyningen.dk \n' +
@@ -99,9 +92,8 @@ const config = {
         exclude: /(node_modules|bower_components)/
       },
       {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
+        test: /\.png/,
+        type: 'asset/inline'
       },
       {
         test: /\.styl(us)?$/,
@@ -112,15 +104,11 @@ const config = {
         ]
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader'
-        ]
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: 'base64-inline-loader?name=[name].[ext]'
+        ],
       },
       {
         test: /\.(html)$/,

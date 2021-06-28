@@ -266,6 +266,7 @@ export default class Map {
     const vectorLayer = layers.find(function (e) {
       return e.get('name') === layer
     })
+
     if (vectorLayer) {
       vectorLayer.setVisible(value)
       return
