@@ -4,8 +4,8 @@
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && webpack --env build --config=webpack.config.examples.js",
-    "examples": "webpack --env build --config=webpack.config.examples.js",
+    "build": "webpack --env dev && webpack --env build && webpack --env build",
+    "examples": "webpack --env build",
     "dev": "webpack --progress --watch --env dev",
     "stats": "webpack --profile --json > stats.json",
     "analyze": "webpack-bundle-analyzer stats.json",
