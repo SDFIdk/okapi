@@ -13,7 +13,7 @@ Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsy
 1. Opret en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0)
 2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js"
+   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.4.min.js"
   integrity="sha384-Ii7MjWXOFuXzOngsRG9X4RWadGi7mDLbPzUR0jYQUbclRpT7dG2ksYrU9n3pn/qR"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
@@ -37,14 +37,14 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js"
+<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.4.min.js"
 integrity="sha384-Ii7MjWXOFuXzOngsRG9X4RWadGi7mDLbPzUR0jYQUbclRpT7dG2ksYrU9n3pn/qR"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js`
+Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.4.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -52,7 +52,7 @@ Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.css`
+Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.4.min.css`
 
 ## Anvendelse
 
