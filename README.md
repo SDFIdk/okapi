@@ -14,7 +14,7 @@ Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsy
 2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js"
-  integrity="sha384-uEW/vKQnqmsQclDG7FvxAlXDYL+qCRMqtppL02mRLRoAwyp88b0OU+T0JzNkqQtC"
+  integrity="sha384-Ii7MjWXOFuXzOngsRG9X4RWadGi7mDLbPzUR0jYQUbclRpT7dG2ksYrU9n3pn/qR"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -38,7 +38,7 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ```html
 <script src="https://okapi.kortforsyningen.dk/lib/okapi-1.3.min.js"
-integrity="sha384-uEW/vKQnqmsQclDG7FvxAlXDYL+qCRMqtppL02mRLRoAwyp88b0OU+T0JzNkqQtC"
+integrity="sha384-Ii7MjWXOFuXzOngsRG9X4RWadGi7mDLbPzUR0jYQUbclRpT7dG2ksYrU9n3pn/qR"
 crossorigin="anonymous"></script>
 ```
 
