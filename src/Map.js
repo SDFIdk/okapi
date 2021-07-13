@@ -21,6 +21,7 @@ import './Map.styl'
 import './ZoomSlider.styl'
 import './ScaleLine.styl'
 import './FullScreen.styl'
+import { none } from 'ol/centerconstraint'
 
 export default class Map {
 
@@ -172,7 +173,6 @@ export default class Map {
         overlays.push(createLayer(e))
       })
     }
-    console.log(Extent, overrideExtent)
 
     this._map = new OlMap({
       target: this._target,
@@ -203,7 +203,7 @@ export default class Map {
     scaleLine && this._map.addControl(new ScaleLine())
     zoomSlider && this._map.addControl(new ZoomSlider())
     fullScreen && this._map.addControl(new FullScreen())
-    myLocation && this._map.addControl(new MyLocation())
+    myLocation && this._map.addControl(new MyLocation({ zoomSlider: zoomSlider }))
     this._layerSwitcher = new LayerSwitcher({ visible: layerSwitcher })
     this._map.addControl(this._layerSwitcher)
     this.markerLayers = CreateMarkers(markers, icons, this)
@@ -222,6 +222,9 @@ export default class Map {
       focus.blur()
     })
 
+    if (zoomSlider) {
+      this.adjustControlsCss()
+    }
   }
 
   addVectorLayer(vector, styles, name) {
@@ -282,6 +285,22 @@ export default class Map {
         e.setVisible(value)
       }
     })
+  }
+
+  adjustControlsCss() {
+    const slider = document.getElementsByClassName("ol-zoomslider")[0]
+    const button = document.getElementsByClassName("ol-zoom-out")[0]
+    const myLoc = document.getElementsByClassName("ol-my-location")[0]
+    const mapHeight = document.getElementById(this.target).offsetHeight
+    if (mapHeight < 300) {
+      slider.style.display = none
+      if (myLoc) {
+        myLoc.style.bottom = '97px'
+      }
+    } else {
+      const m = Math.floor(mapHeight * 0.25) + 6 + 'px' //25% + 6px
+      button.style.marginTop = m
+    }
   }
 
   get olMap() {

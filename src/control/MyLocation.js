@@ -20,8 +20,10 @@ export default class MyLocation extends Control {
       target: options.target
     })
 
-    const cssClassName = options.className !== undefined ? options.className :
+    let cssClassName = options.className !== undefined ? options.className :
       'ol-my-location ol-unselectable ol-control'
+
+    cssClassName += options.zoomSlider ? ' zoom-slider-exists' : ''
 
     this.labelNode_ = document.createElement('img')
     this.labelNode_.src = location
