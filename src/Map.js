@@ -35,6 +35,7 @@ export default class Map {
     const center = (view && typeof view.center !== 'string') ?
       (view.center || Center) : Center
     const autoZoom = view && view.zoom === 'auto'
+    const overrideExtent = opt.extent || false
 
     this.zoom = view ? view.zoom || 2 : 2
     const fullScreen = typeof opt.fullScreen === 'undefined' ? true : opt.fullScreen
@@ -171,6 +172,7 @@ export default class Map {
         overlays.push(createLayer(e))
       })
     }
+    console.log(Extent, overrideExtent)
 
     this._map = new OlMap({
       target: this._target,
@@ -194,7 +196,7 @@ export default class Map {
         zoom: this.zoom,
         resolutions: kfTileGrid.getResolutions(),
         projection: projection,
-        extent: Extent
+        extent: overrideExtent ? overrideExtent : Extent
       })
     })
     this._map.addControl(new Attribution({ collapsible: false }))
