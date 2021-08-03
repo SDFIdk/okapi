@@ -37,14 +37,14 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.4.min.js"
+<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.4.0.min.js"
 integrity="sha384-Ii7MjWXOFuXzOngsRG9X4RWadGi7mDLbPzUR0jYQUbclRpT7dG2ksYrU9n3pn/qR"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.4.min.js`
+Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.4.0.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
