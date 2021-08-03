@@ -72,7 +72,7 @@ export default class Initialize {
         myLocation: element.dataset.mylocation === 'true',
         scaleLine: element.dataset.scaleline === 'true',
         layerSwitcher: element.dataset.layerswitcher === 'true',
-        extent: JSON.parse(element.dataset.extent),
+        extent: element.dataset.extent ? JSON.parse(element.dataset.extent) : null,
         view: {
           center: autoView ? 'auto' : center,
           zoom: element.dataset.zoom
