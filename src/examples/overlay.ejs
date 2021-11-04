@@ -1,7 +1,7 @@
     <div
       id="map"
       class="geomap"
-      data-overlays="dagi"
+      data-overlays="dhm"
       data-token="<%= token %>"
       style="height: 400px;">
     <!--
@@ -20,7 +20,7 @@
     <div>
         <input type="checkbox" id="checkbox" checked>
         <label for="checkbox">
-            Vis kommune grænser
+            Havvand på Land
         </label>
     </div>
 
@@ -28,13 +28,13 @@
       var maps = new okapi.Initialize({
         overlays: [
           {
-            name: 'dagi',
+            name: 'dhm',
             type: 'WMS',
-            title: 'Kommune grænser',
+            title: 'Havvand på Land',
             visible: true,
-            service: 'dagi',
-            layer: 'kommune',
-            style: 'red',
+            service: 'dhm',
+            layer: 'dhm_havvandpaaland',
+            style: 'havvandpaaland_6',
             format: 'image/png',
             source: 'kf'
           }
@@ -43,6 +43,6 @@
 
       const checkbox = document.getElementById('checkbox')
       checkbox.addEventListener('change', function (e) {
-        maps[0].toggleLayer('dagi', this.checked)
+        maps[0].toggleLayer('dhm', this.checked)
       })
     </script>
