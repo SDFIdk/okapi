@@ -106,14 +106,27 @@ export default class Map {
         tileGrid: dfTileGrid,
         auth: dfAuth
       }))
+      layers.push(createLayer({
+        name: 'orto_foraar',
+        type: 'WMTS',
+        title: 'Ortofoto',
+        color: 'white',
+        visible: background === 'orto_foraar',
+        service: 'GeoDanmarkOrto/orto_foraar_wmts/1.0.0/Wmts',
+        layer: 'orto_foraar_wmts',
+        matrixSet: 'KortforsyningTilingDK',
+        format: 'image/jpeg',
+        tileGrid: dfTileGrid,
+        auth: dfAuth
+      }))
     } else if (this._token) {
       layers.push(createLayer({
         name: 'dtk_skaermkort',
         type: 'WMTS',
         title: 'Skærmkort',
         visible: background === 'dtk_skaermkort',
-        service: 'topo_skaermkort',
-        layer: 'dtk_skaermkort',
+        service: 'topo_skaermkort_wmts_DAF',
+        layer: 'topo_skaermkort',
         matrixSet: 'View1',
         format: 'image/jpeg',
         tileGrid: kfTileGrid,
@@ -125,9 +138,22 @@ export default class Map {
         title: 'Skærmkort dæmpet',
         visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
         background !== 'dtk_skaermkort',
-        service: 'topo_skaermkort_daempet',
-        layer: 'dtk_skaermkort_daempet',
+        service: 'topo_skaermkort_daempet_DAF',
+        layer: 'topo_skaermkort_daempet',
         matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: kfTileGrid,
+        auth: kfAuth
+      }))
+      layers.push(createLayer({
+        name: 'orto_foraar',
+        type: 'WMTS',
+        title: 'Ortofoto',
+        color: 'white',
+        visible: background === 'orto_foraar',
+        service: 'orto_foraar_wmts_DAF',
+        layer: 'orto_foraar_wmts',
+        matrixSet: 'KortforsyningTilingDK',
         format: 'image/jpeg',
         tileGrid: kfTileGrid,
         auth: kfAuth
@@ -135,24 +161,11 @@ export default class Map {
     }
     if (this._token) {
       layers.push(createLayer({
-        name: 'orto_foraar',
-        type: 'WMTS',
-        title: 'Ortofoto',
-        color: 'white',
-        visible: background === 'orto_foraar',
-        service: 'orto_foraar',
-        layer: 'orto_foraar',
-        matrixSet: 'View1',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth
-      }))
-      layers.push(createLayer({
         name: 'forvaltning',
         type: 'WMS',
         title: 'Basiskort',
         visible: background === 'forvaltning',
-        service: 'forvaltning',
+        service: 'forvaltning2',
         layer: 'basis_kort',
         format: 'image/png',
         auth: kfAuth
