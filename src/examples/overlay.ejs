@@ -3,7 +3,8 @@
       class="geomap"
       data-overlays="dhm"
       data-token="<%= token %>"
-      style="height: 400px;">
+      style="height: 400px;"
+      data-background="orto_foraar">
     <!--
     Udskift data-token= med din egen token fra Kortforsyningen.
     Hvis ikke du har en token så log ind på ’Min side’ https://www.kortforsyningen.dk/indhold/min-side-0
@@ -20,7 +21,7 @@
     <div>
         <input type="checkbox" id="checkbox" checked>
         <label for="checkbox">
-            Havvand på Land
+            Stednavne
         </label>
     </div>
 
@@ -30,11 +31,10 @@
           {
             name: 'dhm',
             type: 'WMS',
-            title: 'Havvand på Land',
+            title: 'Stednavne',
             visible: true,
-            service: 'dhm',
-            layer: 'dhm_havvandpaaland',
-            style: 'havvandpaaland_6',
+            service: 'forvaltning2',
+            layer: 'Stednavne_basiskort',
             format: 'image/png',
             source: 'kf'
           }

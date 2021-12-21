@@ -14,7 +14,7 @@ const dfAttributionText = '&copy; <a target="_blank" href="' + dfLink +
 
 const createUrl = function (service, auth) {
   if (auth.source === 'kf') {
-    const baseUrl = 'https://services.kortforsyningen.dk/'
+    const baseUrl = 'https://api.dataforsyningen.dk/'
 
     return baseUrl + service + '?token=' + auth.token
   } else if (auth.source === 'df') {

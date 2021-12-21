@@ -14,7 +14,10 @@ const getSRI = require('get-sri');
 const libraryName = pkg.name;
 const version = pkg.version;
 
-const min = fs.readFileSync('./lib/' + libraryName + '-' + version + '.min.js', 'utf8')
+let min = ''
+try {
+  min = fs.readFileSync('./lib/' + libraryName + '-' + version + '.min.js', 'utf8')
+} catch {}
 
 let outputFile, mode, token, example;
 
@@ -76,7 +79,7 @@ const config = {
           "username": username,
           "password": password,
           "version": version,
-          "sri": getSRI(min, getSRI.SHA384, true)
+          "sri": min ? getSRI(min, getSRI.SHA384, true) : ''
         },
         "filename" : __dirname + `/` + example + `/${event}.html`
       })
