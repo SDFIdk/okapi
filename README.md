@@ -297,7 +297,7 @@ Returnerer en samling adresser, hvor koordinaterne står i `geometry.coordinates
 
 ### Omregning til decimalgrader
 
-Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Kortforsyningens service: RestGeoKeys. ([Læs mere her](https://docs.kortforsyningen.dk/#webproj)).
+Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Kortforsyningens service: webproj. ([Læs mere her](https://docs.kortforsyningen.dk/#webproj)).
 
 Her er en eksempel-url, man kan sende af sted. Man skal dog indsætte sin egen token først:
 
