@@ -4,7 +4,7 @@
 
 Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
 
-Før brug skal man oprette en bruger på [Dortforsyningen](https://wdataforsyningen) og oprette en token.
+Før brug skal man oprette en bruger på [Dortforsyningen](https://dataforsyningen.dk) og oprette en token.
 
 <p align="center"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75% /></p>
 
