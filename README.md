@@ -1,6 +1,6 @@
 # OKAPI - Offentlig Kort API
 
-[Kortforsyningen](https://kortforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
+[Dataforsyningen](https://dataforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
 
 Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
 
@@ -10,7 +10,7 @@ Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsy
 
 ## Sådan gør du
 
-1. Opret en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0)
+1. Opret en bruger på [Datforsyningen](https://www.dataforsynigen.dk)
 2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.5.0.min.js"
@@ -188,7 +188,7 @@ Mulige værdier: `true` , `false`. Standard = `true`.
 #### `data-token`
 
 Angiv Kortforsyningen token til autentificering.
-Har du ikke allerede en token kan du oprette en [her](https://www.kortforsyningen.dk/indhold/min-side-0 Kortforsyningen).
+Har du ikke allerede en token kan du oprette en på https://dataforsyningen.dk/).
 
 #### `data-show-popup`
 
@@ -222,7 +222,7 @@ data-lon="12.558091"
 
 #### `data-address` 
 
-Angiver adressen hvor markøren skal placeres. Denne behøves ikke at angives hvis lat og lon er angivet. Adressen vil blive slået op i [DAWA-AWS](https://dawa.aws.dk). Det kan f.eks. være `data-address="Roskildevej 32, 2000 Frederiksberg"`.
+Angiver adressen hvor markøren skal placeres. Denne behøves ikke at angives hvis lat og lon er angivet. Adressen vil blive slået op i adresse API https://docs.dataforsyningen.dk/#dawa. Det kan f.eks. være `data-address="Roskildevej 32, 2000 Frederiksberg"`.
 
 ## Brugerdefinerede Markører og Tooltips
 Hvis man ønsker selv at vælge markør icon, kan det gøres ved at sende et object der mapper icon navn til en path til et billede.
