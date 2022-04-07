@@ -11,7 +11,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 ## Sådan gør du
 
 1. Opret en bruger på [Datforsyningen](https://www.dataforsynigen.dk)
-2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
+2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.5.0.min.js"
   integrity="sha384-nJI5MxfzjVBvjIihT+INfBIMdhsV50e0ZSCvsv1QaIYiu9zQ0TUSPSOryAF6spGb"
