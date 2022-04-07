@@ -100,7 +100,7 @@ Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/oka
 
 ### Brug kort fra Datafordeleren
 
-Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for Kortforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Kortforsyningen.
+Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Dataforsyningen.
 
 ```html
 <div
@@ -127,7 +127,7 @@ Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i s
 
 [Andre markør-tooltips](https://okapi.dataforsyningen.dk/examples/tooltip.html)
 
-[Tilføj et overlay fra Kortforsyningen](https://okapi.dataforsyningen.dk/examples/overlay.html)
+[Tilføj et overlay fra Dataforsyningen](https://okapi.dataforsyningen.dk/examples/overlay.html)
 
 ## Kort-parametre
 
@@ -187,7 +187,7 @@ Mulige værdier: `true` , `false`. Standard = `true`.
 
 #### `data-token`
 
-Angiv Kortforsyningen token til autentificering.
+Angiv Dataforsyningen token til autentificering.
 Har du ikke allerede en token kan du oprette en på https://dataforsyningen.dk/).
 
 #### `data-show-popup`
@@ -284,9 +284,9 @@ Herefter vil koordinaterne fremgå i venstre side af skærmen. Se screendump. De
 <p align="center"><img src="doc/google.2.png" alt="forhåndsvisning"  /></p>
 
 
-### DAWA-AWS
+### Danmarks Adresse Web API
 
-Her er et eksempel på en adresse, som vi får et koordinat på igennem AWS:
+Her er et eksempel på en adresse, som vi får et koordinat på igennem Danmarks Adresse Web API:
 
 http://api.dataforsyningen.dk/adresser?q=rentemestervej%208,%202400&format=geojson&struktur=mini
 
@@ -297,7 +297,7 @@ Returnerer en samling adresser, hvor koordinaterne står i `geometry.coordinates
 
 ### Omregning til decimalgrader
 
-Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Kortforsyningens service: webproj. ([Læs mere her](https://docs.dataforsyningen.dk/#webproj)).
+Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Dataforsyningens service: webproj. ([Læs mere her](https://docs.dataforsyningen.dk/#webproj)).
 
 Her er en eksempel-url, man kan sende af sted. Man skal dog indsætte sin egen token først:
 
