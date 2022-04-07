@@ -5,7 +5,7 @@ import { Size } from './constants'
 import { any } from './utility/IsMobile'
 
 const kfText = any() ? 'SDFE' : 'Styrelsen for Dataforsyning og Effektivisering'
-const kfLink = 'https://download.kortforsyningen.dk/content/vilk%C3%A5r-og-betingelser'
+const kfLink = 'https://dataforsyningen.dk/Vilkaar'
 const kfAttributionText = '&copy; <a target="_blank" href="' + kfLink +
 '">' + kfText + '</a>'
 const dfLink = 'https://datafordeler.dk/vejledning/brugervilkaar/sdfe-geografiske-data/'
