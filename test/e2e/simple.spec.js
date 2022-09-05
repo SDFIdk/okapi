@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/examples/simple.html')
 })
 
-test.describe('Display a map', () => {
+test.describe('Display a simple map', () => {
   
   test('should allow me to see the map', async ({ page }) => {
     await expect(page.locator('.ol-layer canvas')).toBeTruthy()
