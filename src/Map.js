@@ -64,6 +64,11 @@ export default class Map {
       resolutions: Resolutions,
       matrixIds: MatrixIds
     })
+    const kfTileGrid2 = new WMTSTileGrid({
+      extent: Extent,
+      resolutions: Resolutions,
+      matrixIds: ['L00', 'L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13']
+    })
     const dfTileGrid = new WMTSTileGrid({
       extent: Extent,
       resolutions: Resolutions,
@@ -80,7 +85,7 @@ export default class Map {
     }
     const layers = []
 
-    if (this._username && this._password) {
+    if (this._username && this._password) { // Datafordeleren bruger
       layers.push(createLayer({
         name: 'dtk_skaermkort',
         type: 'WMTS',
@@ -119,7 +124,7 @@ export default class Map {
         tileGrid: dfTileGrid,
         auth: dfAuth
       }))
-    } else if (this._token) {
+    } else if (this._token) { // Dataforsyningen bruger
       layers.push(createLayer({
         name: 'dtk_skaermkort',
         type: 'WMTS',
@@ -159,7 +164,7 @@ export default class Map {
         auth: kfAuth
       }))
     }
-    if (this._token) {
+    if (this._token) { // Dataforsyningen bruger
       layers.push(createLayer({
         name: 'forvaltning',
         type: 'WMS',
@@ -168,6 +173,28 @@ export default class Map {
         service: 'forvaltning2',
         layer: 'basis_kort',
         format: 'image/png',
+        auth: kfAuth
+      }))
+      layers.push(createLayer({
+        name: 'kommunikation',
+        type: 'WMS',
+        title: 'Kommuni- kation',
+        visible: background === 'kommunikation',
+        service: 'kommunikation',
+        layer: 'Kommunikationskort',
+        format: 'image/png',
+        auth: kfAuth
+      }))
+      layers.push(createLayer({
+        name: 'natur_friluftskort',
+        type: 'WMTS',
+        title: 'Natur og Friluftskort',
+        visible: background === 'natur_friluftskort',
+        service: 'natur_friluftskort',
+        layer: 'nfkort',
+        matrixSet: 'View1',
+        format: 'image/jpeg',
+        tileGrid: kfTileGrid2,
         auth: kfAuth
       }))
     }
