@@ -38,3 +38,8 @@ stats.json
 .env
 
 /test/*.html
+
+# Playwright temporary files
+/test-results/
+/playwright-report/
+/playwright/.cache/
