@@ -4,7 +4,7 @@
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && webpack --env build",
+    "build": "webpack --env dev && webpack --env build",
     "examples": "webpack --env build",
     "dev": "webpack --progress --watch --env dev",
     "start": "python3 -m http.server 7777",
@@ -55,7 +55,7 @@
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "webpack": "^5.65.0",
-    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-bundle-analyzer": "^4.6.1",
     "webpack-cli": "^4.9.1",
     "yargs": "^17.3.0"
   },
