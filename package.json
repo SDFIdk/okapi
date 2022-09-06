@@ -35,27 +35,23 @@
     "defaults"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
     "@playwright/test": "^1.25.1",
-    "babel-eslint": "^8.0.3",
-    "babel-loader": "^8.2.3",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-istanbul": "^5.2.0",
-    "babel-preset-env": "^7.0.0-beta.3",
-    "babel-register": "^7.0.0-beta.3",
     "cross-env": "^5.2.1",
     "css-loader": "^5.2.7",
+    "ejs-loader": "^0.3.7",
     "eslint": "^7.32.0",
     "eslint-webpack-plugin": "^2.6.0",
+    "dotenv": "^7.0.0",
     "file-loader": "^6.2.0",
+    "get-sri": "^1.0.2",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^5.5.0",
     "jsdom": "16.5.0",
     "jsdom-global": "3.0.2",
     "mini-css-extract-plugin": "^1.6.2",
     "nyc": "^14.1.1",
     "proj4": "^2.7.5",
+    "style-loader": "^0.23.1",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "webpack": "^5.65.0",
@@ -70,12 +66,7 @@
   "dependencies": {
     "array.prototype.find": "^2.1.2",
     "axios": "^0.21.4",
-    "dotenv": "^7.0.0",
-    "ejs-loader": "^0.3.7",
-    "get-sri": "^1.0.2",
-    "html-loader": "^0.5.5",
-    "ol": "^6.9.0",
-    "promise-polyfill": "^8.2.1",
-    "style-loader": "^0.23.1"
+    "ol": "^7.1.0",
+    "promise-polyfill": "^8.2.1"
   }
 }
