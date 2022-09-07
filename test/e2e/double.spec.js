@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test')
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/examples/double.html')
+  await page.goto('/test/double.html')
 })
 
 test.describe('Display a map', () => {
