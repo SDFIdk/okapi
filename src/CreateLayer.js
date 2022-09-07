@@ -4,11 +4,11 @@ import TileWMS from 'ol/source/TileWMS'
 import { Size } from './constants'
 import { any } from './utility/IsMobile'
 
-const kfText = any() ? 'SDFE' : 'Styrelsen for Dataforsyning og Effektivisering'
-const kfLink = 'https://dataforsyningen.dk/Vilkaar'
+const kfText = any() ? 'SDFI' : 'Styrelsen for Dataforsyning og Infrastruktur'
+const kfLink = 'https://download.dataforsyningen.dk/content/vilk%C3%A5r-og-betingelser'
 const kfAttributionText = '&copy; <a target="_blank" href="' + kfLink +
 '">' + kfText + '</a>'
-const dfLink = 'https://datafordeler.dk/vejledning/brugervilkaar/sdfe-geografiske-data/'
+const dfLink = 'https://datafordeler.dk/vejledning/brugervilkaar/sdfi-geografiske-data/'
 const dfAttributionText = '&copy; <a target="_blank" href="' + dfLink +
 '">' + kfText + '</a>'
 

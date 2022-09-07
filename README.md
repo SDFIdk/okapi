@@ -6,7 +6,7 @@ Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://o
 
 Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyningen.dk) og oprette en token.
 
-<p align="center"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75% /></p>
+<p style="text-align: center;"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75%></p>
 
 ## Sådan gør du
 
@@ -100,7 +100,7 @@ Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/oka
 
 ### Brug kort fra Datafordeleren
 
-Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Dataforsyningen.
+Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for Dataforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Dataforsyningen.
 
 ```html
 <div
@@ -266,7 +266,7 @@ For at finde koordinater til en adresse kan du bruge [OpenStreetMap](https://www
 
 ### OpenStreetMap
 
-På [OSM](https://www.openstreetmap.org) kan du søge efter din adresse, hvorefter du højreklikker og vælger `Vis adresse`.
+På [OSM](https://openstreetmap.org) kan du søge efter din adresse, hvorefter du højreklikker og vælger `Vis adresse`.
 
 Herefter vil koordinaterne fremgå i venstre side af skærmen. Se screendump. Det første tal er breddegrad (lat) og det næste tal er længdegrad (lon).
 

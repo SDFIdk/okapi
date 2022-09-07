@@ -3,7 +3,7 @@
 ## Indsæt API-key
 
 Kopier filen .env.example og kald den .env.
-Indsæt i den token til Kortforsyningen og brugernavn og password til Datafordeleren.
+Indsæt i den token til Dataforsyningen og brugernavn og password til Datafordeleren.
 
 ## Installer npm
 
