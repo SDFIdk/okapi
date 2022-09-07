@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test')
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/examples/tooltip.html')
+  await page.goto('/test/tooltip.html')
 })
 
 test.describe('Display a map with a single marker', () => {
