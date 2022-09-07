@@ -86,7 +86,7 @@ const config = {
     }),
     new webpack.BannerPlugin({
       banner: 'okapi. See https://okapi.dataforsyningen.dk \n' +
-        'License: https://github.com/dataforsyningen/okapi/blob/master/LICENSE \n' +
+        'License: https://github.com/SDFIdk/okapi/blob/master/LICENSE \n' +
         'Version: v' + version
     })
   ],
