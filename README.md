@@ -1,19 +1,19 @@
 # OKAPI - Offentlig Kort API
 
-[Kortforsyningen](https://kortforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
+[Dataforsyningen](https://dataforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
 
 Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
 
-Før brug skal man oprette en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0) og oprette en token.
+Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyningen.dk) og oprette en token.
 
-<p align="center"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75% /></p>
+<p style="text-align: center;"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75%></p>
 
 ## Sådan gør du
 
-1. Opret en bruger på [Kortforsyningen](https://www.kortforsyningen.dk/indhold/min-side-0)
-2. Log ind på kortforsyningen.dk med din nye bruger, og opret en token.
+1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
+2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.5.0.min.js"
+   - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.5.0.min.js"
   integrity="sha384-nJI5MxfzjVBvjIihT+INfBIMdhsV50e0ZSCvsv1QaIYiu9zQ0TUSPSOryAF6spGb"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
@@ -37,14 +37,14 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.kortforsyningen.dk/lib/okapi-1.5.0.min.js"
+<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.5.0.min.js"
 integrity="sha384-nJI5MxfzjVBvjIihT+INfBIMdhsV50e0ZSCvsv1QaIYiu9zQ0TUSPSOryAF6spGb"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.5.0.min.js`
+Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.5.0.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -52,7 +52,7 @@ Download filen: `https://okapi.kortforsyningen.dk/lib/okapi-1.5.0.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/okapi-1.5.0.min.css`
+Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/okapi-1.5.0.min.css`
 
 ## Anvendelse
 
@@ -70,7 +70,7 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 </script>
 ```
 
-[Demo](https://okapi.kortforsyningen.dk/examples/simple.html)
+[Demo](https://okapi.dataforsyningen.dk/examples/simple.html)
 
 ### Markører
 
@@ -96,11 +96,11 @@ Vores standard styling kan findes her: `https://okapi.kortforsyningen.dk/lib/oka
 </script>
 ```
 
-[Demo](https://okapi.kortforsyningen.dk/examples/markers-simple.html)
+[Demo](https://okapi.dataforsyningen.dk/examples/markers-simple.html)
 
 ### Brug kort fra Datafordeleren
 
-Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for Kortforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Kortforsyningen.
+Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i stedet for Dataforsyningen. Det kræver at du opretter en tjenestebruger på [Datafordeleren](https://datafordeler.dk/). Denne bruger er IKKE den samme som den du bruger på Dataforsyningen.
 
 ```html
 <div
@@ -115,19 +115,19 @@ Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i s
 </script>
 ```
 
-[Demo](https://okapi.kortforsyningen.dk/examples/datafordeler.html)
+[Demo](https://okapi.dataforsyningen.dk/examples/datafordeler.html)
 
 ### Flere eksempler
 
-[Alle kort-parametre](https://okapi.kortforsyningen.dk/examples/advanced.html)
+[Alle kort-parametre](https://okapi.dataforsyningen.dk/examples/advanced.html)
 
-[Forskellige markører](https://okapi.kortforsyningen.dk/examples/markers-advanced.html)
+[Forskellige markører](https://okapi.dataforsyningen.dk/examples/markers-advanced.html)
 
-[To kort på samme side](https://okapi.kortforsyningen.dk/examples/double.html)
+[To kort på samme side](https://okapi.dataforsyningen.dk/examples/double.html)
 
-[Andre markør-tooltips](https://okapi.kortforsyningen.dk/examples/tooltip.html)
+[Andre markør-tooltips](https://okapi.dataforsyningen.dk/examples/tooltip.html)
 
-[Tilføj et overlay fra Kortforsyningen](https://okapi.kortforsyningen.dk/examples/overlay.html)
+[Tilføj et overlay fra Dataforsyningen](https://okapi.dataforsyningen.dk/examples/overlay.html)
 
 ## Kort-parametre
 
@@ -187,8 +187,8 @@ Mulige værdier: `true` , `false`. Standard = `true`.
 
 #### `data-token`
 
-Angiv Kortforsyningen token til autentificering.
-Har du ikke allerede en token kan du oprette en [her](https://www.kortforsyningen.dk/indhold/min-side-0 Kortforsyningen).
+Angiv Dataforsyningen token til autentificering.
+Har du ikke allerede en token kan du oprette en på https://dataforsyningen.dk/).
 
 #### `data-show-popup`
 
@@ -222,7 +222,7 @@ data-lon="12.558091"
 
 #### `data-address` 
 
-Angiver adressen hvor markøren skal placeres. Denne behøves ikke at angives hvis lat og lon er angivet. Adressen vil blive slået op i [DAWA-AWS](https://dawa.aws.dk). Det kan f.eks. være `data-address="Roskildevej 32, 2000 Frederiksberg"`.
+Angiver adressen hvor markøren skal placeres. Denne behøves ikke at angives hvis lat og lon er angivet. Adressen vil blive slået op i adresse API https://docs.dataforsyningen.dk/#dawa. Det kan f.eks. være `data-address="Roskildevej 32, 2000 Frederiksberg"`.
 
 ## Brugerdefinerede Markører og Tooltips
 Hvis man ønsker selv at vælge markør icon, kan det gøres ved at sende et object der mapper icon navn til en path til et billede.
@@ -237,7 +237,7 @@ Hvis man ønsker selv at vælge markør icon, kan det gøres ved at sende et obj
 </script>
 ```
 
-[Demo](https://okapi.kortforsyningen.dk/examples/markers-advanced.html)
+[Demo](https://okapi.dataforsyningen.dk/examples/markers-advanced.html)
 
 Det er også muligt selv at lave det html element der skal vises som tooltip når der klikkes på en markør. Hvis man gør det kan man sætte flere parametre på markørene som vil blive vist i tooltippet's element med matchene class navn.
 
@@ -257,16 +257,16 @@ Det er også muligt selv at lave det html element der skal vises som tooltip nå
 </script>
 ```
 
-[Demo](https://okapi.kortforsyningen.dk/examples/tooltip.html)
+[Demo](https://okapi.dataforsyningen.dk/examples/tooltip.html)
 
 ## Fremsøgning af koordinater
 
-For at finde koordinater til en adresse kan du bruge [OpenStreetMap](https://www.openstreetmap.org) eller [Google Maps](https://maps.google.com). Du kan også bruge API'et til Danmarks AdresseRegister igennem [DAWA-AWS](https://dawa.aws.dk), dette er nok det smarteste valg, hvis man vil lave automatiseret adressesøgning via et API.
+For at finde koordinater til en adresse kan du bruge [OpenStreetMap](https://www.openstreetmap.org) eller [Google Maps](https://maps.google.com). Du kan også bruge API'et til Danmarks AdresseRegister igennem [Danmarks Adressers Web API](https://docs.dataforsyningen.dk/#dawa), dette er nok det smarteste valg, hvis man vil lave automatiseret adressesøgning via et API.
 
 
 ### OpenStreetMap
 
-På [OSM](https://www.openstreetmap.org) kan du søge efter din adresse, hvorefter du højreklikker og vælger `Vis adresse`.
+På [OSM](https://openstreetmap.org) kan du søge efter din adresse, hvorefter du højreklikker og vælger `Vis adresse`.
 
 Herefter vil koordinaterne fremgå i venstre side af skærmen. Se screendump. Det første tal er breddegrad (lat) og det næste tal er længdegrad (lon).
 
@@ -284,11 +284,11 @@ Herefter vil koordinaterne fremgå i venstre side af skærmen. Se screendump. De
 <p align="center"><img src="doc/google.2.png" alt="forhåndsvisning"  /></p>
 
 
-### DAWA-AWS
+### Danmarks Adresse Web API
 
-Her er et eksempel på en adresse, som vi får et koordinat på igennem AWS:
+Her er et eksempel på en adresse, som vi får et koordinat på igennem Danmarks Adresse Web API:
 
-http://dawa.aws.dk/adresser?q=rentemestervej%208,%202400&format=geojson&struktur=mini
+http://api.dataforsyningen.dk/adresser?q=rentemestervej%208,%202400&format=geojson&struktur=mini
 
 Returnerer en samling adresser, hvor koordinaterne står i `geometry.coordinates`:
 
@@ -297,8 +297,8 @@ Returnerer en samling adresser, hvor koordinaterne står i `geometry.coordinates
 
 ### Omregning til decimalgrader
 
-Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Kortforsyningens service: RestGeoKeys. ([Læs mere her](https://docs.kortforsyningen.dk/#webproj)).
+Hvis man ikke har decimalgrader i `WGS84`, kan man transformere dem ved hjælp af Dataforsyningens service: webproj. ([Læs mere her](https://docs.dataforsyningen.dk/#webproj)).
 
 Her er en eksempel-url, man kan sende af sted. Man skal dog indsætte sin egen token først:
 
-https://services.kortforsyningen.dk/rest/webproj/v1.0/trans/EPSG%3A25832/EPSG%3A4326/550000,6220000?token=InsertYourTokenHere
+https://api.dataforsyningen.dk/rest/webproj/v1.0/trans/EPSG%3A25832/EPSG%3A4326/550000,6220000?token=InsertYourTokenHere
