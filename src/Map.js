@@ -52,6 +52,7 @@ export default class Map {
     this._password = opt.password || ''
     this.autocenter = autoCenter
     this.autoZoom = autoZoom
+    this.markerTypes = opt.markerTypes || []
 
     proj4.defs('EPSG:25832', '+proj=utm +zone=32 +ellps=GRS80 +units=m +no_defs')
     register(proj4)

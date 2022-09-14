@@ -1,0 +1,57 @@
+    <span
+      class="geomarker"
+      data-type="museum"
+      data-title="Danmarks Jernbanemuseum"
+      data-description="På over 10.000 m2 finder du vogne og lokomotiver, busser, færgemodeller, modelbaner, legepladser. Alt i en autentisk jernbanebygning med sport og drejeskiver"
+      data-lat="55.402909"
+      data-lon="10.386536">
+    </span>
+
+    <div
+      id="map"
+      class="geomap"
+      data-center="auto"
+      data-token="<%= token %>"
+      style="height: 400px;">
+    <!--
+    Udskift data-token= med din egen token fra Dataforsyningen.
+    Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
+    Opret en token og brug den i din applikation
+    Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+    English
+    Replace the data-token = with your own token from the Danish map supply.
+    If you do not have a token please log in to "My page" https://www.dataforsyningen.dk/
+    Create a token and use it in your application
+    Token in this example is temporary and solely for test use.
+    -->
+    </div>
+    <div>
+      <button id="button">
+        Add/Remove marker
+      </button>
+    </div>
+
+    <script>
+      var maps = new okapi.Initialize({});
+      let shouldAdd = true
+      const button = document.getElementById('button')
+      button.onclick = function() {
+        if (shouldAdd) {
+          const span = document.createElement('span')
+          span.id = 'marker'
+          span.classList.add('geomarker')
+          span.dataset.type = 'museum'
+          span.dataset.title = 'Den Fynske Landsby'
+          span.dataset.description = 'På frilandsmuseet Den Fynske Landsby inviteres du indenfor i en fynsk landsby fra H.C. Andersens tid.'
+          span.dataset.lat = '55.366732'
+          span.dataset.lon = '10.385352'
+          document.body.appendChild(span)
+          shouldAdd = !shouldAdd
+        } else {
+          const marker = document.getElementById('marker')
+          marker.remove()
+          shouldAdd = !shouldAdd
+        }
+      }
+    </script>

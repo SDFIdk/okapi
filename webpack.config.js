@@ -64,6 +64,7 @@ const config = {
       'advanced',
       'markers-simple',
       'markers-advanced',
+      'markers-add-remove',
       'double',
       'tooltip',
       'datafordeler',
