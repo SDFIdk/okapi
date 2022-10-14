@@ -4,7 +4,7 @@
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build",
+    "build": "webpack --env dev && webpack --env build && webpack --env build",
     "examples": "webpack --env build",
     "dev": "webpack --progress --watch --env dev",
     "start": "python3 -m http.server 7777",
