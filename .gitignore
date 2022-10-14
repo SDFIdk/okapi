@@ -43,3 +43,6 @@ stats.json
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# npm-cache
+.npm
