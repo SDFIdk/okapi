@@ -60,10 +60,8 @@ try {
     const filename = file + '.test.html'
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
     
+    // TODO Insert correct version JS and CSS. Also add SRI hash
     const data = {
-      
-      username: username,
-      password: password,
       version: version,
       sri: min ? getSRI(min, getSRI.SHA384, true) : ''
     }
@@ -72,6 +70,8 @@ try {
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
     temp = temp.replace('InsertCodeExampleHere', code)
     temp = temp.replace('InsertYourTokenHere', token)
+    temp = temp.replace('InsertYourUsernameHere', username)
+    temp = temp.replace('InsertYourPasswordHere', password)
     await writeHTML(`examples/${ file }`, temp)
 
   }

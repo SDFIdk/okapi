@@ -2,6 +2,8 @@ import esbuild from 'esbuild'
 import { stylusLoader } from 'esbuild-stylus-loader'
 import pkg from '../package.json' assert {type: 'json'}
 
+// TODO Add images somehow
+
 const filename = `${ pkg.name }-${ pkg.version }.min`
 
 const entry_points = {
