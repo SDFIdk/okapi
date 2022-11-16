@@ -71,7 +71,7 @@
     "array.prototype.find": "^2.1.2",
     "axios": "^0.21.4",
     "dotenv": "^7.0.0",
-    "ejs-loader": "^0.5.0",
+    "ejs-loader": "^0.3.7",
     "get-sri": "^1.0.2",
     "html-loader": "^0.5.5",
     "ol": "^6.9.0",
