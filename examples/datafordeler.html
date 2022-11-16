@@ -1,71 +1,126 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Datafordeler</title><link href="./prism.css" rel="stylesheet"><link href="./example.css" rel="stylesheet"><script src="./clipboard.min.js"></script><script src="./prism.js"></script><link href="../lib/okapi-1.6.0.min.css" rel="stylesheet"><script src="../lib/okapi-1.6.0.min.js"></script></head><body><div><div id="map" class="geomap" data-username="InsertYourUsernameHere" data-password="InsertYourPasswordHere" style="height: 400px;" data-layerswitcher="true"></div><script>var maps = new okapi.Initialize({});</script></div><div><pre>
+
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>datafordeler.html</title>
+    
+    <link href="./prism.css" rel="stylesheet">
+    <link href="./example.css" rel="stylesheet">
+
+    <link href="../lib/okapi-1.6.0.min.css" rel="stylesheet">
+    <script src="../lib/okapi-1.6.0.min.js"></script>
+
+    <script type="text/javascript" src="./clipboard.min.js"></script>
+    <script type="text/javascript" src="./prism.js"></script>
+    
+  </head>
+  <body>
+    <main>        
+        <div
+          id="map"
+          class="geomap"
+          data-username="BEKWQMVFGF"
+          data-password="Panseryrtat*56klinge"
+          style="height: 400px;"
+          data-layerswitcher="true">
+        </div>
+        
+        <!--
+        Udskift 'data-username=' og data-password med dit eget brugernavn og password fra Datafordeleren.
+        Hvis ikke du har en bruger på datafordeleren kan du se hvordan du opretter en her:
+        https://confluence.datafordeler.dk/pages/viewpage.action?pageId=13665234
+        Brugernavn og password i dette eksempel er midlertidig og udelukkende til test brug.
+
+        English
+        Replace the 'data-username=' and data-password with your own username and password from the Datafordeler.
+        If you do not have a user already you can read how to create one here:
+        https://confluence.datafordeler.dk/pages/viewpage.action?pageId=13665234
+        The username and password in this example is temporary and solely for test use.
+        -->
+
+        <script>
+        var maps = new okapi.Initialize({});
+        </script>
+</main>
+    <aside>
+      <pre>
         <code class="language-markup">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Simple&lt;/title&gt;
-    &lt;script src=&quot;https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js&quot;
-      integrity=&quot;sha384-S0KQukPcTF89buQMZAMY1Q7JOaCMPYfzP9iZU39tdtLOXhxgzGfbHoP4WansSarG&quot;
-      crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-    &lt;link href=&quot;https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
+          
+&lt;!DOCTYPE html>
+&lt;html lang="da">
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1.0">
+    &lt;title>Eksempel&lt;/title>
+    
+    &lt;link href="../lib/okapi-1.6.0.min.css" rel="stylesheet">
+    &lt;script src="../lib/okapi-1.6.0.min.js">&lt;/script>
+    
+  &lt;/head>
+  &lt;body>
+    &lt;main>        
+        &lt;div
+          id="map"
+          class="geomap"
+          data-username="InsertYourUsernameHere"
+          data-password="InsertYourPasswordHere"
+          style="height: 400px;"
+          data-layerswitcher="true">
+        &lt;/div>
+        
+        &lt;!--
+        Udskift 'data-username=' og data-password med dit eget brugernavn og password fra Datafordeleren.
+        Hvis ikke du har en bruger på datafordeleren kan du se hvordan du opretter en her:
+        https://confluence.datafordeler.dk/pages/viewpage.action?pageId=13665234
+        Brugernavn og password i dette eksempel er midlertidig og udelukkende til test brug.
 
-    &lt;div
-      id=&quot;map&quot;
-      class=&quot;geomap&quot;
-      data-username=&quot;InsertYourUsernameHere&quot;
-      data-password=&quot;InsertYourPasswordHere&quot;
-      style=&quot;height: 400px;&quot;
-      data-layerswitcher=&quot;true&quot;&gt;
-    &lt;!--
-    Udskift data-username= og data-password med dit eget brugernavn og password fra Datafordeleren.
-    Hvis ikke du har en bruger på datafordeleren kan du se hvordan du opretter en her:
-    https://confluence.datafordeler.dk/pages/viewpage.action?pageId=13665234
-    Brugernavn og password i dette eksempel er midlertidig og udelukkende til test brug.
+        English
+        Replace the 'data-username=' and data-password with your own username and password from the Datafordeler.
+        If you do not have a user already you can read how to create one here:
+        https://confluence.datafordeler.dk/pages/viewpage.action?pageId=13665234
+        The username and password in this example is temporary and solely for test use.
+        -->
 
-    English
-    Replace the data-username= and data-password with your own username and password from the Datafordeler.
-    If you do not have a user already you can read how to create one here:
-    https://confluence.datafordeler.dk/pages/viewpage.action?pageId=13665234
-    The username and password in this example is temporary and solely for test use.
-    --&gt;
-    &lt;/div&gt;
-
-    &lt;script&gt;
-      var maps = new okapi.Initialize({});
-    &lt;/script&gt;
-
-  &lt;/body&gt;
-&lt;/html&gt;
+        &lt;script>
+        var maps = new okapi.Initialize({});
+        &lt;/script>
+&lt;/main>
+  &lt;/body>
+&lt;/html>
 
         </code>
-      </pre></div><script>(function(){
-        Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
-          var linkCopy = document.createElement('a');
-          linkCopy.textContent = ' Copy';
-
-          if (!ClipboardJS) {
-            callbacks.push(registerClipboard);
-          } else {
-            registerClipboard();
-          }
-
-          return linkCopy;
-
-          function registerClipboard() {
-            var clip = new ClipboardJS(linkCopy, {
-              'text': function () {
-                return env.code;
-              }
-            });
-
-
-            clip.on('success', function() {
-              linkCopy.textContent = ' Copied!';
-            });
-          }
-        });
-      })();</script></body></html>
+      </pre>
+      <script>
+        (function(){
+          Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+            var linkCopy = document.createElement('a');
+            linkCopy.textContent = ' Copy';
+  
+            if (!ClipboardJS) {
+              callbacks.push(registerClipboard);
+            } else {
+              registerClipboard();
+            }
+  
+            return linkCopy;
+  
+            function registerClipboard() {
+              var clip = new ClipboardJS(linkCopy, {
+                'text': function () {
+                  return env.code;
+                }
+              });
+  
+  
+              clip.on('success', function() {
+                linkCopy.textContent = ' Copied!';
+              });
+            }
+          });
+        })();
+      </script>
+    </aside>
+  </body>
+</html>
