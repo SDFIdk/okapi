@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>InsertYourTitleHere</title>
+    
+    <link href="./prism.css" rel="stylesheet">
+    <link href="./example.css" rel="stylesheet">
+
+    <link href="../lib/okapi-1.7.0.min.css" rel="stylesheet">
+    <script src="../lib/okapi-1.7.0.min.js"></script>
+
+    <script type="text/javascript" src="./clipboard.min.js"></script>
+    <script type="text/javascript" src="./prism.js"></script>
+    
+  </head>
+  <body>
+    <main>InsertContentHere</main>
+    <aside>
+      <pre>
+        <code class="language-markup">
+          InsertCodeExampleHere
+        </code>
+      </pre>
+      <script>
+        (function(){
+          Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+            var linkCopy = document.createElement('a');
+            linkCopy.textContent = ' Copy';
+  
+            if (!ClipboardJS) {
+              callbacks.push(registerClipboard);
+            } else {
+              registerClipboard();
+            }
+  
+            return linkCopy;
+  
+            function registerClipboard() {
+              var clip = new ClipboardJS(linkCopy, {
+                'text': function () {
+                  return env.code;
+                }
+              });
+  
+  
+              clip.on('success', function() {
+                linkCopy.textContent = ' Copied!';
+              });
+            }
+          });
+        })();
+      </script>
+    </aside>
+  </body>
+</html>
