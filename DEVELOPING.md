@@ -13,15 +13,16 @@ Indsæt i den token til Dataforsyningen og brugernavn og password til Datafordel
 npm i
 ```
 
-## Byg og kør test
+## Start udviklingsserver
 
 I konsolen: 
 ```
 npm run dev
 ```
-Så længe det kører vil den automatisk bygge med nye ændringer du laver.
+Det starter en udviklingsserver, så du kan åbne eksempel-sider i en browser; f.eks. på [localhost:8000/examples/simple.html].
 
-den vil også bygge exemplerne i /test
+Så længe den kører, vil den automatisk bygge med nye ændringer du laver i `/src`.
+HTML-eksemplerne i `/examples` bliver dog ikke opdateret, med mindre du kører `npm run build`
 
 ## Byg til prod
 
@@ -32,3 +33,14 @@ npm run build
 
 README.md bliver **IKKE** automatisk opdateret.
 I den skal versions nummer og srihash manuelt opdateres efter et build.
+
+## Kør tests
+
+Første gang du kører test lokalt, skal du installere Playwright med
+````
+npx playwright install
+````
+Derefter kan du køre tests med:
+```
+npm run test
+```
