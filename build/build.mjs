@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
   // Development mode watches for file changes and rebuilds
 
   esbuild.serve({
-    servedir: 'test',
+    servedir: './',
   }, {
     entryPoints: entry_points,
     outdir: 'lib',
