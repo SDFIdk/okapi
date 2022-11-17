@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test')
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/test/overlay.html')
+  await page.goto('/examples/overlay.html')
 })
 
 test.describe('Display a map with custom overlay', () => {

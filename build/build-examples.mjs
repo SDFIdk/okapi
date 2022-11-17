@@ -56,8 +56,9 @@ try {
 
   const files = await readdir(`${src_dir}/html`)
   for (const file of files) {
+    let title = String(file)
+    title = title.replace('.html', '').replace('-', ' ').replace(/^./g, title[0].toUpperCase())
 
-    const filename = file + '.test.html'
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
     
     // TODO Insert correct version JS and CSS. Also add SRI hash
@@ -66,7 +67,7 @@ try {
       sri: min ? getSRI(min, getSRI.SHA384, true) : ''
     }
 
-    let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', file)
+    let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', title)
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
     temp = temp.replaceAll('InsertYourTokenHere', token)
     temp = temp.replaceAll('InsertYourUsernameHere', username)
