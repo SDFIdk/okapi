@@ -68,10 +68,10 @@ try {
 
     let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', file)
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
+    temp = temp.replaceAll('InsertYourTokenHere', token)
+    temp = temp.replaceAll('InsertYourUsernameHere', username)
+    temp = temp.replaceAll('InsertYourPasswordHere', password)
     temp = temp.replace('InsertCodeExampleHere', code)
-    temp = temp.replace('InsertYourTokenHere', token)
-    temp = temp.replace('InsertYourUsernameHere', username)
-    temp = temp.replace('InsertYourPasswordHere', password)
     await writeHTML(`examples/${ file }`, temp)
 
   }
