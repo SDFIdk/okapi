@@ -4,15 +4,12 @@
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "webpack --env dev && webpack --env build && webpack --env build",
-    "build-es": "export NODE_ENV=build && node build/build.mjs && node build/build-examples.mjs",
-    "examples": "webpack --env build",
-    "dev": "webpack --progress --watch --env dev",
-    "dev-es": "export NODE_ENV=development && node build/build.mjs",
+    "build": "export NODE_ENV=build && node build/build.mjs && node build/build-examples.mjs",
+    "dev": "export NODE_ENV=development && node build/build.mjs",
     "start": "python3 -m http.server 7777",
-    "stats": "webpack --profile --json > stats.json",
+    "test": "npm run build && npx playwright test",
     "analyze": "webpack-bundle-analyzer stats.json",
-    "test": "npx playwright test",
+    "stats": "webpack --profile --json > stats.json",
     "repl": "node -i -e \"$(< ./lib/webpack-library-starter.js)\"",
     "lint": "./node_modules/.bin/eslint src --fix"
   },
@@ -55,7 +52,6 @@
     "jsdom-global": "3.0.2",
     "mini-css-extract-plugin": "^1.6.2",
     "nyc": "^14.1.1",
-    "proj4": "^2.7.5",
     "style-loader": "^0.23.1",
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
@@ -69,9 +65,8 @@
     "instrument": false
   },
   "dependencies": {
-    "array.prototype.find": "^2.1.2",
     "axios": "^0.21.4",
     "ol": "^7.1.0",
-    "promise-polyfill": "^8.2.1"
+    "proj4": "^2.7.5"
   }
 }
