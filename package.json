@@ -8,9 +8,6 @@
     "dev": "export NODE_ENV=development && node build/build.mjs",
     "start": "python3 -m http.server 7777",
     "test": "npm run build && npx playwright test",
-    "analyze": "webpack-bundle-analyzer stats.json",
-    "stats": "webpack --profile --json > stats.json",
-    "repl": "node -i -e \"$(< ./lib/webpack-library-starter.js)\"",
     "lint": "./node_modules/.bin/eslint src --fix"
   },
   "repository": {
@@ -35,30 +32,12 @@
   ],
   "devDependencies": {
     "@playwright/test": "^1.25.1",
-    "cross-env": "^5.2.1",
-    "css-loader": "^5.2.7",
     "dotenv": "^7.0.0",
-    "ejs": "^3.1.8",
-    "ejs-loader": "^0.3.7",
     "esbuild": "^0.15.14",
     "esbuild-stylus-loader": "^0.4.2",
     "eslint": "^7.32.0",
-    "eslint-webpack-plugin": "^2.6.0",
-    "file-loader": "^6.2.0",
     "get-sri": "^1.0.2",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^5.5.0",
-    "jsdom": "16.5.0",
-    "jsdom-global": "3.0.2",
-    "mini-css-extract-plugin": "^1.6.2",
-    "nyc": "^14.1.1",
-    "style-loader": "^0.23.1",
-    "stylus": "^0.54.8",
-    "stylus-loader": "^3.0.2",
-    "webpack": "^5.65.0",
-    "webpack-bundle-analyzer": "^4.6.1",
-    "webpack-cli": "^4.9.1",
-    "yargs": "^17.3.0"
+    "stylus": "^0.54.8"
   },
   "nyc": {
     "sourceMap": false,

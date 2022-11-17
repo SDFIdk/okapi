@@ -328,17 +328,19 @@ export default class Map {
   }
 
   adjustControlsCss() {
-    const slider = document.getElementsByClassName("ol-zoomslider")[0]
-    const button = document.getElementsByClassName("ol-zoom-out")[0]
-    const myLoc = document.getElementsByClassName("ol-my-location")[0]
+    const slider = document.getElementsByClassName('ol-zoomslider')[0]
+    const button = document.getElementsByClassName('ol-zoom-out')[0]
+    const myLoc = document.getElementsByClassName('ol-my-location')[0]
     const mapHeight = document.getElementById(this.target).offsetHeight
+
     if (mapHeight < 300) {
       slider.style.display = none
       if (myLoc) {
         myLoc.style.bottom = '97px'
       }
     } else {
-      const m = Math.floor(mapHeight * 0.25) + 6 + 'px' //25% + 6px
+      const m = Math.floor(mapHeight * 0.25) + 6 + 'px' // 25% + 6px
+
       button.style.marginTop = m
     }
   }
