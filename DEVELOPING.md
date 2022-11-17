@@ -8,7 +8,6 @@ Indsæt i den token til Dataforsyningen og brugernavn og password til Datafordel
 ## Installer npm
 
 Åben folderen i konsolen og kør:
-
 ```
 npm i
 ```
@@ -26,13 +25,11 @@ HTML-eksemplerne i `/examples` bliver dog ikke opdateret, med mindre du kører `
 
 ## Byg til prod
 
-For at bygge til prod kør:
+For at bygge til prod, kør:
 ```
 npm run build
 ```
-
-README.md bliver **IKKE** automatisk opdateret.
-I den skal versions nummer og srihash manuelt opdateres efter et build.
+Dette opdaterer også versionsnumre og SRI-hashes i `REAME.md`.
 
 ## Kør tests
 
