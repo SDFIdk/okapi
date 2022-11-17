@@ -88,7 +88,7 @@ try {
   console.error(err)
 } 
 
-console.log('---------------')
+console.log('---------------------')
 console.log('Updating README')
 try {
 
@@ -101,4 +101,5 @@ try {
   console.error(err)
 }
 
+console.log('---------------------')
 console.log('Done 👍')
