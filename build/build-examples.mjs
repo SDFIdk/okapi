@@ -41,7 +41,8 @@ async function writeHTML(file, html) {
 const src_dir = 'src/examples'
 const template_html = await readHTML(`${src_dir}/templates/template.html`)
 const template_code_html = await readHTML(`${src_dir}/templates/template-code.html`)
-const js_str = await readHTML(`lib/${ pkg.name }-${ pkg.version }.min.js`)
+const js_file_str = await readHTML(`lib/${ pkg.name }-${ pkg.version }.min.js`)
+const code_sri_str = getSRI(js_file_str, getSRI.SHA384, true)
 
 const token = process.env.TOKEN
 const username = process.env.DFUSERNAME
@@ -71,7 +72,7 @@ try {
 
     const code_css_str = `https://okapi.dataforsyningen.dk/lib/${ pkg.name }-${ pkg.version }.min.css`
     const code_js_str = `https://okapi.dataforsyningen.dk/lib/${ pkg.name }-${ pkg.version }.min.js`
-    const code_sri_str = getSRI(js_str, getSRI.SHA384, true)
+    
 
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
     code = code.replace('InsertCodeCSSHere', code_css_str)
@@ -86,5 +87,18 @@ try {
 } catch (err) {
   console.error(err)
 } 
+
+console.log('---------------')
+console.log('Updating README')
+try {
+
+  let readme = await readHTML('README.md')
+  readme = readme.replaceAll(/\d\.\d\.\d/g, pkg.version)
+  readme = readme.replaceAll(/"sha384-.+"/g, `"${ code_sri_str }"`)
+  await writeHTML('README.md', readme)
+
+} catch (err) {
+  console.error(err)
+}
 
 console.log('Done 👍')
