@@ -41,13 +41,11 @@ async function writeHTML(file, html) {
 const src_dir = 'src/examples'
 const template_html = await readHTML(`${src_dir}/templates/template.html`)
 const template_code_html = await readHTML(`${src_dir}/templates/template-code.html`)
+const js_str = await readHTML(`lib/${ pkg.name }-${ pkg.version }.min.js`)
 
 const token = process.env.TOKEN
 const username = process.env.DFUSERNAME
 const password = process.env.DFPASSWORD
-const version = pkg.version
-
-let min
 
 // Start building
 console.log('---------------------')
@@ -61,18 +59,26 @@ try {
 
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
     
-    // TODO Insert correct version JS and CSS. Also add SRI hash
-    const data = {
-      version: version,
-      sri: min ? getSRI(min, getSRI.SHA384, true) : ''
-    }
+    const css_str = `../lib/${ pkg.name }-${ pkg.version }.min.css`
+    const js_str = `../lib/${ pkg.name }-${ pkg.version }.min.js`
 
     let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', title)
-    let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
+    temp = temp.replace('InsertCSSHere', css_str)
+    temp = temp.replace('InsertJSHere', js_str)
     temp = temp.replaceAll('InsertYourTokenHere', token)
     temp = temp.replaceAll('InsertYourUsernameHere', username)
     temp = temp.replaceAll('InsertYourPasswordHere', password)
+
+    const code_css_str = `https://okapi.dataforsyningen.dk/lib/${ pkg.name }-${ pkg.version }.min.css`
+    const code_js_str = `https://okapi.dataforsyningen.dk/lib/${ pkg.name }-${ pkg.version }.min.js`
+    const code_sri_str = getSRI(js_str, getSRI.SHA384, true)
+
+    let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
+    code = code.replace('InsertCodeCSSHere', code_css_str)
+    code = code.replace('InsertCodeJSHere', code_js_str)
+    code = code.replace('InsertCodeSRIHere', code_sri_str)
     temp = temp.replace('InsertCodeExampleHere', code)
+    
     await writeHTML(`examples/${ file }`, temp)
 
   }
