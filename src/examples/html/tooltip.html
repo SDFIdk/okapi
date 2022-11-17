@@ -1,0 +1,46 @@
+
+        <div id="popup">
+          <a href="#" class="ol-popup-closer closer"></a>
+          <div id="popup-content" class="ol-popup-content"></div>
+          <div class="title"></div>
+          <div class="description"></div>
+            <img class="image" src="https://1864.dk/wp-content/uploads/2017/03/web-skansen.jpg" alt="image of Dybøl Banke" style="width: 100%; height: auto;">
+          <button class="link"></button>
+        </div>
+
+        <span
+          class="geomarker"
+          data-type="museum"
+          data-title="Historiecenter Dybbøl Banke"
+          data-description="Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864."
+          data-link="<a href='https://1864.dk/' target='_blank'>Link</a>"
+          data-address="Dybbøl Banke 16, 6400 Sønderborg">
+        </span>
+
+        <div
+          id="map"
+          class="geomap"
+          data-center="auto"
+          data-zoom="5"
+          data-token="InsertYourTokenHere"
+          style="height: 400px;">
+        </div>
+        
+        <!--
+        Udskift data-token= med din egen token fra Dataforsyningen.
+        Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
+        Opret en token og brug den i din applikation
+        Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+        English
+        Replace the data-token = with your own token from the Danish map supply.
+        If you do not have a token please log in to "My page" https://www.dataforsyningen.dk/
+        Create a token and use it in your application
+        Token in this example is temporary and solely for test use.
+        -->
+        
+        <script>
+          var maps = new okapi.Initialize({
+            popup: document.getElementById('popup')
+          });
+        </script>

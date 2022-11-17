@@ -1,93 +1,166 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tooltip</title><link href="./prism.css" rel="stylesheet"><link href="./example.css" rel="stylesheet"><script src="./clipboard.min.js"></script><script src="./prism.js"></script><link href="../lib/okapi-1.6.0.min.css" rel="stylesheet"><script src="../lib/okapi-1.6.0.min.js"></script></head><body><div><div id="popup"><a href="#" class="ol-popup-closer closer"></a><div id="popup-content" class="ol-popup-content"></div><div class="title"></div><div class="description"></div><img class="image" src="https://1864.dk/wp-content/uploads/2017/03/web-skansen.jpg" alt="image of Dybøl Banke"><button class="link"></button></div><span class="geomarker" data-type="museum" data-title="Historiecenter Dybbøl Banke" data-description="Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864." data-link="<a href='https://1864.dk/' target='_blank'>Link</a>" data-address="Dybbøl Banke 16, 6400 Sønderborg"></span><div id="map" class="geomap" data-center="auto" data-zoom="5" data-token="InsertYourTokenHere" style="height: 400px;"></div><script>var maps = new okapi.Initialize({
-        popup: document.getElementById('popup')
-      });</script></div><div><pre>
+
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>tooltip.html</title>
+    
+    <link href="./prism.css" rel="stylesheet">
+    <link href="./example.css" rel="stylesheet">
+
+    <link href="../lib/okapi-1.6.0.min.css" rel="stylesheet">
+    <script src="../lib/okapi-1.6.0.min.js"></script>
+
+    <script type="text/javascript" src="./clipboard.min.js"></script>
+    <script type="text/javascript" src="./prism.js"></script>
+    
+  </head>
+  <body>
+    <main>
+        <div id="popup">
+          <a href="#" class="ol-popup-closer closer"></a>
+          <div id="popup-content" class="ol-popup-content"></div>
+          <div class="title"></div>
+          <div class="description"></div>
+            <img class="image" src="https://1864.dk/wp-content/uploads/2017/03/web-skansen.jpg" alt="image of Dybøl Banke" style="width: 100%; height: auto;">
+          <button class="link"></button>
+        </div>
+
+        <span
+          class="geomarker"
+          data-type="museum"
+          data-title="Historiecenter Dybbøl Banke"
+          data-description="Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864."
+          data-link="<a href='https://1864.dk/' target='_blank'>Link</a>"
+          data-address="Dybbøl Banke 16, 6400 Sønderborg">
+        </span>
+
+        <div
+          id="map"
+          class="geomap"
+          data-center="auto"
+          data-zoom="5"
+          data-token="fd44f26ab5701c01ca9f570e507fe9ab"
+          style="height: 400px;">
+        </div>
+        
+        <!--
+        Udskift data-token= med din egen token fra Dataforsyningen.
+        Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
+        Opret en token og brug den i din applikation
+        Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+        English
+        Replace the data-token = with your own token from the Danish map supply.
+        If you do not have a token please log in to "My page" https://www.dataforsyningen.dk/
+        Create a token and use it in your application
+        Token in this example is temporary and solely for test use.
+        -->
+        
+        <script>
+          var maps = new okapi.Initialize({
+            popup: document.getElementById('popup')
+          });
+        </script>
+</main>
+    <aside>
+      <pre>
         <code class="language-markup">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
-    &lt;title&gt;Simple&lt;/title&gt;
-    &lt;script src=&quot;https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js&quot;
-      integrity=&quot;sha384-S0KQukPcTF89buQMZAMY1Q7JOaCMPYfzP9iZU39tdtLOXhxgzGfbHoP4WansSarG&quot;
-      crossorigin=&quot;anonymous&quot;&gt;&lt;/script&gt;
-    &lt;link href=&quot;https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
+          
+&lt;!DOCTYPE html>
+&lt;html lang="da">
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1.0">
+    &lt;title>Eksempel&lt;/title>
+    
+    &lt;link href="../lib/okapi-1.6.0.min.css" rel="stylesheet">
+    &lt;script src="../lib/okapi-1.6.0.min.js">&lt;/script>
+    
+  &lt;/head>
+  &lt;body>
+    &lt;main>
+        &lt;div id="popup">
+          &lt;a href="#" class="ol-popup-closer closer">&lt;/a>
+          &lt;div id="popup-content" class="ol-popup-content">&lt;/div>
+          &lt;div class="title">&lt;/div>
+          &lt;div class="description">&lt;/div>
+            &lt;img class="image" src="https://1864.dk/wp-content/uploads/2017/03/web-skansen.jpg" alt="image of Dybøl Banke" style="width: 100%; height: auto;">
+          &lt;button class="link">&lt;/button>
+        &lt;/div>
 
-    &lt;div id=&quot;popup&quot;&gt;
-      &lt;a href=&quot;#&quot; class=&quot;ol-popup-closer closer&quot;&gt;&lt;/a&gt;
-      &lt;div id=&quot;popup-content&quot; class=&quot;ol-popup-content&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;title&quot;&gt;&lt;/div&gt;
-      &lt;div class=&quot;description&quot;&gt;&lt;/div&gt;
-        &lt;img class=&quot;image&quot; src=&quot;https://1864.dk/wp-content/uploads/2017/03/web-skansen.jpg&quot; alt=&quot;image of Dybøl Banke&quot;&gt;&lt;/img&gt;
-      &lt;button class=&quot;link&quot;&gt;&lt;/button&gt;
-    &lt;/div&gt;
+        &lt;span
+          class="geomarker"
+          data-type="museum"
+          data-title="Historiecenter Dybbøl Banke"
+          data-description="Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864."
+          data-link="&lt;a href='https://1864.dk/' target='_blank'>Link&lt;/a>"
+          data-address="Dybbøl Banke 16, 6400 Sønderborg">
+        &lt;/span>
 
-    &lt;span
-      class=&quot;geomarker&quot;
-      data-type=&quot;museum&quot;
-      data-title=&quot;Historiecenter Dybbøl Banke&quot;
-      data-description=&quot;Velkommen på Historiecenter Dybbøl Banke. Her træder du lige ind i danmarkshistorien under krigen på Dybbøl Banke mellem danskerne og preusserne i 1864.&quot;
-      data-link=&quot;&lt;a href=&#39;https://1864.dk/&#39; target=&#39;_blank&#39;&gt;Link&lt;/a&gt;&quot;
-      data-address=&quot;Dybbøl Banke 16, 6400 Sønderborg&quot;&gt;
-    &lt;/span&gt;
+        &lt;div
+          id="map"
+          class="geomap"
+          data-center="auto"
+          data-zoom="5"
+          data-token="InsertYourTokenHere"
+          style="height: 400px;">
+        &lt;/div>
+        
+        &lt;!--
+        Udskift data-token= med din egen token fra Dataforsyningen.
+        Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
+        Opret en token og brug den i din applikation
+        Token i dette eksempel er midlertidig og udelukkende til test brug.
 
-    &lt;div
-      id=&quot;map&quot;
-      class=&quot;geomap&quot;
-      data-center=&quot;auto&quot;
-      data-zoom=&quot;5&quot;
-      data-token=&quot;InsertYourTokenHere&quot;
-      style=&quot;height: 400px;&quot;&gt;
-    &lt;!--
-    Udskift data-token= med din egen token fra Dataforsyningen.
-    Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
-    Opret en token og brug den i din applikation
-    Token i dette eksempel er midlertidig og udelukkende til test brug.
-
-    English
-    Replace the data-token = with your own token from the Danish map supply.
-    If you do not have a token please log in to &quot;My page&quot; https://www.dataforsyningen.dk/
-    Create a token and use it in your application
-    Token in this example is temporary and solely for test use.
-    --&gt;
-    &lt;/div&gt;
-
-    &lt;script&gt;
-      var maps = new okapi.Initialize({
-        popup: document.getElementById(&#39;popup&#39;)
-      });
-    &lt;/script&gt;
-
-  &lt;/body&gt;
-&lt;/html&gt;
+        English
+        Replace the data-token = with your own token from the Danish map supply.
+        If you do not have a token please log in to "My page" https://www.dataforsyningen.dk/
+        Create a token and use it in your application
+        Token in this example is temporary and solely for test use.
+        -->
+        
+        &lt;script>
+          var maps = new okapi.Initialize({
+            popup: document.getElementById('popup')
+          });
+        &lt;/script>
+&lt;/main>
+  &lt;/body>
+&lt;/html>
 
         </code>
-      </pre></div><script>(function(){
-        Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
-          var linkCopy = document.createElement('a');
-          linkCopy.textContent = ' Copy';
-
-          if (!ClipboardJS) {
-            callbacks.push(registerClipboard);
-          } else {
-            registerClipboard();
-          }
-
-          return linkCopy;
-
-          function registerClipboard() {
-            var clip = new ClipboardJS(linkCopy, {
-              'text': function () {
-                return env.code;
-              }
-            });
-
-
-            clip.on('success', function() {
-              linkCopy.textContent = ' Copied!';
-            });
-          }
-        });
-      })();</script></body></html>
+      </pre>
+      <script>
+        (function(){
+          Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+            var linkCopy = document.createElement('a');
+            linkCopy.textContent = ' Copy';
+  
+            if (!ClipboardJS) {
+              callbacks.push(registerClipboard);
+            } else {
+              registerClipboard();
+            }
+  
+            return linkCopy;
+  
+            function registerClipboard() {
+              var clip = new ClipboardJS(linkCopy, {
+                'text': function () {
+                  return env.code;
+                }
+              });
+  
+  
+              clip.on('success', function() {
+                linkCopy.textContent = ' Copied!';
+              });
+            }
+          });
+        })();
+      </script>
+    </aside>
+  </body>
+</html>
