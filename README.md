@@ -16,7 +16,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js"
-  integrity="sha384-oWJMEArxfWFtgLPcm8GkrhyAzh6/dYt91Q2AAX45L7v3kSnxivoDMfzT1bw++flM"
+  integrity="sha384-Tu5i7lmhdhEK0JzNKvFR1a6MbFcWpi/3nN0jgZtt/O70NWSyHN9qV5iYzC7YsJxf"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -40,7 +40,7 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ```html
 <script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js"
-integrity="sha384-oWJMEArxfWFtgLPcm8GkrhyAzh6/dYt91Q2AAX45L7v3kSnxivoDMfzT1bw++flM"
+integrity="sha384-Tu5i7lmhdhEK0JzNKvFR1a6MbFcWpi/3nN0jgZtt/O70NWSyHN9qV5iYzC7YsJxf"
 crossorigin="anonymous"></script>
 ```
 
@@ -180,6 +180,11 @@ Mulige værdier: `true` , `false`. Standard = `true`.
 #### `data-zoomslider`
 
 Angiv om Zoomslider skal vises.
+Mulige værdier: `true` , `false`. Standard = `true`.
+
+#### `data-mousewheelzoom`
+
+Angiv om man skal kunne zoome i kortet med musehjulet.
 Mulige værdier: `true` , `false`. Standard = `true`.
 
 #### `data-layerswitcher`

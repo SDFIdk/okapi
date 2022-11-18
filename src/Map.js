@@ -6,7 +6,8 @@ import proj4 from 'proj4/dist/proj4'
 import { register } from 'ol/proj/proj4'
 import { get as getProjection } from 'ol/proj'
 import { createEmpty, extend } from 'ol/extent'
-import {defaults as defaultControls, ScaleLine, ZoomSlider, Attribution, FullScreen} from 'ol/control'
+import { defaults as defaultControls, ScaleLine, ZoomSlider, Attribution, FullScreen } from 'ol/control'
+import { defaults as defaultInteractions } from 'ol/interaction/defaults'
 import MyLocation from './control/MyLocation'
 import LayerSwitcher from './control/LayerSwitcher'
 import CreateMarkers from './control/markers/CreateMarkers'
@@ -36,6 +37,7 @@ export default class Map {
     const center = (view && typeof view.center !== 'string') ?
       (view.center || Center) : Center
     const autoZoom = view && view.zoom === 'auto'
+    const mouseWheelZoom = typeof opt.mouseWheelZoom === 'undefined' ? true : opt.mouseWheelZoom
     const overrideExtent = opt.extent || false
 
     this.zoom = view ? view.zoom || 2 : 2
@@ -214,6 +216,8 @@ export default class Map {
       })
     }
 
+    console.log('tell me about mwz', mouseWheelZoom)
+
     this._map = new OlMap({
       target: this._target,
       layers: [
@@ -231,6 +235,7 @@ export default class Map {
         })
       ],
       controls: defaultControls({ attribution: false, zoom: zoomSlider }),
+      interactions: defaultInteractions({ mouseWheelZoom: mouseWheelZoom }),
       view: new View({
         center: fromLonLat(center, 'EPSG:25832'),
         zoom: this.zoom,
