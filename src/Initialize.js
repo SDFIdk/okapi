@@ -68,6 +68,7 @@ export default class Initialize {
         popup: opt.popup,
         showPopup: element.dataset.showPopup !== 'false',
         zoomSlider: element.dataset.zoomslider === 'true',
+        mouseWheelZoom: element.dataset.mousewheelzoom === 'false' ? false : true,
         fullScreen: element.dataset.fullscreen === 'true',
         myLocation: element.dataset.mylocation === 'true',
         scaleLine: element.dataset.scaleline === 'true',
