@@ -22,7 +22,9 @@ if (process.env.NODE_ENV === 'development') {
     bundle: true,
     format: 'iife',
     globalName: 'okapi',
-    loader: { '.png': 'dataurl' },
+    loader: { 
+      '.png': 'dataurl'
+    },
     plugins: [
       stylusLoader()
     ]
@@ -42,7 +44,9 @@ if (process.env.NODE_ENV === 'development') {
     sourcemap: true,
     format: 'iife',
     globalName: 'okapi',
-    loader: { '.png': 'dataurl' },
+    loader: { 
+      '.png': 'dataurl'
+    },
     plugins: [
       stylusLoader()
     ]
