@@ -71,8 +71,10 @@ export default class MyLocation extends Control {
     }
   }
 
-  handleNoGeolocation() {
-    console.error('Geolocation is not supported by this browser.')
+  handleNoGeolocation(error_msg) {
+    const error_str = error_msg.message ? error_msg.message : ''
+    console.error(error_str)
+    alert(error_str)
   }
 
   showMyPosition() {
@@ -92,9 +94,9 @@ export default class MyLocation extends Control {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition,
-        function () { this.handleNoGeolocation() })
+        (err) => { this.handleNoGeolocation(err) })
     } else {
-      this.handleNoGeolocation()
+      this.handleNoGeolocation({message: 'Geolokation er ikke tilgængelig.'})
     }
   }
 
