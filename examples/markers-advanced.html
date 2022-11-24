@@ -84,6 +84,31 @@
               'museum': 'custom.png'
             }
           });
+
+          // Venter 3 sekunder og tilføjer en ny markør
+          setTimeout(function() {
+
+            var new_marker = document.createElement('span')
+            new_marker.className = "geomarker"
+            new_marker.dataset.title = "Ny markør"
+            new_marker.dataset.description="Denne markør blev oprettet dynamisk efter siden var loaded"
+            new_marker.dataset.address="L.A. Rings Vej 4, 5230 Odense M"
+            document.querySelector('main').append(new_marker)
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 3000)
+
+          // Venter 6 sekunder og fjerner en markør
+          setTimeout(function() {
+
+            document.querySelector('span[data-title="Den Fynske Landsby"]').remove()
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 6000)
         </script>
 </main>
     <aside>
@@ -98,7 +123,7 @@
     &lt;title>Eksempel&lt;/title>
     
     &lt;link href="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.css" rel="stylesheet">
-    &lt;script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js" integrity="sha384-Tu5i7lmhdhEK0JzNKvFR1a6MbFcWpi/3nN0jgZtt/O70NWSyHN9qV5iYzC7YsJxf" crossorigin="anonymous">&lt;/script>
+    &lt;script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js" integrity="sha384-k82gQRLvgHBcjgx5OUmlxA+c/FaWVxfJhJDsUFFuHKJ0Bgj4+3M+dumFw7mv+2cE" crossorigin="anonymous">&lt;/script>
     
     
   &lt;/head>
@@ -168,6 +193,31 @@
               'museum': 'custom.png'
             }
           });
+
+          // Venter 3 sekunder og tilføjer en ny markør
+          setTimeout(function() {
+
+            var new_marker = document.createElement('span')
+            new_marker.className = "geomarker"
+            new_marker.dataset.title = "Ny markør"
+            new_marker.dataset.description="Denne markør blev oprettet dynamisk efter siden var loaded"
+            new_marker.dataset.address="L.A. Rings Vej 4, 5230 Odense M"
+            document.querySelector('main').append(new_marker)
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 3000)
+
+          // Venter 6 sekunder og fjerner en markør
+          setTimeout(function() {
+
+            document.querySelector('span[data-title="Den Fynske Landsby"]').remove()
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 6000)
         &lt;/script>
 &lt;/main>
   &lt;/body>

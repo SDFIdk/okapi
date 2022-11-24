@@ -26,7 +26,21 @@ import { none } from 'ol/centerconstraint'
 
 export default class Map {
 
+  markers = []
+  icons = {}
+  markerLayerGroup
+  markerLayers
+  popup
+  showPopup
+
+  set markers(markers) {
+    this.setMarkers(markers)
+  }
+
   constructor(opt) {
+
+    this.icons = opt.icons || {}
+
     const background = opt.background || ''
     const zoomSlider = typeof opt.zoomSlider === 'undefined' ? true : opt.zoomSlider
     const scaleLine = typeof opt.scaleLine === 'undefined' ? true : opt.scaleLine
@@ -42,10 +56,9 @@ export default class Map {
 
     this.zoom = view ? view.zoom || 2 : 2
     const fullScreen = typeof opt.fullScreen === 'undefined' ? true : opt.fullScreen
-    const markers = opt.markers || []
-    const icons = opt.icons || {}
-    const popup = opt.popup || null
-    const showPopup = typeof opt.showPopup === 'undefined' ? true : opt.showPopup
+    
+    this.popup = opt.popup || null
+    this.showPopup = typeof opt.showPopup === 'undefined' ? true : opt.showPopup
 
     this._target = opt.target || 'map'
     this._source = opt.source || 'kf'
@@ -216,8 +229,6 @@ export default class Map {
       })
     }
 
-    console.log('tell me about mwz', mouseWheelZoom)
-
     this._map = new OlMap({
       target: this._target,
       layers: [
@@ -251,13 +262,8 @@ export default class Map {
     myLocation && this._map.addControl(new MyLocation({ zoomSlider: zoomSlider }))
     this._layerSwitcher = new LayerSwitcher({ visible: layerSwitcher })
     this._map.addControl(this._layerSwitcher)
-    this.markerLayers = CreateMarkers(markers, icons, this)
-    const _this = this
 
-    this.markerLayers.forEach(function (layer) {
-      _this._map.addLayer(layer)
-    })
-    showPopup && CreateMarkerTooltip(this, popup)
+    this.setMarkers(opt.markers)
 
     this.autoCenter()
 
@@ -270,6 +276,21 @@ export default class Map {
     if (zoomSlider) {
       this.adjustControlsCss()
     }
+  }
+
+  setMarkers(markers) {
+
+    if (!markers) {
+      return
+    }
+    
+    this.markerLayers = CreateMarkers(markers, this.icons, this)
+
+    this._map.removeLayer(this.markerLayerGroup)
+    this.markerLayerGroup = new Group({layers: this.markerLayers})
+    this._map.addLayer(this.markerLayerGroup)
+
+    this.showPopup && CreateMarkerTooltip(this, this.popup)
   }
 
   addVectorLayer(vector, styles, name) {
