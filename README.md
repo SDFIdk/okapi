@@ -16,7 +16,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js"
-  integrity="sha384-Tu5i7lmhdhEK0JzNKvFR1a6MbFcWpi/3nN0jgZtt/O70NWSyHN9qV5iYzC7YsJxf"
+  integrity="sha384-k82gQRLvgHBcjgx5OUmlxA+c/FaWVxfJhJDsUFFuHKJ0Bgj4+3M+dumFw7mv+2cE"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -40,7 +40,7 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ```html
 <script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js"
-integrity="sha384-Tu5i7lmhdhEK0JzNKvFR1a6MbFcWpi/3nN0jgZtt/O70NWSyHN9qV5iYzC7YsJxf"
+integrity="sha384-k82gQRLvgHBcjgx5OUmlxA+c/FaWVxfJhJDsUFFuHKJ0Bgj4+3M+dumFw7mv+2cE"
 crossorigin="anonymous"></script>
 ```
 
@@ -99,6 +99,19 @@ Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/oka
 ```
 
 [Demo](https://okapi.dataforsyningen.dk/examples/markers-simple.html)
+
+Du kan tilføje eller fjerne markører dynamisk ved at indsætte eller fjerne flere `<span>`-elementer med data og derefter køre `refresh()` funktionen fra dit okapi objekt.
+
+```html
+<script>
+  var map = new okapi.Initialize({});
+  // ... kode, der indsætter eller fjerner elementer ...
+  map.refresh()
+</script>
+
+```
+
+[Se demo](https://okapi.dataforsyningen.dk/examples/markers-advanced.html)
 
 ### Brug kort fra Datafordeleren
 
