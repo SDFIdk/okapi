@@ -16,9 +16,15 @@
     "url": "https://github.com/Dataforsyningen/okapi.git"
   },
   "keywords": [
-    "library"
+    "library",
+    "SDFI",
+    "map"
   ],
-  "author": "SDFI",
+  "author": {
+    "name" : "Styrelsen for Dataforsyning og Infrastruktur",
+    "email" : "support@sdfi.dk",
+    "url" : "https://sdfi.dk/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Dataforsyningen/okapi/issues"
