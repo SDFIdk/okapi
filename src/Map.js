@@ -56,7 +56,7 @@ export default class Map {
 
     this.zoom = view ? view.zoom || 2 : 2
     const fullScreen = typeof opt.fullScreen === 'undefined' ? true : opt.fullScreen
-    
+
     this.popup = opt.popup || null
     this.showPopup = typeof opt.showPopup === 'undefined' ? true : opt.showPopup
 
@@ -193,7 +193,7 @@ export default class Map {
       layers.push(createLayer({
         name: 'kommunikation',
         type: 'WMS',
-        title: 'Kommuni- kation',
+        title: 'Kommunikation',
         visible: background === 'kommunikation',
         service: 'kommunikation',
         layer: 'Kommunikationskort',
@@ -283,7 +283,7 @@ export default class Map {
     if (!markers) {
       return
     }
-    
+
     this.markerLayers = CreateMarkers(markers, this.icons, this)
 
     this._map.removeLayer(this.markerLayerGroup)

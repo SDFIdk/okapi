@@ -12,7 +12,6 @@
   left: 0
   bottom: 0
   transition: ease 0.5s height
-  box-shadow: 0 3px 20px 0 rgba(0,0,0,0.2), 0 3px 20px 0 rgba(0,0,0,0.19)
   overflow-x: auto
   overflow-y: hidden
 
@@ -31,9 +30,8 @@
   position: absolute
   bottom: 10px
   left: 10px
-  border: none
   margin: 0
-  text-align: left
+  text-align: center
   padding: 0 10px
   vertical-align: text-top
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3)
@@ -80,7 +78,7 @@
   height: 110px
 
 .ol-layer-switcher .selected
-  outline: 2px solid red
+  outline: 2px solid #00000030
   transition: ease 0s
 
 .ol-layer-switcher .wrapper:hover, .ol-layer-switcher .wrapper label
@@ -88,11 +86,17 @@
 
 .ol-layer-switcher .wrapper label
   color: white
-  margin: 5px
   position: absolute
   left: 0
   bottom: 0
   font-weight: 700
+  font-size: 0.75rem
+  text-shadow: 0px 0px 3px black
+  background-image: linear-gradient(transparent,transparent 20%,rgba(0,0,0,0.1) 40%,rgba(0,0,0,0.4) 60%,rgba(0,0,0,0.6) 80%,rgba(0,0,0,0.6))
+  width: 100%
+  padding-top: 3rem
+  text-align: center;
+
 
 .ol-layer-switcher .wrapper .white
   color: white
