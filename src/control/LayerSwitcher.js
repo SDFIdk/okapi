@@ -3,6 +3,8 @@ import Skaerm from './images/dtk_skaermkort_thumb.png'
 import Daempet from './images/dtk_skaermkort_daempet_thumb.png'
 import Forvalt from './images/forvaltning_thumb.png'
 import Orto from './images/orto_foraar_thumb.png'
+import Natur from './images/natur_friluftskort.png'
+import Kommunikation from './images/kommunikation.png'
 import './LayerSwitcher.styl'
 
 export default class LayerSwitcher extends Control {
@@ -106,6 +108,10 @@ export default class LayerSwitcher extends Control {
         img = Forvalt
       } else if (name === 'orto_foraar') {
         img = Orto
+      } else if (name === 'natur_friluftskort') {
+        img = Natur
+      } else if (name === 'kommunikation') {
+        img = Kommunikation
       }
       image.src = img
 
