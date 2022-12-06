@@ -1,7 +1,5 @@
 # OKAPI - Offentlig Kort API
 
-![OKAPI](/examples/okapi.svg "En okapi")
-
 [Dataforsyningen](https://dataforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
 
 Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
