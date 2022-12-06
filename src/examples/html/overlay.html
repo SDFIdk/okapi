@@ -29,7 +29,7 @@
         </div>
 
         <script>
-          var maps = new okapi.Initialize({
+          var myMap = new okapi.Initialize({
             overlays: [
               {
                 name: 'dhm',
@@ -46,6 +46,6 @@
 
           const checkbox = document.getElementById('checkbox');
           checkbox.addEventListener('change', function (e) {
-            maps[0].toggleLayer('dhm', this.checked)
+            myMap.maps[0].toggleLayer('dhm', this.checked)
           });
         </script>
