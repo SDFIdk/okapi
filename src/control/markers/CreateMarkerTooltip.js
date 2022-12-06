@@ -30,6 +30,8 @@ export default function markerTooltip(map, custom) {
     content.appendChild(title)
     content.appendChild(description)
   }
+  
+  map.olMap.getOverlays().clear()
 
   const overlay = new Overlay({
     element: popup,
