@@ -1,7 +1,5 @@
 # OKAPI - Offentlig Kort API
 
-![OKAPI](/examples/okapi.svg "En okapi")
-
 [Dataforsyningen](https://dataforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
 
 Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
@@ -16,7 +14,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js"
-  integrity="sha384-k82gQRLvgHBcjgx5OUmlxA+c/FaWVxfJhJDsUFFuHKJ0Bgj4+3M+dumFw7mv+2cE"
+  integrity="sha384-6abq73rYGqP+L0l29bX9h2Bd4zse3hm/4IAw8I/98LLR5t7VJkLT+TDckmR8kEjX"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -40,7 +38,7 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ```html
 <script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.0.min.js"
-integrity="sha384-k82gQRLvgHBcjgx5OUmlxA+c/FaWVxfJhJDsUFFuHKJ0Bgj4+3M+dumFw7mv+2cE"
+integrity="sha384-6abq73rYGqP+L0l29bX9h2Bd4zse3hm/4IAw8I/98LLR5t7VJkLT+TDckmR8kEjX"
 crossorigin="anonymous"></script>
 ```
 
