@@ -276,6 +276,10 @@ export default class Map {
     if (zoomSlider) {
       this.adjustControlsCss()
     }
+
+    this._map.on('change:size', () => {
+      this.adjustControlsCss()
+    })
   }
 
   setMarkers(markers) {
