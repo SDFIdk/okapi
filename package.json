@@ -1,6 +1,6 @@
 {
   "name": "okapi",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
@@ -21,9 +21,9 @@
     "map"
   ],
   "author": {
-    "name" : "Styrelsen for Dataforsyning og Infrastruktur",
-    "email" : "support@sdfi.dk",
-    "url" : "https://sdfi.dk/"
+    "name": "Styrelsen for Dataforsyning og Infrastruktur",
+    "email": "support@sdfi.dk",
+    "url": "https://sdfi.dk/"
   },
   "license": "MIT",
   "bugs": {
