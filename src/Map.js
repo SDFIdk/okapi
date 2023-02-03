@@ -359,7 +359,7 @@ export default class Map {
 
   adjustControlsCss() {
     const findElementBelongingToThisMap = (collection) => {
-      const array = Array.prototype.slice.call(collection)
+      const array = Array.from(collection)
       return array.find((el) => {
         return !!el.closest('#' + this.target)
       })
