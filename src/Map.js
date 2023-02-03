@@ -358,20 +358,29 @@ export default class Map {
   }
 
   adjustControlsCss() {
-    const slider = document.getElementsByClassName('ol-zoomslider')[0]
-    const button = document.getElementsByClassName('ol-zoom-out')[0]
-    const myLoc = document.getElementsByClassName('ol-my-location')[0]
+    const findElementBelongingToThisMap = (collection) => {
+      const array = Array.prototype.slice.call(collection)
+      return array.find((el) => {
+        return !!el.closest('#' + this.target)
+      })
+    }
+    const slider = findElementBelongingToThisMap(document.getElementsByClassName('ol-zoomslider'))
+    const button = findElementBelongingToThisMap(document.getElementsByClassName('ol-zoom-out'))
+    const myLoc = findElementBelongingToThisMap(document.getElementsByClassName('ol-my-location'))
     const mapHeight = document.getElementById(this.target).offsetHeight
 
     if (mapHeight < 300) {
-      slider.style.display = none
+      if (slider) {
+        slider.style.display = none
+      }
       if (myLoc) {
         myLoc.style.bottom = '97px'
       }
     } else {
-      const m = Math.floor(mapHeight * 0.25) + 6 + 'px' // 25% + 6px
-
-      button.style.marginTop = m
+      if (button) {
+        const m = Math.floor(mapHeight * 0.25) + 6 + 'px' // 25% + 6px
+        button.style.marginTop = m
+      }
     }
   }
 
