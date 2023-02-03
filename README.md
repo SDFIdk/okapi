@@ -174,12 +174,14 @@ Disse er ikke relevante, hvis `data-center` har værdien `auto`.
 
 #### `data-background`
 
-Man kan vælge imellem disse fire forskellige baggrundskort:
+Man kan vælge imellem disse seks forskellige baggrundskort:
 
-- `"dtk_skaermkort"`        (Almindeligt skærmkort)
-- `"dtk_skaermkort_daempet"` (Dæmpet skærmkort)
-- `"forvaltning"`           (Kort til forvaltning - uden navne)
-- `"orto_foraar"`           (ortofoto)
+- `"dtk_skaermkort"`          (Almindeligt skærmkort)
+- `"dtk_skaermkort_daempet"`  (Dæmpet skærmkort)
+- `"forvaltning"`             (Kort til forvaltning - uden navne)
+- `"orto_foraar"`             (ortofoto)
+- `"kommunikation"`           (Kommunikationskort)
+- `"natur_friluftskort"`      (Natur og Friluftskort)
 
 Som standard bliver det dæmpede skærmkort brugt.
 
