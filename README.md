@@ -2,7 +2,7 @@
 
 [Dataforsyningen](https://dataforsyningen.dk) har udviklet et modul til indlejring af baggrundskort på hjemmesider. Modulet er tiltænkt webudviklere der har brug for en let implementerbar og fleksibel kortvisning på egen hjemmeside.
 
-Modulet er implementeret i Javascript og er baseret på [OpenLayers 6](https://openlayers.org/).
+Modulet er implementeret i Javascript og er baseret på [OpenLayers](https://openlayers.org/).
 
 Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyningen.dk) og oprette en token.
 
