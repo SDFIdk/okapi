@@ -1,6 +1,6 @@
 {
   "name": "okapi",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "axios": "^0.21.4",
-    "ol": "^7.1.0",
+    "ol": "^7.3.0",
     "proj4": "^2.7.5"
   }
 }

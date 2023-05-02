@@ -384,6 +384,18 @@ export default class Map {
     }
   }
 
+  // calls the given function with the feature as parameter
+  addOnFeatureClickFunction(callback) {
+    const map = this._map
+    map.on('singleclick', function (evt) {
+      const feature = map.forEachFeatureAtPixel(evt.pixel,
+        function (feature) {
+          return feature
+        })
+      callback(feature)
+    })
+  }
+
   get olMap() {
     return this._map
   }

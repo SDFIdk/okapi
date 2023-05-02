@@ -13,8 +13,8 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.2.min.js"
-  integrity="sha384-916WcJmCh9aaX0IXluDGzUu30FwVgH6EiDUrIhSMcWUgrN7QbzbjjbZjRxRtzoe1"
+   - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js"
+  integrity="sha384-+Xt8qfJii0f0NCBi9Wy83Gb+ODxpaHB/LgRt2/a1vi772Vhl/62/6XDh+iKzvf/y"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -37,14 +37,14 @@ Nu har du et indlejret kort på din hjemmeside.
 ### CDN
 
 ```html
-<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.6.2.min.js"
-integrity="sha384-916WcJmCh9aaX0IXluDGzUu30FwVgH6EiDUrIhSMcWUgrN7QbzbjjbZjRxRtzoe1"
+<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js"
+integrity="sha384-+Xt8qfJii0f0NCBi9Wy83Gb+ODxpaHB/LgRt2/a1vi772Vhl/62/6XDh+iKzvf/y"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.6.2.min.js`
+Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -52,7 +52,7 @@ Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.6.2.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/okapi-1.6.2.min.css`
+Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.css`
 
 ## Anvendelse
 
@@ -141,6 +141,8 @@ Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i s
 [Andre markør-tooltips](https://okapi.dataforsyningen.dk/examples/tooltip.html)
 
 [Tilføj et overlay fra Dataforsyningen](https://okapi.dataforsyningen.dk/examples/overlay.html)
+
+[Custom event handling af markør klik](https://okapi.dataforsyningen.dk/examples/custom-click.html)
 
 ## Kort-parametre
 
@@ -278,6 +280,21 @@ Det er også muligt selv at lave det html element der skal vises som tooltip nå
 ```
 
 [Demo](https://okapi.dataforsyningen.dk/examples/tooltip.html)
+
+## Brugerdefineret håndtering af markør klik
+Hvis du ønsker at kalde en funtion når en markør bliver klikket på kan du gøre det med funktionen `addOnFeatureClickFunction` der tager en callback funktion som parameter som den kalder med den markør der bliver klikket på som parameter.
+
+```html
+<script>
+  var maps = new okapi.Initialize({});
+
+  maps.maps[0].addOnFeatureClickFunction((feature) => {
+    console.log(feature)
+  })
+</script>
+```
+
+[Demo](https://okapi.dataforsyningen.dk/examples/custom-click.html)
 
 ## Fremsøgning af koordinater
 
