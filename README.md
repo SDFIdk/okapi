@@ -34,6 +34,42 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ## Installation
 
+### NPM
+
+Først installerer du `@dataforsyningen/okapi` via NPM:
+```sh
+npm install @dataforsyningen/okapi --save
+```
+
+Så kan du benytte `okapi` som imports i dine Javascript-filer:
+```javascript
+import { Initialize } from '@dataforsyningen/okapi'
+
+const map = new Initialize({})
+```
+
+Derefter kan du bygge/bundle dine Javascripts med Webpack/esbuild/etc. og implementere dem i de HTML-sider, du ønsker.
+
+F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og `bundled.css`
+```html
+...
+<head>
+  ...
+  <link rel="stylesheet" href="bundled.css">
+</head>
+<body>
+
+  <div
+    id="map"
+    class="geomap"
+    data-token="InsertYourTokenHere">
+  </div>
+
+  <script src="bundled.js"></script>
+</body>
+...
+```
+
 ### CDN
 
 ```html
