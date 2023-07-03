@@ -1,4 +1,4 @@
-import Map from './Map'
+import Map from './Map.js'
 
 function scrapeMarkers() {
   
