@@ -9,11 +9,13 @@ console.log('--------------------------')
 console.log('Building ES module')
 
 // Production build
+
 esbuild.build({
-  entryPoints: entry_points,
-  outdir: 'dist',
+  entryPoints: ['src/Index.js'],
+  outfile: 'dist/index.js',
   bundle: true,
   minify: true,
+  format: 'esm',
   sourcemap: true,
   loader: { 
     '.png': 'dataurl'
