@@ -2,7 +2,7 @@
   "name": "okapi",
   "version": "1.8.0",
   "description": "Offentlig Kort API modul",
-  "main": "src/Index.js",
+  "main": "index.js",
   "scripts": {
     "build": "export NODE_ENV=build && node build/build.mjs && node build/build-examples.mjs",
     "dev": "export NODE_ENV=development && node build/build.mjs",
