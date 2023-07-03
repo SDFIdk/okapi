@@ -2,14 +2,15 @@
   "name": "okapi",
   "version": "1.8.0",
   "description": "Offentlig Kort API modul",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "export NODE_ENV=build && node build/build.mjs && node build/build-examples.mjs",
     "dev": "export NODE_ENV=development && node build/build.mjs",
     "build-examples": "node build/build-examples.mjs",
     "start": "python3 -m http.server 7777",
     "test": "npm run build && npx playwright test",
-    "lint": "./node_modules/.bin/eslint src --fix"
+    "lint": "./node_modules/.bin/eslint src --fix",
+    "build-es": "node build/build-es.mjs"
   },
   "repository": {
     "type": "git",
