@@ -13,8 +13,8 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npm test
       - run: npx playwright install --with-deps
+      - run: npm test
 
   # Important note:
   # This only works in github actions when you've added an "automation token" by the name of "NPM_TOKEN" to "repository secrets"
