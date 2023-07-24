@@ -13,8 +13,8 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js"
-  integrity="sha384-+Xt8qfJii0f0NCBi9Wy83Gb+ODxpaHB/LgRt2/a1vi772Vhl/62/6XDh+iKzvf/y"
+   - Benyt enten vores CDN: `<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.8.0.min.js"
+  integrity="sha384-vkK/oUyzuktOgFrUWzg1wVw7cig1qUhwfiPCbJ9v4b2fBNYCbxwwJ+jrptNSX6V7"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -34,17 +34,53 @@ Nu har du et indlejret kort på din hjemmeside.
 
 ## Installation
 
+### NPM
+
+Først installerer du `@dataforsyningen/okapi` via NPM:
+```sh
+npm install @dataforsyningen/okapi --save
+```
+
+Så kan du benytte `okapi` som imports i dine Javascript-filer:
+```javascript
+import { Initialize } from '@dataforsyningen/okapi'
+
+const map = new Initialize({})
+```
+
+Derefter kan du bygge/bundle dine Javascripts med Webpack/esbuild/etc. og implementere dem i de HTML-sider, du ønsker.
+
+F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og `bundled.css`
+```html
+...
+<head>
+  ...
+  <link rel="stylesheet" href="bundled.css">
+</head>
+<body>
+
+  <div
+    id="map"
+    class="geomap"
+    data-token="InsertYourTokenHere">
+  </div>
+
+  <script src="bundled.js"></script>
+</body>
+...
+```
+
 ### CDN
 
 ```html
-<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js"
-integrity="sha384-+Xt8qfJii0f0NCBi9Wy83Gb+ODxpaHB/LgRt2/a1vi772Vhl/62/6XDh+iKzvf/y"
+<script src="https://okapi.dataforsyningen.dk/lib/okapi-1.8.0.min.js"
+integrity="sha384-vkK/oUyzuktOgFrUWzg1wVw7cig1qUhwfiPCbJ9v4b2fBNYCbxwwJ+jrptNSX6V7"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js`
+Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.8.0.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -52,7 +88,7 @@ Download filen: `https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.js`
 
 ### CSS
 
-Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/okapi-1.7.0.min.css`
+Vores standard styling kan findes her: `https://okapi.dataforsyningen.dk/lib/okapi-1.8.0.min.css`
 
 ## Anvendelse
 
