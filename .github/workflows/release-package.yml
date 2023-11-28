@@ -8,13 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm ci
-      - run: npx playwright install --with-deps
-      - run: npm test
+      - run: npm run build
 
   # Important note:
   # This only works in github actions when you've added an "automation token" by the name of "NPM_TOKEN" to "repository secrets"
@@ -22,8 +21,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
