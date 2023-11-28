@@ -1,4 +1,3 @@
-import axios from 'axios'
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
 import Feature from 'ol/Feature'
@@ -22,12 +21,35 @@ function createStyle(url) {
   })
 }
 
-export default function createMarkersFromObject(markerArray, icons, map) {
-  const layers = []
-  let addressCalls = []
+function getLayer(layers, type) {
+  const layer = layers.find(function(l) {
+    return l.type === type
+  })
+  return layer
+}
+
+export default async function(markerArray, icons) {
+
+  let layers = []
   const dawsUrl = 'https://dawa.aws.dk/adresser?format=json&struktur=mini&q='
 
-  markerArray.forEach(function (marker) {
+  markerArray.forEach(function(marker) {
+    let layer
+    
+    layer = getLayer(layers, marker.type)
+    
+    if (!layer) {
+      const vectorSource = new VectorSource({})
+      layer = new VectorLayer({
+        source: vectorSource,
+        style: createStyle(icons[marker.type])
+      })
+      layer.type = marker.type
+      layers.push(layer)
+    }
+  })
+
+  markerArray.forEach(async function(marker) {
 
     const feature = new Feature()
 
@@ -37,46 +59,15 @@ export default function createMarkersFromObject(markerArray, icons, map) {
 
     if (marker.lon && marker.lat) {
       feature.set('geometry', new Point(fromLonLat([marker.lon, marker.lat], 'EPSG:25832')))
+    } else if (marker.address) {
+      const response = await fetch(`${dawsUrl}${marker.address}`)
+      const data = await response.json()
+      feature.set('geometry', new Point(fromLonLat([data[0].x, data[0].y], 'EPSG:25832')))
     }
-
-    let layer = layers.find(function (type) {
-      return type === marker.type
-    })
-
-    if (!layer) {
-      const vectorSource = new VectorSource({})
-      const vectorLayer = new VectorLayer({
-        source: vectorSource,
-        style: createStyle(icons[marker.type])
-      })
-
-      layers.push(vectorLayer)
-      layer = vectorLayer
-    }
+    
+    const layer = getLayer(layers, marker.type)
     layer.getSource().addFeature(feature)
-
-    if (marker.address && (!marker.lon || !marker.lat)) {
-      addressCalls.push(axios({
-        method: 'get',
-        url: dawsUrl + marker.address,
-        feature: feature
-      }))
-    }
   })
-
-  if (addressCalls.length > 0) {
-    axios.all(addressCalls)
-      .then(axios.spread((...args) => {
-        args.forEach(function (arg) {
-          const markerLon = arg.data[0].x
-          const markerLat = arg.data[0].y
-
-          arg.config.feature.set('geometry', new Point(fromLonLat([markerLon, markerLat], 'EPSG:25832')))
-        })
-        map.autoCenter()
-      }))
-
-  }
-
+  
   return layers
 }

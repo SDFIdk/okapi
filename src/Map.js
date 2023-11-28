@@ -265,8 +265,6 @@ export default class Map {
 
     this.setMarkers(opt.markers)
 
-    this.autoCenter()
-
     this._map.on('click', function (evt) {
       const focus = document.activeElement
 
@@ -282,17 +280,17 @@ export default class Map {
     })
   }
 
-  setMarkers(markers) {
+  async setMarkers(markers) {
 
     if (!markers) {
       return
     }
 
-    this.markerLayers = CreateMarkers(markers, this.icons, this)
-
+    this.markerLayers = await CreateMarkers(markers, this.icons, this)
     this._map.removeLayer(this.markerLayerGroup)
     this.markerLayerGroup = new Group({layers: this.markerLayers})
     this._map.addLayer(this.markerLayerGroup)
+    this.autoCenter()
 
     this.showPopup && CreateMarkerTooltip(this, this.popup)
   }
