@@ -25,6 +25,12 @@ HTML-eksemplerne i `/examples` bliver dog ikke opdateret, med mindre du kører `
 
 ## Byg til prod
 
+Først skal du sikre dig, at du bygger til en ny version. Det gøres nemt ved at bruge `npm version`. 
+**Du skal blot gøre det én gang for hver ny feature eller fix.** 
+```
+npm version minor
+```
+
 For at bygge til prod, kør:
 ```
 npm run build
