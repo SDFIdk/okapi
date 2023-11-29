@@ -286,7 +286,7 @@ export default class Map {
       return
     }
 
-    this.markerLayers = await CreateMarkers(markers, this.icons, this)
+    this.markerLayers = await CreateMarkers(markers, this.icons)
     this._map.removeLayer(this.markerLayerGroup)
     this.markerLayerGroup = new Group({layers: this.markerLayers})
     this._map.addLayer(this.markerLayerGroup)
@@ -306,7 +306,7 @@ export default class Map {
 
   getVectorLayer(name) {
     return this._map.getLayers().getArray().find(function (e) {
-      return e.get('name') === 'name'
+      return e.get('name') === name
     })
   }
 

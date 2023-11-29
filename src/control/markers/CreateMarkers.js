@@ -15,43 +15,22 @@ import {
 import pin from '../images/pin.png'
 import './CreateMarkers.styl'
 
-function createStyle(url) {
-  const src = url || pin
-
-  return new Style({
-    image: new Icon(({
-      anchor: [0.5, 1],
-      anchorXUnits: 'fraction',
-      anchorYUnits: 'fraction',
-      src: src
-    }))
-  })
-}
-
-function getLayer(layers, type) {
-  const layer = layers.find(function(l) {
-    return l.type === type
-  })
-  return layer
-}
-
-function createStyleFunction(url) {
+function createStyleFunction(icon) {
   const styleCache = {}
-  const styleFunction = (feature) => {
-    const size = feature.get('features').length
-
+  return (feature) => {
+    const size = feature.get('features')?.length
+    
     if (size === 1) {
-      const src = url || pin
-
       return new Style({
         image: new Icon(({
           anchor: [0.5, 1],
           anchorXUnits: 'fraction',
           anchorYUnits: 'fraction',
-          src: src
+          src: icon
         }))
       })
     }
+
     let style = styleCache[size]
 
     if (!style) {
@@ -76,50 +55,69 @@ function createStyleFunction(url) {
     }
     return style
   }
+}
 
-  return styleFunction
+async function createFeature(marker) {
+  const dawsUrl = 'https://dawa.aws.dk/adresser?format=json&struktur=mini&q='
+  const feature = new Feature()
+  for (let key in marker) {
+    feature.set(key, marker[key])
+  }
+  if (marker.lon && marker.lat) {
+    feature.set('geometry', new Point(fromLonLat([marker.lon, marker.lat], 'EPSG:25832')))
+  } else if (marker.address) {
+    const response = await fetch(`${dawsUrl}${marker.address}`)
+    const data = await response.json()
+    feature.set('geometry', new Point(fromLonLat([data[0].x, data[0].y], 'EPSG:25832')))
+  }
+  return feature
+}
+
+async function createFeatures(markers, icons) {
+  let featureGroups = {default: []}
+  // We use available icons to determine number of types to visualize. 
+  // Types that are not associated with an icon, will be added to the "default" layer
+  Object.keys(icons).forEach((i) => {
+    featureGroups[i] = []
+  })
+  for (const marker of markers) {
+    const newFeature = await createFeature(marker)
+    if (featureGroups[marker.type]) {
+      featureGroups[marker.type].push(newFeature)
+    } else {
+      featureGroups.default.push(newFeature)
+    }
+  }
+  return featureGroups
+}
+
+function createLayer(features, iconUrl) {
+  const styleFunction = createStyleFunction(iconUrl)
+  const vectorSource = new VectorSource({
+    features: features
+  })
+  const clusterSource = new Cluster({
+    source: vectorSource,
+  })
+  const vectorLayer = new VectorLayer({
+    source: clusterSource,
+    style: styleFunction
+  })
+  return vectorLayer
 }
 
 export default async function(markerArray, icons) {
 
+  // Create features
+  const featuresByType = await createFeatures(markerArray,icons)
+
+  // Create layers
   let layers = []
-  const dawsUrl = 'https://dawa.aws.dk/adresser?format=json&struktur=mini&q='
+  for (const [key, value] of Object.entries(featuresByType)) {
+    const iconUrl = icons[key] ? icons[key] : pin
+    layers.push(createLayer(value, iconUrl))
+  }
 
-  markerArray.forEach(function(marker) {
-    let layer
-    
-    layer = getLayer(layers, marker.type)
-    
-    if (!layer) {
-      const vectorSource = new VectorSource({})
-      layer = new VectorLayer({
-        source: vectorSource,
-        style: createStyle(icons[marker.type])
-      })
-      layer.type = marker.type
-      layers.push(layer)
-    }
-  })
-
-  markerArray.forEach(async function(marker) {
-
-    const feature = new Feature()
-
-    for (let key in marker) {
-      feature.set(key, marker[key])
-    }
-
-    if (marker.lon && marker.lat) {
-      feature.set('geometry', new Point(fromLonLat([marker.lon, marker.lat], 'EPSG:25832')))
-    } else if (marker.address) {
-      const response = await fetch(`${dawsUrl}${marker.address}`)
-      const data = await response.json()
-      feature.set('geometry', new Point(fromLonLat([data[0].x, data[0].y], 'EPSG:25832')))
-    }
-    
-    const layer = getLayer(layers, marker.type)
-    layer.getSource().addFeature(feature)
-  })
-  
+  // Return array of layers pr. marker type
   return layers
 }
