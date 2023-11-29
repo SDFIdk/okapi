@@ -1,4 +1,5 @@
 import Overlay from 'ol/Overlay'
+import { boundingExtent } from 'ol/extent.js'
 import './CreateMarkerTooltip.styl'
 
 export default function markerTooltip(map, custom) {
@@ -30,7 +31,7 @@ export default function markerTooltip(map, custom) {
     content.appendChild(title)
     content.appendChild(description)
   }
-  
+
   map.olMap.getOverlays().clear()
 
   const overlay = new Overlay({
@@ -52,27 +53,37 @@ export default function markerTooltip(map, custom) {
   }
 
   map.olMap.on('singleclick', function (evt) {
-    const feature = map.olMap.forEachFeatureAtPixel(evt.pixel,
+    const clickedFeature = map.olMap.forEachFeatureAtPixel(evt.pixel,
       function (feature) {
         return feature
       })
 
-    if (!feature) {
+    if (!clickedFeature) {
       return
     }
-    if (custom) {
-      custom.childNodes.forEach(function (element) {
-        const content = feature.get(element.className)
+    const features = clickedFeature.get('features')
 
-        if (content) {
-          element.innerHTML = content
-        }
-      })
-    } else {
-      title.innerHTML = feature.get('title') || ''
-      description.innerHTML = feature.get('description') || ''
+    if (features.length > 1) { // if more than one feature, zoom.
+      const extent = boundingExtent(features.map((r) => r.getGeometry().getCoordinates()))
+
+      map.olMap.getView().fit(extent, {duration: 1000, padding: [50, 50, 50, 50]})
+    } else { // if a single feature, show tooltip.
+      const feature = features[0]
+
+      if (custom) {
+        custom.childNodes.forEach(function (element) {
+          const content = feature.get(element.className)
+
+          if (content) {
+            element.innerHTML = content
+          }
+        })
+      } else {
+        title.innerHTML = feature.get('title') || ''
+        description.innerHTML = feature.get('description') || ''
+      }
+      overlay.setPosition(feature.getGeometry().getCoordinates())
     }
-    overlay.setPosition(feature.getGeometry().getCoordinates())
   })
 
   map.olMap.on('pointermove', function (evt) {

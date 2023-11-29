@@ -1,10 +1,17 @@
 import VectorLayer from 'ol/layer/Vector'
 import VectorSource from 'ol/source/Vector'
+import Cluster from 'ol/source/Cluster'
 import Feature from 'ol/Feature'
 import Point from 'ol/geom/Point'
 import { fromLonLat } from 'ol/proj'
-import Style from 'ol/style/Style'
-import Icon from 'ol/style/Icon'
+import {
+  Circle as CircleStyle,
+  Fill,
+  Stroke,
+  Style,
+  Icon,
+  Text
+} from 'ol/style.js'
 import pin from '../images/pin.png'
 import './CreateMarkers.styl'
 
@@ -26,6 +33,51 @@ function getLayer(layers, type) {
     return l.type === type
   })
   return layer
+}
+
+function createStyleFunction(url) {
+  const styleCache = {}
+  const styleFunction = (feature) => {
+    const size = feature.get('features').length
+
+    if (size === 1) {
+      const src = url || pin
+
+      return new Style({
+        image: new Icon(({
+          anchor: [0.5, 1],
+          anchorXUnits: 'fraction',
+          anchorYUnits: 'fraction',
+          src: src
+        }))
+      })
+    }
+    let style = styleCache[size]
+
+    if (!style) {
+      style = new Style({
+        image: new CircleStyle({
+          radius: 10,
+          stroke: new Stroke({
+            color: '#fff'
+          }),
+          fill: new Fill({
+            color: '#C84A38'
+          })
+        }),
+        text: new Text({
+          text: size.toString(),
+          fill: new Fill({
+            color: '#fff'
+          })
+        })
+      })
+      styleCache[size] = style
+    }
+    return style
+  }
+
+  return styleFunction
 }
 
 export default async function(markerArray, icons) {
