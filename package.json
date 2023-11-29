@@ -1,6 +1,6 @@
 {
   "name": "@dataforsyningen/okapi",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "description": "Offentlig Kort API modul",
   "main": "dist/index.js",
   "scripts": {
@@ -52,7 +52,7 @@
     "instrument": false
   },
   "dependencies": {
-    "ol": "^7.3.0",
+    "ol": "^7.4.0",
     "proj4": "^2.7.5"
   }
 }
