@@ -317,7 +317,7 @@ export default class Map {
     const extent = createEmpty()
 
     this.markerLayers.forEach(function (layer) {
-      extend(extent, layer.getSource().getExtent())
+      extend(extent, layer.getSource().getSource().getExtent())
     })
     if (extent[0] === Infinity) {
       return
