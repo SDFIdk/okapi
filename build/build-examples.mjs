@@ -60,8 +60,8 @@ try {
 
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
     
-    const css_str = `../lib/${ pkg.name }-${ pkg.version }.min.css`
-    const js_str = `../lib/${ pkg.name }-${ pkg.version }.min.js`
+    const css_str = `../lib/@dataforsyningen/${ pkg.name }-${ pkg.version }.min.css`
+    const js_str = `../lib/@dataforsyningen/${ pkg.name }-${ pkg.version }.min.js`
 
     let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', title)
     temp = temp.replace('InsertCSSHere', css_str)
