@@ -14,7 +14,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
    - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js"
-  integrity="sha384-cCAC7s7IFClo6yA0J2Sr2IqO7uLhTkHuQofDk6RHNOIaP+zQH2txDPDh2h0bE8Cj"
+  integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -74,7 +74,7 @@ F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js"
-integrity="sha384-cCAC7s7IFClo6yA0J2Sr2IqO7uLhTkHuQofDk6RHNOIaP+zQH2txDPDh2h0bE8Cj"
+integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal"
 crossorigin="anonymous"></script>
 ```
 

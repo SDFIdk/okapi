@@ -59,18 +59,13 @@ try {
     title = title.replace('.html', '').replace('-', ' ').replace(/^./g, title[0].toUpperCase())
 
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
-    
-    const css_str = `../lib/${ pkg.name }-${ pkg.version }.min.css`
-    const js_str = `../lib/${ pkg.name }-${ pkg.version }.min.js`
 
     let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', title)
-    temp = temp.replace('InsertCSSHere', css_str)
-    temp = temp.replace('InsertJSHere', js_str)
     temp = temp.replaceAll('InsertYourTokenHere', token)
     temp = temp.replaceAll('InsertYourUsernameHere', username)
     temp = temp.replaceAll('InsertYourPasswordHere', password)
 
-    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/${ pkg.name }-${ pkg.version }.min.css`
+    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/okapi.min.css`
     const code_js_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/${ pkg.name }-${ pkg.version }.min.js`
     
 
