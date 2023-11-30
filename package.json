@@ -3,6 +3,7 @@
   "version": "1.9.2",
   "description": "Offentlig Kort API modul",
   "main": "dist/index.js",
+  "style": "dist/index.css",
   "scripts": {
     "build": "export NODE_ENV=build && node build/build.mjs && npm run build-examples && npm run build-es",
     "dev": "export NODE_ENV=development && node build/build.mjs",

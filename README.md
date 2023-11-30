@@ -13,8 +13,8 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/okapi-1.9.1.min.js"
-  integrity="sha384-tgQso1uIeI6NrTzavPivLdYLlPV7QS+rR3xiacnKh/186RFnOe7MOT7iQRYkXcPH"
+   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js"
+  integrity="sha384-cCAC7s7IFClo6yA0J2Sr2IqO7uLhTkHuQofDk6RHNOIaP+zQH2txDPDh2h0bE8Cj"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
@@ -73,14 +73,14 @@ F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og
 ### CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/okapi-1.9.1.min.js"
-integrity="sha384-tgQso1uIeI6NrTzavPivLdYLlPV7QS+rR3xiacnKh/186RFnOe7MOT7iQRYkXcPH"
+<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js"
+integrity="sha384-cCAC7s7IFClo6yA0J2Sr2IqO7uLhTkHuQofDk6RHNOIaP+zQH2txDPDh2h0bE8Cj"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/okapi-1.9.1.min.js`
+Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -88,7 +88,7 @@ Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/o
 
 ### CSS
 
-Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/okapi-1.9.1.min.css`
+Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.css`
 
 ## Anvendelse
 

@@ -70,8 +70,8 @@ try {
     temp = temp.replaceAll('InsertYourUsernameHere', username)
     temp = temp.replaceAll('InsertYourPasswordHere', password)
 
-    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/${ pkg.name }-${ pkg.version }.min.css`
-    const code_js_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/${ pkg.name }-${ pkg.version }.min.js`
+    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/${ pkg.name }-${ pkg.version }.min.css`
+    const code_js_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/${ pkg.name }-${ pkg.version }.min.js`
     
 
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
