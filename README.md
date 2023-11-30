@@ -6,7 +6,7 @@ Modulet er implementeret i Javascript og er baseret på [OpenLayers](https://ope
 
 Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyningen.dk) og oprette en token.
 
-<p style="text-align: center;"><img src="doc/eksempel.png" alt="forhåndsvisning" width=75%></p>
+<p style="text-align: center;"><img src="docs/img/eksempel.png" alt="forhåndsvisning" width=75%></p>
 
 ## Sådan gør du
 
@@ -343,18 +343,18 @@ På [OSM](https://openstreetmap.org) kan du søge efter din adresse, hvorefter d
 
 Herefter vil koordinaterne fremgå i venstre side af skærmen. Se screendump. Det første tal er breddegrad (lat) og det næste tal er længdegrad (lon).
 
-<p align="center"><img src="doc/osm.png" alt="forhåndsvisning"  /></p>
+<p align="center"><img src="docs/img/osm.png" alt="forhåndsvisning"  /></p>
 
 
 ### Google
 
 På [GoogleMaps](https://maps.google.com) kan du søge efter din adresse, hvorefter du højreklikker og vælger `Hvad er der her?`. Så vil der komme en lille boks op nederst i midten af skærmen. Tryk på tallene i boksen. (se screendump).
 
-<p align="center"><img src="doc/google.1.png" alt="forhåndsvisning"  /></p>
+<p align="center"><img src="docs/img/google.1.png" alt="forhåndsvisning"  /></p>
 
 Herefter vil koordinaterne fremgå i venstre side af skærmen. Se screendump. Det første tal er breddegrad (lat) og det næste tal er længdegrad (lon).
 
-<p align="center"><img src="doc/google.2.png" alt="forhåndsvisning"  /></p>
+<p align="center"><img src="docs/img/google.2.png" alt="forhåndsvisning"  /></p>
 
 
 ### Danmarks Adresse Web API
@@ -365,7 +365,7 @@ http://api.dataforsyningen.dk/adresser?q=rentemestervej%208,%202400&format=geojs
 
 Returnerer en samling adresser, hvor koordinaterne står i `geometry.coordinates`:
 
-<p align="center"><img src="doc/dawa.png" alt="forhåndsvisning"  /></p>
+<p align="center"><img src="docs/img/dawa.png" alt="forhåndsvisning"  /></p>
 
 
 ### Omregning til decimalgrader
