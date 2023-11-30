@@ -88,7 +88,7 @@ console.log('Updating README')
 try {
 
   let readme = await readHTML('README.md')
-  readme = readme.replaceAll(/\d\.\d\.\d/g, pkg.version)
+  readme = readme.replaceAll(/@\d\.\d\.\d\//g, `@${pkg.version}/`)
   readme = readme.replaceAll(/"sha384-.+"/g, `"${ code_sri_str }"`)
   await writeHTML('README.md', readme)
 

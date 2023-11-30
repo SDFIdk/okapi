@@ -13,7 +13,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js"
+   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.js"
   integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal"
   crossorigin="anonymous"></script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
@@ -73,14 +73,14 @@ F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og
 ### CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js"
+<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.js"
 integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal"
 crossorigin="anonymous"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js`
+Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -88,7 +88,7 @@ Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyn
 
 ### CSS
 
-Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.css`
+Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/okapi.min.css`
 
 ## Anvendelse
 
@@ -246,7 +246,7 @@ Mulige værdier: `true` , `false`. Standard = `true`.
 #### `data-token`
 
 Angiv Dataforsyningen token til autentificering.
-Har du ikke allerede en token kan du oprette en på https://dataforsyningen.dk/).
+(Har du ikke allerede en token, kan du oprette en på https://dataforsyningen.dk/).
 
 #### `data-show-popup`
 
