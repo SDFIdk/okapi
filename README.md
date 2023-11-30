@@ -106,7 +106,7 @@ Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi
 </script>
 ```
 
-[Demo](https://okapi.dataforsyningen.dk/examples/simple.html)
+[Demo](https://sdfidk.github.io/okapi/simple.html)
 
 ### Markører
 
@@ -132,7 +132,7 @@ Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi
 </script>
 ```
 
-[Demo](https://okapi.dataforsyningen.dk/examples/markers-simple.html)
+[Demo](https://sdfidk.github.io/okapi/markers-simple.html)
 
 Du kan tilføje eller fjerne markører dynamisk ved at indsætte eller fjerne flere `<span>`-elementer med data og derefter køre `refresh()` funktionen fra dit okapi objekt.
 
@@ -145,7 +145,7 @@ Du kan tilføje eller fjerne markører dynamisk ved at indsætte eller fjerne fl
 
 ```
 
-[Se demo](https://okapi.dataforsyningen.dk/examples/markers-advanced.html)
+[Se demo](https://sdfidk.github.io/okapi/markers-advanced.html)
 
 ### Brug kort fra Datafordeleren
 
@@ -164,21 +164,21 @@ Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i s
 </script>
 ```
 
-[Demo](https://okapi.dataforsyningen.dk/examples/datafordeler.html)
+[Demo](https://sdfidk.github.io/okapi/datafordeler.html)
 
 ### Flere eksempler
 
-[Alle kort-parametre](https://okapi.dataforsyningen.dk/examples/advanced.html)
+[Alle kort-parametre](https://sdfidk.github.io/okapi/advanced.html)
 
-[Forskellige markører](https://okapi.dataforsyningen.dk/examples/markers-advanced.html)
+[Forskellige markører](https://sdfidk.github.io/okapi/markers-advanced.html)
 
-[To kort på samme side](https://okapi.dataforsyningen.dk/examples/double.html)
+[To kort på samme side](https://sdfidk.github.io/okapi/double.html)
 
-[Andre markør-tooltips](https://okapi.dataforsyningen.dk/examples/tooltip.html)
+[Andre markør-tooltips](https://sdfidk.github.io/okapi/tooltip.html)
 
-[Tilføj et overlay fra Dataforsyningen](https://okapi.dataforsyningen.dk/examples/overlay.html)
+[Tilføj et overlay fra Dataforsyningen](https://sdfidk.github.io/okapi/overlay.html)
 
-[Custom event handling af markør klik](https://okapi.dataforsyningen.dk/examples/custom-click.html)
+[Custom event handling af markør klik](https://sdfidk.github.io/okapi/custom-click.html)
 
 ## Kort-parametre
 
@@ -295,7 +295,7 @@ Hvis man ønsker selv at vælge markør icon, kan det gøres ved at sende et obj
 </script>
 ```
 
-[Demo](https://okapi.dataforsyningen.dk/examples/markers-advanced.html)
+[Demo](https://sdfidk.github.io/okapi/markers-advanced.html)
 
 Det er også muligt selv at lave det html element der skal vises som tooltip når der klikkes på en markør. Hvis man gør det kan man sætte flere parametre på markørene som vil blive vist i tooltippet's element med matchene class navn.
 
@@ -315,7 +315,7 @@ Det er også muligt selv at lave det html element der skal vises som tooltip nå
 </script>
 ```
 
-[Demo](https://okapi.dataforsyningen.dk/examples/tooltip.html)
+[Demo](https://sdfidk.github.io/okapi/tooltip.html)
 
 ## Brugerdefineret håndtering af markør klik
 Hvis du ønsker at kalde en funtion når en markør bliver klikket på kan du gøre det med funktionen `addOnFeatureClickFunction` der tager en callback funktion som parameter som den kalder med den markør der bliver klikket på som parameter.
@@ -330,7 +330,7 @@ Hvis du ønsker at kalde en funtion når en markør bliver klikket på kan du g�
 </script>
 ```
 
-[Demo](https://okapi.dataforsyningen.dk/examples/custom-click.html)
+[Demo](https://sdfidk.github.io/okapi/custom-click.html)
 
 ## Fremsøgning af koordinater
 
