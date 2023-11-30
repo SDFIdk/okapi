@@ -66,13 +66,9 @@ try {
     temp = temp.replaceAll('InsertYourPasswordHere', password)
 
     const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/okapi.min.css`
-    const code_js_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/${ pkg.name }-${ pkg.version }.min.js`
-    
 
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
     code = code.replace('InsertCodeCSSHere', code_css_str)
-    code = code.replace('InsertCodeJSHere', code_js_str)
-    code = code.replace('InsertCodeSRIHere', code_sri_str)
     temp = temp.replace('InsertCodeExampleHere', code)
     
     await writeHTML(`docs/${ file }`, temp)
