@@ -60,8 +60,8 @@ try {
 
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
     
-    const css_str = `../lib/@dataforsyningen/${ pkg.name }-${ pkg.version }.min.css`
-    const js_str = `../lib/@dataforsyningen/${ pkg.name }-${ pkg.version }.min.js`
+    const css_str = `../lib/${ pkg.name }-${ pkg.version }.min.css`
+    const js_str = `../lib/${ pkg.name }-${ pkg.version }.min.js`
 
     let temp = template_html.replace('InsertContentHere', markup).replace('InsertYourTitleHere', title)
     temp = temp.replace('InsertCSSHere', css_str)
@@ -70,8 +70,8 @@ try {
     temp = temp.replaceAll('InsertYourUsernameHere', username)
     temp = temp.replaceAll('InsertYourPasswordHere', password)
 
-    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/${ pkg.name }-${ pkg.version }.min.css`
-    const code_js_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/@dataforsyningen/${ pkg.name }-${ pkg.version }.min.js`
+    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/${ pkg.name }-${ pkg.version }.min.css`
+    const code_js_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi/lib/${ pkg.name }-${ pkg.version }.min.js`
     
 
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
