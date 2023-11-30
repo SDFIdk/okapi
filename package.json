@@ -8,7 +8,6 @@
     "build": "export NODE_ENV=build && node build/build.mjs && npm run build-examples && npm run build-es",
     "dev": "export NODE_ENV=development && node build/build.mjs",
     "build-examples": "node build/build-examples.mjs",
-    "start": "python3 -m http.server 7777",
     "test": "npm run build && npx playwright test",
     "lint": "./node_modules/.bin/eslint src --fix",
     "build-es": "node build/build-es.mjs"
