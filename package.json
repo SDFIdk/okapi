@@ -4,13 +4,14 @@
   "description": "Offentlig Kort API modul",
   "main": "dist/okapi.js",
   "style": "dist/okapi.css",
+  "type": "module",
   "scripts": {
-    "build": "export NODE_ENV=build && node build/build.mjs && npm run build-examples && npm run build-es",
-    "dev": "export NODE_ENV=development && node build/build.mjs",
-    "build-examples": "node build/build-examples.mjs",
+    "build": "export NODE_ENV=build && node bin/build.js && npm run build-examples && npm run build-es",
+    "dev": "export NODE_ENV=development && node bin/build.js",
+    "build-examples": "node bin/build-examples.js",
     "test": "npm run build && npx playwright test",
     "lint": "./node_modules/.bin/eslint src --fix",
-    "build-es": "node build/build-es.mjs"
+    "build-es": "node bin/build-es.js"
   },
   "repository": {
     "type": "git",

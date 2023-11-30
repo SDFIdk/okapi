@@ -1,5 +1,5 @@
 // @ts-check
-const { devices } = require('@playwright/test');
+import { devices } from '@playwright/test'
 
 /**
  * Read environment variables from file.
@@ -38,7 +38,7 @@ const config = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.CI ? 'https://sdfidk.github.io/okapi/' : 'localhost:8000',
+    baseURL: process.env.CI ? 'https://sdfidk.github.io/okapi/' : 'http://localhost:8000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -108,4 +108,4 @@ const config = {
   */
 };
 
-module.exports = config;
+export default config

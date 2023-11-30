@@ -1,7 +1,7 @@
-const { test, expect } = require('@playwright/test')
+import { test, expect } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/examples/markers-advanced.html')
+  await page.goto('/docs/markers-advanced.html')
 })
 
 test.describe('Display a map with several markers', () => {

@@ -1,7 +1,7 @@
-const { test, expect } = require('@playwright/test')
+import { test, expect } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/examples/advanced.html')
+  await page.goto('/docs/advanced.html')
 })
 
 test.describe('Display an advanced map', () => {

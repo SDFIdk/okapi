@@ -73,6 +73,7 @@ export default class MyLocation extends Control {
 
   handleNoGeolocation(error_msg) {
     const error_str = error_msg.message ? error_msg.message : ''
+
     console.error(error_str)
     alert(error_str)
   }
