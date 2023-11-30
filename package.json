@@ -6,9 +6,8 @@
   "style": "dist/okapi.css",
   "type": "module",
   "scripts": {
-    "build": "export NODE_ENV=production && node bin/build-prod.js && cp dist/okapi* docs/",
+    "build": "export NODE_ENV=production && node bin/build-prod.js && cp dist/okapi* docs/ && node bin/build-examples.js",
     "dev": "export NODE_ENV=development && node bin/build-dev.js",
-    "build-examples": "node bin/build-examples.js",
     "test": "npm run build && npx playwright test",
     "lint": "./node_modules/.bin/eslint src --fix"
   },
