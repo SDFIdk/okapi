@@ -10,8 +10,8 @@ esbuild.build({
   outfile: 'dist/okapi.js',
   bundle: true,
   minify: false,
-  format: 'esm',
   sourcemap: true,
+  format: 'esm',
   loader: { 
     '.png': 'dataurl'
   },
