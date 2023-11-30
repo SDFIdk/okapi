@@ -48,8 +48,8 @@
         -->
 
         <script type="module">
-          import okapi from './okapi.min.js'
-          var maps = new okapi.Initialize({});
+          import { Initialize } from './okapi.min.js'
+          const maps = new Initialize({})
 
           maps.maps[0].addOnFeatureClickFunction((feature) => {
             console.log(feature)
@@ -101,8 +101,8 @@
         -->
 
         &lt;script type="module">
-          import okapi from './okapi.min.js'
-          var maps = new okapi.Initialize({});
+          import { Initialize } from './okapi.min.js'
+          const maps = new Initialize({})
 
           maps.maps[0].addOnFeatureClickFunction((feature) => {
             console.log(feature)

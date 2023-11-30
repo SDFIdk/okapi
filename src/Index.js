@@ -27,7 +27,7 @@ SOFTWARE.
 import Map from './Map'
 import Initialize from './Initialize.js'
 
-export default {
+export {
   Map,
   Initialize
 }

@@ -22433,14 +22433,9 @@ var Initialize = class {
   }
 };
 var Initialize_default = Initialize;
-
-// src/Index.js
-var Index_default = {
-  Map: Map2,
-  Initialize: Initialize_default
-};
 export {
-  Index_default as default
+  Initialize_default as Initialize,
+  Map2 as Map
 };
 /*!
 
