@@ -4,7 +4,7 @@ import { stylusLoader } from 'esbuild-stylus-loader'
 console.log('--------------------------')
 console.log('Building ES module')
 
-const destinations = ['dist', 'examples']
+const destinations = ['dist', 'docs']
 
 // Production build
 

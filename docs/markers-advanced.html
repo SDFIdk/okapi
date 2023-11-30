@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="da" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Markers advanced</title>
+    
+    <link rel="shortcut icon" href="./okapi-small.png">
+
+    <link href="./prism.css" rel="stylesheet">
+    <link href="./example.css" rel="stylesheet">
+
+    <link href="./okapi.css" rel="stylesheet">
+
+    <script type="text/javascript" src="./clipboard.min.js"></script>
+    <script type="text/javascript" src="./prism.js"></script>
+    
+  </head>
+  <body>
+    <main>
+        <span
+          class="geomarker"
+          data-type="zoo"
+          data-title="Odense Zoo"
+          data-description="Vil du vide, hvad der sker på dagen for dit besøg?
+          Gå til dagsprogram og vælg dato for dit besøg i kalenderen. Så får du en liste over alle de aktiviteter, der sker i haven den dag.
+          </br>
+          </br>
+
+          <a class='link' href='https://www.odensezoo.dk/besoeg-zoo/program/' target='_blank'>Se dagsprogram</a>
+          "
+          data-address="Søndre Boulevard 306, 5000 Odense">
+        </span>
+        <span
+          class="geomarker"
+          data-type="museum"
+          data-title="Danmarks Jernbanemuseum"
+          data-description="På over 10.000 m2 finder du vogne og lokomotiver, busser, færgemodeller, modelbaner, legepladser. Alt i en autentisk jernbanebygning med sport og drejeskiver"
+          data-lat="55.402909"
+          data-lon="10.386536">
+        </span>
+        <span
+          class="geomarker"
+          data-type="museum"
+          data-title="Den Fynske Landsby"
+          data-description="På frilandsmuseet Den Fynske Landsby inviteres du indenfor i en fynsk landsby fra H.C. Andersens tid."
+          data-lat="55.366732"
+          data-lon="10.385352">
+        </span>
+
+        <div
+          id="map"
+          class="geomap"
+          data-type=""
+          data-center="auto"
+          data-zoom="6"
+          data-background="dtk_skaermkort_daempet"
+          data-mylocation="false"
+          data-fullscreen="false"
+          data-zoomslider="false"
+          data-layerswitcher="false"
+          data-token="fd44f26ab5701c01ca9f570e507fe9ab"
+          style="height: 400px;">
+        </div>
+
+        <!--
+        Udskift 'data-token=' med din egen token fra Dataforsyningen.
+        Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
+        Opret en token og brug den i din applikation
+        Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+        English
+        Replace the 'data-token=' with your own token from the Danish map supply.
+        If you do not have a token please log in to "My page" https://www.dataforsyningen.dk/
+        Create a token and use it in your application
+        Token in this example is temporary and solely for test use.
+        -->
+
+        <script type="module">
+          import okapi from './okapi.js'
+          var maps = new okapi.Initialize({
+            icons: {
+              'museum': 'custom.png'
+            }
+          });
+
+          // Venter 3 sekunder og tilføjer en ny markør
+          setTimeout(function() {
+
+            var new_marker = document.createElement('span')
+            new_marker.className = "geomarker"
+            new_marker.dataset.title = "Ny markør"
+            new_marker.dataset.description="Denne markør blev oprettet dynamisk efter siden var loaded"
+            new_marker.dataset.address="L.A. Rings Vej 4, 5230 Odense M"
+            document.querySelector('main').append(new_marker)
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 3000)
+
+          // Venter 6 sekunder og fjerner en markør
+          setTimeout(function() {
+
+            document.querySelector('span[data-title="Den Fynske Landsby"]').remove()
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 6000)
+        </script>
+</main>
+    <aside>
+      <pre>
+        <code class="language-markup">
+          
+&lt;!DOCTYPE html>
+&lt;html lang="da">
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1.0">
+    &lt;title>Eksempel&lt;/title>
+    
+    &lt;link href="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/okapi.min.css" rel="stylesheet">
+    &lt;script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/lib/@dataforsyningen/okapi-1.9.2.min.js" integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal" crossorigin="anonymous">&lt;/script>
+    
+    
+  &lt;/head>
+  &lt;body>
+    &lt;main>
+        &lt;span
+          class="geomarker"
+          data-type="zoo"
+          data-title="Odense Zoo"
+          data-description="Vil du vide, hvad der sker på dagen for dit besøg?
+          Gå til dagsprogram og vælg dato for dit besøg i kalenderen. Så får du en liste over alle de aktiviteter, der sker i haven den dag.
+          &lt;/br>
+          &lt;/br>
+
+          &lt;a class='link' href='https://www.odensezoo.dk/besoeg-zoo/program/' target='_blank'>Se dagsprogram&lt;/a>
+          "
+          data-address="Søndre Boulevard 306, 5000 Odense">
+        &lt;/span>
+        &lt;span
+          class="geomarker"
+          data-type="museum"
+          data-title="Danmarks Jernbanemuseum"
+          data-description="På over 10.000 m2 finder du vogne og lokomotiver, busser, færgemodeller, modelbaner, legepladser. Alt i en autentisk jernbanebygning med sport og drejeskiver"
+          data-lat="55.402909"
+          data-lon="10.386536">
+        &lt;/span>
+        &lt;span
+          class="geomarker"
+          data-type="museum"
+          data-title="Den Fynske Landsby"
+          data-description="På frilandsmuseet Den Fynske Landsby inviteres du indenfor i en fynsk landsby fra H.C. Andersens tid."
+          data-lat="55.366732"
+          data-lon="10.385352">
+        &lt;/span>
+
+        &lt;div
+          id="map"
+          class="geomap"
+          data-type=""
+          data-center="auto"
+          data-zoom="6"
+          data-background="dtk_skaermkort_daempet"
+          data-mylocation="false"
+          data-fullscreen="false"
+          data-zoomslider="false"
+          data-layerswitcher="false"
+          data-token="InsertYourTokenHere"
+          style="height: 400px;">
+        &lt;/div>
+
+        &lt;!--
+        Udskift 'data-token=' med din egen token fra Dataforsyningen.
+        Hvis ikke du har en token så log ind på ’Min side’ https://www.dataforsyningen.dk/
+        Opret en token og brug den i din applikation
+        Token i dette eksempel er midlertidig og udelukkende til test brug.
+
+        English
+        Replace the 'data-token=' with your own token from the Danish map supply.
+        If you do not have a token please log in to "My page" https://www.dataforsyningen.dk/
+        Create a token and use it in your application
+        Token in this example is temporary and solely for test use.
+        -->
+
+        &lt;script type="module">
+          import okapi from './okapi.js'
+          var maps = new okapi.Initialize({
+            icons: {
+              'museum': 'custom.png'
+            }
+          });
+
+          // Venter 3 sekunder og tilføjer en ny markør
+          setTimeout(function() {
+
+            var new_marker = document.createElement('span')
+            new_marker.className = "geomarker"
+            new_marker.dataset.title = "Ny markør"
+            new_marker.dataset.description="Denne markør blev oprettet dynamisk efter siden var loaded"
+            new_marker.dataset.address="L.A. Rings Vej 4, 5230 Odense M"
+            document.querySelector('main').append(new_marker)
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 3000)
+
+          // Venter 6 sekunder og fjerner en markør
+          setTimeout(function() {
+
+            document.querySelector('span[data-title="Den Fynske Landsby"]').remove()
+
+            // Kører `refresh()` metoden for at opdatere kort
+            maps.refresh()
+
+          }, 6000)
+        &lt;/script>
+&lt;/main>
+  &lt;/body>
+&lt;/html>
+
+        </code>
+      </pre>
+      <script>
+        (function(){
+          Prism.plugins.toolbar.registerButton('copy-to-clipboard', function (env) {
+            var linkCopy = document.createElement('a');
+            linkCopy.textContent = ' Copy';
+  
+            if (!ClipboardJS) {
+              callbacks.push(registerClipboard);
+            } else {
+              registerClipboard();
+            }
+  
+            return linkCopy;
+  
+            function registerClipboard() {
+              var clip = new ClipboardJS(linkCopy, {
+                'text': function () {
+                  return env.code;
+                }
+              });
+  
+  
+              clip.on('success', function() {
+                linkCopy.textContent = ' Copied!';
+              });
+            }
+          });
+        })();
+      </script>
+    </aside>
+  </body>
+</html>

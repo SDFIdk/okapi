@@ -75,7 +75,7 @@ try {
     code = code.replace('InsertCodeSRIHere', code_sri_str)
     temp = temp.replace('InsertCodeExampleHere', code)
     
-    await writeHTML(`examples/${ file }`, temp)
+    await writeHTML(`docs/${ file }`, temp)
 
   }
 
