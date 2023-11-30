@@ -13,10 +13,8 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.js"
-  integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal"
-  crossorigin="anonymous"></script>`
-   - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi.min.js"></script>`
+   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.js"></script>`
+   - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi-1.9.0.min.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
    - Husk at indsætte din egen token i `data-token`-attributten.
 
@@ -73,14 +71,12 @@ F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og
 ### CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.js"
-integrity="sha384-SgEw9Obq1dyR6wtxJA65RKk3C/YrDqC0Dl79+dBxqQChkHJ/KRBCNKTsUq6Tmxal"
-crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.js"></script>
 ```
 
 ### Lokal kopi
 
-Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.js`
+Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.js`
 
 ```html
 <script src="/path/to/okapi.js"></script>
@@ -88,7 +84,7 @@ Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/okapi.min.j
 
 ### CSS
 
-Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/okapi.min.css`
+Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.css`
 
 ## Anvendelse
 
