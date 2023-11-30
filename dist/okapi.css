@@ -491,6 +491,9 @@
 }
 
 /* stylus:/Users/frank/projects/okapi/src/Map.styl */
+.geomap {
+  height: 100%;
+}
 .geomap .ol-control button {
   height: 30px;
   width: 30px;

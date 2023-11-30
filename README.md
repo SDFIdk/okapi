@@ -70,16 +70,27 @@ F.eks. i dette tilfælde, hvor vi har bygget okapi ind i filerne `bundled.js` og
 
 ### CDN
 
-```html
-<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.js"></script>
-```
-
-### Lokal kopi
-
-Download filen: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.js`
+Brug OKAPI CSS og JS direkte fra CDN ved at 
 
 ```html
-<script src="/path/to/okapi.js"></script>
+<head>
+  ...
+  <link href="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/lib/@dataforsyningen/okapi-1.9.0.min.css" rel="stylesheet">
+  ...
+</head>
+<body>
+  ...
+  <div
+    id="map"
+    class="geomap"
+    data-token="InsertTokenHere">
+  </div>
+  
+  <script type="module">
+    import * as okapi from 'https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.0/dist/index.js'
+    new okapi.Initialize({})
+  </script>
+</body>
 ```
 
 ### CSS
