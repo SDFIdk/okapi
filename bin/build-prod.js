@@ -1,15 +1,13 @@
 import esbuild from 'esbuild'
 import { stylusLoader } from 'esbuild-stylus-loader'
+import pkg from '../package.json' assert {type: 'json'}
 
 console.log('--------------------------')
 console.log('Building ES modules and CSS')
 
-// Production build dist
-esbuild.build({
+const shared = {
   entryPoints: ['src/Index.js'],
-  outfile: 'dist/okapi.js',
   bundle: true,
-  minify: false,
   sourcemap: true,
   format: 'esm',
   loader: { 
@@ -18,40 +16,41 @@ esbuild.build({
   plugins: [
     stylusLoader()
   ]
+}
+
+// Production build dist JS/CSS
+esbuild.build({
+  ...shared,
+  outfile: 'dist/okapi.js',
+  minify: false
 })
 .then((response) => {
   console.log('Build finished. `dist` updated 👍')
 })
 .catch(() => process.exit(1))
 
-// Production build dist minified
+// Production build dist JS/CSS minified
 esbuild.build({
-  entryPoints: ['src/Index.js'],
+  ...shared,
   outfile: 'dist/okapi.min.js',
-  bundle: true,
-  minify: true,
-  format: 'esm',
-  sourcemap: true,
-  loader: { 
-    '.png': 'dataurl'
-  },
-  plugins: [
-    stylusLoader()
-  ]
+  minify: true
 })
 .then((response) => {
   console.log('Build finished. `dist` minified updated 👍')
 })
 .catch(() => process.exit(1))
 
-// Build for docs
+// Production build lib JS/CSS
+const filename = `${ pkg.name }-${ pkg.version }.min`
+const entry_points = {[filename]: 'src/Index.js'}
 esbuild.build({
-  entryPoints: ['src/Index.js'],
-  outfile: 'docs/okapi.min.js',
+  entryPoints: entry_points,
+  outdir: 'lib',
   bundle: true,
   minify: true,
-  format: 'esm',
   sourcemap: true,
+  format: 'iife',
+  globalName: 'okapi',
   loader: { 
     '.png': 'dataurl'
   },
@@ -60,6 +59,6 @@ esbuild.build({
   ]
 })
 .then((response) => {
-  console.log('Build finished. `docs` minified updated 👍')
+  console.log('Build finished. `lib` minified versioned files created 👍')
 })
 .catch(() => process.exit(1))

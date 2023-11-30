@@ -6,12 +6,11 @@
   "style": "dist/okapi.css",
   "type": "module",
   "scripts": {
-    "build": "export NODE_ENV=build && node bin/build.js && npm run build-examples && npm run build-es",
-    "dev": "export NODE_ENV=development && node bin/build.js",
+    "build": "export NODE_ENV=production && node bin/build-prod.js && cp dist/okapi* docs/",
+    "dev": "export NODE_ENV=development && node bin/build-dev.js",
     "build-examples": "node bin/build-examples.js",
     "test": "npm run build && npx playwright test",
-    "lint": "./node_modules/.bin/eslint src --fix",
-    "build-es": "node bin/build-es.js"
+    "lint": "./node_modules/.bin/eslint src --fix"
   },
   "repository": {
     "type": "git",
