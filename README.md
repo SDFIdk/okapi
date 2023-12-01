@@ -77,7 +77,7 @@ Brug OKAPI CSS og JS direkte fra CDN:
 ```html
 <head>
   ...
-  <link href="https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.0.0/dist/okapi.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.1.0/dist/okapi.min.css" rel="stylesheet">
   ...
 </head>
 <body>
@@ -98,7 +98,7 @@ Brug OKAPI CSS og JS direkte fra CDN:
 
 ### CSS
 
-Vores standard styling kan findes her: https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.0.0/dist/okapi.min.css
+Vores standard styling kan findes her: https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.1.0/dist/okapi.min.css
 
 ## Anvendelse
 
