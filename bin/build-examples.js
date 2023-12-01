@@ -41,7 +41,7 @@ async function writeHTML(file, html) {
 const src_dir = 'src/examples'
 const template_html = await readHTML(`${src_dir}/templates/template.html`)
 const template_code_html = await readHTML(`${src_dir}/templates/template-code.html`)
-const js_file_str = await readHTML(`lib/${ pkg.name }-${ pkg.version }.min.js`)
+const js_file_str = await readHTML(`dist/okapi.min.js`)
 const code_sri_str = getSRI(js_file_str, getSRI.SHA384, true)
 
 const token = process.env.TOKEN
@@ -65,7 +65,7 @@ try {
     temp = temp.replaceAll('InsertYourUsernameHere', username)
     temp = temp.replaceAll('InsertYourPasswordHere', password)
 
-    const code_css_str = `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/okapi.min.css`
+    const code_css_str = `https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@${pkg.version}/dist/okapi.min.css`
 
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
     code = code.replace('InsertCodeCSSHere', code_css_str)
@@ -84,8 +84,8 @@ console.log('Updating README')
 try {
 
   let readme = await readHTML('README.md')
-  //readme = readme.replaceAll(/@\d\.\d\.\d\//g, `@${pkg.version}/`)
-  readme = readme.replaceAll(/"sha384-.+"/g, `"${ code_sri_str }"`)
+  readme = readme.replaceAll(/@\d\.\d\.\d\//g, `@${pkg.version}/`)
+  //readme = readme.replaceAll(/"sha384-.+"/g, `"${ code_sri_str }"`) // TODO: Do we need this?
   await writeHTML('README.md', readme)
 
 } catch (err) {
