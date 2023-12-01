@@ -41,7 +41,7 @@ esbuild.build({
 .catch(() => process.exit(1))
 
 // Production build lib JS/CSS
-const filename = `${ pkg.name }-${ pkg.version }.min`
+const filename = `okapi-${ pkg.version }.min`
 const entry_points = {[filename]: 'src/Index.js'}
 esbuild.build({
   entryPoints: entry_points,
