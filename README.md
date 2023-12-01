@@ -13,8 +13,8 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag i `<head>`-tagget på din hjemmeside
-   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/lib/@dataforsyningen/okapi-1.9.0.min.js"></script>`
-   - Eller hav filen liggende på din egen server: `<script src="/path/to/okapi-1.9.0.min.js"></script>`
+   - Benyt enten vores CDN: `<script src="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/index.js"></script>`
+   - Eller hav filen liggende på din egen server: `<script src="/path/to/index.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
    - Husk at indsætte din egen token i `data-token`-attributten.
 
