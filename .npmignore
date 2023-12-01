@@ -1,0 +1,11 @@
+bin/
+lib/
+test/
+.github/
+docs/
+playwright.config.js
+DEVELOPING.md
+.eslintrc
+.env.example
+.editorconfig
+.travis.yml
