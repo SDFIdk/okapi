@@ -72,12 +72,12 @@ Som i eksemplet her, hvor vi har bygget filerne `bundled.js` og `bundled.css`:
 
 ### CDN
 
-Brug OKAPI CSS og JS direkte fra CDN ved at 
+Brug OKAPI CSS og JS direkte fra CDN:
 
 ```html
 <head>
   ...
-  <link href="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/lib/@dataforsyningen/okapi-1.9.0.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/index.css" rel="stylesheet">
   ...
 </head>
 <body>
@@ -89,15 +89,16 @@ Brug OKAPI CSS og JS direkte fra CDN ved at
   </div>
   
   <script type="module">
-    import * as okapi from 'https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/dist/index.js'
-    new okapi.Initialize({})
+    import { Initialize } from 'https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/index.js'
+    new Initialize({})
   </script>
+
 </body>
 ```
 
 ### CSS
 
-Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi@1.9.2/lib/@dataforsyningen/okapi-1.9.0.min.css`
+Vores standard styling kan findes her: https://cdn.jsdelivr.net/gh/SDFIdk/okapi@latest/dist/index.css
 
 ## Anvendelse
 
@@ -111,7 +112,7 @@ Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi
 </div>
 
 <script>
-  var map = new okapi.Initialize({});
+  var map = new Initialize({});
 </script>
 ```
 
@@ -137,7 +138,7 @@ Vores standard styling kan findes her: `https://cdn.jsdelivr.net/gh/SDFIdk/okapi
 </div>
 
 <script>
-  var map = new okapi.Initialize({});
+  var map = new Initialize({});
 </script>
 ```
 
@@ -147,7 +148,7 @@ Du kan tilføje eller fjerne markører dynamisk ved at indsætte eller fjerne fl
 
 ```html
 <script>
-  var map = new okapi.Initialize({});
+  var map = new Initialize({});
   // ... kode, der indsætter eller fjerner elementer ...
   map.refresh()
 </script>
@@ -169,7 +170,7 @@ Det er muligt at hente det normale og dæmpede skærmkort fra Datafordeleren i s
 </div>
 
 <script>
-  var map = new okapi.Initialize({});
+  var map = new Initialize({});
 </script>
 ```
 
@@ -296,7 +297,7 @@ Hvis man ønsker selv at vælge markør icon, kan det gøres ved at sende et obj
 
 ```html
 <script>
-  var map = new okapi.Initialize({
+  var map = new Initialize({
     icons: {
       'museum': 'custom.png'
     }
@@ -318,7 +319,7 @@ Det er også muligt selv at lave det html element der skal vises som tooltip nå
 </div>
 
 <script>
-  var map = new okapi.Initialize({
+  var map = new Initialize({
     popup: document.getElementById('popup')
   });
 </script>
@@ -331,7 +332,7 @@ Hvis du ønsker at kalde en funtion når en markør bliver klikket på kan du g�
 
 ```html
 <script>
-  var maps = new okapi.Initialize({});
+  var maps = new Initialize({});
 
   maps.maps[0].addOnFeatureClickFunction((feature) => {
     console.log(feature)
