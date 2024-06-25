@@ -205,7 +205,7 @@ export default class Map {
         type: 'WMTS',
         title: 'Natur og Friluftskort',
         visible: background === 'natur_friluftskort',
-        service: 'natur_friluftskort',
+        service: 'wmts/natur_friluftskort',
         layer: 'nfkort',
         matrixSet: 'View1',
         format: 'image/jpeg',
