@@ -111,7 +111,11 @@ export default class Map {
         matrixSet: 'View1',
         format: 'image/jpeg',
         tileGrid: dfTileGrid,
-        auth: dfAuth
+        auth: dfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/962',
+          text: 'SDFI'
+        }
       }))
       layers.push(createLayer({
         name: 'dtk_skaermkort_daempet',
@@ -124,7 +128,11 @@ export default class Map {
         matrixSet: 'View1',
         format: 'image/jpeg',
         tileGrid: dfTileGrid,
-        auth: dfAuth
+        auth: dfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/962',
+          text: 'SDFI'
+        }
       }))
       layers.push(createLayer({
         name: 'orto_foraar',
@@ -137,7 +145,11 @@ export default class Map {
         matrixSet: 'KortforsyningTilingDK',
         format: 'image/jpeg',
         tileGrid: dfTileGrid,
-        auth: dfAuth
+        auth: dfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/981',
+          text: 'GeoDanmark'
+        }
       }))
     } else if (this._token) { // Dataforsyningen bruger
       layers.push(createLayer({
@@ -150,7 +162,11 @@ export default class Map {
         matrixSet: 'View1',
         format: 'image/jpeg',
         tileGrid: kfTileGrid,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/962',
+          text: 'SDFI'
+        }
       }))
       layers.push(createLayer({
         name: 'dtk_skaermkort_daempet',
@@ -163,7 +179,11 @@ export default class Map {
         matrixSet: 'View1',
         format: 'image/jpeg',
         tileGrid: kfTileGrid,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/962',
+          text: 'SDFI'
+        }
       }))
       layers.push(createLayer({
         name: 'orto_foraar',
@@ -176,7 +196,10 @@ export default class Map {
         matrixSet: 'KortforsyningTilingDK',
         format: 'image/jpeg',
         tileGrid: kfTileGrid,
-        auth: kfAuth
+        auth: kfAuth,attribution: {
+          link: 'https://dataforsyningen.dk/data/981',
+          text: 'GeoDanmark'
+        }
       }))
     }
     if (this._token) { // Dataforsyningen bruger
@@ -188,7 +211,11 @@ export default class Map {
         service: 'forvaltning2',
         layer: 'basis_kort',
         format: 'image/png',
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/2680',
+          text: 'SDFI'
+        }
       }))
       layers.push(createLayer({
         name: 'kommunikation',
@@ -198,7 +225,11 @@ export default class Map {
         service: 'kommunikation',
         layer: 'Kommunikationskort',
         format: 'image/png',
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/4690',
+          text: 'SDFI'
+        }
       }))
       layers.push(createLayer({
         name: 'natur_friluftskort',
@@ -210,7 +241,11 @@ export default class Map {
         matrixSet: 'View1',
         format: 'image/jpeg',
         tileGrid: kfTileGrid2,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: 'https://dataforsyningen.dk/data/2683',
+          text: 'SDFI'
+        }
       }))
     }
 

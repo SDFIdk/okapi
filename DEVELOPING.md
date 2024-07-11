@@ -18,10 +18,10 @@ I konsolen:
 ```
 npm run dev
 ```
-Det starter en udviklingsserver, så du kan åbne eksempel-sider i en browser; f.eks. på [localhost:8000/examples/simple.html].
+Det starter en udviklingsserver, så du kan åbne eksempel-sider i en browser; f.eks. på [localhost:8000/docs/simple.html].
 
 Så længe den kører, vil den automatisk bygge med nye ændringer du laver i `/src`.
-HTML-eksemplerne i `/examples` bliver dog ikke opdateret, med mindre du kører `npm run build`
+HTML-eksemplerne i `/docs` bliver dog ikke opdateret, med mindre du kører `npm run build`
 
 ## Byg til prod
 
