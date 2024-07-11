@@ -13,7 +13,7 @@ Før brug skal man oprette en bruger på [Dataforsyningen](https://dataforsyning
 1. Opret en bruger på [Dataforsyningen](https://www.dataforsyningen.dk)
 2. Log ind på dataforsyningen.dk med din nye bruger, og opret en token.
 3. Indsæt `<script>`-tag på din hjemmeside
-   - Benyt enten vores CDN: `<script type="module">import {Initialize} from "https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.2.0"</script>`
+   - Benyt enten vores CDN: `<script type="module">import {Initialize} from "https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.3.0"</script>`
    - Eller hav filen liggende på din egen server: `<script src="/path/to/index.js"></script>`
 4. Indsæt `<div id="map" class="geomap" data-token="...">`-tag, dér hvor du vil have kortet.
    - Husk at indsætte din egen token i `data-token`-attributten.
@@ -77,7 +77,7 @@ Brug OKAPI CSS og JS direkte fra CDN:
 ```html
 <head>
   ...
-  <link href="https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.2.0/dist/okapi.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.3.0/dist/okapi.min.css" rel="stylesheet">
   ...
 </head>
 <body>
@@ -89,7 +89,7 @@ Brug OKAPI CSS og JS direkte fra CDN:
   </div>
   
   <script type="module">
-    import { Initialize } from 'https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.2.0'
+    import { Initialize } from 'https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.3.0'
     new Initialize({})
   </script>
 
@@ -98,7 +98,7 @@ Brug OKAPI CSS og JS direkte fra CDN:
 
 ### CSS
 
-Vores standard styling kan findes her: https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.2.0/dist/okapi.min.css
+Vores standard styling kan findes her: https://cdn.jsdelivr.net/npm/@dataforsyningen/okapi@2.3.0/dist/okapi.min.css
 
 ## Anvendelse
 
