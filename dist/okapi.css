@@ -1,3 +1,4 @@
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/control/MyLocation.styl */
 .geomap .ol-my-location {
   bottom: 25px;
   right: 5px;
@@ -6,6 +7,7 @@
   bottom: calc(102px + 25%);
 }
 
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/control/LayerSwitcher.styl */
 .ol-layer-switcher.ol-unselectable.ol-control {
   left: 0;
   right: 0;
@@ -113,6 +115,9 @@
   color: #000;
 }
 
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/control/markers/CreateMarkers.styl */
+
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/control/markers/CreateMarkerTooltip.styl */
 .geomap .ol-popup {
   position: absolute;
   background-color: #fff;
@@ -486,6 +491,7 @@
   cursor: move;
 }
 
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/Map.styl */
 .geomap {
   height: 100%;
 }
@@ -531,6 +537,7 @@
   background-color: rgba(210, 210, 210, 0.5);
 }
 
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/ZoomSlider.styl */
 .geomap .ol-zoom {
   top: auto;
   left: auto;
@@ -556,6 +563,7 @@
   height: 10px;
 }
 
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/ScaleLine.styl */
 .geomap .ol-scale-line {
   top: auto;
   left: auto;
@@ -567,6 +575,7 @@
   border-color: #000;
 }
 
+/* stylus:/mnt/c/Users/Johan/Documents/GitHub/okapi/src/FullScreen.styl */
 .geomap .ol-full-screen {
   bottom: auto;
   left: auto;

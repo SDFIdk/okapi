@@ -25194,7 +25194,6 @@ var createUrl = function(service, auth) {
   return null;
 };
 var createLayer2 = function(opt) {
-  console.log(opt.attribution, opt);
   const name = opt.name || "";
   const type = opt.type || "";
   const title = opt.title || name;
@@ -25403,7 +25402,7 @@ var Map2 = class {
         auth: dfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/962",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
       layers.push(createLayer2({
@@ -25419,7 +25418,7 @@ var Map2 = class {
         auth: dfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/962",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
       layers.push(createLayer2({
@@ -25453,7 +25452,7 @@ var Map2 = class {
         auth: kfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/962",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
       layers.push(createLayer2({
@@ -25469,7 +25468,7 @@ var Map2 = class {
         auth: kfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/962",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
       layers.push(createLayer2({
@@ -25502,7 +25501,7 @@ var Map2 = class {
         auth: kfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/2680",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
       layers.push(createLayer2({
@@ -25516,7 +25515,7 @@ var Map2 = class {
         auth: kfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/4690",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
       layers.push(createLayer2({
@@ -25532,7 +25531,7 @@ var Map2 = class {
         auth: kfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/2683",
-          text: "SDFI"
+          text: "KDS"
         }
       }));
     }

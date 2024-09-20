@@ -114,7 +114,7 @@ export default class Map {
         auth: dfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/962',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
       layers.push(createLayer({
@@ -131,7 +131,7 @@ export default class Map {
         auth: dfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/962',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
       layers.push(createLayer({
@@ -165,7 +165,7 @@ export default class Map {
         auth: kfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/962',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
       layers.push(createLayer({
@@ -182,7 +182,7 @@ export default class Map {
         auth: kfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/962',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
       layers.push(createLayer({
@@ -214,7 +214,7 @@ export default class Map {
         auth: kfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/2680',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
       layers.push(createLayer({
@@ -228,7 +228,7 @@ export default class Map {
         auth: kfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/4690',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
       layers.push(createLayer({
@@ -244,7 +244,7 @@ export default class Map {
         auth: kfAuth,
         attribution: {
           link: 'https://dataforsyningen.dk/data/2683',
-          text: 'SDFI'
+          text: 'KDS'
         }
       }))
     }

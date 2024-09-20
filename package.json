@@ -17,13 +17,13 @@
   },
   "keywords": [
     "library",
-    "SDFI",
+    "KDS",
     "map"
   ],
   "author": {
-    "name": "Styrelsen for Dataforsyning og Infrastruktur",
-    "email": "support@sdfi.dk",
-    "url": "https://sdfi.dk/"
+    "name": "Klimadatastyrelsen",
+    "email": "support@kds.dk",
+    "url": "https://kds.dk/"
   },
   "license": "MIT",
   "bugs": {

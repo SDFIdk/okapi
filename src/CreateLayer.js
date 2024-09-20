@@ -27,7 +27,6 @@ const createUrl = function (service, auth) {
 }
 
 export const createLayer = function (opt) {
-  console.log(opt.attribution, opt)
   const name = opt.name || ''
   const type = opt.type || ''
   const title = opt.title || name
