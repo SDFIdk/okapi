@@ -25176,32 +25176,12 @@ var Resolutions = [1638.4, 819.2, 409.6, 204.8, 102.4, 51.2, 25.6, 12.8, 6.4, 3.
 var MatrixIds = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"];
 var Size = [256, 256];
 
-// src/utility/IsMobile.js
-var Android = function() {
-  return navigator.userAgent.match(/Android/i) && navigator.userAgent.match(/Mobile/i);
-};
-var BlackBerry = function() {
-  return navigator.userAgent.match(/BlackBerry/i);
-};
-var iOS = function() {
-  return navigator.userAgent.match(/iPhone|iPod/i);
-};
-var Opera = function() {
-  return navigator.userAgent.match(/Opera Mini/i);
-};
-var Windows = function() {
-  return navigator.userAgent.match(/IEMobile/i);
-};
-var any = function() {
-  return Android() || BlackBerry() || iOS() || Opera() || Windows();
-};
-
 // src/CreateLayer.js
-var kfText = any() ? "SDFI" : "Styrelsen for Dataforsyning og Infrastruktur";
-var kfLink = "https://download.dataforsyningen.dk/content/vilk%C3%A5r-og-betingelser";
-var kfAttributionText = '&copy; <a target="_blank" href="' + kfLink + '">' + kfText + "</a>";
-var dfLink = "https://datafordeler.dk/vejledning/brugervilkaar/sdfi-geografiske-data/";
-var dfAttributionText = '&copy; <a target="_blank" href="' + dfLink + '">' + kfText + "</a>";
+var ccbyText = "(CC BY)";
+var ccbyLink = "https://creativecommons.org/licenses/by/4.0/deed.da";
+var createAttribution = function(link, text) {
+  return '<a target="_blank" href="' + ccbyLink + '">' + ccbyText + '</a> <a target="_blank" href="' + link + '">' + text + "</a>";
+};
 var createUrl = function(service, auth) {
   if (auth.source === "kf") {
     const baseUrl = "https://api.dataforsyningen.dk/";
@@ -25227,7 +25207,7 @@ var createLayer2 = function(opt) {
   const matrixSet = opt.matrixSet;
   const format = opt.format || "";
   const tileGrid = opt.tileGrid;
-  const attributionText = opt.auth.source === "kf" ? kfAttributionText : opt.auth.source === "df" ? dfAttributionText : opt.attribution;
+  const attributionText = createAttribution(opt.attribution.link, opt.attribution.text);
   let source = null;
   if (type === "WMTS") {
     source = new WMTS_default2({
@@ -25419,7 +25399,11 @@ var Map2 = class {
         matrixSet: "View1",
         format: "image/jpeg",
         tileGrid: dfTileGrid,
-        auth: dfAuth
+        auth: dfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/962",
+          text: "KDS"
+        }
       }));
       layers.push(createLayer2({
         name: "dtk_skaermkort_daempet",
@@ -25431,7 +25415,11 @@ var Map2 = class {
         matrixSet: "View1",
         format: "image/jpeg",
         tileGrid: dfTileGrid,
-        auth: dfAuth
+        auth: dfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/962",
+          text: "KDS"
+        }
       }));
       layers.push(createLayer2({
         name: "orto_foraar",
@@ -25444,7 +25432,11 @@ var Map2 = class {
         matrixSet: "KortforsyningTilingDK",
         format: "image/jpeg",
         tileGrid: dfTileGrid,
-        auth: dfAuth
+        auth: dfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/981",
+          text: "GeoDanmark"
+        }
       }));
     } else if (this._token) {
       layers.push(createLayer2({
@@ -25457,7 +25449,11 @@ var Map2 = class {
         matrixSet: "View1",
         format: "image/jpeg",
         tileGrid: kfTileGrid,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/962",
+          text: "KDS"
+        }
       }));
       layers.push(createLayer2({
         name: "dtk_skaermkort_daempet",
@@ -25469,7 +25465,11 @@ var Map2 = class {
         matrixSet: "View1",
         format: "image/jpeg",
         tileGrid: kfTileGrid,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/962",
+          text: "KDS"
+        }
       }));
       layers.push(createLayer2({
         name: "orto_foraar",
@@ -25482,7 +25482,11 @@ var Map2 = class {
         matrixSet: "KortforsyningTilingDK",
         format: "image/jpeg",
         tileGrid: kfTileGrid,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/981",
+          text: "GeoDanmark"
+        }
       }));
     }
     if (this._token) {
@@ -25494,7 +25498,11 @@ var Map2 = class {
         service: "forvaltning2",
         layer: "basis_kort",
         format: "image/png",
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/2680",
+          text: "KDS"
+        }
       }));
       layers.push(createLayer2({
         name: "kommunikation",
@@ -25504,7 +25512,11 @@ var Map2 = class {
         service: "kommunikation",
         layer: "Kommunikationskort",
         format: "image/png",
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/4690",
+          text: "KDS"
+        }
       }));
       layers.push(createLayer2({
         name: "natur_friluftskort",
@@ -25516,7 +25528,11 @@ var Map2 = class {
         matrixSet: "View1",
         format: "image/jpeg",
         tileGrid: kfTileGrid2,
-        auth: kfAuth
+        auth: kfAuth,
+        attribution: {
+          link: "https://dataforsyningen.dk/data/2683",
+          text: "KDS"
+        }
       }));
     }
     const overlays = [];

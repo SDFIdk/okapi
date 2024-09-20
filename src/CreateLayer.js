@@ -2,15 +2,14 @@ import TileLayer from 'ol/layer/Tile'
 import WMTS from 'ol/source/WMTS'
 import TileWMS from 'ol/source/TileWMS'
 import { Size } from './constants'
-import { any } from './utility/IsMobile'
 
-const kfText = any() ? 'SDFI' : 'Styrelsen for Dataforsyning og Infrastruktur'
-const kfLink = 'https://download.dataforsyningen.dk/content/vilk%C3%A5r-og-betingelser'
-const kfAttributionText = '&copy; <a target="_blank" href="' + kfLink +
-'">' + kfText + '</a>'
-const dfLink = 'https://datafordeler.dk/vejledning/brugervilkaar/sdfi-geografiske-data/'
-const dfAttributionText = '&copy; <a target="_blank" href="' + dfLink +
-'">' + kfText + '</a>'
+const ccbyText = '(CC BY)'
+const ccbyLink = 'https://creativecommons.org/licenses/by/4.0/deed.da'
+
+const createAttribution = function (link, text) {
+  return '<a target="_blank" href="' + ccbyLink + '">' + ccbyText + 
+    '</a> <a target="_blank" href="' + link + '">' + text + '</a>'
+}
 
 const createUrl = function (service, auth) {
   if (auth.source === 'kf') {
@@ -41,8 +40,7 @@ export const createLayer = function (opt) {
   const matrixSet = opt.matrixSet
   const format = opt.format || ''
   const tileGrid = opt.tileGrid
-  const attributionText = opt.auth.source === 'kf' ? kfAttributionText :
-    (opt.auth.source === 'df' ? dfAttributionText : opt.attribution)
+  const attributionText = createAttribution(opt.attribution.link, opt.attribution.text)
 
   let source = null
 
