@@ -4,12 +4,12 @@
   "description": "Offentlig Kort API modul",
   "main": "lib/okapi.js",
   "scripts": {
-    "build": "export NODE_ENV=build && node build/build.mjs && node build/build-examples.mjs",
-    "dev": "export NODE_ENV=development && node build/build.mjs",
+    "build": "cross-env NODE_ENV=build node build/build.mjs && node build/build-examples.mjs",
+    "dev": "cross-env NODE_ENV=development node build/build.mjs",
     "build-examples": "node build/build-examples.mjs",
-    "start": "python3 -m http.server 7777",
+    "start": "python -m http.server 7777",
     "test": "npm run build && npx playwright test",
-    "lint": "./node_modules/.bin/eslint src --fix"
+    "lint": "npx eslint src --fix"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,9 @@
     "map"
   ],
   "author": {
-    "name" : "Styrelsen for Dataforsyning og Infrastruktur",
-    "email" : "support@sdfi.dk",
-    "url" : "https://sdfi.dk/"
+    "name": "Klimadatastyrelsen",
+    "email": "support@kds.dk",
+    "url": "https://www.klimadatastyrelsen.dk/"
   },
   "license": "MIT",
   "bugs": {
@@ -39,6 +39,7 @@
   ],
   "devDependencies": {
     "@playwright/test": "^1.25.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^7.0.0",
     "esbuild": "^0.15.14",
     "esbuild-stylus-loader": "^0.4.2",
@@ -51,7 +52,7 @@
     "instrument": false
   },
   "dependencies": {
-    "axios": "^0.21.4",
+    "axios": "^0.29.0",
     "ol": "^7.1.0",
     "proj4": "^2.7.5"
   }

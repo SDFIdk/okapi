@@ -1,6 +1,6 @@
 // Imports
 import { open, readdir } from 'node:fs/promises'
-import pkg from '../package.json' assert {type: 'json'}
+import pkg from '../package.json' with {type: 'json'}
 import getSRI from 'get-sri'
 import dotenv from 'dotenv'
 
@@ -59,7 +59,7 @@ try {
     title = title.replace('.html', '').replace('-', ' ').replace(/^./g, title[0].toUpperCase())
 
     const markup = await readHTML(`${ src_dir }/html/${ file }`)
-    
+
     const css_str = `../lib/${ pkg.name }-${ pkg.version }.min.css`
     const js_str = `../lib/${ pkg.name }-${ pkg.version }.min.js`
 
@@ -72,21 +72,21 @@ try {
 
     const code_css_str = `https://okapi.dataforsyningen.dk/lib/${ pkg.name }-${ pkg.version }.min.css`
     const code_js_str = `https://okapi.dataforsyningen.dk/lib/${ pkg.name }-${ pkg.version }.min.js`
-    
+
 
     let code = template_code_html.replace('InsertContentHere', markup).replaceAll('<', '&lt;')
     code = code.replace('InsertCodeCSSHere', code_css_str)
     code = code.replace('InsertCodeJSHere', code_js_str)
     code = code.replace('InsertCodeSRIHere', code_sri_str)
     temp = temp.replace('InsertCodeExampleHere', code)
-    
+
     await writeHTML(`examples/${ file }`, temp)
 
   }
 
 } catch (err) {
   console.error(err)
-} 
+}
 
 console.log('---------------------')
 console.log('Updating README')

@@ -141,46 +141,6 @@ export default class Map {
       }))
     } else if (this._token) { // Dataforsyningen bruger
       layers.push(createLayer({
-        name: 'dtk_skaermkort',
-        type: 'WMTS',
-        title: 'Skærmkort',
-        visible: background === 'dtk_skaermkort',
-        service: 'topo_skaermkort_wmts_DAF',
-        layer: 'topo_skaermkort',
-        matrixSet: 'View1',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth
-      }))
-      layers.push(createLayer({
-        name: 'dtk_skaermkort_daempet',
-        type: 'WMTS',
-        title: 'Skærmkort dæmpet',
-        visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
-        background !== 'dtk_skaermkort',
-        service: 'topo_skaermkort_daempet_DAF',
-        layer: 'topo_skaermkort_daempet',
-        matrixSet: 'View1',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth
-      }))
-      layers.push(createLayer({
-        name: 'orto_foraar',
-        type: 'WMTS',
-        title: 'Ortofoto',
-        color: 'white',
-        visible: background === 'orto_foraar',
-        service: 'orto_foraar_wmts_DAF',
-        layer: 'orto_foraar_wmts',
-        matrixSet: 'KortforsyningTilingDK',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth
-      }))
-    }
-    if (this._token) { // Dataforsyningen bruger
-      layers.push(createLayer({
         name: 'forvaltning',
         type: 'WMS',
         title: 'Basiskort',

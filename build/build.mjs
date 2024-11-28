@@ -1,6 +1,6 @@
 import esbuild from 'esbuild'
 import { stylusLoader } from 'esbuild-stylus-loader'
-import pkg from '../package.json' assert {type: 'json'}
+import pkg from '../package.json' with {type: 'json'}
 
 const filename = `${ pkg.name }-${ pkg.version }.min`
 
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
     bundle: true,
     format: 'iife',
     globalName: 'okapi',
-    loader: { 
+    loader: {
       '.png': 'dataurl'
     },
     plugins: [
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'development') {
     sourcemap: true,
     format: 'iife',
     globalName: 'okapi',
-    loader: { 
+    loader: {
       '.png': 'dataurl'
     },
     plugins: [
