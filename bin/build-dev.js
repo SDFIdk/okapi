@@ -5,23 +5,23 @@ console.log('--------------------------')
 console.log('Building and serving assets')
 
 // esbuild.serve watches for file changes and rebuilds
-esbuild.serve({
-  servedir: './',
-}, {
+esbuild.context({
   entryPoints: ['src/Index.js'],
   outfile: 'dist/okapi.js',
   bundle: true,
   sourcemap: false,
   minify: false,
   format: 'esm',
-  loader: { 
+  loader: {
     '.png': 'dataurl'
   },
   plugins: [
     stylusLoader()
   ]
 }).then(server => {
-  console.log(server)
-  // Call "stop" on the web server to stop serving
-  //server.stop()
+  server.serve({
+    servedir: './',
+  }).then(({ host, port }) => {
+    console.log('Serving at localhost:' + port)
+  })
 })

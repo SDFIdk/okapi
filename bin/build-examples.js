@@ -1,6 +1,6 @@
 // Imports
 import { open, readdir } from 'node:fs/promises'
-import pkg from '../package.json' assert {type: 'json'}
+import pkg from '../package.json' with {type: 'json'}
 import getSRI from 'get-sri'
 import dotenv from 'dotenv'
 

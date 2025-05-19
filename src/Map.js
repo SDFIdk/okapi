@@ -26,7 +26,6 @@ import { none } from 'ol/centerconstraint'
 
 export default class Map {
 
-  markers = []
   icons = {}
   markerLayerGroup
   markerLayers

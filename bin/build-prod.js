@@ -1,6 +1,6 @@
 import esbuild from 'esbuild'
 import { stylusLoader } from 'esbuild-stylus-loader'
-import pkg from '../package.json' assert {type: 'json'}
+import pkg from '../package.json' with {type: 'json'}
 
 console.log('--------------------------')
 console.log('Building ES modules and CSS')
