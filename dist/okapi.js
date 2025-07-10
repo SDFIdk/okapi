@@ -31,20 +31,20 @@ var require_proj4 = __commonJS({
       "object" == typeof exports && "undefined" != typeof module ? module.exports = s() : "function" == typeof define && define.amd ? define(s) : (t = "undefined" != typeof globalThis ? globalThis : t || self).proj4 = s();
     }(exports, function() {
       "use strict";
-      var t = 6378137, s = 0.0066943799901413165, i = 484813681109536e-20, a = Math.PI / 2, h = 1e-10, e = 0.017453292519943295, n = 57.29577951308232, r = Math.PI / 4, o = 2 * Math.PI, l = 3.14159265359, c = { greenwich: 0, lisbon: -9.131906111111, paris: 2.337229166667, bogota: -74.080916666667, madrid: -3.687938888889, rome: 12.452333333333, bern: 7.439583333333, jakarta: 106.807719444444, ferro: -17.666666666667, brussels: 4.367975, stockholm: 18.058277777778, athens: 23.7163375, oslo: 10.722916666667 }, _ = { mm: { to_meter: 1e-3 }, cm: { to_meter: 0.01 }, ft: { to_meter: 0.3048 }, "us-ft": { to_meter: 1200 / 3937 }, fath: { to_meter: 1.8288 }, kmi: { to_meter: 1852 }, "us-ch": { to_meter: 20.1168402336805 }, "us-mi": { to_meter: 1609.34721869444 }, km: { to_meter: 1e3 }, "ind-ft": { to_meter: 0.30479841 }, "ind-yd": { to_meter: 0.91439523 }, mi: { to_meter: 1609.344 }, yd: { to_meter: 0.9144 }, ch: { to_meter: 20.1168 }, link: { to_meter: 0.201168 }, dm: { to_meter: 0.1 }, in: { to_meter: 0.0254 }, "ind-ch": { to_meter: 20.11669506 }, "us-in": { to_meter: 0.025400050800101 }, "us-yd": { to_meter: 0.914401828803658 } }, u = /[\s_\-\/\(\)]/g;
+      var t = 6378137, s = 0.0066943799901413165, i = 484813681109536e-20, a = Math.PI / 2, h = 1e-10, e = 0.017453292519943295, r = 57.29577951308232, n = Math.PI / 4, o = 2 * Math.PI, l = 3.14159265359, c = { greenwich: 0, lisbon: -9.131906111111, paris: 2.337229166667, bogota: -74.080916666667, madrid: -3.687938888889, rome: 12.452333333333, bern: 7.439583333333, jakarta: 106.807719444444, ferro: -17.666666666667, brussels: 4.367975, stockholm: 18.058277777778, athens: 23.7163375, oslo: 10.722916666667 }, u = { mm: { to_meter: 1e-3 }, cm: { to_meter: 0.01 }, ft: { to_meter: 0.3048 }, "us-ft": { to_meter: 1200 / 3937 }, fath: { to_meter: 1.8288 }, kmi: { to_meter: 1852 }, "us-ch": { to_meter: 20.1168402336805 }, "us-mi": { to_meter: 1609.34721869444 }, km: { to_meter: 1e3 }, "ind-ft": { to_meter: 0.30479841 }, "ind-yd": { to_meter: 0.91439523 }, mi: { to_meter: 1609.344 }, yd: { to_meter: 0.9144 }, ch: { to_meter: 20.1168 }, link: { to_meter: 0.201168 }, dm: { to_meter: 0.1 }, in: { to_meter: 0.0254 }, "ind-ch": { to_meter: 20.11669506 }, "us-in": { to_meter: 0.025400050800101 }, "us-yd": { to_meter: 0.914401828803658 } }, _ = /[\s_\-\/\(\)]/g;
       function M(t2, s2) {
         if (t2[s2]) return t2[s2];
-        for (var i2, a3 = Object.keys(t2), h2 = s2.toLowerCase().replace(u, ""), e2 = -1; ++e2 < a3.length; ) if ((i2 = a3[e2]).toLowerCase().replace(u, "") === h2) return t2[i2];
+        for (var i2, a3 = Object.keys(t2), h2 = s2.toLowerCase().replace(_, ""), e2 = -1; ++e2 < a3.length; ) if ((i2 = a3[e2]).toLowerCase().replace(_, "") === h2) return t2[i2];
       }
-      function g(t2) {
-        var s2, i2, a3, h2 = {}, n2 = t2.split("+").map(function(t3) {
+      function d(t2) {
+        var s2, i2, a3, h2 = {}, r2 = t2.split("+").map(function(t3) {
           return t3.trim();
         }).filter(function(t3) {
           return t3;
         }).reduce(function(t3, s3) {
           var i3 = s3.split("=");
           return i3.push(true), t3[i3[0].toLowerCase()] = i3[1], t3;
-        }, {}), r2 = { proj: "projName", datum: "datumCode", rf: function(t3) {
+        }, {}), n2 = { proj: "projName", datum: "datumCode", rf: function(t3) {
           h2.rf = parseFloat(t3);
         }, lat_0: function(t3) {
           h2.lat0 = t3 * e;
@@ -94,7 +94,7 @@ var require_proj4 = __commonJS({
           h2.to_meter = parseFloat(t3);
         }, units: function(t3) {
           h2.units = t3;
-          var s3 = M(_, t3);
+          var s3 = M(u, t3);
           s3 && (h2.to_meter = s3.to_meter);
         }, from_greenwich: function(t3) {
           h2.from_greenwich = t3 * e;
@@ -109,7 +109,7 @@ var require_proj4 = __commonJS({
         }, approx: function() {
           h2.approx = true;
         } };
-        for (s2 in n2) i2 = n2[s2], s2 in r2 ? "function" == typeof (a3 = r2[s2]) ? a3(i2) : h2[a3] = i2 : h2[s2] = i2;
+        for (s2 in r2) i2 = r2[s2], s2 in n2 ? "function" == typeof (a3 = n2[s2]) ? a3(i2) : h2[a3] = i2 : h2[s2] = i2;
         return "string" == typeof h2.datumCode && "WGS84" !== h2.datumCode && (h2.datumCode = h2.datumCode.toLowerCase()), h2;
       }
       class f {
@@ -135,8 +135,8 @@ var require_proj4 = __commonJS({
               i2 = "up";
             }
           } else i2 = t2[2]?.toLowerCase() || "unknown";
-          const h2 = t2.find((t3) => Array.isArray(t3) && "ORDER" === t3[0]), e2 = h2 ? parseInt(h2[1], 10) : null, n2 = t2.find((t3) => Array.isArray(t3) && ("LENGTHUNIT" === t3[0] || "ANGLEUNIT" === t3[0] || "SCALEUNIT" === t3[0]));
-          return { name: s2, direction: i2, unit: this.convertUnit(n2), order: e2 };
+          const h2 = t2.find((t3) => Array.isArray(t3) && "ORDER" === t3[0]), e2 = h2 ? parseInt(h2[1], 10) : null, r2 = t2.find((t3) => Array.isArray(t3) && ("LENGTHUNIT" === t3[0] || "ANGLEUNIT" === t3[0] || "SCALEUNIT" === t3[0]));
+          return { name: s2, direction: i2, unit: this.convertUnit(r2), order: e2 };
         }
         static extractAxes(t2) {
           return t2.filter((t3) => Array.isArray(t3) && "AXIS" === t3[0]).map((t3) => this.convertAxis(t3)).sort((t3, s2) => (t3.order || 0) - (s2.order || 0));
@@ -173,8 +173,8 @@ var require_proj4 = __commonJS({
               s2.type = "DatumEnsemble", s2.name = t2[1], s2.members = t2.filter((t3) => Array.isArray(t3) && "MEMBER" === t3[0]).map((t3) => ({ type: "DatumEnsembleMember", name: t3[1], id: this.getId(t3) }));
               const e2 = t2.find((t3) => Array.isArray(t3) && "ENSEMBLEACCURACY" === t3[0]);
               e2 && (s2.accuracy = parseFloat(e2[1]));
-              const n2 = t2.find((t3) => Array.isArray(t3) && "ELLIPSOID" === t3[0]);
-              n2 && (s2.ellipsoid = this.convert(n2)), s2.id = this.getId(t2);
+              const r2 = t2.find((t3) => Array.isArray(t3) && "ELLIPSOID" === t3[0]);
+              r2 && (s2.ellipsoid = this.convert(r2)), s2.id = this.getId(t2);
               break;
             case "ELLIPSOID":
               s2.type = "Ellipsoid", s2.name = t2[1], s2.semi_major_axis = parseFloat(t2[2]), s2.inverse_flattening = parseFloat(t2[3]), t2.find((t3) => Array.isArray(t3) && "LENGTHUNIT" === t3[0]) && this.convert(t2.find((t3) => Array.isArray(t3) && "LENGTHUNIT" === t3[0]), s2);
@@ -190,9 +190,9 @@ var require_proj4 = __commonJS({
               break;
             case "BOUNDCRS":
               s2.type = "BoundCRS";
-              const r2 = t2.find((t3) => Array.isArray(t3) && "SOURCECRS" === t3[0]);
-              if (r2) {
-                const t3 = r2.find((t4) => Array.isArray(t4));
+              const n2 = t2.find((t3) => Array.isArray(t3) && "SOURCECRS" === t3[0]);
+              if (n2) {
+                const t3 = n2.find((t4) => Array.isArray(t4));
                 s2.source_crs = t3 ? this.convert(t3) : null;
               }
               const o2 = t2.find((t3) => Array.isArray(t3) && "TARGETCRS" === t3[0]);
@@ -225,12 +225,12 @@ var require_proj4 = __commonJS({
           return s2;
         }
       }
-      class d extends f {
+      class g extends f {
         static convert(t2, s2 = {}) {
           return super.convert(t2, s2), "Cartesian" === s2.coordinate_system?.subtype && delete s2.coordinate_system, s2.usage && delete s2.usage, s2;
         }
       }
-      class p extends f {
+      class m extends f {
         static convert(t2, s2 = {}) {
           super.convert(t2, s2);
           const i2 = t2.find((t3) => Array.isArray(t3) && "CS" === t3[0]);
@@ -239,18 +239,18 @@ var require_proj4 = __commonJS({
           return a3 && (s2.usage = { scope: a3.find((t3) => Array.isArray(t3) && "SCOPE" === t3[0])?.[1], area: a3.find((t3) => Array.isArray(t3) && "AREA" === t3[0])?.[1], bbox: a3.find((t3) => Array.isArray(t3) && "BBOX" === t3[0])?.slice(1) }), s2;
         }
       }
-      function m(t2) {
+      function p(t2) {
         const s2 = function(t3) {
           return t3.find((t4) => Array.isArray(t4) && "USAGE" === t4[0]) ? "2019" : (t3.find((t4) => Array.isArray(t4) && "CS" === t4[0]) || "BOUNDCRS" === t3[0] || "PROJCRS" === t3[0] || t3[0], "2015");
         }(t2);
-        return ("2019" === s2 ? p : d).convert(t2);
+        return ("2019" === s2 ? m : g).convert(t2);
       }
-      var y = /\s/, S = /[A-Za-z]/, E4 = /[A-Za-z84_]/, w = /[,\]]/, v = /[\d\.E\-\+]/;
-      function G(t2) {
+      var y = /\s/, w = /[A-Za-z]/, E4 = /[A-Za-z84_]/, v = /[,\]]/, x = /[\d\.E\-\+]/;
+      function S(t2) {
         if ("string" != typeof t2) throw new Error("not a string");
         this.text = t2.trim(), this.level = 0, this.place = 0, this.root = null, this.stack = [], this.currentObject = null, this.state = 1;
       }
-      function x(t2, s2, i2) {
+      function G(t2, s2, i2) {
         Array.isArray(s2) && (i2.unshift(s2), s2 = null);
         var a3 = s2 ? {} : t2, h2 = i2.reduce(function(t3, s3) {
           return P(s3, t3), t3;
@@ -279,7 +279,7 @@ var require_proj4 = __commonJS({
               case "VERT_CS":
               case "VERTCRS":
               case "VERTICALCRS":
-                return t2[0] = ["name", t2[0]], void x(s2, i2, t2);
+                return t2[0] = ["name", t2[0]], void G(s2, i2, t2);
               case "COMPD_CS":
               case "COMPOUNDCRS":
               case "FITTED_CS":
@@ -294,16 +294,16 @@ var require_proj4 = __commonJS({
               case "GEODETICDATUM":
               case "ENGCRS":
               case "ENGINEERINGCRS":
-                return t2[0] = ["name", t2[0]], x(s2, i2, t2), void (s2[i2].type = i2);
+                return t2[0] = ["name", t2[0]], G(s2, i2, t2), void (s2[i2].type = i2);
               default:
                 for (a3 = -1; ++a3 < t2.length; ) if (!Array.isArray(t2[a3])) return P(t2, s2[i2]);
-                return x(s2, i2, t2);
+                return G(s2, i2, t2);
             }
           } else s2[i2] = t2;
           else s2[i2] = true;
         } else s2[t2] = true;
       }
-      G.prototype.readCharicter = function() {
+      S.prototype.readCharicter = function() {
         var t2 = this.text[this.place++];
         if (4 !== this.state) for (; y.test(t2); ) {
           if (this.place >= this.text.length) return;
@@ -323,37 +323,37 @@ var require_proj4 = __commonJS({
           case -1:
             return;
         }
-      }, G.prototype.afterquote = function(t2) {
+      }, S.prototype.afterquote = function(t2) {
         if ('"' === t2) return this.word += '"', void (this.state = 4);
-        if (w.test(t2)) return this.word = this.word.trim(), void this.afterItem(t2);
+        if (v.test(t2)) return this.word = this.word.trim(), void this.afterItem(t2);
         throw new Error(`havn't handled "` + t2 + '" in afterquote yet, index ' + this.place);
-      }, G.prototype.afterItem = function(t2) {
+      }, S.prototype.afterItem = function(t2) {
         return "," === t2 ? (null !== this.word && this.currentObject.push(this.word), this.word = null, void (this.state = 1)) : "]" === t2 ? (this.level--, null !== this.word && (this.currentObject.push(this.word), this.word = null), this.state = 1, this.currentObject = this.stack.pop(), void (this.currentObject || (this.state = -1))) : void 0;
-      }, G.prototype.number = function(t2) {
-        if (!v.test(t2)) {
-          if (w.test(t2)) return this.word = parseFloat(this.word), void this.afterItem(t2);
+      }, S.prototype.number = function(t2) {
+        if (!x.test(t2)) {
+          if (v.test(t2)) return this.word = parseFloat(this.word), void this.afterItem(t2);
           throw new Error(`havn't handled "` + t2 + '" in number yet, index ' + this.place);
         }
         this.word += t2;
-      }, G.prototype.quoted = function(t2) {
+      }, S.prototype.quoted = function(t2) {
         '"' !== t2 ? this.word += t2 : this.state = 5;
-      }, G.prototype.keyword = function(t2) {
+      }, S.prototype.keyword = function(t2) {
         if (E4.test(t2)) this.word += t2;
         else {
           if ("[" === t2) {
             var s2 = [];
             return s2.push(this.word), this.level++, null === this.root ? this.root = s2 : this.currentObject.push(s2), this.stack.push(this.currentObject), this.currentObject = s2, void (this.state = 1);
           }
-          if (!w.test(t2)) throw new Error(`havn't handled "` + t2 + '" in keyword yet, index ' + this.place);
+          if (!v.test(t2)) throw new Error(`havn't handled "` + t2 + '" in keyword yet, index ' + this.place);
           this.afterItem(t2);
         }
-      }, G.prototype.neutral = function(t2) {
-        if (S.test(t2)) return this.word = t2, void (this.state = 2);
+      }, S.prototype.neutral = function(t2) {
+        if (w.test(t2)) return this.word = t2, void (this.state = 2);
         if ('"' === t2) return this.word = "", void (this.state = 4);
-        if (v.test(t2)) return this.word = t2, void (this.state = 3);
-        if (!w.test(t2)) throw new Error(`havn't handled "` + t2 + '" in neutral yet, index ' + this.place);
+        if (x.test(t2)) return this.word = t2, void (this.state = 3);
+        if (!v.test(t2)) throw new Error(`havn't handled "` + t2 + '" in neutral yet, index ' + this.place);
         this.afterItem(t2);
-      }, G.prototype.output = function() {
+      }, S.prototype.output = function() {
         for (; this.place < this.text.length; ) this.readCharicter();
         if (-1 === this.state) return this.root;
         throw new Error('unable to parse string "' + this.text + '". State is ' + this.state);
@@ -361,22 +361,22 @@ var require_proj4 = __commonJS({
       function b(t2) {
         return 0.017453292519943295 * t2;
       }
-      function A(t2) {
+      function N(t2) {
         const s2 = (t2.projName || "").toLowerCase().replace(/_/g, " ");
         t2.long0 || !t2.longc || "albers conic equal area" !== s2 && "lambert azimuthal equal area" !== s2 || (t2.long0 = t2.longc), t2.lat_ts || !t2.lat1 || "stereographic south pole" !== s2 && "polar stereographic (variant b)" !== s2 ? t2.lat_ts || !t2.lat0 || "polar stereographic" !== s2 && "polar stereographic (variant a)" !== s2 || (t2.lat_ts = t2.lat0, t2.lat0 = b(t2.lat0 > 0 ? 90 : -90), delete t2.lat1) : (t2.lat0 = b(t2.lat1 > 0 ? 90 : -90), t2.lat_ts = t2.lat1, delete t2.lat1);
       }
-      function C(t2) {
+      function A(t2) {
         let s2 = { units: null, to_meter: void 0 };
         return "string" == typeof t2 ? (s2.units = t2.toLowerCase(), "metre" === s2.units && (s2.units = "meter"), "meter" === s2.units && (s2.to_meter = 1)) : t2?.name && (s2.units = t2.name.toLowerCase(), "metre" === s2.units && (s2.units = "meter"), s2.to_meter = t2.conversion_factor), s2;
       }
-      function N(t2) {
+      function I(t2) {
         return "object" == typeof t2 ? t2.value * t2.unit.conversion_factor : t2;
       }
-      function I(t2, s2) {
-        t2.ellipsoid.radius ? (s2.a = t2.ellipsoid.radius, s2.rf = 0) : (s2.a = N(t2.ellipsoid.semi_major_axis), void 0 !== t2.ellipsoid.inverse_flattening ? s2.rf = t2.ellipsoid.inverse_flattening : void 0 !== t2.ellipsoid.semi_major_axis && void 0 !== t2.ellipsoid.semi_minor_axis && (s2.rf = s2.a / (s2.a - N(t2.ellipsoid.semi_minor_axis))));
+      function C(t2, s2) {
+        t2.ellipsoid.radius ? (s2.a = t2.ellipsoid.radius, s2.rf = 0) : (s2.a = I(t2.ellipsoid.semi_major_axis), void 0 !== t2.ellipsoid.inverse_flattening ? s2.rf = t2.ellipsoid.inverse_flattening : void 0 !== t2.ellipsoid.semi_major_axis && void 0 !== t2.ellipsoid.semi_minor_axis && (s2.rf = s2.a / (s2.a - I(t2.ellipsoid.semi_minor_axis))));
       }
-      function L(t2, s2 = {}) {
-        return t2 && "object" == typeof t2 ? "BoundCRS" === t2.type ? (L(t2.source_crs, s2), t2.transformation && ("NTv2" === t2.transformation.method?.name ? s2.nadgrids = t2.transformation.parameters[0].value : s2.datum_params = t2.transformation.parameters.map((t3) => t3.value)), s2) : (Object.keys(t2).forEach((i2) => {
+      function k(t2, s2 = {}) {
+        return t2 && "object" == typeof t2 ? "BoundCRS" === t2.type ? (k(t2.source_crs, s2), t2.transformation && ("NTv2" === t2.transformation.method?.name ? s2.nadgrids = t2.transformation.parameters[0].value : s2.datum_params = t2.transformation.parameters.map((t3) => t3.value)), s2) : (Object.keys(t2).forEach((i2) => {
           const a3 = t2[i2];
           if (null !== a3) switch (i2) {
             case "name":
@@ -388,10 +388,10 @@ var require_proj4 = __commonJS({
               break;
             case "datum":
             case "datum_ensemble":
-              a3.ellipsoid && (s2.ellps = a3.ellipsoid.name, I(a3, s2)), a3.prime_meridian && (s2.from_greenwich = a3.prime_meridian.longitude * Math.PI / 180);
+              a3.ellipsoid && (s2.ellps = a3.ellipsoid.name, C(a3, s2)), a3.prime_meridian && (s2.from_greenwich = a3.prime_meridian.longitude * Math.PI / 180);
               break;
             case "ellipsoid":
-              s2.ellps = a3.name, I(a3, s2);
+              s2.ellps = a3.name, C(a3, s2);
               break;
             case "prime_meridian":
               s2.long0 = (a3.longitude || 0) * Math.PI / 180;
@@ -406,10 +406,10 @@ var require_proj4 = __commonJS({
                   if ("south" === s3) return "s";
                   throw new Error(`Unknown axis direction: ${s3}`);
                 }).join("") + "u", a3.unit) {
-                  const { units: t3, to_meter: i3 } = C(a3.unit);
+                  const { units: t3, to_meter: i3 } = A(a3.unit);
                   s2.units = t3, s2.to_meter = i3;
                 } else if (a3.axis[0]?.unit) {
-                  const { units: t3, to_meter: i3 } = C(a3.axis[0].unit);
+                  const { units: t3, to_meter: i3 } = A(a3.axis[0].unit);
                   s2.units = t3, s2.to_meter = i3;
                 }
               }
@@ -427,15 +427,15 @@ var require_proj4 = __commonJS({
               a3.name && (s2.units = a3.name.toLowerCase(), "metre" === s2.units && (s2.units = "meter")), a3.conversion_factor && (s2.to_meter = a3.conversion_factor);
               break;
             case "base_crs":
-              L(a3, s2), s2.datumCode = a3.id ? a3.id.authority + "_" + a3.id.code : a3.name;
+              k(a3, s2), s2.datumCode = a3.id ? a3.id.authority + "_" + a3.id.code : a3.name;
           }
-        }), void 0 !== s2.latitude_of_false_origin && (s2.lat0 = s2.latitude_of_false_origin), void 0 !== s2.longitude_of_false_origin && (s2.long0 = s2.longitude_of_false_origin), void 0 !== s2.latitude_of_standard_parallel && (s2.lat0 = s2.latitude_of_standard_parallel, s2.lat1 = s2.latitude_of_standard_parallel), void 0 !== s2.latitude_of_1st_standard_parallel && (s2.lat1 = s2.latitude_of_1st_standard_parallel), void 0 !== s2.latitude_of_2nd_standard_parallel && (s2.lat2 = s2.latitude_of_2nd_standard_parallel), void 0 !== s2.latitude_of_projection_centre && (s2.lat0 = s2.latitude_of_projection_centre), void 0 !== s2.longitude_of_projection_centre && (s2.longc = s2.longitude_of_projection_centre), void 0 !== s2.easting_at_false_origin && (s2.x0 = s2.easting_at_false_origin), void 0 !== s2.northing_at_false_origin && (s2.y0 = s2.northing_at_false_origin), void 0 !== s2.latitude_of_natural_origin && (s2.lat0 = s2.latitude_of_natural_origin), void 0 !== s2.longitude_of_natural_origin && (s2.long0 = s2.longitude_of_natural_origin), void 0 !== s2.longitude_of_origin && (s2.long0 = s2.longitude_of_origin), void 0 !== s2.false_easting && (s2.x0 = s2.false_easting), s2.easting_at_projection_centre && (s2.x0 = s2.easting_at_projection_centre), void 0 !== s2.false_northing && (s2.y0 = s2.false_northing), s2.northing_at_projection_centre && (s2.y0 = s2.northing_at_projection_centre), void 0 !== s2.standard_parallel_1 && (s2.lat1 = s2.standard_parallel_1), void 0 !== s2.standard_parallel_2 && (s2.lat2 = s2.standard_parallel_2), void 0 !== s2.scale_factor_at_natural_origin && (s2.k0 = s2.scale_factor_at_natural_origin), void 0 !== s2.scale_factor_at_projection_centre && (s2.k0 = s2.scale_factor_at_projection_centre), void 0 !== s2.scale_factor_on_pseudo_standard_parallel && (s2.k0 = s2.scale_factor_on_pseudo_standard_parallel), void 0 !== s2.azimuth && (s2.alpha = s2.azimuth), void 0 !== s2.azimuth_at_projection_centre && (s2.alpha = s2.azimuth_at_projection_centre), s2.angle_from_rectified_to_skew_grid && (s2.rectified_grid_angle = s2.angle_from_rectified_to_skew_grid), A(s2), s2) : t2;
+        }), void 0 !== s2.latitude_of_false_origin && (s2.lat0 = s2.latitude_of_false_origin), void 0 !== s2.longitude_of_false_origin && (s2.long0 = s2.longitude_of_false_origin), void 0 !== s2.latitude_of_standard_parallel && (s2.lat0 = s2.latitude_of_standard_parallel, s2.lat1 = s2.latitude_of_standard_parallel), void 0 !== s2.latitude_of_1st_standard_parallel && (s2.lat1 = s2.latitude_of_1st_standard_parallel), void 0 !== s2.latitude_of_2nd_standard_parallel && (s2.lat2 = s2.latitude_of_2nd_standard_parallel), void 0 !== s2.latitude_of_projection_centre && (s2.lat0 = s2.latitude_of_projection_centre), void 0 !== s2.longitude_of_projection_centre && (s2.longc = s2.longitude_of_projection_centre), void 0 !== s2.easting_at_false_origin && (s2.x0 = s2.easting_at_false_origin), void 0 !== s2.northing_at_false_origin && (s2.y0 = s2.northing_at_false_origin), void 0 !== s2.latitude_of_natural_origin && (s2.lat0 = s2.latitude_of_natural_origin), void 0 !== s2.longitude_of_natural_origin && (s2.long0 = s2.longitude_of_natural_origin), void 0 !== s2.longitude_of_origin && (s2.long0 = s2.longitude_of_origin), void 0 !== s2.false_easting && (s2.x0 = s2.false_easting), s2.easting_at_projection_centre && (s2.x0 = s2.easting_at_projection_centre), void 0 !== s2.false_northing && (s2.y0 = s2.false_northing), s2.northing_at_projection_centre && (s2.y0 = s2.northing_at_projection_centre), void 0 !== s2.standard_parallel_1 && (s2.lat1 = s2.standard_parallel_1), void 0 !== s2.standard_parallel_2 && (s2.lat2 = s2.standard_parallel_2), void 0 !== s2.scale_factor_at_natural_origin && (s2.k0 = s2.scale_factor_at_natural_origin), void 0 !== s2.scale_factor_at_projection_centre && (s2.k0 = s2.scale_factor_at_projection_centre), void 0 !== s2.scale_factor_on_pseudo_standard_parallel && (s2.k0 = s2.scale_factor_on_pseudo_standard_parallel), void 0 !== s2.azimuth && (s2.alpha = s2.azimuth), void 0 !== s2.azimuth_at_projection_centre && (s2.alpha = s2.azimuth_at_projection_centre), s2.angle_from_rectified_to_skew_grid && (s2.rectified_grid_angle = s2.angle_from_rectified_to_skew_grid), N(s2), s2) : t2;
       }
-      var O = ["PROJECTEDCRS", "PROJCRS", "GEOGCS", "GEOCCS", "PROJCS", "LOCAL_CS", "GEODCRS", "GEODETICCRS", "GEODETICDATUM", "ENGCRS", "ENGINEERINGCRS"];
-      function R2(t2) {
+      var R2 = ["PROJECTEDCRS", "PROJCRS", "GEOGCS", "GEOCCS", "PROJCS", "LOCAL_CS", "GEODCRS", "GEODETICCRS", "GEODETICDATUM", "ENGCRS", "ENGINEERINGCRS"];
+      function O(t2) {
         for (var s2 = Object.keys(t2), i2 = 0, a3 = s2.length; i2 < a3; ++i2) {
           var h2 = s2[i2];
-          -1 !== O.indexOf(h2) && q(t2[h2]), "object" == typeof t2[h2] && R2(t2[h2]);
+          -1 !== R2.indexOf(h2) && q(t2[h2]), "object" == typeof t2[h2] && O(t2[h2]);
         }
       }
       function q(t2) {
@@ -451,43 +451,43 @@ var require_proj4 = __commonJS({
           2 === i2.length && (i2 += "u"), 3 === i2.length && (t2.axis = i2);
         }
         t2.UNIT && (t2.units = t2.UNIT.name.toLowerCase(), "metre" === t2.units && (t2.units = "meter"), t2.UNIT.convert && ("GEOGCS" === t2.type ? t2.DATUM && t2.DATUM.SPHEROID && (t2.to_meter = t2.UNIT.convert * t2.DATUM.SPHEROID.a) : t2.to_meter = t2.UNIT.convert));
-        var n2 = t2.GEOGCS;
-        function r2(s3) {
+        var r2 = t2.GEOGCS;
+        function n2(s3) {
           return s3 * (t2.to_meter || 1);
         }
-        "GEOGCS" === t2.type && (n2 = t2), n2 && (n2.DATUM ? t2.datumCode = n2.DATUM.name.toLowerCase() : t2.datumCode = n2.name.toLowerCase(), "d_" === t2.datumCode.slice(0, 2) && (t2.datumCode = t2.datumCode.slice(2)), "new_zealand_1949" === t2.datumCode && (t2.datumCode = "nzgd49"), "wgs_1984" !== t2.datumCode && "world_geodetic_system_1984" !== t2.datumCode || ("Mercator_Auxiliary_Sphere" === t2.PROJECTION && (t2.sphere = true), t2.datumCode = "wgs84"), "belge_1972" === t2.datumCode && (t2.datumCode = "rnb72"), n2.DATUM && n2.DATUM.SPHEROID && (t2.ellps = n2.DATUM.SPHEROID.name.replace("_19", "").replace(/[Cc]larke\_18/, "clrk"), "international" === t2.ellps.toLowerCase().slice(0, 13) && (t2.ellps = "intl"), t2.a = n2.DATUM.SPHEROID.a, t2.rf = parseFloat(n2.DATUM.SPHEROID.rf, 10)), n2.DATUM && n2.DATUM.TOWGS84 && (t2.datum_params = n2.DATUM.TOWGS84), ~t2.datumCode.indexOf("osgb_1936") && (t2.datumCode = "osgb36"), ~t2.datumCode.indexOf("osni_1952") && (t2.datumCode = "osni52"), (~t2.datumCode.indexOf("tm65") || ~t2.datumCode.indexOf("geodetic_datum_of_1965")) && (t2.datumCode = "ire65"), "ch1903+" === t2.datumCode && (t2.datumCode = "ch1903"), ~t2.datumCode.indexOf("israel") && (t2.datumCode = "isr93")), t2.b && !isFinite(t2.b) && (t2.b = t2.a), t2.rectified_grid_angle && (t2.rectified_grid_angle = b(t2.rectified_grid_angle));
-        [["standard_parallel_1", "Standard_Parallel_1"], ["standard_parallel_1", "Latitude of 1st standard parallel"], ["standard_parallel_2", "Standard_Parallel_2"], ["standard_parallel_2", "Latitude of 2nd standard parallel"], ["false_easting", "False_Easting"], ["false_easting", "False easting"], ["false-easting", "Easting at false origin"], ["false_northing", "False_Northing"], ["false_northing", "False northing"], ["false_northing", "Northing at false origin"], ["central_meridian", "Central_Meridian"], ["central_meridian", "Longitude of natural origin"], ["central_meridian", "Longitude of false origin"], ["latitude_of_origin", "Latitude_Of_Origin"], ["latitude_of_origin", "Central_Parallel"], ["latitude_of_origin", "Latitude of natural origin"], ["latitude_of_origin", "Latitude of false origin"], ["scale_factor", "Scale_Factor"], ["k0", "scale_factor"], ["latitude_of_center", "Latitude_Of_Center"], ["latitude_of_center", "Latitude_of_center"], ["lat0", "latitude_of_center", b], ["longitude_of_center", "Longitude_Of_Center"], ["longitude_of_center", "Longitude_of_center"], ["longc", "longitude_of_center", b], ["x0", "false_easting", r2], ["y0", "false_northing", r2], ["long0", "central_meridian", b], ["lat0", "latitude_of_origin", b], ["lat0", "standard_parallel_1", b], ["lat1", "standard_parallel_1", b], ["lat2", "standard_parallel_2", b], ["azimuth", "Azimuth"], ["alpha", "azimuth", b], ["srsCode", "name"]].forEach(function(s3) {
+        "GEOGCS" === t2.type && (r2 = t2), r2 && (r2.DATUM ? t2.datumCode = r2.DATUM.name.toLowerCase() : t2.datumCode = r2.name.toLowerCase(), "d_" === t2.datumCode.slice(0, 2) && (t2.datumCode = t2.datumCode.slice(2)), "new_zealand_1949" === t2.datumCode && (t2.datumCode = "nzgd49"), "wgs_1984" !== t2.datumCode && "world_geodetic_system_1984" !== t2.datumCode || ("Mercator_Auxiliary_Sphere" === t2.PROJECTION && (t2.sphere = true), t2.datumCode = "wgs84"), "belge_1972" === t2.datumCode && (t2.datumCode = "rnb72"), r2.DATUM && r2.DATUM.SPHEROID && (t2.ellps = r2.DATUM.SPHEROID.name.replace("_19", "").replace(/[Cc]larke\_18/, "clrk"), "international" === t2.ellps.toLowerCase().slice(0, 13) && (t2.ellps = "intl"), t2.a = r2.DATUM.SPHEROID.a, t2.rf = parseFloat(r2.DATUM.SPHEROID.rf, 10)), r2.DATUM && r2.DATUM.TOWGS84 && (t2.datum_params = r2.DATUM.TOWGS84), ~t2.datumCode.indexOf("osgb_1936") && (t2.datumCode = "osgb36"), ~t2.datumCode.indexOf("osni_1952") && (t2.datumCode = "osni52"), (~t2.datumCode.indexOf("tm65") || ~t2.datumCode.indexOf("geodetic_datum_of_1965")) && (t2.datumCode = "ire65"), "ch1903+" === t2.datumCode && (t2.datumCode = "ch1903"), ~t2.datumCode.indexOf("israel") && (t2.datumCode = "isr93")), t2.b && !isFinite(t2.b) && (t2.b = t2.a), t2.rectified_grid_angle && (t2.rectified_grid_angle = b(t2.rectified_grid_angle));
+        [["standard_parallel_1", "Standard_Parallel_1"], ["standard_parallel_1", "Latitude of 1st standard parallel"], ["standard_parallel_2", "Standard_Parallel_2"], ["standard_parallel_2", "Latitude of 2nd standard parallel"], ["false_easting", "False_Easting"], ["false_easting", "False easting"], ["false-easting", "Easting at false origin"], ["false_northing", "False_Northing"], ["false_northing", "False northing"], ["false_northing", "Northing at false origin"], ["central_meridian", "Central_Meridian"], ["central_meridian", "Longitude of natural origin"], ["central_meridian", "Longitude of false origin"], ["latitude_of_origin", "Latitude_Of_Origin"], ["latitude_of_origin", "Central_Parallel"], ["latitude_of_origin", "Latitude of natural origin"], ["latitude_of_origin", "Latitude of false origin"], ["scale_factor", "Scale_Factor"], ["k0", "scale_factor"], ["latitude_of_center", "Latitude_Of_Center"], ["latitude_of_center", "Latitude_of_center"], ["lat0", "latitude_of_center", b], ["longitude_of_center", "Longitude_Of_Center"], ["longitude_of_center", "Longitude_of_center"], ["longc", "longitude_of_center", b], ["x0", "false_easting", n2], ["y0", "false_northing", n2], ["long0", "central_meridian", b], ["lat0", "latitude_of_origin", b], ["lat0", "standard_parallel_1", b], ["lat1", "standard_parallel_1", b], ["lat2", "standard_parallel_2", b], ["azimuth", "Azimuth"], ["alpha", "azimuth", b], ["srsCode", "name"]].forEach(function(s3) {
           return function(t3, s4) {
             var i3 = s4[0], a4 = s4[1];
             !(i3 in t3) && a4 in t3 && (t3[i3] = t3[a4], 3 === s4.length && (t3[i3] = s4[2](t3[i3])));
           }(t2, s3);
-        }), A(t2);
+        }), N(t2);
       }
-      function T(t2) {
-        if ("object" == typeof t2) return L(t2);
+      function j(t2) {
+        if ("object" == typeof t2) return k(t2);
         const s2 = function(t3) {
           const s3 = t3.toUpperCase();
           return s3.includes("PROJCRS") || s3.includes("GEOGCRS") || s3.includes("BOUNDCRS") || s3.includes("VERTCRS") || s3.includes("LENGTHUNIT") || s3.includes("ANGLEUNIT") || s3.includes("SCALEUNIT") ? "WKT2" : (s3.includes("PROJCS") || s3.includes("GEOGCS") || s3.includes("LOCAL_CS") || s3.includes("VERT_CS") || s3.includes("UNIT"), "WKT1");
         }(t2);
-        var i2 = new G(t2).output();
+        var i2 = new S(t2).output();
         if ("WKT2" === s2) {
-          return L(m(i2));
+          return k(p(i2));
         }
         var a3 = i2[0], h2 = {};
-        return P(i2, h2), R2(h2), h2[a3];
+        return P(i2, h2), O(h2), h2[a3];
       }
-      function k(t2) {
+      function T(t2) {
         var s2 = this;
         if (2 === arguments.length) {
           var i2 = arguments[1];
-          "string" == typeof i2 ? "+" === i2.charAt(0) ? k[t2] = g(arguments[1]) : k[t2] = T(arguments[1]) : k[t2] = i2;
+          "string" == typeof i2 ? "+" === i2.charAt(0) ? T[t2] = d(arguments[1]) : T[t2] = j(arguments[1]) : T[t2] = i2;
         } else if (1 === arguments.length) {
           if (Array.isArray(t2)) return t2.map(function(t3) {
-            Array.isArray(t3) ? k.apply(s2, t3) : k(t3);
+            return Array.isArray(t3) ? T.apply(s2, t3) : T(t3);
           });
           if ("string" == typeof t2) {
-            if (t2 in k) return k[t2];
-          } else "EPSG" in t2 ? k["EPSG:" + t2.EPSG] = t2 : "ESRI" in t2 ? k["ESRI:" + t2.ESRI] = t2 : "IAU2000" in t2 ? k["IAU2000:" + t2.IAU2000] = t2 : console.log(t2);
+            if (t2 in T) return T[t2];
+          } else "EPSG" in t2 ? T["EPSG:" + t2.EPSG] = t2 : "ESRI" in t2 ? T["ESRI:" + t2.ESRI] = t2 : "IAU2000" in t2 ? T["IAU2000:" + t2.IAU2000] = t2 : console.log(t2);
           return;
         }
       }
@@ -495,101 +495,101 @@ var require_proj4 = __commonJS({
         t2("EPSG:4326", "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees"), t2("EPSG:4269", "+title=NAD83 (long/lat) +proj=longlat +a=6378137.0 +b=6356752.31414036 +ellps=GRS80 +datum=NAD83 +units=degrees"), t2("EPSG:3857", "+title=WGS 84 / Pseudo-Mercator +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs");
         for (var s2 = 1; s2 <= 60; ++s2) t2("EPSG:" + (32600 + s2), "+proj=utm +zone=" + s2 + " +datum=WGS84 +units=m"), t2("EPSG:" + (32700 + s2), "+proj=utm +zone=" + s2 + " +south +datum=WGS84 +units=m");
         t2.WGS84 = t2["EPSG:4326"], t2["EPSG:3785"] = t2["EPSG:3857"], t2.GOOGLE = t2["EPSG:3857"], t2["EPSG:900913"] = t2["EPSG:3857"], t2["EPSG:102113"] = t2["EPSG:3857"];
-      }(k);
-      var D = ["3857", "900913", "3785", "102113"];
-      function j(t2) {
+      }(T);
+      var L = ["3857", "900913", "3785", "102113"];
+      function F(t2) {
         if (!/* @__PURE__ */ function(t3) {
           return "string" == typeof t3;
-        }(t2)) return t2.projName ? t2 : T(t2);
+        }(t2)) return "projName" in t2 ? t2 : j(t2);
         if (function(t3) {
-          return t3 in k;
-        }(t2)) return k[t2];
+          return t3 in T;
+        }(t2)) return T[t2];
         if (function(t3) {
           return 0 !== t3.indexOf("+") && -1 !== t3.indexOf("[") || "object" == typeof t3 && !("srsCode" in t3);
         }(t2)) {
-          var s2 = T(t2);
+          var s2 = j(t2);
           if (function(t3) {
             var s3 = M(t3, "authority");
             if (s3) {
               var i3 = M(s3, "epsg");
-              return i3 && D.indexOf(i3) > -1;
+              return i3 && L.indexOf(i3) > -1;
             }
-          }(s2)) return k["EPSG:3857"];
+          }(s2)) return T["EPSG:3857"];
           var i2 = function(t3) {
             var s3 = M(t3, "extension");
             if (s3) return M(s3, "proj4");
           }(s2);
-          return i2 ? g(i2) : s2;
+          return i2 ? d(i2) : s2;
         }
         return function(t3) {
           return "+" === t3[0];
-        }(t2) ? g(t2) : void 0;
+        }(t2) ? d(t2) : void 0;
       }
-      function U(t2, s2) {
+      function D(t2, s2) {
         var i2, a3;
         if (t2 = t2 || {}, !s2) return t2;
         for (a3 in s2) void 0 !== (i2 = s2[a3]) && (t2[a3] = i2);
         return t2;
       }
-      function F(t2, s2, i2) {
+      function B(t2, s2, i2) {
         var a3 = t2 * s2;
         return i2 / Math.sqrt(1 - a3 * a3);
       }
-      function B(t2) {
+      function z(t2) {
         return t2 < 0 ? -1 : 1;
       }
-      function z(t2) {
-        return Math.abs(t2) <= l ? t2 : t2 - B(t2) * o;
+      function U(t2) {
+        return Math.abs(t2) <= l ? t2 : t2 - z(t2) * o;
       }
       function H(t2, s2, i2) {
         var h2 = t2 * i2, e2 = 0.5 * t2;
         return h2 = Math.pow((1 - h2) / (1 + h2), e2), Math.tan(0.5 * (a - s2)) / h2;
       }
       function W(t2, s2) {
-        for (var i2, h2, e2 = 0.5 * t2, n2 = a - 2 * Math.atan(s2), r2 = 0; r2 <= 15; r2++) if (i2 = t2 * Math.sin(n2), n2 += h2 = a - 2 * Math.atan(s2 * Math.pow((1 - i2) / (1 + i2), e2)) - n2, Math.abs(h2) <= 1e-10) return n2;
+        for (var i2, h2, e2 = 0.5 * t2, r2 = a - 2 * Math.atan(s2), n2 = 0; n2 <= 15; n2++) if (i2 = t2 * Math.sin(r2), r2 += h2 = a - 2 * Math.atan(s2 * Math.pow((1 - i2) / (1 + i2), e2)) - r2, Math.abs(h2) <= 1e-10) return r2;
         return -9999;
       }
       function Q(t2) {
         return t2;
       }
-      var K = [{ init: function() {
+      var X = [{ init: function() {
         var t2 = this.b / this.a;
-        this.es = 1 - t2 * t2, "x0" in this || (this.x0 = 0), "y0" in this || (this.y0 = 0), this.e = Math.sqrt(this.es), this.lat_ts ? this.sphere ? this.k0 = Math.cos(this.lat_ts) : this.k0 = F(this.e, Math.sin(this.lat_ts), Math.cos(this.lat_ts)) : this.k0 || (this.k ? this.k0 = this.k : this.k0 = 1);
+        this.es = 1 - t2 * t2, "x0" in this || (this.x0 = 0), "y0" in this || (this.y0 = 0), this.e = Math.sqrt(this.es), this.lat_ts ? this.sphere ? this.k0 = Math.cos(this.lat_ts) : this.k0 = B(this.e, Math.sin(this.lat_ts), Math.cos(this.lat_ts)) : this.k0 || (this.k ? this.k0 = this.k : this.k0 = 1);
       }, forward: function(t2) {
         var s2, i2, e2 = t2.x, o2 = t2.y;
-        if (o2 * n > 90 && o2 * n < -90 && e2 * n > 180 && e2 * n < -180) return null;
+        if (o2 * r > 90 && o2 * r < -90 && e2 * r > 180 && e2 * r < -180) return null;
         if (Math.abs(Math.abs(o2) - a) <= h) return null;
-        if (this.sphere) s2 = this.x0 + this.a * this.k0 * z(e2 - this.long0), i2 = this.y0 + this.a * this.k0 * Math.log(Math.tan(r + 0.5 * o2));
+        if (this.sphere) s2 = this.x0 + this.a * this.k0 * U(e2 - this.long0), i2 = this.y0 + this.a * this.k0 * Math.log(Math.tan(n + 0.5 * o2));
         else {
           var l2 = Math.sin(o2), c2 = H(this.e, o2, l2);
-          s2 = this.x0 + this.a * this.k0 * z(e2 - this.long0), i2 = this.y0 - this.a * this.k0 * Math.log(c2);
+          s2 = this.x0 + this.a * this.k0 * U(e2 - this.long0), i2 = this.y0 - this.a * this.k0 * Math.log(c2);
         }
         return t2.x = s2, t2.y = i2, t2;
       }, inverse: function(t2) {
         var s2, i2, h2 = t2.x - this.x0, e2 = t2.y - this.y0;
         if (this.sphere) i2 = a - 2 * Math.atan(Math.exp(-e2 / (this.a * this.k0)));
         else {
-          var n2 = Math.exp(-e2 / (this.a * this.k0));
-          if (-9999 === (i2 = W(this.e, n2))) return null;
+          var r2 = Math.exp(-e2 / (this.a * this.k0));
+          if (-9999 === (i2 = W(this.e, r2))) return null;
         }
-        return s2 = z(this.long0 + h2 / (this.a * this.k0)), t2.x = s2, t2.y = i2, t2;
+        return s2 = U(this.long0 + h2 / (this.a * this.k0)), t2.x = s2, t2.y = i2, t2;
       }, names: ["Mercator", "Popular Visualisation Pseudo Mercator", "Mercator_1SP", "Mercator_Auxiliary_Sphere", "Mercator_Variant_A", "merc"] }, { init: function() {
-      }, forward: Q, inverse: Q, names: ["longlat", "identity"] }], X = {}, V = [];
-      function J(t2, s2) {
+      }, forward: Q, inverse: Q, names: ["longlat", "identity"] }], J = {}, V = [];
+      function K(t2, s2) {
         var i2 = V.length;
         return t2.names ? (V[i2] = t2, t2.names.forEach(function(t3) {
-          X[t3.toLowerCase()] = i2;
+          J[t3.toLowerCase()] = i2;
         }), this) : (console.log(s2), true);
       }
       function Z(t2) {
         return t2.replace(/[-\(\)\s]+/g, " ").trim().replace(/ /g, "_");
       }
       var Y = { start: function() {
-        K.forEach(J);
-      }, add: J, get: function(t2) {
+        X.forEach(K);
+      }, add: K, get: function(t2) {
         if (!t2) return false;
         var s2 = t2.toLowerCase();
-        return void 0 !== X[s2] && V[X[s2]] || (s2 = Z(s2)) in X && V[X[s2]] ? V[X[s2]] : void 0;
+        return void 0 !== J[s2] && V[J[s2]] || (s2 = Z(s2)) in J && V[J[s2]] ? V[J[s2]] : void 0;
       } }, $ = { MERIT: { a: 6378137, rf: 298.257, ellipseName: "MERIT 1983" }, SGS85: { a: 6378136, rf: 298.257, ellipseName: "Soviet Geodetic System 85" }, GRS80: { a: 6378137, rf: 298.257222101, ellipseName: "GRS 1980(IUGG, 1980)" }, IAU76: { a: 6378140, rf: 298.257, ellipseName: "IAU 1976" }, airy: { a: 6377563396e-3, b: 635625691e-2, ellipseName: "Airy 1830" }, APL4: { a: 6378137, rf: 298.25, ellipseName: "Appl. Physics. 1965" }, NWL9D: { a: 6378145, rf: 298.25, ellipseName: "Naval Weapons Lab., 1965" }, mod_airy: { a: 6377340189e-3, b: 6356034446e-3, ellipseName: "Modified Airy" }, andrae: { a: 637710443e-2, rf: 300, ellipseName: "Andrae 1876 (Den., Iclnd.)" }, aust_SA: { a: 6378160, rf: 298.25, ellipseName: "Australian Natl & S. Amer. 1969" }, GRS67: { a: 6378160, rf: 298.247167427, ellipseName: "GRS 67(IUGG 1967)" }, bessel: { a: 6377397155e-3, rf: 299.1528128, ellipseName: "Bessel 1841" }, bess_nam: { a: 6377483865e-3, rf: 299.1528128, ellipseName: "Bessel 1841 (Namibia)" }, clrk66: { a: 63782064e-1, b: 63565838e-1, ellipseName: "Clarke 1866" }, clrk80: { a: 6378249145e-3, rf: 293.4663, ellipseName: "Clarke 1880 mod." }, clrk80ign: { a: 63782492e-1, b: 6356515, rf: 293.4660213, ellipseName: "Clarke 1880 (IGN)" }, clrk58: { a: 6378293645208759e-9, rf: 294.2606763692654, ellipseName: "Clarke 1858" }, CPM: { a: 63757387e-1, rf: 334.29, ellipseName: "Comm. des Poids et Mesures 1799" }, delmbr: { a: 6376428, rf: 311.5, ellipseName: "Delambre 1810 (Belgium)" }, engelis: { a: 637813605e-2, rf: 298.2566, ellipseName: "Engelis 1985" }, evrst30: { a: 6377276345e-3, rf: 300.8017, ellipseName: "Everest 1830" }, evrst48: { a: 6377304063e-3, rf: 300.8017, ellipseName: "Everest 1948" }, evrst56: { a: 6377301243e-3, rf: 300.8017, ellipseName: "Everest 1956" }, evrst69: { a: 6377295664e-3, rf: 300.8017, ellipseName: "Everest 1969" }, evrstSS: { a: 6377298556e-3, rf: 300.8017, ellipseName: "Everest (Sabah & Sarawak)" }, fschr60: { a: 6378166, rf: 298.3, ellipseName: "Fischer (Mercury Datum) 1960" }, fschr60m: { a: 6378155, rf: 298.3, ellipseName: "Fischer 1960" }, fschr68: { a: 6378150, rf: 298.3, ellipseName: "Fischer 1968" }, helmert: { a: 6378200, rf: 298.3, ellipseName: "Helmert 1906" }, hough: { a: 6378270, rf: 297, ellipseName: "Hough" }, intl: { a: 6378388, rf: 297, ellipseName: "International 1909 (Hayford)" }, kaula: { a: 6378163, rf: 298.24, ellipseName: "Kaula 1961" }, lerch: { a: 6378139, rf: 298.257, ellipseName: "Lerch 1979" }, mprts: { a: 6397300, rf: 191, ellipseName: "Maupertius 1738" }, new_intl: { a: 63781575e-1, b: 63567722e-1, ellipseName: "New International 1967" }, plessis: { a: 6376523, rf: 6355863, ellipseName: "Plessis 1817 (France)" }, krass: { a: 6378245, rf: 298.3, ellipseName: "Krassovsky, 1942" }, SEasia: { a: 6378155, b: 63567733205e-4, ellipseName: "Southeast Asia" }, walbeck: { a: 6376896, b: 63558348467e-4, ellipseName: "Walbeck" }, WGS60: { a: 6378165, rf: 298.3, ellipseName: "WGS 60" }, WGS66: { a: 6378145, rf: 298.25, ellipseName: "WGS 66" }, WGS7: { a: 6378135, rf: 298.26, ellipseName: "WGS 72" }, WGS84: { a: 6378137, rf: 298.257223563, ellipseName: "WGS 84" }, sphere: { a: 6370997, b: 6370997, ellipseName: "Normal Sphere (r=6370997)" } };
       const tt = $.WGS84;
       var st = { wgs84: { towgs84: "0,0,0", ellipse: "WGS84", datumName: "WGS84" }, ch1903: { towgs84: "674.374,15.056,405.346", ellipse: "bessel", datumName: "swiss" }, ggrs87: { towgs84: "-199.87,74.79,246.62", ellipse: "GRS80", datumName: "Greek_Geodetic_Reference_System_1987" }, nad83: { towgs84: "0,0,0", ellipse: "GRS80", datumName: "North_American_Datum_1983" }, nad27: { nadgrids: "@conus,@alaska,@ntv2_0.gsb,@ntv1_can.dat", ellipse: "clrk66", datumName: "North_American_Datum_1927" }, potsdam: { towgs84: "598.1,73.7,418.2,0.202,0.045,-2.455,6.7", ellipse: "bessel", datumName: "Potsdam Rauenberg 1950 DHDN" }, carthage: { towgs84: "-263.0,6.0,431.0", ellipse: "clark80", datumName: "Carthage 1934 Tunisia" }, hermannskogel: { towgs84: "577.326,90.129,463.919,5.137,1.474,5.297,2.4232", ellipse: "bessel", datumName: "Hermannskogel" }, mgi: { towgs84: "577.326,90.129,463.919,5.137,1.474,5.297,2.4232", ellipse: "bessel", datumName: "Militar-Geographische Institut" }, osni52: { towgs84: "482.530,-130.596,564.557,-1.042,-0.214,-0.631,8.15", ellipse: "airy", datumName: "Irish National" }, ire65: { towgs84: "482.530,-130.596,564.557,-1.042,-0.214,-0.631,8.15", ellipse: "mod_airy", datumName: "Ireland 1965" }, rassadiran: { towgs84: "-133.63,-157.5,-158.62", ellipse: "intl", datumName: "Rassadiran" }, nzgd49: { towgs84: "59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993", ellipse: "intl", datumName: "New Zealand Geodetic Datum 1949" }, osgb36: { towgs84: "446.448,-125.157,542.060,0.1502,0.2470,0.8421,-20.4894", ellipse: "airy", datumName: "Ordnance Survey of Great Britain 1936" }, s_jtsk: { towgs84: "589,76,480", ellipse: "bessel", datumName: "S-JTSK (Ferro)" }, beduaram: { towgs84: "-106,-87,188", ellipse: "clrk80", datumName: "Beduaram" }, gunung_segara: { towgs84: "-403,684,41", ellipse: "bessel", datumName: "Gunung Segara Jakarta" }, rnb72: { towgs84: "106.869,-52.2978,103.724,-0.33657,0.456955,-1.84218,1", ellipse: "intl", datumName: "Reseau National Belge 1972" }, EPSG_5451: { towgs84: "6.41,-49.05,-11.28,1.5657,0.5242,6.9718,-5.7649" }, IGNF_LURESG: { towgs84: "-192.986,13.673,-39.309,-0.4099,-2.9332,2.6881,0.43" }, EPSG_4614: { towgs84: "-119.4248,-303.65872,-11.00061,1.164298,0.174458,1.096259,3.657065" }, EPSG_4615: { towgs84: "-494.088,-312.129,279.877,-1.423,-1.013,1.59,-0.748" }, ESRI_37241: { towgs84: "-76.822,257.457,-12.817,2.136,-0.033,-2.392,-0.031" }, ESRI_37249: { towgs84: "-440.296,58.548,296.265,1.128,10.202,4.559,-0.438" }, ESRI_37245: { towgs84: "-511.151,-181.269,139.609,1.05,2.703,1.798,3.071" }, EPSG_4178: { towgs84: "24.9,-126.4,-93.2,-0.063,-0.247,-0.041,1.01" }, EPSG_4622: { towgs84: "-472.29,-5.63,-304.12,0.4362,-0.8374,0.2563,1.8984" }, EPSG_4625: { towgs84: "126.93,547.94,130.41,-2.7867,5.1612,-0.8584,13.8227" }, EPSG_5252: { towgs84: "0.023,0.036,-0.068,0.00176,0.00912,-0.01136,0.00439" }, EPSG_4314: { towgs84: "597.1,71.4,412.1,0.894,0.068,-1.563,7.58" }, EPSG_4282: { towgs84: "-178.3,-316.7,-131.5,5.278,6.077,10.979,19.166" }, EPSG_4231: { towgs84: "-83.11,-97.38,-117.22,0.0276,-0.2167,0.2147,0.1218" }, EPSG_4274: { towgs84: "-230.994,102.591,25.199,0.633,-0.239,0.9,1.95" }, EPSG_4134: { towgs84: "-180.624,-225.516,173.919,-0.81,-1.898,8.336,16.71006" }, EPSG_4254: { towgs84: "18.38,192.45,96.82,0.056,-0.142,-0.2,-0.0013" }, EPSG_4159: { towgs84: "-194.513,-63.978,-25.759,-3.4027,3.756,-3.352,-0.9175" }, EPSG_4687: { towgs84: "0.072,-0.507,-0.245,0.0183,-0.0003,0.007,-0.0093" }, EPSG_4227: { towgs84: "-83.58,-397.54,458.78,-17.595,-2.847,4.256,3.225" }, EPSG_4746: { towgs84: "599.4,72.4,419.2,-0.062,-0.022,-2.723,6.46" }, EPSG_4745: { towgs84: "612.4,77,440.2,-0.054,0.057,-2.797,2.55" }, EPSG_6311: { towgs84: "8.846,-4.394,-1.122,-0.00237,-0.146528,0.130428,0.783926" }, EPSG_4289: { towgs84: "565.7381,50.4018,465.2904,-1.91514,1.60363,-9.09546,4.07244" }, EPSG_4230: { towgs84: "-68.863,-134.888,-111.49,-0.53,-0.14,0.57,-3.4" }, EPSG_4154: { towgs84: "-123.02,-158.95,-168.47" }, EPSG_4156: { towgs84: "570.8,85.7,462.8,4.998,1.587,5.261,3.56" }, EPSG_4299: { towgs84: "482.5,-130.6,564.6,-1.042,-0.214,-0.631,8.15" }, EPSG_4179: { towgs84: "33.4,-146.6,-76.3,-0.359,-0.053,0.844,-0.84" }, EPSG_4313: { towgs84: "-106.8686,52.2978,-103.7239,0.3366,-0.457,1.8422,-1.2747" }, EPSG_4194: { towgs84: "163.511,127.533,-159.789" }, EPSG_4195: { towgs84: "105,326,-102.5" }, EPSG_4196: { towgs84: "-45,417,-3.5" }, EPSG_4611: { towgs84: "-162.619,-276.959,-161.764,0.067753,-2.243649,-1.158827,-1.094246" }, EPSG_4633: { towgs84: "137.092,131.66,91.475,-1.9436,-11.5993,-4.3321,-7.4824" }, EPSG_4641: { towgs84: "-408.809,366.856,-412.987,1.8842,-0.5308,2.1655,-121.0993" }, EPSG_4643: { towgs84: "-480.26,-438.32,-643.429,16.3119,20.1721,-4.0349,-111.7002" }, EPSG_4300: { towgs84: "482.5,-130.6,564.6,-1.042,-0.214,-0.631,8.15" }, EPSG_4188: { towgs84: "482.5,-130.6,564.6,-1.042,-0.214,-0.631,8.15" }, EPSG_4660: { towgs84: "982.6087,552.753,-540.873,32.39344,-153.25684,-96.2266,16.805" }, EPSG_4662: { towgs84: "97.295,-263.247,310.882,-1.5999,0.8386,3.1409,13.3259" }, EPSG_3906: { towgs84: "577.88891,165.22205,391.18289,4.9145,-0.94729,-13.05098,7.78664" }, EPSG_4307: { towgs84: "-209.3622,-87.8162,404.6198,0.0046,3.4784,0.5805,-1.4547" }, EPSG_6892: { towgs84: "-76.269,-16.683,68.562,-6.275,10.536,-4.286,-13.686" }, EPSG_4690: { towgs84: "221.597,152.441,176.523,2.403,1.3893,0.884,11.4648" }, EPSG_4691: { towgs84: "218.769,150.75,176.75,3.5231,2.0037,1.288,10.9817" }, EPSG_4629: { towgs84: "72.51,345.411,79.241,-1.5862,-0.8826,-0.5495,1.3653" }, EPSG_4630: { towgs84: "165.804,216.213,180.26,-0.6251,-0.4515,-0.0721,7.4111" }, EPSG_4692: { towgs84: "217.109,86.452,23.711,0.0183,-0.0003,0.007,-0.0093" }, EPSG_9333: { towgs84: "0,0,0,-8.393,0.749,-10.276,0" }, EPSG_9059: { towgs84: "0,0,0" }, EPSG_4312: { towgs84: "601.705,84.263,485.227,4.7354,1.3145,5.393,-2.3887" }, EPSG_4123: { towgs84: "-96.062,-82.428,-121.753,4.801,0.345,-1.376,1.496" }, EPSG_4309: { towgs84: "-124.45,183.74,44.64,-0.4384,0.5446,-0.9706,-2.1365" }, ESRI_104106: { towgs84: "-283.088,-70.693,117.445,-1.157,0.059,-0.652,-4.058" }, EPSG_4281: { towgs84: "-219.247,-73.802,269.529" }, EPSG_4322: { towgs84: "0,0,4.5" }, EPSG_4324: { towgs84: "0,0,1.9" }, EPSG_4284: { towgs84: "43.822,-108.842,-119.585,1.455,-0.761,0.737,0.549" }, EPSG_4277: { towgs84: "446.448,-125.157,542.06,0.15,0.247,0.842,-20.489" }, EPSG_4207: { towgs84: "-282.1,-72.2,120,-1.529,0.145,-0.89,-4.46" }, EPSG_4688: { towgs84: "347.175,1077.618,2623.677,33.9058,-70.6776,9.4013,186.0647" }, EPSG_4689: { towgs84: "410.793,54.542,80.501,-2.5596,-2.3517,-0.6594,17.3218" }, EPSG_4720: { towgs84: "0,0,4.5" }, EPSG_4273: { towgs84: "278.3,93,474.5,7.889,0.05,-6.61,6.21" }, EPSG_4240: { towgs84: "204.64,834.74,293.8" }, EPSG_4817: { towgs84: "278.3,93,474.5,7.889,0.05,-6.61,6.21" }, ESRI_104131: { towgs84: "426.62,142.62,460.09,4.98,4.49,-12.42,-17.1" }, EPSG_4265: { towgs84: "-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68" }, EPSG_4263: { towgs84: "-111.92,-87.85,114.5,1.875,0.202,0.219,0.032" }, EPSG_4298: { towgs84: "-689.5937,623.84046,-65.93566,-0.02331,1.17094,-0.80054,5.88536" }, EPSG_4270: { towgs84: "-253.4392,-148.452,386.5267,0.15605,0.43,-0.1013,-0.0424" }, EPSG_4229: { towgs84: "-121.8,98.1,-10.7" }, EPSG_4220: { towgs84: "-55.5,-348,-229.2" }, EPSG_4214: { towgs84: "12.646,-155.176,-80.863" }, EPSG_4232: { towgs84: "-345,3,223" }, EPSG_4238: { towgs84: "-1.977,-13.06,-9.993,0.364,0.254,0.689,-1.037" }, EPSG_4168: { towgs84: "-170,33,326" }, EPSG_4131: { towgs84: "199,931,318.9" }, EPSG_4152: { towgs84: "-0.9102,2.0141,0.5602,0.029039,0.010065,0.010101,0" }, EPSG_5228: { towgs84: "572.213,85.334,461.94,4.9732,1.529,5.2484,3.5378" }, EPSG_8351: { towgs84: "485.021,169.465,483.839,7.786342,4.397554,4.102655,0" }, EPSG_4683: { towgs84: "-127.62,-67.24,-47.04,-3.068,4.903,1.578,-1.06" }, EPSG_4133: { towgs84: "0,0,0" }, EPSG_7373: { towgs84: "0.819,-0.5762,-1.6446,-0.00378,-0.03317,0.00318,0.0693" }, EPSG_9075: { towgs84: "-0.9102,2.0141,0.5602,0.029039,0.010065,0.010101,0" }, EPSG_9072: { towgs84: "-0.9102,2.0141,0.5602,0.029039,0.010065,0.010101,0" }, EPSG_9294: { towgs84: "1.16835,-1.42001,-2.24431,-0.00822,-0.05508,0.01818,0.23388" }, EPSG_4212: { towgs84: "-267.434,173.496,181.814,-13.4704,8.7154,7.3926,14.7492" }, EPSG_4191: { towgs84: "-44.183,-0.58,-38.489,2.3867,2.7072,-3.5196,-8.2703" }, EPSG_4237: { towgs84: "52.684,-71.194,-13.975,-0.312,-0.1063,-0.3729,1.0191" }, EPSG_4740: { towgs84: "-1.08,-0.27,-0.9" }, EPSG_4124: { towgs84: "419.3836,99.3335,591.3451,0.850389,1.817277,-7.862238,-0.99496" }, EPSG_5681: { towgs84: "584.9636,107.7175,413.8067,1.1155,0.2824,-3.1384,7.9922" }, EPSG_4141: { towgs84: "23.772,17.49,17.859,-0.3132,-1.85274,1.67299,-5.4262" }, EPSG_4204: { towgs84: "-85.645,-273.077,-79.708,2.289,-1.421,2.532,3.194" }, EPSG_4319: { towgs84: "226.702,-193.337,-35.371,-2.229,-4.391,9.238,0.9798" }, EPSG_4200: { towgs84: "24.82,-131.21,-82.66" }, EPSG_4130: { towgs84: "0,0,0" }, EPSG_4127: { towgs84: "-82.875,-57.097,-156.768,-2.158,1.524,-0.982,-0.359" }, EPSG_4149: { towgs84: "674.374,15.056,405.346" }, EPSG_4617: { towgs84: "-0.991,1.9072,0.5129,1.25033e-7,4.6785e-8,5.6529e-8,0" }, EPSG_4663: { towgs84: "-210.502,-66.902,-48.476,2.094,-15.067,-5.817,0.485" }, EPSG_4664: { towgs84: "-211.939,137.626,58.3,-0.089,0.251,0.079,0.384" }, EPSG_4665: { towgs84: "-105.854,165.589,-38.312,-0.003,-0.026,0.024,-0.048" }, EPSG_4666: { towgs84: "631.392,-66.551,481.442,1.09,-4.445,-4.487,-4.43" }, EPSG_4756: { towgs84: "-192.873,-39.382,-111.202,-0.00205,-0.0005,0.00335,0.0188" }, EPSG_4723: { towgs84: "-179.483,-69.379,-27.584,-7.862,8.163,6.042,-13.925" }, EPSG_4726: { towgs84: "8.853,-52.644,180.304,-0.393,-2.323,2.96,-24.081" }, EPSG_4267: { towgs84: "-8.0,160.0,176.0" }, EPSG_5365: { towgs84: "-0.16959,0.35312,0.51846,0.03385,-0.16325,0.03446,0.03693" }, EPSG_4218: { towgs84: "304.5,306.5,-318.1" }, EPSG_4242: { towgs84: "-33.722,153.789,94.959,-8.581,-4.478,4.54,8.95" }, EPSG_4216: { towgs84: "-292.295,248.758,429.447,4.9971,2.99,6.6906,1.0289" }, ESRI_104105: { towgs84: "631.392,-66.551,481.442,1.09,-4.445,-4.487,-4.43" }, ESRI_104129: { towgs84: "0,0,0" }, EPSG_4673: { towgs84: "174.05,-25.49,112.57" }, EPSG_4202: { towgs84: "-124,-60,154" }, EPSG_4203: { towgs84: "-117.763,-51.51,139.061,0.292,0.443,0.277,-0.191" }, EPSG_3819: { towgs84: "595.48,121.69,515.35,4.115,-2.9383,0.853,-3.408" }, EPSG_8694: { towgs84: "-93.799,-132.737,-219.073,-1.844,0.648,-6.37,-0.169" }, EPSG_4145: { towgs84: "275.57,676.78,229.6" }, EPSG_4283: { towgs84: "61.55,-10.87,-40.19,39.4924,32.7221,32.8979,-9.994" }, EPSG_4317: { towgs84: "2.3287,-147.0425,-92.0802,-0.3092483,0.32482185,0.49729934,5.68906266" }, EPSG_4272: { towgs84: "59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993" }, EPSG_4248: { towgs84: "-307.7,265.3,-363.5" }, EPSG_5561: { towgs84: "24,-121,-76" }, EPSG_5233: { towgs84: "-0.293,766.95,87.713,0.195704,1.695068,3.473016,-0.039338" }, ESRI_104130: { towgs84: "-86,-98,-119" }, ESRI_104102: { towgs84: "682,-203,480" }, ESRI_37207: { towgs84: "7,-10,-26" }, EPSG_4675: { towgs84: "59.935,118.4,-10.871" }, ESRI_104109: { towgs84: "-89.121,-348.182,260.871" }, ESRI_104112: { towgs84: "-185.583,-230.096,281.361" }, ESRI_104113: { towgs84: "25.1,-275.6,222.6" }, IGNF_WGS72G: { towgs84: "0,12,6" }, IGNF_NTFG: { towgs84: "-168,-60,320" }, IGNF_EFATE57G: { towgs84: "-127,-769,472" }, IGNF_PGP50G: { towgs84: "324.8,153.6,172.1" }, IGNF_REUN47G: { towgs84: "94,-948,-1262" }, IGNF_CSG67G: { towgs84: "-186,230,110" }, IGNF_GUAD48G: { towgs84: "-467,-16,-300" }, IGNF_TAHI51G: { towgs84: "162,117,154" }, IGNF_TAHAAG: { towgs84: "65,342,77" }, IGNF_NUKU72G: { towgs84: "84,274,65" }, IGNF_PETRELS72G: { towgs84: "365,194,166" }, IGNF_WALL78G: { towgs84: "253,-133,-127" }, IGNF_MAYO50G: { towgs84: "-382,-59,-262" }, IGNF_TANNAG: { towgs84: "-139,-967,436" }, IGNF_IGN72G: { towgs84: "-13,-348,292" }, IGNF_ATIGG: { towgs84: "1118,23,66" }, IGNF_FANGA84G: { towgs84: "150.57,158.33,118.32" }, IGNF_RUSAT84G: { towgs84: "202.13,174.6,-15.74" }, IGNF_KAUE70G: { towgs84: "126.74,300.1,-75.49" }, IGNF_MOP90G: { towgs84: "-10.8,-1.8,12.77" }, IGNF_MHPF67G: { towgs84: "338.08,212.58,-296.17" }, IGNF_TAHI79G: { towgs84: "160.61,116.05,153.69" }, IGNF_ANAA92G: { towgs84: "1.5,3.84,4.81" }, IGNF_MARQUI72G: { towgs84: "330.91,-13.92,58.56" }, IGNF_APAT86G: { towgs84: "143.6,197.82,74.05" }, IGNF_TUBU69G: { towgs84: "237.17,171.61,-77.84" }, IGNF_STPM50G: { towgs84: "11.363,424.148,373.13" }, EPSG_4150: { towgs84: "674.374,15.056,405.346" }, EPSG_4754: { towgs84: "-208.4058,-109.8777,-2.5764" }, ESRI_104101: { towgs84: "374,150,588" }, EPSG_4693: { towgs84: "0,-0.15,0.68" }, EPSG_6207: { towgs84: "293.17,726.18,245.36" }, EPSG_4153: { towgs84: "-133.63,-157.5,-158.62" }, EPSG_4132: { towgs84: "-241.54,-163.64,396.06" }, EPSG_4221: { towgs84: "-154.5,150.7,100.4" }, EPSG_4266: { towgs84: "-80.7,-132.5,41.1" }, EPSG_4193: { towgs84: "-70.9,-151.8,-41.4" }, EPSG_5340: { towgs84: "-0.41,0.46,-0.35" }, EPSG_4246: { towgs84: "-294.7,-200.1,525.5" }, EPSG_4318: { towgs84: "-3.2,-5.7,2.8" }, EPSG_4121: { towgs84: "-199.87,74.79,246.62" }, EPSG_4223: { towgs84: "-260.1,5.5,432.2" }, EPSG_4158: { towgs84: "-0.465,372.095,171.736" }, EPSG_4285: { towgs84: "-128.16,-282.42,21.93" }, EPSG_4613: { towgs84: "-404.78,685.68,45.47" }, EPSG_4607: { towgs84: "195.671,332.517,274.607" }, EPSG_4475: { towgs84: "-381.788,-57.501,-256.673" }, EPSG_4208: { towgs84: "-157.84,308.54,-146.6" }, EPSG_4743: { towgs84: "70.995,-335.916,262.898" }, EPSG_4710: { towgs84: "-323.65,551.39,-491.22" }, EPSG_7881: { towgs84: "-0.077,0.079,0.086" }, EPSG_4682: { towgs84: "283.729,735.942,261.143" }, EPSG_4739: { towgs84: "-156,-271,-189" }, EPSG_4679: { towgs84: "-80.01,253.26,291.19" }, EPSG_4750: { towgs84: "-56.263,16.136,-22.856" }, EPSG_4644: { towgs84: "-10.18,-350.43,291.37" }, EPSG_4695: { towgs84: "-103.746,-9.614,-255.95" }, EPSG_4292: { towgs84: "-355,21,72" }, EPSG_4302: { towgs84: "-61.702,284.488,472.052" }, EPSG_4143: { towgs84: "-124.76,53,466.79" }, EPSG_4606: { towgs84: "-153,153,307" }, EPSG_4699: { towgs84: "-770.1,158.4,-498.2" }, EPSG_4247: { towgs84: "-273.5,110.6,-357.9" }, EPSG_4160: { towgs84: "8.88,184.86,106.69" }, EPSG_4161: { towgs84: "-233.43,6.65,173.64" }, EPSG_9251: { towgs84: "-9.5,122.9,138.2" }, EPSG_9253: { towgs84: "-78.1,101.6,133.3" }, EPSG_4297: { towgs84: "-198.383,-240.517,-107.909" }, EPSG_4269: { towgs84: "0,0,0" }, EPSG_4301: { towgs84: "-147,506,687" }, EPSG_4618: { towgs84: "-59,-11,-52" }, EPSG_4612: { towgs84: "0,0,0" }, EPSG_4678: { towgs84: "44.585,-131.212,-39.544" }, EPSG_4250: { towgs84: "-130,29,364" }, EPSG_4144: { towgs84: "214,804,268" }, EPSG_4147: { towgs84: "-17.51,-108.32,-62.39" }, EPSG_4259: { towgs84: "-254.1,-5.36,-100.29" }, EPSG_4164: { towgs84: "-76,-138,67" }, EPSG_4211: { towgs84: "-378.873,676.002,-46.255" }, EPSG_4182: { towgs84: "-422.651,-172.995,84.02" }, EPSG_4224: { towgs84: "-143.87,243.37,-33.52" }, EPSG_4225: { towgs84: "-205.57,168.77,-4.12" }, EPSG_5527: { towgs84: "-67.35,3.88,-38.22" }, EPSG_4752: { towgs84: "98,390,-22" }, EPSG_4310: { towgs84: "-30,190,89" }, EPSG_9248: { towgs84: "-192.26,65.72,132.08" }, EPSG_4680: { towgs84: "124.5,-63.5,-281" }, EPSG_4701: { towgs84: "-79.9,-158,-168.9" }, EPSG_4706: { towgs84: "-146.21,112.63,4.05" }, EPSG_4805: { towgs84: "682,-203,480" }, EPSG_4201: { towgs84: "-165,-11,206" }, EPSG_4210: { towgs84: "-157,-2,-299" }, EPSG_4183: { towgs84: "-104,167,-38" }, EPSG_4139: { towgs84: "11,72,-101" }, EPSG_4668: { towgs84: "-86,-98,-119" }, EPSG_4717: { towgs84: "-2,151,181" }, EPSG_4732: { towgs84: "102,52,-38" }, EPSG_4280: { towgs84: "-377,681,-50" }, EPSG_4209: { towgs84: "-138,-105,-289" }, EPSG_4261: { towgs84: "31,146,47" }, EPSG_4658: { towgs84: "-73,46,-86" }, EPSG_4721: { towgs84: "265.025,384.929,-194.046" }, EPSG_4222: { towgs84: "-136,-108,-292" }, EPSG_4601: { towgs84: "-255,-15,71" }, EPSG_4602: { towgs84: "725,685,536" }, EPSG_4603: { towgs84: "72,213.7,93" }, EPSG_4605: { towgs84: "9,183,236" }, EPSG_4621: { towgs84: "137,248,-430" }, EPSG_4657: { towgs84: "-28,199,5" }, EPSG_4316: { towgs84: "103.25,-100.4,-307.19" }, EPSG_4642: { towgs84: "-13,-348,292" }, EPSG_4698: { towgs84: "145,-187,103" }, EPSG_4192: { towgs84: "-206.1,-174.7,-87.7" }, EPSG_4311: { towgs84: "-265,120,-358" }, EPSG_4135: { towgs84: "58,-283,-182" }, ESRI_104138: { towgs84: "198,-226,-347" }, EPSG_4245: { towgs84: "-11,851,5" }, EPSG_4142: { towgs84: "-125,53,467" }, EPSG_4213: { towgs84: "-106,-87,188" }, EPSG_4253: { towgs84: "-133,-77,-51" }, EPSG_4129: { towgs84: "-132,-110,-335" }, EPSG_4713: { towgs84: "-77,-128,142" }, EPSG_4239: { towgs84: "217,823,299" }, EPSG_4146: { towgs84: "295,736,257" }, EPSG_4155: { towgs84: "-83,37,124" }, EPSG_4165: { towgs84: "-173,253,27" }, EPSG_4672: { towgs84: "175,-38,113" }, EPSG_4236: { towgs84: "-637,-549,-203" }, EPSG_4251: { towgs84: "-90,40,88" }, EPSG_4271: { towgs84: "-2,374,172" }, EPSG_4175: { towgs84: "-88,4,101" }, EPSG_4716: { towgs84: "298,-304,-375" }, EPSG_4315: { towgs84: "-23,259,-9" }, EPSG_4744: { towgs84: "-242.2,-144.9,370.3" }, EPSG_4244: { towgs84: "-97,787,86" }, EPSG_4293: { towgs84: "616,97,-251" }, EPSG_4714: { towgs84: "-127,-769,472" }, EPSG_4736: { towgs84: "260,12,-147" }, EPSG_6883: { towgs84: "-235,-110,393" }, EPSG_6894: { towgs84: "-63,176,185" }, EPSG_4205: { towgs84: "-43,-163,45" }, EPSG_4256: { towgs84: "41,-220,-134" }, EPSG_4262: { towgs84: "639,405,60" }, EPSG_4604: { towgs84: "174,359,365" }, EPSG_4169: { towgs84: "-115,118,426" }, EPSG_4620: { towgs84: "-106,-129,165" }, EPSG_4184: { towgs84: "-203,141,53" }, EPSG_4616: { towgs84: "-289,-124,60" }, EPSG_9403: { towgs84: "-307,-92,127" }, EPSG_4684: { towgs84: "-133,-321,50" }, EPSG_4708: { towgs84: "-491,-22,435" }, EPSG_4707: { towgs84: "114,-116,-333" }, EPSG_4709: { towgs84: "145,75,-272" }, EPSG_4712: { towgs84: "-205,107,53" }, EPSG_4711: { towgs84: "124,-234,-25" }, EPSG_4718: { towgs84: "230,-199,-752" }, EPSG_4719: { towgs84: "211,147,111" }, EPSG_4724: { towgs84: "208,-435,-229" }, EPSG_4725: { towgs84: "189,-79,-202" }, EPSG_4735: { towgs84: "647,1777,-1124" }, EPSG_4722: { towgs84: "-794,119,-298" }, EPSG_4728: { towgs84: "-307,-92,127" }, EPSG_4734: { towgs84: "-632,438,-609" }, EPSG_4727: { towgs84: "912,-58,1227" }, EPSG_4729: { towgs84: "185,165,42" }, EPSG_4730: { towgs84: "170,42,84" }, EPSG_4733: { towgs84: "276,-57,149" }, ESRI_37218: { towgs84: "230,-199,-752" }, ESRI_37240: { towgs84: "-7,215,225" }, ESRI_37221: { towgs84: "252,-209,-751" }, ESRI_4305: { towgs84: "-123,-206,219" }, ESRI_104139: { towgs84: "-73,-247,227" }, EPSG_4748: { towgs84: "51,391,-36" }, EPSG_4219: { towgs84: "-384,664,-48" }, EPSG_4255: { towgs84: "-333,-222,114" }, EPSG_4257: { towgs84: "-587.8,519.75,145.76" }, EPSG_4646: { towgs84: "-963,510,-359" }, EPSG_6881: { towgs84: "-24,-203,268" }, EPSG_6882: { towgs84: "-183,-15,273" }, EPSG_4715: { towgs84: "-104,-129,239" }, IGNF_RGF93GDD: { towgs84: "0,0,0" }, IGNF_RGM04GDD: { towgs84: "0,0,0" }, IGNF_RGSPM06GDD: { towgs84: "0,0,0" }, IGNF_RGTAAF07GDD: { towgs84: "0,0,0" }, IGNF_RGFG95GDD: { towgs84: "0,0,0" }, IGNF_RGNCG: { towgs84: "0,0,0" }, IGNF_RGPFGDD: { towgs84: "0,0,0" }, IGNF_ETRS89G: { towgs84: "0,0,0" }, IGNF_RGR92GDD: { towgs84: "0,0,0" }, EPSG_4173: { towgs84: "0,0,0" }, EPSG_4180: { towgs84: "0,0,0" }, EPSG_4619: { towgs84: "0,0,0" }, EPSG_4667: { towgs84: "0,0,0" }, EPSG_4075: { towgs84: "0,0,0" }, EPSG_6706: { towgs84: "0,0,0" }, EPSG_7798: { towgs84: "0,0,0" }, EPSG_4661: { towgs84: "0,0,0" }, EPSG_4669: { towgs84: "0,0,0" }, EPSG_8685: { towgs84: "0,0,0" }, EPSG_4151: { towgs84: "0,0,0" }, EPSG_9702: { towgs84: "0,0,0" }, EPSG_4758: { towgs84: "0,0,0" }, EPSG_4761: { towgs84: "0,0,0" }, EPSG_4765: { towgs84: "0,0,0" }, EPSG_8997: { towgs84: "0,0,0" }, EPSG_4023: { towgs84: "0,0,0" }, EPSG_4670: { towgs84: "0,0,0" }, EPSG_4694: { towgs84: "0,0,0" }, EPSG_4148: { towgs84: "0,0,0" }, EPSG_4163: { towgs84: "0,0,0" }, EPSG_4167: { towgs84: "0,0,0" }, EPSG_4189: { towgs84: "0,0,0" }, EPSG_4190: { towgs84: "0,0,0" }, EPSG_4176: { towgs84: "0,0,0" }, EPSG_4659: { towgs84: "0,0,0" }, EPSG_3824: { towgs84: "0,0,0" }, EPSG_3889: { towgs84: "0,0,0" }, EPSG_4046: { towgs84: "0,0,0" }, EPSG_4081: { towgs84: "0,0,0" }, EPSG_4558: { towgs84: "0,0,0" }, EPSG_4483: { towgs84: "0,0,0" }, EPSG_5013: { towgs84: "0,0,0" }, EPSG_5264: { towgs84: "0,0,0" }, EPSG_5324: { towgs84: "0,0,0" }, EPSG_5354: { towgs84: "0,0,0" }, EPSG_5371: { towgs84: "0,0,0" }, EPSG_5373: { towgs84: "0,0,0" }, EPSG_5381: { towgs84: "0,0,0" }, EPSG_5393: { towgs84: "0,0,0" }, EPSG_5489: { towgs84: "0,0,0" }, EPSG_5593: { towgs84: "0,0,0" }, EPSG_6135: { towgs84: "0,0,0" }, EPSG_6365: { towgs84: "0,0,0" }, EPSG_5246: { towgs84: "0,0,0" }, EPSG_7886: { towgs84: "0,0,0" }, EPSG_8431: { towgs84: "0,0,0" }, EPSG_8427: { towgs84: "0,0,0" }, EPSG_8699: { towgs84: "0,0,0" }, EPSG_8818: { towgs84: "0,0,0" }, EPSG_4757: { towgs84: "0,0,0" }, EPSG_9140: { towgs84: "0,0,0" }, EPSG_8086: { towgs84: "0,0,0" }, EPSG_4686: { towgs84: "0,0,0" }, EPSG_4737: { towgs84: "0,0,0" }, EPSG_4702: { towgs84: "0,0,0" }, EPSG_4747: { towgs84: "0,0,0" }, EPSG_4749: { towgs84: "0,0,0" }, EPSG_4674: { towgs84: "0,0,0" }, EPSG_4755: { towgs84: "0,0,0" }, EPSG_4759: { towgs84: "0,0,0" }, EPSG_4762: { towgs84: "0,0,0" }, EPSG_4763: { towgs84: "0,0,0" }, EPSG_4764: { towgs84: "0,0,0" }, EPSG_4166: { towgs84: "0,0,0" }, EPSG_4170: { towgs84: "0,0,0" }, EPSG_5546: { towgs84: "0,0,0" }, EPSG_7844: { towgs84: "0,0,0" }, EPSG_4818: { towgs84: "589,76,480" } };
@@ -600,22 +600,22 @@ var require_proj4 = __commonJS({
       var ht = {};
       async function et(t2, s2) {
         for (var i2 = [], a3 = await s2.getImageCount(), h2 = a3 - 1; h2 >= 0; h2--) {
-          var e2 = await s2.getImage(h2), n2 = await e2.readRasters(), r2 = [e2.getWidth(), e2.getHeight()], o2 = e2.getBoundingBox().map(rt), l2 = [e2.fileDirectory.ModelPixelScale[0], e2.fileDirectory.ModelPixelScale[1]].map(rt), c2 = o2[0] + (r2[0] - 1) * l2[0], _2 = o2[3] - (r2[1] - 1) * l2[1], u2 = n2[0], M5 = n2[1], g2 = [];
-          for (let t3 = r2[1] - 1; t3 >= 0; t3--) for (let s3 = r2[0] - 1; s3 >= 0; s3--) {
-            var f2 = t3 * r2[0] + s3;
-            g2.push([-ot(M5[f2]), ot(u2[f2])]);
+          var e2 = await s2.getImage(h2), r2 = await e2.readRasters(), n2 = [e2.getWidth(), e2.getHeight()], o2 = e2.getBoundingBox().map(nt), l2 = [e2.fileDirectory.ModelPixelScale[0], e2.fileDirectory.ModelPixelScale[1]].map(nt), c2 = o2[0] + (n2[0] - 1) * l2[0], u2 = o2[3] - (n2[1] - 1) * l2[1], _2 = r2[0], M5 = r2[1], d2 = [];
+          for (let t3 = n2[1] - 1; t3 >= 0; t3--) for (let s3 = n2[0] - 1; s3 >= 0; s3--) {
+            var f2 = t3 * n2[0] + s3;
+            d2.push([-ot(M5[f2]), ot(_2[f2])]);
           }
-          i2.push({ del: l2, lim: r2, ll: [-c2, _2], cvs: g2 });
+          i2.push({ del: l2, lim: n2, ll: [-c2, u2], cvs: d2 });
         }
-        var d2 = { header: { nSubgrids: a3 }, subgrids: i2 };
-        return ht[t2] = d2, d2;
+        var g2 = { header: { nSubgrids: a3 }, subgrids: i2 };
+        return ht[t2] = g2, g2;
       }
-      function nt(t2) {
+      function rt(t2) {
         if (0 === t2.length) return null;
         var s2 = "@" === t2[0];
         return s2 && (t2 = t2.slice(1)), "null" === t2 ? { name: "null", mandatory: !s2, grid: null, isNull: true } : { name: t2, mandatory: !s2, grid: ht[t2] || null, isNull: false };
       }
-      function rt(t2) {
+      function nt(t2) {
         return t2 * Math.PI / 180;
       }
       function ot(t2) {
@@ -629,155 +629,155 @@ var require_proj4 = __commonJS({
           return [ot(t3.longitudeShift), ot(t3.latitudeShift)];
         });
       }
-      function _t(t2, s2, i2) {
+      function ut(t2, s2, i2) {
         return { name: lt(t2, s2 + 8, s2 + 16).trim(), parent: lt(t2, s2 + 24, s2 + 24 + 8).trim(), lowerLatitude: t2.getFloat64(s2 + 72, i2), upperLatitude: t2.getFloat64(s2 + 88, i2), lowerLongitude: t2.getFloat64(s2 + 104, i2), upperLongitude: t2.getFloat64(s2 + 120, i2), latitudeInterval: t2.getFloat64(s2 + 136, i2), longitudeInterval: t2.getFloat64(s2 + 152, i2), gridNodeCount: t2.getInt32(s2 + 168, i2) };
       }
-      function ut(t2, s2, i2, a3, h2) {
-        var e2 = s2 + 176, n2 = 16;
-        false === h2 && (n2 = 8);
-        for (var r2 = [], o2 = 0; o2 < i2.gridNodeCount; o2++) {
-          var l2 = { latitudeShift: t2.getFloat32(e2 + o2 * n2, a3), longitudeShift: t2.getFloat32(e2 + o2 * n2 + 4, a3) };
-          false !== h2 && (l2.latitudeAccuracy = t2.getFloat32(e2 + o2 * n2 + 8, a3), l2.longitudeAccuracy = t2.getFloat32(e2 + o2 * n2 + 12, a3)), r2.push(l2);
+      function _t(t2, s2, i2, a3, h2) {
+        var e2 = s2 + 176, r2 = 16;
+        false === h2 && (r2 = 8);
+        for (var n2 = [], o2 = 0; o2 < i2.gridNodeCount; o2++) {
+          var l2 = { latitudeShift: t2.getFloat32(e2 + o2 * r2, a3), longitudeShift: t2.getFloat32(e2 + o2 * r2 + 4, a3) };
+          false !== h2 && (l2.latitudeAccuracy = t2.getFloat32(e2 + o2 * r2 + 8, a3), l2.longitudeAccuracy = t2.getFloat32(e2 + o2 * r2 + 12, a3)), n2.push(l2);
         }
-        return r2;
+        return n2;
       }
       function Mt(t2, s2) {
         if (!(this instanceof Mt)) return new Mt(t2);
-        s2 = s2 || function(t3) {
+        this.forward = null, this.inverse = null, this.init = null, this.name, this.names = null, this.title, s2 = s2 || function(t3) {
           if (t3) throw t3;
         };
-        var a3 = j(t2);
+        var a3 = F(t2);
         if ("object" == typeof a3) {
           var e2 = Mt.projections.get(a3.projName);
           if (e2) {
             if (a3.datumCode && "none" !== a3.datumCode) {
-              var n2 = M(st, a3.datumCode);
-              n2 && (a3.datum_params = a3.datum_params || (n2.towgs84 ? n2.towgs84.split(",") : null), a3.ellps = n2.ellipse, a3.datumName = n2.datumName ? n2.datumName : a3.datumCode);
+              var r2 = M(st, a3.datumCode);
+              r2 && (a3.datum_params = a3.datum_params || (r2.towgs84 ? r2.towgs84.split(",") : null), a3.ellps = r2.ellipse, a3.datumName = r2.datumName ? r2.datumName : a3.datumCode);
             }
             a3.k0 = a3.k0 || 1, a3.axis = a3.axis || "enu", a3.ellps = a3.ellps || "wgs84", a3.lat1 = a3.lat1 || a3.lat0;
-            var r2, o2, l2, c2, _2, u2, g2, f2 = function(t3, s3, i2, a4, e3) {
+            var n2, o2, l2, c2, u2, _2, d2, f2 = function(t3, s3, i2, a4, e3) {
               if (!t3) {
-                var n3 = M($, a4);
-                n3 || (n3 = tt), t3 = n3.a, s3 = n3.b, i2 = n3.rf;
+                var r3 = M($, a4);
+                r3 || (r3 = tt), t3 = r3.a, s3 = r3.b, i2 = r3.rf;
               }
               return i2 && !s3 && (s3 = (1 - 1 / i2) * t3), (0 === i2 || Math.abs(t3 - s3) < h) && (e3 = true, s3 = t3), { a: t3, b: s3, rf: i2, sphere: e3 };
-            }(a3.a, a3.b, a3.rf, a3.ellps, a3.sphere), d2 = (r2 = f2.a, o2 = f2.b, f2.rf, l2 = a3.R_A, u2 = ((c2 = r2 * r2) - (_2 = o2 * o2)) / c2, g2 = 0, l2 ? (c2 = (r2 *= 1 - u2 * (0.16666666666666666 + u2 * (0.04722222222222222 + 0.022156084656084655 * u2))) * r2, u2 = 0) : g2 = Math.sqrt(u2), { es: u2, e: g2, ep2: (c2 - _2) / _2 }), p5 = function(t3) {
-              return void 0 === t3 ? null : t3.split(",").map(nt);
-            }(a3.nadgrids), m2 = a3.datum || function(t3, s3, a4, h2, e3, n3, r3) {
+            }(a3.a, a3.b, a3.rf, a3.ellps, a3.sphere), g2 = (n2 = f2.a, o2 = f2.b, f2.rf, l2 = a3.R_A, _2 = ((c2 = n2 * n2) - (u2 = o2 * o2)) / c2, d2 = 0, l2 ? (c2 = (n2 *= 1 - _2 * (0.16666666666666666 + _2 * (0.04722222222222222 + 0.022156084656084655 * _2))) * n2, _2 = 0) : d2 = Math.sqrt(_2), { es: _2, e: d2, ep2: (c2 - u2) / u2 }), m2 = function(t3) {
+              return void 0 === t3 ? null : t3.split(",").map(rt);
+            }(a3.nadgrids), p5 = a3.datum || function(t3, s3, a4, h2, e3, r3, n3) {
               var o3 = {};
-              return o3.datum_type = void 0 === t3 || "none" === t3 ? 5 : 4, s3 && (o3.datum_params = s3.map(parseFloat), 0 === o3.datum_params[0] && 0 === o3.datum_params[1] && 0 === o3.datum_params[2] || (o3.datum_type = 1), o3.datum_params.length > 3 && (0 === o3.datum_params[3] && 0 === o3.datum_params[4] && 0 === o3.datum_params[5] && 0 === o3.datum_params[6] || (o3.datum_type = 2, o3.datum_params[3] *= i, o3.datum_params[4] *= i, o3.datum_params[5] *= i, o3.datum_params[6] = o3.datum_params[6] / 1e6 + 1))), r3 && (o3.datum_type = 3, o3.grids = r3), o3.a = a4, o3.b = h2, o3.es = e3, o3.ep2 = n3, o3;
-            }(a3.datumCode, a3.datum_params, f2.a, f2.b, d2.es, d2.ep2, p5);
-            U(this, a3), U(this, e2), this.a = f2.a, this.b = f2.b, this.rf = f2.rf, this.sphere = f2.sphere, this.es = d2.es, this.e = d2.e, this.ep2 = d2.ep2, this.datum = m2, this.init(), s2(null, this);
+              return o3.datum_type = void 0 === t3 || "none" === t3 ? 5 : 4, s3 && (o3.datum_params = s3.map(parseFloat), 0 === o3.datum_params[0] && 0 === o3.datum_params[1] && 0 === o3.datum_params[2] || (o3.datum_type = 1), o3.datum_params.length > 3 && (0 === o3.datum_params[3] && 0 === o3.datum_params[4] && 0 === o3.datum_params[5] && 0 === o3.datum_params[6] || (o3.datum_type = 2, o3.datum_params[3] *= i, o3.datum_params[4] *= i, o3.datum_params[5] *= i, o3.datum_params[6] = o3.datum_params[6] / 1e6 + 1))), n3 && (o3.datum_type = 3, o3.grids = n3), o3.a = a4, o3.b = h2, o3.es = e3, o3.ep2 = r3, o3;
+            }(a3.datumCode, a3.datum_params, f2.a, f2.b, g2.es, g2.ep2, m2);
+            D(this, a3), D(this, e2), this.a = f2.a, this.b = f2.b, this.rf = f2.rf, this.sphere = f2.sphere, this.es = g2.es, this.e = g2.e, this.ep2 = g2.ep2, this.datum = p5, "init" in this && "function" == typeof this.init && this.init(), s2(null, this);
           } else s2("Could not get projection name from: " + t2);
         } else s2("Could not parse to valid json: " + t2);
       }
-      function gt(t2, s2, i2) {
-        var h2, e2, n2, r2, o2 = t2.x, l2 = t2.y, c2 = t2.z ? t2.z : 0;
+      function dt(t2, s2, i2) {
+        var h2, e2, r2, n2, o2 = t2.x, l2 = t2.y, c2 = t2.z ? t2.z : 0;
         if (l2 < -a && l2 > -1.001 * a) l2 = -a;
         else if (l2 > a && l2 < 1.001 * a) l2 = a;
         else {
           if (l2 < -a) return { x: -1 / 0, y: -1 / 0, z: t2.z };
           if (l2 > a) return { x: 1 / 0, y: 1 / 0, z: t2.z };
         }
-        return o2 > Math.PI && (o2 -= 2 * Math.PI), e2 = Math.sin(l2), r2 = Math.cos(l2), n2 = e2 * e2, { x: ((h2 = i2 / Math.sqrt(1 - s2 * n2)) + c2) * r2 * Math.cos(o2), y: (h2 + c2) * r2 * Math.sin(o2), z: (h2 * (1 - s2) + c2) * e2 };
+        return o2 > Math.PI && (o2 -= 2 * Math.PI), e2 = Math.sin(l2), n2 = Math.cos(l2), r2 = e2 * e2, { x: ((h2 = i2 / Math.sqrt(1 - s2 * r2)) + c2) * n2 * Math.cos(o2), y: (h2 + c2) * n2 * Math.sin(o2), z: (h2 * (1 - s2) + c2) * e2 };
       }
       function ft(t2, s2, i2, a3) {
-        var h2, e2, n2, r2, o2, l2, c2, _2, u2, M5, g2, f2, d2, p5, m2, y2 = 1e-12, S2 = t2.x, E5 = t2.y, w2 = t2.z ? t2.z : 0;
-        if (h2 = Math.sqrt(S2 * S2 + E5 * E5), e2 = Math.sqrt(S2 * S2 + E5 * E5 + w2 * w2), h2 / i2 < y2) {
-          if (p5 = 0, e2 / i2 < y2) return m2 = -a3, { x: t2.x, y: t2.y, z: t2.z };
-        } else p5 = Math.atan2(E5, S2);
-        n2 = w2 / e2, _2 = (r2 = h2 / e2) * (1 - s2) * (o2 = 1 / Math.sqrt(1 - s2 * (2 - s2) * r2 * r2)), u2 = n2 * o2, d2 = 0;
+        var h2, e2, r2, n2, o2, l2, c2, u2, _2, M5, d2, f2, g2, m2, p5, y2 = 1e-12, w2 = t2.x, E5 = t2.y, v2 = t2.z ? t2.z : 0;
+        if (h2 = Math.sqrt(w2 * w2 + E5 * E5), e2 = Math.sqrt(w2 * w2 + E5 * E5 + v2 * v2), h2 / i2 < y2) {
+          if (m2 = 0, e2 / i2 < y2) return p5 = -a3, { x: t2.x, y: t2.y, z: t2.z };
+        } else m2 = Math.atan2(E5, w2);
+        r2 = v2 / e2, u2 = (n2 = h2 / e2) * (1 - s2) * (o2 = 1 / Math.sqrt(1 - s2 * (2 - s2) * n2 * n2)), _2 = r2 * o2, g2 = 0;
         do {
-          d2++, l2 = s2 * (c2 = i2 / Math.sqrt(1 - s2 * u2 * u2)) / (c2 + (m2 = h2 * _2 + w2 * u2 - c2 * (1 - s2 * u2 * u2))), f2 = (g2 = n2 * (o2 = 1 / Math.sqrt(1 - l2 * (2 - l2) * r2 * r2))) * _2 - (M5 = r2 * (1 - l2) * o2) * u2, _2 = M5, u2 = g2;
-        } while (f2 * f2 > 1e-24 && d2 < 30);
-        return { x: p5, y: Math.atan(g2 / Math.abs(M5)), z: m2 };
+          g2++, l2 = s2 * (c2 = i2 / Math.sqrt(1 - s2 * _2 * _2)) / (c2 + (p5 = h2 * u2 + v2 * _2 - c2 * (1 - s2 * _2 * _2))), f2 = (d2 = r2 * (o2 = 1 / Math.sqrt(1 - l2 * (2 - l2) * n2 * n2))) * u2 - (M5 = n2 * (1 - l2) * o2) * _2, u2 = M5, _2 = d2;
+        } while (f2 * f2 > 1e-24 && g2 < 30);
+        return { x: m2, y: Math.atan(d2 / Math.abs(M5)), z: p5 };
       }
-      function dt(t2) {
+      function gt(t2) {
         return 1 === t2 || 2 === t2;
       }
-      function pt(i2, a3, h2) {
+      function mt(i2, a3, h2) {
         if (function(t2, s2) {
           return t2.datum_type === s2.datum_type && !(t2.a !== s2.a || Math.abs(t2.es - s2.es) > 5e-11) && (1 === t2.datum_type ? t2.datum_params[0] === s2.datum_params[0] && t2.datum_params[1] === s2.datum_params[1] && t2.datum_params[2] === s2.datum_params[2] : 2 !== t2.datum_type || t2.datum_params[0] === s2.datum_params[0] && t2.datum_params[1] === s2.datum_params[1] && t2.datum_params[2] === s2.datum_params[2] && t2.datum_params[3] === s2.datum_params[3] && t2.datum_params[4] === s2.datum_params[4] && t2.datum_params[5] === s2.datum_params[5] && t2.datum_params[6] === s2.datum_params[6]);
         }(i2, a3)) return h2;
         if (5 === i2.datum_type || 5 === a3.datum_type) return h2;
-        var e2 = i2.a, n2 = i2.es;
+        var e2 = i2.a, r2 = i2.es;
         if (3 === i2.datum_type) {
-          if (0 !== mt(i2, false, h2)) return;
-          e2 = t, n2 = s;
+          if (0 !== pt(i2, false, h2)) return;
+          e2 = t, r2 = s;
         }
-        var r2 = a3.a, o2 = a3.b, l2 = a3.es;
-        if (3 === a3.datum_type && (r2 = t, o2 = 6356752314e-3, l2 = s), n2 === l2 && e2 === r2 && !dt(i2.datum_type) && !dt(a3.datum_type)) return h2;
-        if ((h2 = gt(h2, n2, e2), dt(i2.datum_type) && (h2 = function(t2, s2, i3) {
+        var n2 = a3.a, o2 = a3.b, l2 = a3.es;
+        if (3 === a3.datum_type && (n2 = t, o2 = 6356752314e-3, l2 = s), r2 === l2 && e2 === n2 && !gt(i2.datum_type) && !gt(a3.datum_type)) return h2;
+        if ((h2 = dt(h2, r2, e2), gt(i2.datum_type) && (h2 = function(t2, s2, i3) {
           if (1 === s2) return { x: t2.x + i3[0], y: t2.y + i3[1], z: t2.z + i3[2] };
           if (2 === s2) {
-            var a4 = i3[0], h3 = i3[1], e3 = i3[2], n3 = i3[3], r3 = i3[4], o3 = i3[5], l3 = i3[6];
-            return { x: l3 * (t2.x - o3 * t2.y + r3 * t2.z) + a4, y: l3 * (o3 * t2.x + t2.y - n3 * t2.z) + h3, z: l3 * (-r3 * t2.x + n3 * t2.y + t2.z) + e3 };
+            var a4 = i3[0], h3 = i3[1], e3 = i3[2], r3 = i3[3], n3 = i3[4], o3 = i3[5], l3 = i3[6];
+            return { x: l3 * (t2.x - o3 * t2.y + n3 * t2.z) + a4, y: l3 * (o3 * t2.x + t2.y - r3 * t2.z) + h3, z: l3 * (-n3 * t2.x + r3 * t2.y + t2.z) + e3 };
           }
-        }(h2, i2.datum_type, i2.datum_params)), dt(a3.datum_type) && (h2 = function(t2, s2, i3) {
+        }(h2, i2.datum_type, i2.datum_params)), gt(a3.datum_type) && (h2 = function(t2, s2, i3) {
           if (1 === s2) return { x: t2.x - i3[0], y: t2.y - i3[1], z: t2.z - i3[2] };
           if (2 === s2) {
-            var a4 = i3[0], h3 = i3[1], e3 = i3[2], n3 = i3[3], r3 = i3[4], o3 = i3[5], l3 = i3[6], c2 = (t2.x - a4) / l3, _2 = (t2.y - h3) / l3, u2 = (t2.z - e3) / l3;
-            return { x: c2 + o3 * _2 - r3 * u2, y: -o3 * c2 + _2 + n3 * u2, z: r3 * c2 - n3 * _2 + u2 };
+            var a4 = i3[0], h3 = i3[1], e3 = i3[2], r3 = i3[3], n3 = i3[4], o3 = i3[5], l3 = i3[6], c2 = (t2.x - a4) / l3, u2 = (t2.y - h3) / l3, _2 = (t2.z - e3) / l3;
+            return { x: c2 + o3 * u2 - n3 * _2, y: -o3 * c2 + u2 + r3 * _2, z: n3 * c2 - r3 * u2 + _2 };
           }
-        }(h2, a3.datum_type, a3.datum_params)), h2 = ft(h2, l2, r2, o2), 3 === a3.datum_type) && 0 !== mt(a3, true, h2)) return;
+        }(h2, a3.datum_type, a3.datum_params)), h2 = ft(h2, l2, n2, o2), 3 === a3.datum_type) && 0 !== pt(a3, true, h2)) return;
         return h2;
       }
-      function mt(t2, s2, i2) {
+      function pt(t2, s2, i2) {
         if (null === t2.grids || 0 === t2.grids.length) return console.log("Grid shift grids not found"), -1;
         var a3 = { x: -i2.x, y: i2.y }, h2 = { x: Number.NaN, y: Number.NaN }, e2 = [];
-        t: for (var r2 = 0; r2 < t2.grids.length; r2++) {
-          var o2 = t2.grids[r2];
+        t: for (var n2 = 0; n2 < t2.grids.length; n2++) {
+          var o2 = t2.grids[n2];
           if (e2.push(o2.name), o2.isNull) {
             h2 = a3;
             break;
           }
-          if (null !== o2.grid) for (var l2 = o2.grid.subgrids, c2 = 0, _2 = l2.length; c2 < _2; c2++) {
-            var u2 = l2[c2], M5 = (Math.abs(u2.del[1]) + Math.abs(u2.del[0])) / 1e4, g2 = u2.ll[0] - M5, f2 = u2.ll[1] - M5, d2 = u2.ll[0] + (u2.lim[0] - 1) * u2.del[0] + M5, p5 = u2.ll[1] + (u2.lim[1] - 1) * u2.del[1] + M5;
-            if (!(f2 > a3.y || g2 > a3.x || p5 < a3.y || d2 < a3.x) && (h2 = yt(a3, s2, u2), !isNaN(h2.x))) break t;
+          if (null !== o2.grid) for (var l2 = o2.grid.subgrids, c2 = 0, u2 = l2.length; c2 < u2; c2++) {
+            var _2 = l2[c2], M5 = (Math.abs(_2.del[1]) + Math.abs(_2.del[0])) / 1e4, d2 = _2.ll[0] - M5, f2 = _2.ll[1] - M5, g2 = _2.ll[0] + (_2.lim[0] - 1) * _2.del[0] + M5, m2 = _2.ll[1] + (_2.lim[1] - 1) * _2.del[1] + M5;
+            if (!(f2 > a3.y || d2 > a3.x || m2 < a3.y || g2 < a3.x) && (h2 = yt(a3, s2, _2), !isNaN(h2.x))) break t;
           }
           else if (o2.mandatory) return console.log("Unable to find mandatory grid '" + o2.name + "'"), -1;
         }
-        return isNaN(h2.x) ? (console.log("Failed to find a grid shift table for location '" + -a3.x * n + " " + a3.y * n + " tried: '" + e2 + "'"), -1) : (i2.x = -h2.x, i2.y = h2.y, 0);
+        return isNaN(h2.x) ? (console.log("Failed to find a grid shift table for location '" + -a3.x * r + " " + a3.y * r + " tried: '" + e2 + "'"), -1) : (i2.x = -h2.x, i2.y = h2.y, 0);
       }
       function yt(t2, s2, i2) {
         var a3 = { x: Number.NaN, y: Number.NaN };
         if (isNaN(t2.x)) return a3;
         var h2 = { x: t2.x, y: t2.y };
-        h2.x -= i2.ll[0], h2.y -= i2.ll[1], h2.x = z(h2.x - Math.PI) + Math.PI;
-        var e2 = St(h2, i2);
+        h2.x -= i2.ll[0], h2.y -= i2.ll[1], h2.x = U(h2.x - Math.PI) + Math.PI;
+        var e2 = wt(h2, i2);
         if (s2) {
           if (isNaN(e2.x)) return a3;
           e2.x = h2.x - e2.x, e2.y = h2.y - e2.y;
-          var n2, r2, o2 = 9;
+          var r2, n2, o2 = 9;
           do {
-            if (r2 = St(e2, i2), isNaN(r2.x)) {
+            if (n2 = wt(e2, i2), isNaN(n2.x)) {
               console.log("Inverse grid shift iteration failed, presumably at grid edge.  Using first approximation.");
               break;
             }
-            n2 = { x: h2.x - (r2.x + e2.x), y: h2.y - (r2.y + e2.y) }, e2.x += n2.x, e2.y += n2.y;
-          } while (o2-- && Math.abs(n2.x) > 1e-12 && Math.abs(n2.y) > 1e-12);
+            r2 = { x: h2.x - (n2.x + e2.x), y: h2.y - (n2.y + e2.y) }, e2.x += r2.x, e2.y += r2.y;
+          } while (o2-- && Math.abs(r2.x) > 1e-12 && Math.abs(r2.y) > 1e-12);
           if (o2 < 0) return console.log("Inverse grid shift iterator failed to converge."), a3;
-          a3.x = z(e2.x + i2.ll[0]), a3.y = e2.y + i2.ll[1];
+          a3.x = U(e2.x + i2.ll[0]), a3.y = e2.y + i2.ll[1];
         } else isNaN(e2.x) || (a3.x = t2.x + e2.x, a3.y = t2.y + e2.y);
         return a3;
       }
-      function St(t2, s2) {
-        var i2, a3 = { x: t2.x / s2.del[0], y: t2.y / s2.del[1] }, h2 = Math.floor(a3.x), e2 = Math.floor(a3.y), n2 = a3.x - 1 * h2, r2 = a3.y - 1 * e2, o2 = { x: Number.NaN, y: Number.NaN };
+      function wt(t2, s2) {
+        var i2, a3 = { x: t2.x / s2.del[0], y: t2.y / s2.del[1] }, h2 = Math.floor(a3.x), e2 = Math.floor(a3.y), r2 = a3.x - 1 * h2, n2 = a3.y - 1 * e2, o2 = { x: Number.NaN, y: Number.NaN };
         if (h2 < 0 || h2 >= s2.lim[0]) return o2;
         if (e2 < 0 || e2 >= s2.lim[1]) return o2;
         i2 = e2 * s2.lim[0] + h2;
         var l2 = s2.cvs[i2][0], c2 = s2.cvs[i2][1];
         i2++;
-        var _2 = s2.cvs[i2][0], u2 = s2.cvs[i2][1];
+        var u2 = s2.cvs[i2][0], _2 = s2.cvs[i2][1];
         i2 += s2.lim[0];
-        var M5 = s2.cvs[i2][0], g2 = s2.cvs[i2][1];
+        var M5 = s2.cvs[i2][0], d2 = s2.cvs[i2][1];
         i2--;
-        var f2 = s2.cvs[i2][0], d2 = s2.cvs[i2][1], p5 = n2 * r2, m2 = n2 * (1 - r2), y2 = (1 - n2) * (1 - r2), S2 = (1 - n2) * r2;
-        return o2.x = y2 * l2 + m2 * _2 + S2 * f2 + p5 * M5, o2.y = y2 * c2 + m2 * u2 + S2 * d2 + p5 * g2, o2;
+        var f2 = s2.cvs[i2][0], g2 = s2.cvs[i2][1], m2 = r2 * n2, p5 = r2 * (1 - n2), y2 = (1 - r2) * (1 - n2), w2 = (1 - r2) * n2;
+        return o2.x = y2 * l2 + p5 * u2 + w2 * f2 + m2 * M5, o2.y = y2 * c2 + p5 * _2 + w2 * g2 + m2 * d2, o2;
       }
       function Et(t2, s2, i2) {
-        var a3, h2, e2, n2 = i2.x, r2 = i2.y, o2 = i2.z || 0, l2 = {};
-        for (e2 = 0; e2 < 3; e2++) if (!s2 || 2 !== e2 || void 0 !== i2.z) switch (0 === e2 ? (a3 = n2, h2 = -1 !== "ew".indexOf(t2.axis[e2]) ? "x" : "y") : 1 === e2 ? (a3 = r2, h2 = -1 !== "ns".indexOf(t2.axis[e2]) ? "y" : "x") : (a3 = o2, h2 = "z"), t2.axis[e2]) {
+        var a3, h2, e2, r2 = i2.x, n2 = i2.y, o2 = i2.z || 0, l2 = {};
+        for (e2 = 0; e2 < 3; e2++) if (!s2 || 2 !== e2 || void 0 !== i2.z) switch (0 === e2 ? (a3 = r2, h2 = -1 !== "ew".indexOf(t2.axis[e2]) ? "x" : "y") : 1 === e2 ? (a3 = n2, h2 = -1 !== "ns".indexOf(t2.axis[e2]) ? "y" : "x") : (a3 = o2, h2 = "z"), t2.axis[e2]) {
           case "e":
           case "n":
             l2[h2] = a3;
@@ -797,32 +797,32 @@ var require_proj4 = __commonJS({
         }
         return l2;
       }
-      function wt(t2) {
+      function vt(t2) {
         var s2 = { x: t2[0], y: t2[1] };
         return t2.length > 2 && (s2.z = t2[2]), t2.length > 3 && (s2.m = t2[3]), s2;
       }
-      function vt(t2) {
+      function xt(t2) {
         if ("function" == typeof Number.isFinite) {
           if (Number.isFinite(t2)) return;
           throw new TypeError("coordinates must be finite numbers");
         }
         if ("number" != typeof t2 || t2 != t2 || !isFinite(t2)) throw new TypeError("coordinates must be finite numbers");
       }
-      function Gt(t2, s2, i2, a3) {
-        var h2, r2 = void 0 !== (i2 = Array.isArray(i2) ? wt(i2) : { x: i2.x, y: i2.y, z: i2.z, m: i2.m }).z;
+      function St(t2, s2, i2, a3) {
+        var h2, n2 = void 0 !== (i2 = Array.isArray(i2) ? vt(i2) : { x: i2.x, y: i2.y, z: i2.z, m: i2.m }).z;
         if (function(t3) {
-          vt(t3.x), vt(t3.y);
+          xt(t3.x), xt(t3.y);
         }(i2), t2.datum && s2.datum && function(t3, s3) {
           return (1 === t3.datum.datum_type || 2 === t3.datum.datum_type || 3 === t3.datum.datum_type) && "WGS84" !== s3.datumCode || (1 === s3.datum.datum_type || 2 === s3.datum.datum_type || 3 === s3.datum.datum_type) && "WGS84" !== t3.datumCode;
-        }(t2, s2) && (i2 = Gt(t2, h2 = new Mt("WGS84"), i2, a3), t2 = h2), a3 && "enu" !== t2.axis && (i2 = Et(t2, false, i2)), "longlat" === t2.projName) i2 = { x: i2.x * e, y: i2.y * e, z: i2.z || 0 };
+        }(t2, s2) && (i2 = St(t2, h2 = new Mt("WGS84"), i2, a3), t2 = h2), a3 && "enu" !== t2.axis && (i2 = Et(t2, false, i2)), "longlat" === t2.projName) i2 = { x: i2.x * e, y: i2.y * e, z: i2.z || 0 };
         else if (t2.to_meter && (i2 = { x: i2.x * t2.to_meter, y: i2.y * t2.to_meter, z: i2.z || 0 }), !(i2 = t2.inverse(i2))) return;
-        if (t2.from_greenwich && (i2.x += t2.from_greenwich), i2 = pt(t2.datum, s2.datum, i2)) return s2.from_greenwich && (i2 = { x: i2.x - s2.from_greenwich, y: i2.y, z: i2.z || 0 }), "longlat" === s2.projName ? i2 = { x: i2.x * n, y: i2.y * n, z: i2.z || 0 } : (i2 = s2.forward(i2), s2.to_meter && (i2 = { x: i2.x / s2.to_meter, y: i2.y / s2.to_meter, z: i2.z || 0 })), a3 && "enu" !== s2.axis ? Et(s2, true, i2) : (i2 && !r2 && delete i2.z, i2);
+        if (t2.from_greenwich && (i2.x += t2.from_greenwich), i2 = mt(t2.datum, s2.datum, i2)) return s2.from_greenwich && (i2 = { x: i2.x - s2.from_greenwich, y: i2.y, z: i2.z || 0 }), "longlat" === s2.projName ? i2 = { x: i2.x * r, y: i2.y * r, z: i2.z || 0 } : (i2 = s2.forward(i2), s2.to_meter && (i2 = { x: i2.x / s2.to_meter, y: i2.y / s2.to_meter, z: i2.z || 0 })), a3 && "enu" !== s2.axis ? Et(s2, true, i2) : (i2 && !n2 && delete i2.z, i2);
       }
       Mt.projections = Y, Mt.projections.start();
-      var xt = Mt("WGS84");
+      var Gt = Mt("WGS84");
       function Pt(t2, s2, i2, a3) {
-        var h2, e2, n2;
-        return Array.isArray(i2) ? (h2 = Gt(t2, s2, i2, a3) || { x: NaN, y: NaN }, i2.length > 2 ? void 0 !== t2.name && "geocent" === t2.name || void 0 !== s2.name && "geocent" === s2.name ? "number" == typeof h2.z ? [h2.x, h2.y, h2.z].concat(i2.slice(3)) : [h2.x, h2.y, i2[2]].concat(i2.slice(3)) : [h2.x, h2.y].concat(i2.slice(2)) : [h2.x, h2.y]) : (e2 = Gt(t2, s2, i2, a3), 2 === (n2 = Object.keys(i2)).length || n2.forEach(function(a4) {
+        var h2, e2, r2;
+        return Array.isArray(i2) ? (h2 = St(t2, s2, i2, a3) || { x: NaN, y: NaN }, i2.length > 2 ? void 0 !== t2.name && "geocent" === t2.name || void 0 !== s2.name && "geocent" === s2.name ? "number" == typeof h2.z ? [h2.x, h2.y, h2.z].concat(i2.slice(3)) : [h2.x, h2.y, i2[2]].concat(i2.slice(3)) : [h2.x, h2.y].concat(i2.slice(2)) : [h2.x, h2.y]) : (e2 = St(t2, s2, i2, a3), 2 === (r2 = Object.keys(i2)).length || r2.forEach(function(a4) {
           if (void 0 !== t2.name && "geocent" === t2.name || void 0 !== s2.name && "geocent" === s2.name) {
             if ("x" === a4 || "y" === a4 || "z" === a4) return;
           } else if ("x" === a4 || "y" === a4) return;
@@ -830,61 +830,52 @@ var require_proj4 = __commonJS({
         }), e2);
       }
       function bt(t2) {
-        return t2 instanceof Mt ? t2 : t2.oProj ? t2.oProj : Mt(t2);
+        return t2 instanceof Mt ? t2 : "object" == typeof t2 && "oProj" in t2 ? t2.oProj : Mt(t2);
       }
-      function At(t2, s2, i2) {
-        t2 = bt(t2);
-        var a3, h2 = false;
-        return void 0 === s2 ? (s2 = t2, t2 = xt, h2 = true) : (void 0 !== s2.x || Array.isArray(s2)) && (i2 = s2, s2 = t2, t2 = xt, h2 = true), s2 = bt(s2), i2 ? Pt(t2, s2, i2) : (a3 = { forward: function(i3, a4) {
-          return Pt(t2, s2, i3, a4);
-        }, inverse: function(i3, a4) {
-          return Pt(s2, t2, i3, a4);
-        } }, h2 && (a3.oProj = s2), a3);
-      }
-      var Ct = "AJSAJS", Nt = "AFAFAF", It = 65, Lt = 73, Ot = 79, Rt = 86, qt = 90, Tt = { forward: kt, inverse: function(t2) {
-        var s2 = Ft(Ht(t2.toUpperCase()));
+      var Nt = "AJSAJS", At = "AFAFAF", It = 65, Ct = 73, kt = 79, Rt = 86, Ot = 90, qt = { forward: jt, inverse: function(t2) {
+        var s2 = Dt(Ut(t2.toUpperCase()));
         if (s2.lat && s2.lon) return [s2.lon, s2.lat, s2.lon, s2.lat];
         return [s2.left, s2.bottom, s2.right, s2.top];
-      }, toPoint: Dt };
-      function kt(t2, s2) {
+      }, toPoint: Tt };
+      function jt(t2, s2) {
         return s2 = s2 || 5, function(t3, s3) {
           var i2 = "00000" + t3.easting, a3 = "00000" + t3.northing;
-          return t3.zoneNumber + t3.zoneLetter + (M5 = t3.easting, g2 = t3.northing, f2 = t3.zoneNumber, d2 = zt(f2), p5 = Math.floor(M5 / 1e5), m2 = Math.floor(g2 / 1e5) % 20, h2 = p5, e2 = m2, n2 = d2, r2 = n2 - 1, o2 = Ct.charCodeAt(r2), l2 = Nt.charCodeAt(r2), c2 = o2 + h2 - 1, _2 = l2 + e2, u2 = false, c2 > qt && (c2 = c2 - qt + It - 1, u2 = true), (c2 === Lt || o2 < Lt && c2 > Lt || (c2 > Lt || o2 < Lt) && u2) && c2++, (c2 === Ot || o2 < Ot && c2 > Ot || (c2 > Ot || o2 < Ot) && u2) && ++c2 === Lt && c2++, c2 > qt && (c2 = c2 - qt + It - 1), _2 > Rt ? (_2 = _2 - Rt + It - 1, u2 = true) : u2 = false, (_2 === Lt || l2 < Lt && _2 > Lt || (_2 > Lt || l2 < Lt) && u2) && _2++, (_2 === Ot || l2 < Ot && _2 > Ot || (_2 > Ot || l2 < Ot) && u2) && ++_2 === Lt && _2++, _2 > Rt && (_2 = _2 - Rt + It - 1), String.fromCharCode(c2) + String.fromCharCode(_2)) + i2.substr(i2.length - 5, s3) + a3.substr(a3.length - 5, s3);
-          var h2, e2, n2, r2, o2, l2, c2, _2, u2;
-          var M5, g2, f2, d2, p5, m2;
+          return t3.zoneNumber + t3.zoneLetter + (M5 = t3.easting, d2 = t3.northing, f2 = t3.zoneNumber, g2 = zt(f2), m2 = Math.floor(M5 / 1e5), p5 = Math.floor(d2 / 1e5) % 20, h2 = m2, e2 = p5, r2 = g2, n2 = r2 - 1, o2 = Nt.charCodeAt(n2), l2 = At.charCodeAt(n2), c2 = o2 + h2 - 1, u2 = l2 + e2, _2 = false, c2 > Ot && (c2 = c2 - Ot + It - 1, _2 = true), (c2 === Ct || o2 < Ct && c2 > Ct || (c2 > Ct || o2 < Ct) && _2) && c2++, (c2 === kt || o2 < kt && c2 > kt || (c2 > kt || o2 < kt) && _2) && ++c2 === Ct && c2++, c2 > Ot && (c2 = c2 - Ot + It - 1), u2 > Rt ? (u2 = u2 - Rt + It - 1, _2 = true) : _2 = false, (u2 === Ct || l2 < Ct && u2 > Ct || (u2 > Ct || l2 < Ct) && _2) && u2++, (u2 === kt || l2 < kt && u2 > kt || (u2 > kt || l2 < kt) && _2) && ++u2 === Ct && u2++, u2 > Rt && (u2 = u2 - Rt + It - 1), String.fromCharCode(c2) + String.fromCharCode(u2)) + i2.substr(i2.length - 5, s3) + a3.substr(a3.length - 5, s3);
+          var h2, e2, r2, n2, o2, l2, c2, u2, _2;
+          var M5, d2, f2, g2, m2, p5;
         }(function(t3) {
-          var s3, i2, a3, h2, e2, n2, r2, o2, l2 = t3.lat, c2 = t3.lon, _2 = 6378137, u2 = 669438e-8, M5 = 0.9996, g2 = jt(l2), f2 = jt(c2);
+          var s3, i2, a3, h2, e2, r2, n2, o2, l2 = t3.lat, c2 = t3.lon, u2 = 6378137, _2 = 669438e-8, M5 = 0.9996, d2 = Lt(l2), f2 = Lt(c2);
           o2 = Math.floor((c2 + 180) / 6) + 1, 180 === c2 && (o2 = 60);
           l2 >= 56 && l2 < 64 && c2 >= 3 && c2 < 12 && (o2 = 32);
           l2 >= 72 && l2 < 84 && (c2 >= 0 && c2 < 9 ? o2 = 31 : c2 >= 9 && c2 < 21 ? o2 = 33 : c2 >= 21 && c2 < 33 ? o2 = 35 : c2 >= 33 && c2 < 42 && (o2 = 37));
-          r2 = jt(6 * (o2 - 1) - 180 + 3), s3 = u2 / (1 - u2), i2 = _2 / Math.sqrt(1 - u2 * Math.sin(g2) * Math.sin(g2)), a3 = Math.tan(g2) * Math.tan(g2), h2 = s3 * Math.cos(g2) * Math.cos(g2), e2 = Math.cos(g2) * (f2 - r2), n2 = _2 * ((1 - u2 / 4 - 3 * u2 * u2 / 64 - 5 * u2 * u2 * u2 / 256) * g2 - (3 * u2 / 8 + 3 * u2 * u2 / 32 + 45 * u2 * u2 * u2 / 1024) * Math.sin(2 * g2) + (15 * u2 * u2 / 256 + 45 * u2 * u2 * u2 / 1024) * Math.sin(4 * g2) - 35 * u2 * u2 * u2 / 3072 * Math.sin(6 * g2));
-          var d2 = M5 * i2 * (e2 + (1 - a3 + h2) * e2 * e2 * e2 / 6 + (5 - 18 * a3 + a3 * a3 + 72 * h2 - 58 * s3) * e2 * e2 * e2 * e2 * e2 / 120) + 5e5, p5 = M5 * (n2 + i2 * Math.tan(g2) * (e2 * e2 / 2 + (5 - a3 + 9 * h2 + 4 * h2 * h2) * e2 * e2 * e2 * e2 / 24 + (61 - 58 * a3 + a3 * a3 + 600 * h2 - 330 * s3) * e2 * e2 * e2 * e2 * e2 * e2 / 720));
-          l2 < 0 && (p5 += 1e7);
-          return { northing: Math.round(p5), easting: Math.round(d2), zoneNumber: o2, zoneLetter: Bt(l2) };
+          n2 = Lt(6 * (o2 - 1) - 180 + 3), s3 = _2 / (1 - _2), i2 = u2 / Math.sqrt(1 - _2 * Math.sin(d2) * Math.sin(d2)), a3 = Math.tan(d2) * Math.tan(d2), h2 = s3 * Math.cos(d2) * Math.cos(d2), e2 = Math.cos(d2) * (f2 - n2), r2 = u2 * ((1 - _2 / 4 - 3 * _2 * _2 / 64 - 5 * _2 * _2 * _2 / 256) * d2 - (3 * _2 / 8 + 3 * _2 * _2 / 32 + 45 * _2 * _2 * _2 / 1024) * Math.sin(2 * d2) + (15 * _2 * _2 / 256 + 45 * _2 * _2 * _2 / 1024) * Math.sin(4 * d2) - 35 * _2 * _2 * _2 / 3072 * Math.sin(6 * d2));
+          var g2 = M5 * i2 * (e2 + (1 - a3 + h2) * e2 * e2 * e2 / 6 + (5 - 18 * a3 + a3 * a3 + 72 * h2 - 58 * s3) * e2 * e2 * e2 * e2 * e2 / 120) + 5e5, m2 = M5 * (r2 + i2 * Math.tan(d2) * (e2 * e2 / 2 + (5 - a3 + 9 * h2 + 4 * h2 * h2) * e2 * e2 * e2 * e2 / 24 + (61 - 58 * a3 + a3 * a3 + 600 * h2 - 330 * s3) * e2 * e2 * e2 * e2 * e2 * e2 / 720));
+          l2 < 0 && (m2 += 1e7);
+          return { northing: Math.round(m2), easting: Math.round(g2), zoneNumber: o2, zoneLetter: Bt(l2) };
         }({ lat: t2[1], lon: t2[0] }), s2);
       }
-      function Dt(t2) {
-        var s2 = Ft(Ht(t2.toUpperCase()));
+      function Tt(t2) {
+        var s2 = Dt(Ut(t2.toUpperCase()));
         return s2.lat && s2.lon ? [s2.lon, s2.lat] : [(s2.left + s2.right) / 2, (s2.top + s2.bottom) / 2];
       }
-      function jt(t2) {
+      function Lt(t2) {
         return t2 * (Math.PI / 180);
       }
-      function Ut(t2) {
+      function Ft(t2) {
         return t2 / Math.PI * 180;
       }
-      function Ft(t2) {
+      function Dt(t2) {
         var s2 = t2.northing, i2 = t2.easting, a3 = t2.zoneLetter, h2 = t2.zoneNumber;
         if (h2 < 0 || h2 > 60) return null;
-        var e2, n2, r2, o2, l2, c2, _2, u2, M5, g2 = 0.9996, f2 = 6378137, d2 = 669438e-8, p5 = (1 - Math.sqrt(0.99330562)) / (1 + Math.sqrt(0.99330562)), m2 = i2 - 5e5, y2 = s2;
-        a3 < "N" && (y2 -= 1e7), _2 = 6 * (h2 - 1) - 180 + 3, e2 = 0.006739496752268451, M5 = (u2 = y2 / g2 / 6367449145945056e-9) + (3 * p5 / 2 - 27 * p5 * p5 * p5 / 32) * Math.sin(2 * u2) + (21 * p5 * p5 / 16 - 55 * p5 * p5 * p5 * p5 / 32) * Math.sin(4 * u2) + 151 * p5 * p5 * p5 / 96 * Math.sin(6 * u2), n2 = f2 / Math.sqrt(1 - d2 * Math.sin(M5) * Math.sin(M5)), r2 = Math.tan(M5) * Math.tan(M5), o2 = e2 * Math.cos(M5) * Math.cos(M5), l2 = 0.99330562 * f2 / Math.pow(1 - d2 * Math.sin(M5) * Math.sin(M5), 1.5), c2 = m2 / (n2 * g2);
-        var S2 = M5 - n2 * Math.tan(M5) / l2 * (c2 * c2 / 2 - (5 + 3 * r2 + 10 * o2 - 4 * o2 * o2 - 9 * e2) * c2 * c2 * c2 * c2 / 24 + (61 + 90 * r2 + 298 * o2 + 45 * r2 * r2 - 1.6983531815716497 - 3 * o2 * o2) * c2 * c2 * c2 * c2 * c2 * c2 / 720);
-        S2 = Ut(S2);
-        var E5, w2 = (c2 - (1 + 2 * r2 + o2) * c2 * c2 * c2 / 6 + (5 - 2 * o2 + 28 * r2 - 3 * o2 * o2 + 8 * e2 + 24 * r2 * r2) * c2 * c2 * c2 * c2 * c2 / 120) / Math.cos(M5);
-        if (w2 = _2 + Ut(w2), t2.accuracy) {
-          var v2 = Ft({ northing: t2.northing + t2.accuracy, easting: t2.easting + t2.accuracy, zoneLetter: t2.zoneLetter, zoneNumber: t2.zoneNumber });
-          E5 = { top: v2.lat, right: v2.lon, bottom: S2, left: w2 };
-        } else E5 = { lat: S2, lon: w2 };
+        var e2, r2, n2, o2, l2, c2, u2, _2, M5, d2 = 0.9996, f2 = 6378137, g2 = 669438e-8, m2 = (1 - Math.sqrt(0.99330562)) / (1 + Math.sqrt(0.99330562)), p5 = i2 - 5e5, y2 = s2;
+        a3 < "N" && (y2 -= 1e7), u2 = 6 * (h2 - 1) - 180 + 3, e2 = 0.006739496752268451, M5 = (_2 = y2 / d2 / 6367449145945056e-9) + (3 * m2 / 2 - 27 * m2 * m2 * m2 / 32) * Math.sin(2 * _2) + (21 * m2 * m2 / 16 - 55 * m2 * m2 * m2 * m2 / 32) * Math.sin(4 * _2) + 151 * m2 * m2 * m2 / 96 * Math.sin(6 * _2), r2 = f2 / Math.sqrt(1 - g2 * Math.sin(M5) * Math.sin(M5)), n2 = Math.tan(M5) * Math.tan(M5), o2 = e2 * Math.cos(M5) * Math.cos(M5), l2 = 0.99330562 * f2 / Math.pow(1 - g2 * Math.sin(M5) * Math.sin(M5), 1.5), c2 = p5 / (r2 * d2);
+        var w2 = M5 - r2 * Math.tan(M5) / l2 * (c2 * c2 / 2 - (5 + 3 * n2 + 10 * o2 - 4 * o2 * o2 - 9 * e2) * c2 * c2 * c2 * c2 / 24 + (61 + 90 * n2 + 298 * o2 + 45 * n2 * n2 - 1.6983531815716497 - 3 * o2 * o2) * c2 * c2 * c2 * c2 * c2 * c2 / 720);
+        w2 = Ft(w2);
+        var E5, v2 = (c2 - (1 + 2 * n2 + o2) * c2 * c2 * c2 / 6 + (5 - 2 * o2 + 28 * n2 - 3 * o2 * o2 + 8 * e2 + 24 * n2 * n2) * c2 * c2 * c2 * c2 * c2 / 120) / Math.cos(M5);
+        if (v2 = u2 + Ft(v2), t2.accuracy) {
+          var x2 = Dt({ northing: t2.northing + t2.accuracy, easting: t2.easting + t2.accuracy, zoneLetter: t2.zoneLetter, zoneNumber: t2.zoneNumber });
+          E5 = { top: x2.lat, right: x2.lon, bottom: w2, left: v2 };
+        } else E5 = { lat: w2, lon: v2 };
         return E5;
       }
       function Bt(t2) {
@@ -895,21 +886,21 @@ var require_proj4 = __commonJS({
         var s2 = t2 % 6;
         return 0 === s2 && (s2 = 6), s2;
       }
-      function Ht(t2) {
+      function Ut(t2) {
         if (t2 && 0 === t2.length) throw "MGRSPoint coverting from nothing";
         for (var s2, i2 = t2.length, a3 = null, h2 = "", e2 = 0; !/[A-Z]/.test(s2 = t2.charAt(e2)); ) {
           if (e2 >= 2) throw "MGRSPoint bad conversion from: " + t2;
           h2 += s2, e2++;
         }
-        var n2 = parseInt(h2, 10);
+        var r2 = parseInt(h2, 10);
         if (0 === e2 || e2 + 3 > i2) throw "MGRSPoint bad conversion from: " + t2;
-        var r2 = t2.charAt(e2++);
-        if (r2 <= "A" || "B" === r2 || "Y" === r2 || r2 >= "Z" || "I" === r2 || "O" === r2) throw "MGRSPoint zone letter " + r2 + " not handled: " + t2;
+        var n2 = t2.charAt(e2++);
+        if (n2 <= "A" || "B" === n2 || "Y" === n2 || n2 >= "Z" || "I" === n2 || "O" === n2) throw "MGRSPoint zone letter " + n2 + " not handled: " + t2;
         a3 = t2.substring(e2, e2 += 2);
-        for (var o2 = zt(n2), l2 = function(t3, s3) {
-          var i3 = Ct.charCodeAt(s3 - 1), a4 = 1e5, h3 = false;
+        for (var o2 = zt(r2), l2 = function(t3, s3) {
+          var i3 = Nt.charCodeAt(s3 - 1), a4 = 1e5, h3 = false;
           for (; i3 !== t3.charCodeAt(0); ) {
-            if (++i3 === Lt && i3++, i3 === Ot && i3++, i3 > qt) {
+            if (++i3 === Ct && i3++, i3 === kt && i3++, i3 > Ot) {
               if (h3) throw "Bad character: " + t3;
               i3 = It, h3 = true;
             }
@@ -918,22 +909,22 @@ var require_proj4 = __commonJS({
           return a4;
         }(a3.charAt(0), o2), c2 = function(t3, s3) {
           if (t3 > "V") throw "MGRSPoint given invalid Northing " + t3;
-          var i3 = Nt.charCodeAt(s3 - 1), a4 = 0, h3 = false;
+          var i3 = At.charCodeAt(s3 - 1), a4 = 0, h3 = false;
           for (; i3 !== t3.charCodeAt(0); ) {
-            if (++i3 === Lt && i3++, i3 === Ot && i3++, i3 > Rt) {
+            if (++i3 === Ct && i3++, i3 === kt && i3++, i3 > Rt) {
               if (h3) throw "Bad character: " + t3;
               i3 = It, h3 = true;
             }
             a4 += 1e5;
           }
           return a4;
-        }(a3.charAt(1), o2); c2 < Wt(r2); ) c2 += 2e6;
-        var _2 = i2 - e2;
-        if (_2 % 2 != 0) throw "MGRSPoint has to have an even number \nof digits after the zone letter and two 100km letters - front \nhalf for easting meters, second half for \nnorthing meters" + t2;
-        var u2, M5, g2, f2 = _2 / 2, d2 = 0, p5 = 0;
-        return f2 > 0 && (u2 = 1e5 / Math.pow(10, f2), M5 = t2.substring(e2, e2 + f2), d2 = parseFloat(M5) * u2, g2 = t2.substring(e2 + f2), p5 = parseFloat(g2) * u2), { easting: d2 + l2, northing: p5 + c2, zoneLetter: r2, zoneNumber: n2, accuracy: u2 };
+        }(a3.charAt(1), o2); c2 < Ht(n2); ) c2 += 2e6;
+        var u2 = i2 - e2;
+        if (u2 % 2 != 0) throw "MGRSPoint has to have an even number \nof digits after the zone letter and two 100km letters - front \nhalf for easting meters, second half for \nnorthing meters" + t2;
+        var _2, M5, d2, f2 = u2 / 2, g2 = 0, m2 = 0;
+        return f2 > 0 && (_2 = 1e5 / Math.pow(10, f2), M5 = t2.substring(e2, e2 + f2), g2 = parseFloat(M5) * _2, d2 = t2.substring(e2 + f2), m2 = parseFloat(d2) * _2), { easting: g2 + l2, northing: m2 + c2, zoneLetter: n2, zoneNumber: r2, accuracy: _2 };
       }
-      function Wt(t2) {
+      function Ht(t2) {
         var s2;
         switch (t2) {
           case "C":
@@ -1002,557 +993,558 @@ var require_proj4 = __commonJS({
         if (s2 >= 0) return s2;
         throw "Invalid zone letter: " + t2;
       }
-      function Qt(t2, s2, i2) {
-        if (!(this instanceof Qt)) return new Qt(t2, s2, i2);
+      function Wt(t2, s2, i2) {
+        if (!(this instanceof Wt)) return new Wt(t2, s2, i2);
         if (Array.isArray(t2)) this.x = t2[0], this.y = t2[1], this.z = t2[2] || 0;
         else if ("object" == typeof t2) this.x = t2.x, this.y = t2.y, this.z = t2.z || 0;
         else if ("string" == typeof t2 && void 0 === s2) {
           var a3 = t2.split(",");
-          this.x = parseFloat(a3[0], 10), this.y = parseFloat(a3[1], 10), this.z = parseFloat(a3[2], 10) || 0;
+          this.x = parseFloat(a3[0]), this.y = parseFloat(a3[1]), this.z = parseFloat(a3[2]) || 0;
         } else this.x = t2, this.y = s2, this.z = i2 || 0;
         console.warn("proj4.Point will be removed in version 3, use proj4.toPoint");
       }
-      Qt.fromMGRS = function(t2) {
-        return new Qt(Dt(t2));
-      }, Qt.prototype.toMGRS = function(t2) {
-        return kt([this.x, this.y], t2);
+      Wt.fromMGRS = function(t2) {
+        return new Wt(Tt(t2));
+      }, Wt.prototype.toMGRS = function(t2) {
+        return jt([this.x, this.y], t2);
       };
-      var Kt = 0.046875, Xt = 0.01953125, Vt = 0.01068115234375;
-      function Jt(t2) {
+      var Qt = 0.046875, Xt = 0.01953125, Jt = 0.01068115234375;
+      function Vt(t2) {
         var s2 = [];
-        s2[0] = 1 - t2 * (0.25 + t2 * (Kt + t2 * (Xt + t2 * Vt))), s2[1] = t2 * (0.75 - t2 * (Kt + t2 * (Xt + t2 * Vt)));
+        s2[0] = 1 - t2 * (0.25 + t2 * (Qt + t2 * (Xt + t2 * Jt))), s2[1] = t2 * (0.75 - t2 * (Qt + t2 * (Xt + t2 * Jt)));
         var i2 = t2 * t2;
         return s2[2] = i2 * (0.46875 - t2 * (0.013020833333333334 + 0.007120768229166667 * t2)), i2 *= t2, s2[3] = i2 * (0.3645833333333333 - 0.005696614583333333 * t2), s2[4] = i2 * t2 * 0.3076171875, s2;
       }
-      function Zt(t2, s2, i2, a3) {
+      function Kt(t2, s2, i2, a3) {
         return i2 *= s2, s2 *= s2, a3[0] * t2 - i2 * (a3[1] + s2 * (a3[2] + s2 * (a3[3] + s2 * a3[4])));
       }
-      function Yt(t2, s2, i2) {
-        for (var a3 = 1 / (1 - s2), e2 = t2, n2 = 20; n2; --n2) {
-          var r2 = Math.sin(e2), o2 = 1 - s2 * r2 * r2;
-          if (e2 -= o2 = (Zt(e2, r2, Math.cos(e2), i2) - t2) * (o2 * Math.sqrt(o2)) * a3, Math.abs(o2) < h) return e2;
+      function Zt(t2, s2, i2) {
+        for (var a3 = 1 / (1 - s2), e2 = t2, r2 = 20; r2; --r2) {
+          var n2 = Math.sin(e2), o2 = 1 - s2 * n2 * n2;
+          if (e2 -= o2 = (Kt(e2, n2, Math.cos(e2), i2) - t2) * (o2 * Math.sqrt(o2)) * a3, Math.abs(o2) < h) return e2;
         }
         return e2;
       }
-      var $t = { init: function() {
-        this.x0 = void 0 !== this.x0 ? this.x0 : 0, this.y0 = void 0 !== this.y0 ? this.y0 : 0, this.long0 = void 0 !== this.long0 ? this.long0 : 0, this.lat0 = void 0 !== this.lat0 ? this.lat0 : 0, this.es && (this.en = Jt(this.es), this.ml0 = Zt(this.lat0, Math.sin(this.lat0), Math.cos(this.lat0), this.en));
+      var Yt = { init: function() {
+        this.x0 = void 0 !== this.x0 ? this.x0 : 0, this.y0 = void 0 !== this.y0 ? this.y0 : 0, this.long0 = void 0 !== this.long0 ? this.long0 : 0, this.lat0 = void 0 !== this.lat0 ? this.lat0 : 0, this.es && (this.en = Vt(this.es), this.ml0 = Kt(this.lat0, Math.sin(this.lat0), Math.cos(this.lat0), this.en));
       }, forward: function(t2) {
-        var s2, i2, a3, e2 = t2.x, n2 = t2.y, r2 = z(e2 - this.long0), o2 = Math.sin(n2), l2 = Math.cos(n2);
+        var s2, i2, a3, e2 = t2.x, r2 = t2.y, n2 = U(e2 - this.long0), o2 = Math.sin(r2), l2 = Math.cos(r2);
         if (this.es) {
-          var c2 = l2 * r2, _2 = Math.pow(c2, 2), u2 = this.ep2 * Math.pow(l2, 2), M5 = Math.pow(u2, 2), g2 = Math.abs(l2) > h ? Math.tan(n2) : 0, f2 = Math.pow(g2, 2), d2 = Math.pow(f2, 2);
+          var c2 = l2 * n2, u2 = Math.pow(c2, 2), _2 = this.ep2 * Math.pow(l2, 2), M5 = Math.pow(_2, 2), d2 = Math.abs(l2) > h ? Math.tan(r2) : 0, f2 = Math.pow(d2, 2), g2 = Math.pow(f2, 2);
           s2 = 1 - this.es * Math.pow(o2, 2), c2 /= Math.sqrt(s2);
-          var p5 = Zt(n2, o2, l2, this.en);
-          i2 = this.a * (this.k0 * c2 * (1 + _2 / 6 * (1 - f2 + u2 + _2 / 20 * (5 - 18 * f2 + d2 + 14 * u2 - 58 * f2 * u2 + _2 / 42 * (61 + 179 * d2 - d2 * f2 - 479 * f2))))) + this.x0, a3 = this.a * (this.k0 * (p5 - this.ml0 + o2 * r2 * c2 / 2 * (1 + _2 / 12 * (5 - f2 + 9 * u2 + 4 * M5 + _2 / 30 * (61 + d2 - 58 * f2 + 270 * u2 - 330 * f2 * u2 + _2 / 56 * (1385 + 543 * d2 - d2 * f2 - 3111 * f2)))))) + this.y0;
+          var m2 = Kt(r2, o2, l2, this.en);
+          i2 = this.a * (this.k0 * c2 * (1 + u2 / 6 * (1 - f2 + _2 + u2 / 20 * (5 - 18 * f2 + g2 + 14 * _2 - 58 * f2 * _2 + u2 / 42 * (61 + 179 * g2 - g2 * f2 - 479 * f2))))) + this.x0, a3 = this.a * (this.k0 * (m2 - this.ml0 + o2 * n2 * c2 / 2 * (1 + u2 / 12 * (5 - f2 + 9 * _2 + 4 * M5 + u2 / 30 * (61 + g2 - 58 * f2 + 270 * _2 - 330 * f2 * _2 + u2 / 56 * (1385 + 543 * g2 - g2 * f2 - 3111 * f2)))))) + this.y0;
         } else {
-          var m2 = l2 * Math.sin(r2);
-          if (Math.abs(Math.abs(m2) - 1) < h) return 93;
-          if (i2 = 0.5 * this.a * this.k0 * Math.log((1 + m2) / (1 - m2)) + this.x0, a3 = l2 * Math.cos(r2) / Math.sqrt(1 - Math.pow(m2, 2)), (m2 = Math.abs(a3)) >= 1) {
-            if (m2 - 1 > h) return 93;
+          var p5 = l2 * Math.sin(n2);
+          if (Math.abs(Math.abs(p5) - 1) < h) return 93;
+          if (i2 = 0.5 * this.a * this.k0 * Math.log((1 + p5) / (1 - p5)) + this.x0, a3 = l2 * Math.cos(n2) / Math.sqrt(1 - Math.pow(p5, 2)), (p5 = Math.abs(a3)) >= 1) {
+            if (p5 - 1 > h) return 93;
             a3 = 0;
           } else a3 = Math.acos(a3);
-          n2 < 0 && (a3 = -a3), a3 = this.a * this.k0 * (a3 - this.lat0) + this.y0;
+          r2 < 0 && (a3 = -a3), a3 = this.a * this.k0 * (a3 - this.lat0) + this.y0;
         }
         return t2.x = i2, t2.y = a3, t2;
       }, inverse: function(t2) {
-        var s2, i2, e2, n2, r2 = (t2.x - this.x0) * (1 / this.a), o2 = (t2.y - this.y0) * (1 / this.a);
-        if (this.es) if (i2 = Yt(s2 = this.ml0 + o2 / this.k0, this.es, this.en), Math.abs(i2) < a) {
-          var l2 = Math.sin(i2), c2 = Math.cos(i2), _2 = Math.abs(c2) > h ? Math.tan(i2) : 0, u2 = this.ep2 * Math.pow(c2, 2), M5 = Math.pow(u2, 2), g2 = Math.pow(_2, 2), f2 = Math.pow(g2, 2);
+        var s2, i2, e2, r2, n2 = (t2.x - this.x0) * (1 / this.a), o2 = (t2.y - this.y0) * (1 / this.a);
+        if (this.es) if (i2 = Zt(s2 = this.ml0 + o2 / this.k0, this.es, this.en), Math.abs(i2) < a) {
+          var l2 = Math.sin(i2), c2 = Math.cos(i2), u2 = Math.abs(c2) > h ? Math.tan(i2) : 0, _2 = this.ep2 * Math.pow(c2, 2), M5 = Math.pow(_2, 2), d2 = Math.pow(u2, 2), f2 = Math.pow(d2, 2);
           s2 = 1 - this.es * Math.pow(l2, 2);
-          var d2 = r2 * Math.sqrt(s2) / this.k0, p5 = Math.pow(d2, 2);
-          e2 = i2 - (s2 *= _2) * p5 / (1 - this.es) * 0.5 * (1 - p5 / 12 * (5 + 3 * g2 - 9 * u2 * g2 + u2 - 4 * M5 - p5 / 30 * (61 + 90 * g2 - 252 * u2 * g2 + 45 * f2 + 46 * u2 - p5 / 56 * (1385 + 3633 * g2 + 4095 * f2 + 1574 * f2 * g2)))), n2 = z(this.long0 + d2 * (1 - p5 / 6 * (1 + 2 * g2 + u2 - p5 / 20 * (5 + 28 * g2 + 24 * f2 + 8 * u2 * g2 + 6 * u2 - p5 / 42 * (61 + 662 * g2 + 1320 * f2 + 720 * f2 * g2)))) / c2);
-        } else e2 = a * B(o2), n2 = 0;
+          var g2 = n2 * Math.sqrt(s2) / this.k0, m2 = Math.pow(g2, 2);
+          e2 = i2 - (s2 *= u2) * m2 / (1 - this.es) * 0.5 * (1 - m2 / 12 * (5 + 3 * d2 - 9 * _2 * d2 + _2 - 4 * M5 - m2 / 30 * (61 + 90 * d2 - 252 * _2 * d2 + 45 * f2 + 46 * _2 - m2 / 56 * (1385 + 3633 * d2 + 4095 * f2 + 1574 * f2 * d2)))), r2 = U(this.long0 + g2 * (1 - m2 / 6 * (1 + 2 * d2 + _2 - m2 / 20 * (5 + 28 * d2 + 24 * f2 + 8 * _2 * d2 + 6 * _2 - m2 / 42 * (61 + 662 * d2 + 1320 * f2 + 720 * f2 * d2)))) / c2);
+        } else e2 = a * z(o2), r2 = 0;
         else {
-          var m2 = Math.exp(r2 / this.k0), y2 = 0.5 * (m2 - 1 / m2), S2 = this.lat0 + o2 / this.k0, E5 = Math.cos(S2);
-          s2 = Math.sqrt((1 - Math.pow(E5, 2)) / (1 + Math.pow(y2, 2))), e2 = Math.asin(s2), o2 < 0 && (e2 = -e2), n2 = 0 === y2 && 0 === E5 ? 0 : z(Math.atan2(y2, E5) + this.long0);
+          var p5 = Math.exp(n2 / this.k0), y2 = 0.5 * (p5 - 1 / p5), w2 = this.lat0 + o2 / this.k0, E5 = Math.cos(w2);
+          s2 = Math.sqrt((1 - Math.pow(E5, 2)) / (1 + Math.pow(y2, 2))), e2 = Math.asin(s2), o2 < 0 && (e2 = -e2), r2 = 0 === y2 && 0 === E5 ? 0 : U(Math.atan2(y2, E5) + this.long0);
         }
-        return t2.x = n2, t2.y = e2, t2;
+        return t2.x = r2, t2.y = e2, t2;
       }, names: ["Fast_Transverse_Mercator", "Fast Transverse Mercator"] };
-      function ts(t2) {
+      function $t(t2) {
         var s2 = Math.exp(t2);
         return s2 = (s2 - 1 / s2) / 2;
       }
-      function ss(t2, s2) {
+      function ts(t2, s2) {
         t2 = Math.abs(t2), s2 = Math.abs(s2);
         var i2 = Math.max(t2, s2), a3 = Math.min(t2, s2) / (i2 || 1);
         return i2 * Math.sqrt(1 + Math.pow(a3, 2));
       }
-      function is(t2) {
+      function ss(t2) {
         var s2 = Math.abs(t2);
         return s2 = function(t3) {
           var s3 = 1 + t3, i2 = s3 - 1;
           return 0 === i2 ? t3 : t3 * Math.log(s3) / i2;
-        }(s2 * (1 + s2 / (ss(1, s2) + 1))), t2 < 0 ? -s2 : s2;
+        }(s2 * (1 + s2 / (ts(1, s2) + 1))), t2 < 0 ? -s2 : s2;
       }
-      function as(t2, s2) {
-        for (var i2, a3 = 2 * Math.cos(2 * s2), h2 = t2.length - 1, e2 = t2[h2], n2 = 0; --h2 >= 0; ) i2 = a3 * e2 - n2 + t2[h2], n2 = e2, e2 = i2;
+      function is(t2, s2) {
+        for (var i2, a3 = 2 * Math.cos(2 * s2), h2 = t2.length - 1, e2 = t2[h2], r2 = 0; --h2 >= 0; ) i2 = a3 * e2 - r2 + t2[h2], r2 = e2, e2 = i2;
         return s2 + i2 * Math.sin(2 * s2);
       }
-      function hs(t2, s2, i2) {
-        for (var a3, h2, e2 = Math.sin(s2), n2 = Math.cos(s2), r2 = ts(i2), o2 = function(t3) {
+      function as(t2, s2, i2) {
+        for (var a3, h2, e2 = Math.sin(s2), r2 = Math.cos(s2), n2 = $t(i2), o2 = function(t3) {
           var s3 = Math.exp(t3);
           return (s3 + 1 / s3) / 2;
-        }(i2), l2 = 2 * n2 * o2, c2 = -2 * e2 * r2, _2 = t2.length - 1, u2 = t2[_2], M5 = 0, g2 = 0, f2 = 0; --_2 >= 0; ) a3 = g2, h2 = M5, u2 = l2 * (g2 = u2) - a3 - c2 * (M5 = f2) + t2[_2], f2 = c2 * g2 - h2 + l2 * M5;
-        return [(l2 = e2 * o2) * u2 - (c2 = n2 * r2) * f2, l2 * f2 + c2 * u2];
+        }(i2), l2 = 2 * r2 * o2, c2 = -2 * e2 * n2, u2 = t2.length - 1, _2 = t2[u2], M5 = 0, d2 = 0, f2 = 0; --u2 >= 0; ) a3 = d2, h2 = M5, _2 = l2 * (d2 = _2) - a3 - c2 * (M5 = f2) + t2[u2], f2 = c2 * d2 - h2 + l2 * M5;
+        return [(l2 = e2 * o2) * _2 - (c2 = r2 * n2) * f2, l2 * f2 + c2 * _2];
       }
-      var es = { init: function() {
+      var hs = { init: function() {
         if (!this.approx && (isNaN(this.es) || this.es <= 0)) throw new Error('Incorrect elliptical usage. Try using the +approx option in the proj string, or PROJECTION["Fast_Transverse_Mercator"] in the WKT.');
-        this.approx && ($t.init.apply(this), this.forward = $t.forward, this.inverse = $t.inverse), this.x0 = void 0 !== this.x0 ? this.x0 : 0, this.y0 = void 0 !== this.y0 ? this.y0 : 0, this.long0 = void 0 !== this.long0 ? this.long0 : 0, this.lat0 = void 0 !== this.lat0 ? this.lat0 : 0, this.cgb = [], this.cbg = [], this.utg = [], this.gtu = [];
+        this.approx && (Yt.init.apply(this), this.forward = Yt.forward, this.inverse = Yt.inverse), this.x0 = void 0 !== this.x0 ? this.x0 : 0, this.y0 = void 0 !== this.y0 ? this.y0 : 0, this.long0 = void 0 !== this.long0 ? this.long0 : 0, this.lat0 = void 0 !== this.lat0 ? this.lat0 : 0, this.cgb = [], this.cbg = [], this.utg = [], this.gtu = [];
         var t2 = this.es / (1 + Math.sqrt(1 - this.es)), s2 = t2 / (2 - t2), i2 = s2;
         this.cgb[0] = s2 * (2 + s2 * (-2 / 3 + s2 * (s2 * (116 / 45 + s2 * (26 / 45 + s2 * (-2854 / 675))) - 2))), this.cbg[0] = s2 * (s2 * (2 / 3 + s2 * (4 / 3 + s2 * (-82 / 45 + s2 * (32 / 45 + s2 * (4642 / 4725))))) - 2), i2 *= s2, this.cgb[1] = i2 * (7 / 3 + s2 * (s2 * (-227 / 45 + s2 * (2704 / 315 + s2 * (2323 / 945))) - 1.6)), this.cbg[1] = i2 * (5 / 3 + s2 * (-16 / 15 + s2 * (-13 / 9 + s2 * (904 / 315 + s2 * (-1522 / 945))))), i2 *= s2, this.cgb[2] = i2 * (56 / 15 + s2 * (-136 / 35 + s2 * (-1262 / 105 + s2 * (73814 / 2835)))), this.cbg[2] = i2 * (-26 / 15 + s2 * (34 / 21 + s2 * (1.6 + s2 * (-12686 / 2835)))), i2 *= s2, this.cgb[3] = i2 * (4279 / 630 + s2 * (-332 / 35 + s2 * (-399572 / 14175))), this.cbg[3] = i2 * (1237 / 630 + s2 * (s2 * (-24832 / 14175) - 2.4)), i2 *= s2, this.cgb[4] = i2 * (4174 / 315 + s2 * (-144838 / 6237)), this.cbg[4] = i2 * (-734 / 315 + s2 * (109598 / 31185)), i2 *= s2, this.cgb[5] = i2 * (601676 / 22275), this.cbg[5] = i2 * (444337 / 155925), i2 = Math.pow(s2, 2), this.Qn = this.k0 / (1 + s2) * (1 + i2 * (1 / 4 + i2 * (1 / 64 + i2 / 256))), this.utg[0] = s2 * (s2 * (2 / 3 + s2 * (-37 / 96 + s2 * (1 / 360 + s2 * (81 / 512 + s2 * (-96199 / 604800))))) - 0.5), this.gtu[0] = s2 * (0.5 + s2 * (-2 / 3 + s2 * (5 / 16 + s2 * (41 / 180 + s2 * (-127 / 288 + s2 * (7891 / 37800)))))), this.utg[1] = i2 * (-1 / 48 + s2 * (-1 / 15 + s2 * (437 / 1440 + s2 * (-46 / 105 + s2 * (1118711 / 3870720))))), this.gtu[1] = i2 * (13 / 48 + s2 * (s2 * (557 / 1440 + s2 * (281 / 630 + s2 * (-1983433 / 1935360))) - 0.6)), i2 *= s2, this.utg[2] = i2 * (-17 / 480 + s2 * (37 / 840 + s2 * (209 / 4480 + s2 * (-5569 / 90720)))), this.gtu[2] = i2 * (61 / 240 + s2 * (-103 / 140 + s2 * (15061 / 26880 + s2 * (167603 / 181440)))), i2 *= s2, this.utg[3] = i2 * (-4397 / 161280 + s2 * (11 / 504 + s2 * (830251 / 7257600))), this.gtu[3] = i2 * (49561 / 161280 + s2 * (-179 / 168 + s2 * (6601661 / 7257600))), i2 *= s2, this.utg[4] = i2 * (-4583 / 161280 + s2 * (108847 / 3991680)), this.gtu[4] = i2 * (34729 / 80640 + s2 * (-3418889 / 1995840)), i2 *= s2, this.utg[5] = i2 * (-20648693 / 638668800), this.gtu[5] = 0.6650675310896665 * i2;
-        var a3 = as(this.cbg, this.lat0);
+        var a3 = is(this.cbg, this.lat0);
         this.Zb = -this.Qn * (a3 + function(t3, s3) {
-          for (var i3, a4 = 2 * Math.cos(s3), h2 = t3.length - 1, e2 = t3[h2], n2 = 0; --h2 >= 0; ) i3 = a4 * e2 - n2 + t3[h2], n2 = e2, e2 = i3;
+          for (var i3, a4 = 2 * Math.cos(s3), h2 = t3.length - 1, e2 = t3[h2], r2 = 0; --h2 >= 0; ) i3 = a4 * e2 - r2 + t3[h2], r2 = e2, e2 = i3;
           return Math.sin(s3) * i3;
         }(this.gtu, 2 * a3));
       }, forward: function(t2) {
-        var s2 = z(t2.x - this.long0), i2 = t2.y;
-        i2 = as(this.cbg, i2);
-        var a3 = Math.sin(i2), h2 = Math.cos(i2), e2 = Math.sin(s2), n2 = Math.cos(s2);
-        i2 = Math.atan2(a3, n2 * h2), s2 = Math.atan2(e2 * h2, ss(a3, h2 * n2)), s2 = is(Math.tan(s2));
-        var r2, o2, l2 = hs(this.gtu, 2 * i2, 2 * s2);
-        return i2 += l2[0], s2 += l2[1], Math.abs(s2) <= 2.623395162778 ? (r2 = this.a * (this.Qn * s2) + this.x0, o2 = this.a * (this.Qn * i2 + this.Zb) + this.y0) : (r2 = 1 / 0, o2 = 1 / 0), t2.x = r2, t2.y = o2, t2;
+        var s2 = U(t2.x - this.long0), i2 = t2.y;
+        i2 = is(this.cbg, i2);
+        var a3 = Math.sin(i2), h2 = Math.cos(i2), e2 = Math.sin(s2), r2 = Math.cos(s2);
+        i2 = Math.atan2(a3, r2 * h2), s2 = Math.atan2(e2 * h2, ts(a3, h2 * r2)), s2 = ss(Math.tan(s2));
+        var n2, o2, l2 = as(this.gtu, 2 * i2, 2 * s2);
+        return i2 += l2[0], s2 += l2[1], Math.abs(s2) <= 2.623395162778 ? (n2 = this.a * (this.Qn * s2) + this.x0, o2 = this.a * (this.Qn * i2 + this.Zb) + this.y0) : (n2 = 1 / 0, o2 = 1 / 0), t2.x = n2, t2.y = o2, t2;
       }, inverse: function(t2) {
         var s2, i2, a3 = (t2.x - this.x0) * (1 / this.a), h2 = (t2.y - this.y0) * (1 / this.a);
         if (h2 = (h2 - this.Zb) / this.Qn, a3 /= this.Qn, Math.abs(a3) <= 2.623395162778) {
-          var e2 = hs(this.utg, 2 * h2, 2 * a3);
-          h2 += e2[0], a3 += e2[1], a3 = Math.atan(ts(a3));
-          var n2 = Math.sin(h2), r2 = Math.cos(h2), o2 = Math.sin(a3), l2 = Math.cos(a3);
-          h2 = Math.atan2(n2 * l2, ss(o2, l2 * r2)), s2 = z((a3 = Math.atan2(o2, l2 * r2)) + this.long0), i2 = as(this.cgb, h2);
+          var e2 = as(this.utg, 2 * h2, 2 * a3);
+          h2 += e2[0], a3 += e2[1], a3 = Math.atan($t(a3));
+          var r2 = Math.sin(h2), n2 = Math.cos(h2), o2 = Math.sin(a3), l2 = Math.cos(a3);
+          h2 = Math.atan2(r2 * l2, ts(o2, l2 * n2)), s2 = U((a3 = Math.atan2(o2, l2 * n2)) + this.long0), i2 = is(this.cgb, h2);
         } else s2 = 1 / 0, i2 = 1 / 0;
         return t2.x = s2, t2.y = i2, t2;
       }, names: ["Extended_Transverse_Mercator", "Extended Transverse Mercator", "etmerc", "Transverse_Mercator", "Transverse Mercator", "Gauss Kruger", "Gauss_Kruger", "tmerc"] };
-      var ns = { init: function() {
+      var es = { init: function() {
         var t2 = function(t3, s2) {
           if (void 0 === t3) {
-            if ((t3 = Math.floor(30 * (z(s2) + Math.PI) / Math.PI) + 1) < 0) return 0;
+            if ((t3 = Math.floor(30 * (U(s2) + Math.PI) / Math.PI) + 1) < 0) return 0;
             if (t3 > 60) return 60;
           }
           return t3;
         }(this.zone, this.long0);
         if (void 0 === t2) throw new Error("unknown utm zone");
-        this.lat0 = 0, this.long0 = (6 * Math.abs(t2) - 183) * e, this.x0 = 5e5, this.y0 = this.utmSouth ? 1e7 : 0, this.k0 = 0.9996, es.init.apply(this), this.forward = es.forward, this.inverse = es.inverse;
+        this.lat0 = 0, this.long0 = (6 * Math.abs(t2) - 183) * e, this.x0 = 5e5, this.y0 = this.utmSouth ? 1e7 : 0, this.k0 = 0.9996, hs.init.apply(this), this.forward = hs.forward, this.inverse = hs.inverse;
       }, names: ["Universal Transverse Mercator System", "utm"], dependsOn: "etmerc" };
       function rs(t2, s2) {
         return Math.pow((1 - t2) / (1 + t2), s2);
       }
-      var os = { init: function() {
+      var ns = { init: function() {
         var t2 = Math.sin(this.lat0), s2 = Math.cos(this.lat0);
-        s2 *= s2, this.rc = Math.sqrt(1 - this.es) / (1 - this.es * t2 * t2), this.C = Math.sqrt(1 + this.es * s2 * s2 / (1 - this.es)), this.phic0 = Math.asin(t2 / this.C), this.ratexp = 0.5 * this.C * this.e, this.K = Math.tan(0.5 * this.phic0 + r) / (Math.pow(Math.tan(0.5 * this.lat0 + r), this.C) * rs(this.e * t2, this.ratexp));
+        s2 *= s2, this.rc = Math.sqrt(1 - this.es) / (1 - this.es * t2 * t2), this.C = Math.sqrt(1 + this.es * s2 * s2 / (1 - this.es)), this.phic0 = Math.asin(t2 / this.C), this.ratexp = 0.5 * this.C * this.e, this.K = Math.tan(0.5 * this.phic0 + n) / (Math.pow(Math.tan(0.5 * this.lat0 + n), this.C) * rs(this.e * t2, this.ratexp));
       }, forward: function(t2) {
         var s2 = t2.x, i2 = t2.y;
-        return t2.y = 2 * Math.atan(this.K * Math.pow(Math.tan(0.5 * i2 + r), this.C) * rs(this.e * Math.sin(i2), this.ratexp)) - a, t2.x = this.C * s2, t2;
+        return t2.y = 2 * Math.atan(this.K * Math.pow(Math.tan(0.5 * i2 + n), this.C) * rs(this.e * Math.sin(i2), this.ratexp)) - a, t2.x = this.C * s2, t2;
       }, inverse: function(t2) {
-        for (var s2 = t2.x / this.C, i2 = t2.y, h2 = Math.pow(Math.tan(0.5 * i2 + r) / this.K, 1 / this.C), e2 = 20; e2 > 0 && (i2 = 2 * Math.atan(h2 * rs(this.e * Math.sin(t2.y), -0.5 * this.e)) - a, !(Math.abs(i2 - t2.y) < 1e-14)); --e2) t2.y = i2;
+        for (var s2 = t2.x / this.C, i2 = t2.y, h2 = Math.pow(Math.tan(0.5 * i2 + n) / this.K, 1 / this.C), e2 = 20; e2 > 0 && (i2 = 2 * Math.atan(h2 * rs(this.e * Math.sin(t2.y), -0.5 * this.e)) - a, !(Math.abs(i2 - t2.y) < 1e-14)); --e2) t2.y = i2;
         return e2 ? (t2.x = s2, t2.y = i2, t2) : null;
       } };
-      var ls = { init: function() {
-        os.init.apply(this), this.rc && (this.sinc0 = Math.sin(this.phic0), this.cosc0 = Math.cos(this.phic0), this.R2 = 2 * this.rc, this.title || (this.title = "Oblique Stereographic Alternative"));
+      var os = { init: function() {
+        ns.init.apply(this), this.rc && (this.sinc0 = Math.sin(this.phic0), this.cosc0 = Math.cos(this.phic0), this.R2 = 2 * this.rc, this.title || (this.title = "Oblique Stereographic Alternative"));
       }, forward: function(t2) {
         var s2, i2, a3, h2;
-        return t2.x = z(t2.x - this.long0), os.forward.apply(this, [t2]), s2 = Math.sin(t2.y), i2 = Math.cos(t2.y), a3 = Math.cos(t2.x), h2 = this.k0 * this.R2 / (1 + this.sinc0 * s2 + this.cosc0 * i2 * a3), t2.x = h2 * i2 * Math.sin(t2.x), t2.y = h2 * (this.cosc0 * s2 - this.sinc0 * i2 * a3), t2.x = this.a * t2.x + this.x0, t2.y = this.a * t2.y + this.y0, t2;
+        return t2.x = U(t2.x - this.long0), ns.forward.apply(this, [t2]), s2 = Math.sin(t2.y), i2 = Math.cos(t2.y), a3 = Math.cos(t2.x), h2 = this.k0 * this.R2 / (1 + this.sinc0 * s2 + this.cosc0 * i2 * a3), t2.x = h2 * i2 * Math.sin(t2.x), t2.y = h2 * (this.cosc0 * s2 - this.sinc0 * i2 * a3), t2.x = this.a * t2.x + this.x0, t2.y = this.a * t2.y + this.y0, t2;
       }, inverse: function(t2) {
         var s2, i2, a3, h2, e2;
-        if (t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a, t2.x /= this.k0, t2.y /= this.k0, e2 = ss(t2.x, t2.y)) {
-          var n2 = 2 * Math.atan2(e2, this.R2);
-          s2 = Math.sin(n2), i2 = Math.cos(n2), h2 = Math.asin(i2 * this.sinc0 + t2.y * s2 * this.cosc0 / e2), a3 = Math.atan2(t2.x * s2, e2 * this.cosc0 * i2 - t2.y * this.sinc0 * s2);
+        if (t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a, t2.x /= this.k0, t2.y /= this.k0, e2 = ts(t2.x, t2.y)) {
+          var r2 = 2 * Math.atan2(e2, this.R2);
+          s2 = Math.sin(r2), i2 = Math.cos(r2), h2 = Math.asin(i2 * this.sinc0 + t2.y * s2 * this.cosc0 / e2), a3 = Math.atan2(t2.x * s2, e2 * this.cosc0 * i2 - t2.y * this.sinc0 * s2);
         } else h2 = this.phic0, a3 = 0;
-        return t2.x = a3, t2.y = h2, os.inverse.apply(this, [t2]), t2.x = z(t2.x + this.long0), t2;
+        return t2.x = a3, t2.y = h2, ns.inverse.apply(this, [t2]), t2.x = U(t2.x + this.long0), t2;
       }, names: ["Stereographic_North_Pole", "Oblique_Stereographic", "sterea", "Oblique Stereographic Alternative", "Double_Stereographic"] };
+      function ls(t2, s2, i2) {
+        return s2 *= i2, Math.tan(0.5 * (a + t2)) * Math.pow((1 - s2) / (1 + s2), 0.5 * i2);
+      }
       var cs = { init: function() {
-        this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, this.lat0 = this.lat0 || 0, this.long0 = this.long0 || 0, this.coslat0 = Math.cos(this.lat0), this.sinlat0 = Math.sin(this.lat0), this.sphere ? 1 === this.k0 && !isNaN(this.lat_ts) && Math.abs(this.coslat0) <= h && (this.k0 = 0.5 * (1 + B(this.lat0) * Math.sin(this.lat_ts))) : (Math.abs(this.coslat0) <= h && (this.lat0 > 0 ? this.con = 1 : this.con = -1), this.cons = Math.sqrt(Math.pow(1 + this.e, 1 + this.e) * Math.pow(1 - this.e, 1 - this.e)), 1 === this.k0 && !isNaN(this.lat_ts) && Math.abs(this.coslat0) <= h && Math.abs(Math.cos(this.lat_ts)) > h && (this.k0 = 0.5 * this.cons * F(this.e, Math.sin(this.lat_ts), Math.cos(this.lat_ts)) / H(this.e, this.con * this.lat_ts, this.con * Math.sin(this.lat_ts))), this.ms1 = F(this.e, this.sinlat0, this.coslat0), this.X0 = 2 * Math.atan(this.ssfn_(this.lat0, this.sinlat0, this.e)) - a, this.cosX0 = Math.cos(this.X0), this.sinX0 = Math.sin(this.X0));
+        this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, this.lat0 = this.lat0 || 0, this.long0 = this.long0 || 0, this.coslat0 = Math.cos(this.lat0), this.sinlat0 = Math.sin(this.lat0), this.sphere ? 1 === this.k0 && !isNaN(this.lat_ts) && Math.abs(this.coslat0) <= h && (this.k0 = 0.5 * (1 + z(this.lat0) * Math.sin(this.lat_ts))) : (Math.abs(this.coslat0) <= h && (this.lat0 > 0 ? this.con = 1 : this.con = -1), this.cons = Math.sqrt(Math.pow(1 + this.e, 1 + this.e) * Math.pow(1 - this.e, 1 - this.e)), 1 === this.k0 && !isNaN(this.lat_ts) && Math.abs(this.coslat0) <= h && Math.abs(Math.cos(this.lat_ts)) > h && (this.k0 = 0.5 * this.cons * B(this.e, Math.sin(this.lat_ts), Math.cos(this.lat_ts)) / H(this.e, this.con * this.lat_ts, this.con * Math.sin(this.lat_ts))), this.ms1 = B(this.e, this.sinlat0, this.coslat0), this.X0 = 2 * Math.atan(ls(this.lat0, this.sinlat0, this.e)) - a, this.cosX0 = Math.cos(this.X0), this.sinX0 = Math.sin(this.X0));
       }, forward: function(t2) {
-        var s2, i2, e2, n2, r2, o2, l2 = t2.x, c2 = t2.y, _2 = Math.sin(c2), u2 = Math.cos(c2), M5 = z(l2 - this.long0);
-        return Math.abs(Math.abs(l2 - this.long0) - Math.PI) <= h && Math.abs(c2 + this.lat0) <= h ? (t2.x = NaN, t2.y = NaN, t2) : this.sphere ? (s2 = 2 * this.k0 / (1 + this.sinlat0 * _2 + this.coslat0 * u2 * Math.cos(M5)), t2.x = this.a * s2 * u2 * Math.sin(M5) + this.x0, t2.y = this.a * s2 * (this.coslat0 * _2 - this.sinlat0 * u2 * Math.cos(M5)) + this.y0, t2) : (i2 = 2 * Math.atan(this.ssfn_(c2, _2, this.e)) - a, n2 = Math.cos(i2), e2 = Math.sin(i2), Math.abs(this.coslat0) <= h ? (r2 = H(this.e, c2 * this.con, this.con * _2), o2 = 2 * this.a * this.k0 * r2 / this.cons, t2.x = this.x0 + o2 * Math.sin(l2 - this.long0), t2.y = this.y0 - this.con * o2 * Math.cos(l2 - this.long0), t2) : (Math.abs(this.sinlat0) < h ? (s2 = 2 * this.a * this.k0 / (1 + n2 * Math.cos(M5)), t2.y = s2 * e2) : (s2 = 2 * this.a * this.k0 * this.ms1 / (this.cosX0 * (1 + this.sinX0 * e2 + this.cosX0 * n2 * Math.cos(M5))), t2.y = s2 * (this.cosX0 * e2 - this.sinX0 * n2 * Math.cos(M5)) + this.y0), t2.x = s2 * n2 * Math.sin(M5) + this.x0, t2));
+        var s2, i2, e2, r2, n2, o2, l2 = t2.x, c2 = t2.y, u2 = Math.sin(c2), _2 = Math.cos(c2), M5 = U(l2 - this.long0);
+        return Math.abs(Math.abs(l2 - this.long0) - Math.PI) <= h && Math.abs(c2 + this.lat0) <= h ? (t2.x = NaN, t2.y = NaN, t2) : this.sphere ? (s2 = 2 * this.k0 / (1 + this.sinlat0 * u2 + this.coslat0 * _2 * Math.cos(M5)), t2.x = this.a * s2 * _2 * Math.sin(M5) + this.x0, t2.y = this.a * s2 * (this.coslat0 * u2 - this.sinlat0 * _2 * Math.cos(M5)) + this.y0, t2) : (i2 = 2 * Math.atan(ls(c2, u2, this.e)) - a, r2 = Math.cos(i2), e2 = Math.sin(i2), Math.abs(this.coslat0) <= h ? (n2 = H(this.e, c2 * this.con, this.con * u2), o2 = 2 * this.a * this.k0 * n2 / this.cons, t2.x = this.x0 + o2 * Math.sin(l2 - this.long0), t2.y = this.y0 - this.con * o2 * Math.cos(l2 - this.long0), t2) : (Math.abs(this.sinlat0) < h ? (s2 = 2 * this.a * this.k0 / (1 + r2 * Math.cos(M5)), t2.y = s2 * e2) : (s2 = 2 * this.a * this.k0 * this.ms1 / (this.cosX0 * (1 + this.sinX0 * e2 + this.cosX0 * r2 * Math.cos(M5))), t2.y = s2 * (this.cosX0 * e2 - this.sinX0 * r2 * Math.cos(M5)) + this.y0), t2.x = s2 * r2 * Math.sin(M5) + this.x0, t2));
       }, inverse: function(t2) {
-        var s2, i2, e2, n2, r2;
+        var s2, i2, e2, r2, n2;
         t2.x -= this.x0, t2.y -= this.y0;
         var o2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y);
         if (this.sphere) {
           var l2 = 2 * Math.atan(o2 / (2 * this.a * this.k0));
-          return s2 = this.long0, i2 = this.lat0, o2 <= h ? (t2.x = s2, t2.y = i2, t2) : (i2 = Math.asin(Math.cos(l2) * this.sinlat0 + t2.y * Math.sin(l2) * this.coslat0 / o2), s2 = Math.abs(this.coslat0) < h ? this.lat0 > 0 ? z(this.long0 + Math.atan2(t2.x, -1 * t2.y)) : z(this.long0 + Math.atan2(t2.x, t2.y)) : z(this.long0 + Math.atan2(t2.x * Math.sin(l2), o2 * this.coslat0 * Math.cos(l2) - t2.y * this.sinlat0 * Math.sin(l2))), t2.x = s2, t2.y = i2, t2);
+          return s2 = this.long0, i2 = this.lat0, o2 <= h ? (t2.x = s2, t2.y = i2, t2) : (i2 = Math.asin(Math.cos(l2) * this.sinlat0 + t2.y * Math.sin(l2) * this.coslat0 / o2), s2 = Math.abs(this.coslat0) < h ? this.lat0 > 0 ? U(this.long0 + Math.atan2(t2.x, -1 * t2.y)) : U(this.long0 + Math.atan2(t2.x, t2.y)) : U(this.long0 + Math.atan2(t2.x * Math.sin(l2), o2 * this.coslat0 * Math.cos(l2) - t2.y * this.sinlat0 * Math.sin(l2))), t2.x = s2, t2.y = i2, t2);
         }
         if (Math.abs(this.coslat0) <= h) {
           if (o2 <= h) return i2 = this.lat0, s2 = this.long0, t2.x = s2, t2.y = i2, t2;
-          t2.x *= this.con, t2.y *= this.con, e2 = o2 * this.cons / (2 * this.a * this.k0), i2 = this.con * W(this.e, e2), s2 = this.con * z(this.con * this.long0 + Math.atan2(t2.x, -1 * t2.y));
-        } else n2 = 2 * Math.atan(o2 * this.cosX0 / (2 * this.a * this.k0 * this.ms1)), s2 = this.long0, o2 <= h ? r2 = this.X0 : (r2 = Math.asin(Math.cos(n2) * this.sinX0 + t2.y * Math.sin(n2) * this.cosX0 / o2), s2 = z(this.long0 + Math.atan2(t2.x * Math.sin(n2), o2 * this.cosX0 * Math.cos(n2) - t2.y * this.sinX0 * Math.sin(n2)))), i2 = -1 * W(this.e, Math.tan(0.5 * (a + r2)));
+          t2.x *= this.con, t2.y *= this.con, e2 = o2 * this.cons / (2 * this.a * this.k0), i2 = this.con * W(this.e, e2), s2 = this.con * U(this.con * this.long0 + Math.atan2(t2.x, -1 * t2.y));
+        } else r2 = 2 * Math.atan(o2 * this.cosX0 / (2 * this.a * this.k0 * this.ms1)), s2 = this.long0, o2 <= h ? n2 = this.X0 : (n2 = Math.asin(Math.cos(r2) * this.sinX0 + t2.y * Math.sin(r2) * this.cosX0 / o2), s2 = U(this.long0 + Math.atan2(t2.x * Math.sin(r2), o2 * this.cosX0 * Math.cos(r2) - t2.y * this.sinX0 * Math.sin(r2)))), i2 = -1 * W(this.e, Math.tan(0.5 * (a + n2)));
         return t2.x = s2, t2.y = i2, t2;
-      }, names: ["stere", "Stereographic_South_Pole", "Polar_Stereographic_variant_A", "Polar_Stereographic_variant_B", "Polar_Stereographic"], ssfn_: function(t2, s2, i2) {
-        return s2 *= i2, Math.tan(0.5 * (a + t2)) * Math.pow((1 - s2) / (1 + s2), 0.5 * i2);
-      } };
-      var _s = { init: function() {
+      }, names: ["stere", "Stereographic_South_Pole", "Polar_Stereographic_variant_A", "Polar_Stereographic_variant_B", "Polar_Stereographic"], ssfn_: ls };
+      var us = { init: function() {
         var t2 = this.lat0;
         this.lambda0 = this.long0;
         var s2 = Math.sin(t2), i2 = this.a, a3 = 1 / this.rf, h2 = 2 * a3 - Math.pow(a3, 2), e2 = this.e = Math.sqrt(h2);
         this.R = this.k0 * i2 * Math.sqrt(1 - h2) / (1 - h2 * Math.pow(s2, 2)), this.alpha = Math.sqrt(1 + h2 / (1 - h2) * Math.pow(Math.cos(t2), 4)), this.b0 = Math.asin(s2 / this.alpha);
-        var n2 = Math.log(Math.tan(Math.PI / 4 + this.b0 / 2)), r2 = Math.log(Math.tan(Math.PI / 4 + t2 / 2)), o2 = Math.log((1 + e2 * s2) / (1 - e2 * s2));
-        this.K = n2 - this.alpha * r2 + this.alpha * e2 / 2 * o2;
+        var r2 = Math.log(Math.tan(Math.PI / 4 + this.b0 / 2)), n2 = Math.log(Math.tan(Math.PI / 4 + t2 / 2)), o2 = Math.log((1 + e2 * s2) / (1 - e2 * s2));
+        this.K = r2 - this.alpha * n2 + this.alpha * e2 / 2 * o2;
       }, forward: function(t2) {
-        var s2 = Math.log(Math.tan(Math.PI / 4 - t2.y / 2)), i2 = this.e / 2 * Math.log((1 + this.e * Math.sin(t2.y)) / (1 - this.e * Math.sin(t2.y))), a3 = -this.alpha * (s2 + i2) + this.K, h2 = 2 * (Math.atan(Math.exp(a3)) - Math.PI / 4), e2 = this.alpha * (t2.x - this.lambda0), n2 = Math.atan(Math.sin(e2) / (Math.sin(this.b0) * Math.tan(h2) + Math.cos(this.b0) * Math.cos(e2))), r2 = Math.asin(Math.cos(this.b0) * Math.sin(h2) - Math.sin(this.b0) * Math.cos(h2) * Math.cos(e2));
-        return t2.y = this.R / 2 * Math.log((1 + Math.sin(r2)) / (1 - Math.sin(r2))) + this.y0, t2.x = this.R * n2 + this.x0, t2;
+        var s2 = Math.log(Math.tan(Math.PI / 4 - t2.y / 2)), i2 = this.e / 2 * Math.log((1 + this.e * Math.sin(t2.y)) / (1 - this.e * Math.sin(t2.y))), a3 = -this.alpha * (s2 + i2) + this.K, h2 = 2 * (Math.atan(Math.exp(a3)) - Math.PI / 4), e2 = this.alpha * (t2.x - this.lambda0), r2 = Math.atan(Math.sin(e2) / (Math.sin(this.b0) * Math.tan(h2) + Math.cos(this.b0) * Math.cos(e2))), n2 = Math.asin(Math.cos(this.b0) * Math.sin(h2) - Math.sin(this.b0) * Math.cos(h2) * Math.cos(e2));
+        return t2.y = this.R / 2 * Math.log((1 + Math.sin(n2)) / (1 - Math.sin(n2))) + this.y0, t2.x = this.R * r2 + this.x0, t2;
       }, inverse: function(t2) {
-        for (var s2 = t2.x - this.x0, i2 = t2.y - this.y0, a3 = s2 / this.R, h2 = 2 * (Math.atan(Math.exp(i2 / this.R)) - Math.PI / 4), e2 = Math.asin(Math.cos(this.b0) * Math.sin(h2) + Math.sin(this.b0) * Math.cos(h2) * Math.cos(a3)), n2 = Math.atan(Math.sin(a3) / (Math.cos(this.b0) * Math.cos(a3) - Math.sin(this.b0) * Math.tan(h2))), r2 = this.lambda0 + n2 / this.alpha, o2 = 0, l2 = e2, c2 = -1e3, _2 = 0; Math.abs(l2 - c2) > 1e-7; ) {
-          if (++_2 > 20) return;
+        for (var s2 = t2.x - this.x0, i2 = t2.y - this.y0, a3 = s2 / this.R, h2 = 2 * (Math.atan(Math.exp(i2 / this.R)) - Math.PI / 4), e2 = Math.asin(Math.cos(this.b0) * Math.sin(h2) + Math.sin(this.b0) * Math.cos(h2) * Math.cos(a3)), r2 = Math.atan(Math.sin(a3) / (Math.cos(this.b0) * Math.cos(a3) - Math.sin(this.b0) * Math.tan(h2))), n2 = this.lambda0 + r2 / this.alpha, o2 = 0, l2 = e2, c2 = -1e3, u2 = 0; Math.abs(l2 - c2) > 1e-7; ) {
+          if (++u2 > 20) return;
           o2 = 1 / this.alpha * (Math.log(Math.tan(Math.PI / 4 + e2 / 2)) - this.K) + this.e * Math.log(Math.tan(Math.PI / 4 + Math.asin(this.e * Math.sin(l2)) / 2)), c2 = l2, l2 = 2 * Math.atan(Math.exp(o2)) - Math.PI / 2;
         }
-        return t2.x = r2, t2.y = l2, t2;
-      }, names: ["somerc"] }, us = 1e-7;
+        return t2.x = n2, t2.y = l2, t2;
+      }, names: ["somerc"] }, _s = 1e-7;
       var Ms = { init: function() {
-        var t2, s2, i2, e2, n2, l2, c2, _2, u2, M5, g2, f2, d2, p5, m2 = 0, y2 = 0, S2 = 0, E5 = 0, w2 = 0, v2 = 0, G2 = 0;
-        this.no_off = (d2 = ["Hotine_Oblique_Mercator", "Hotine_Oblique_Mercator_variant_A", "Hotine_Oblique_Mercator_Azimuth_Natural_Origin"], p5 = "object" == typeof (f2 = this).projName ? Object.keys(f2.projName)[0] : f2.projName, "no_uoff" in f2 || "no_off" in f2 || -1 !== d2.indexOf(p5) || -1 !== d2.indexOf(Z(p5))), this.no_rot = "no_rot" in this;
-        var x2 = false;
-        "alpha" in this && (x2 = true);
+        var t2, s2, i2, e2, r2, l2, c2, u2, _2, M5, d2, f2, g2, m2, p5 = 0, y2 = 0, w2 = 0, E5 = 0, v2 = 0, x2 = 0, S2 = 0;
+        this.no_off = (g2 = ["Hotine_Oblique_Mercator", "Hotine_Oblique_Mercator_variant_A", "Hotine_Oblique_Mercator_Azimuth_Natural_Origin"], m2 = "object" == typeof (f2 = this).projName ? Object.keys(f2.projName)[0] : f2.projName, "no_uoff" in f2 || "no_off" in f2 || -1 !== g2.indexOf(m2) || -1 !== g2.indexOf(Z(m2))), this.no_rot = "no_rot" in this;
+        var G2 = false;
+        "alpha" in this && (G2 = true);
         var P6 = false;
-        if ("rectified_grid_angle" in this && (P6 = true), x2 && (G2 = this.alpha), P6 && (m2 = this.rectified_grid_angle), x2 || P6) y2 = this.longc;
-        else if (S2 = this.long1, w2 = this.lat1, E5 = this.long2, v2 = this.lat2, Math.abs(w2 - v2) <= us || (t2 = Math.abs(w2)) <= us || Math.abs(t2 - a) <= us || Math.abs(Math.abs(this.lat0) - a) <= us || Math.abs(Math.abs(v2) - a) <= us) throw new Error();
+        if ("rectified_grid_angle" in this && (P6 = true), G2 && (S2 = this.alpha), P6 && (p5 = this.rectified_grid_angle), G2 || P6) y2 = this.longc;
+        else if (w2 = this.long1, v2 = this.lat1, E5 = this.long2, x2 = this.lat2, Math.abs(v2 - x2) <= _s || (t2 = Math.abs(v2)) <= _s || Math.abs(t2 - a) <= _s || Math.abs(Math.abs(this.lat0) - a) <= _s || Math.abs(Math.abs(x2) - a) <= _s) throw new Error();
         var b3 = 1 - this.es;
-        s2 = Math.sqrt(b3), Math.abs(this.lat0) > h ? (_2 = Math.sin(this.lat0), i2 = Math.cos(this.lat0), t2 = 1 - this.es * _2 * _2, this.B = i2 * i2, this.B = Math.sqrt(1 + this.es * this.B * this.B / b3), this.A = this.B * this.k0 * s2 / t2, (n2 = (e2 = this.B * s2 / (i2 * Math.sqrt(t2))) * e2 - 1) <= 0 ? n2 = 0 : (n2 = Math.sqrt(n2), this.lat0 < 0 && (n2 = -n2)), this.E = n2 += e2, this.E *= Math.pow(H(this.e, this.lat0, _2), this.B)) : (this.B = 1 / s2, this.A = this.k0, this.E = e2 = n2 = 1), x2 || P6 ? (x2 ? (g2 = Math.asin(Math.sin(G2) / e2), P6 || (m2 = G2)) : (g2 = m2, G2 = Math.asin(e2 * Math.sin(g2))), this.lam0 = y2 - Math.asin(0.5 * (n2 - 1 / n2) * Math.tan(g2)) / this.B) : (l2 = Math.pow(H(this.e, w2, Math.sin(w2)), this.B), c2 = Math.pow(H(this.e, v2, Math.sin(v2)), this.B), n2 = this.E / l2, u2 = (c2 - l2) / (c2 + l2), M5 = ((M5 = this.E * this.E) - c2 * l2) / (M5 + c2 * l2), (t2 = S2 - E5) < -Math.pi ? E5 -= o : t2 > Math.pi && (E5 += o), this.lam0 = z(0.5 * (S2 + E5) - Math.atan(M5 * Math.tan(0.5 * this.B * (S2 - E5)) / u2) / this.B), g2 = Math.atan(2 * Math.sin(this.B * z(S2 - this.lam0)) / (n2 - 1 / n2)), m2 = G2 = Math.asin(e2 * Math.sin(g2))), this.singam = Math.sin(g2), this.cosgam = Math.cos(g2), this.sinrot = Math.sin(m2), this.cosrot = Math.cos(m2), this.rB = 1 / this.B, this.ArB = this.A * this.rB, this.BrA = 1 / this.ArB, this.no_off ? this.u_0 = 0 : (this.u_0 = Math.abs(this.ArB * Math.atan(Math.sqrt(e2 * e2 - 1) / Math.cos(G2))), this.lat0 < 0 && (this.u_0 = -this.u_0)), n2 = 0.5 * g2, this.v_pole_n = this.ArB * Math.log(Math.tan(r - n2)), this.v_pole_s = this.ArB * Math.log(Math.tan(r + n2));
+        s2 = Math.sqrt(b3), Math.abs(this.lat0) > h ? (u2 = Math.sin(this.lat0), i2 = Math.cos(this.lat0), t2 = 1 - this.es * u2 * u2, this.B = i2 * i2, this.B = Math.sqrt(1 + this.es * this.B * this.B / b3), this.A = this.B * this.k0 * s2 / t2, (r2 = (e2 = this.B * s2 / (i2 * Math.sqrt(t2))) * e2 - 1) <= 0 ? r2 = 0 : (r2 = Math.sqrt(r2), this.lat0 < 0 && (r2 = -r2)), this.E = r2 += e2, this.E *= Math.pow(H(this.e, this.lat0, u2), this.B)) : (this.B = 1 / s2, this.A = this.k0, this.E = e2 = r2 = 1), G2 || P6 ? (G2 ? (d2 = Math.asin(Math.sin(S2) / e2), P6 || (p5 = S2)) : (d2 = p5, S2 = Math.asin(e2 * Math.sin(d2))), this.lam0 = y2 - Math.asin(0.5 * (r2 - 1 / r2) * Math.tan(d2)) / this.B) : (l2 = Math.pow(H(this.e, v2, Math.sin(v2)), this.B), c2 = Math.pow(H(this.e, x2, Math.sin(x2)), this.B), r2 = this.E / l2, _2 = (c2 - l2) / (c2 + l2), M5 = ((M5 = this.E * this.E) - c2 * l2) / (M5 + c2 * l2), (t2 = w2 - E5) < -Math.PI ? E5 -= o : t2 > Math.PI && (E5 += o), this.lam0 = U(0.5 * (w2 + E5) - Math.atan(M5 * Math.tan(0.5 * this.B * (w2 - E5)) / _2) / this.B), d2 = Math.atan(2 * Math.sin(this.B * U(w2 - this.lam0)) / (r2 - 1 / r2)), p5 = S2 = Math.asin(e2 * Math.sin(d2))), this.singam = Math.sin(d2), this.cosgam = Math.cos(d2), this.sinrot = Math.sin(p5), this.cosrot = Math.cos(p5), this.rB = 1 / this.B, this.ArB = this.A * this.rB, this.BrA = 1 / this.ArB, this.no_off ? this.u_0 = 0 : (this.u_0 = Math.abs(this.ArB * Math.atan(Math.sqrt(e2 * e2 - 1) / Math.cos(S2))), this.lat0 < 0 && (this.u_0 = -this.u_0)), r2 = 0.5 * d2, this.v_pole_n = this.ArB * Math.log(Math.tan(n - r2)), this.v_pole_s = this.ArB * Math.log(Math.tan(n + r2));
       }, forward: function(t2) {
-        var s2, i2, e2, n2, r2, o2, l2, c2, _2 = {};
+        var s2, i2, e2, r2, n2, o2, l2, c2, u2 = {};
         if (t2.x = t2.x - this.lam0, Math.abs(Math.abs(t2.y) - a) > h) {
-          if (s2 = 0.5 * ((r2 = this.E / Math.pow(H(this.e, t2.y, Math.sin(t2.y)), this.B)) - (o2 = 1 / r2)), i2 = 0.5 * (r2 + o2), n2 = Math.sin(this.B * t2.x), e2 = (s2 * this.singam - n2 * this.cosgam) / i2, Math.abs(Math.abs(e2) - 1) < h) throw new Error();
-          c2 = 0.5 * this.ArB * Math.log((1 - e2) / (1 + e2)), o2 = Math.cos(this.B * t2.x), l2 = Math.abs(o2) < us ? this.A * t2.x : this.ArB * Math.atan2(s2 * this.cosgam + n2 * this.singam, o2);
+          if (s2 = 0.5 * ((n2 = this.E / Math.pow(H(this.e, t2.y, Math.sin(t2.y)), this.B)) - (o2 = 1 / n2)), i2 = 0.5 * (n2 + o2), r2 = Math.sin(this.B * t2.x), e2 = (s2 * this.singam - r2 * this.cosgam) / i2, Math.abs(Math.abs(e2) - 1) < h) throw new Error();
+          c2 = 0.5 * this.ArB * Math.log((1 - e2) / (1 + e2)), o2 = Math.cos(this.B * t2.x), l2 = Math.abs(o2) < _s ? this.A * t2.x : this.ArB * Math.atan2(s2 * this.cosgam + r2 * this.singam, o2);
         } else c2 = t2.y > 0 ? this.v_pole_n : this.v_pole_s, l2 = this.ArB * t2.y;
-        return this.no_rot ? (_2.x = l2, _2.y = c2) : (l2 -= this.u_0, _2.x = c2 * this.cosrot + l2 * this.sinrot, _2.y = l2 * this.cosrot - c2 * this.sinrot), _2.x = this.a * _2.x + this.x0, _2.y = this.a * _2.y + this.y0, _2;
+        return this.no_rot ? (u2.x = l2, u2.y = c2) : (l2 -= this.u_0, u2.x = c2 * this.cosrot + l2 * this.sinrot, u2.y = l2 * this.cosrot - c2 * this.sinrot), u2.x = this.a * u2.x + this.x0, u2.y = this.a * u2.y + this.y0, u2;
       }, inverse: function(t2) {
-        var s2, i2, e2, n2, r2, o2, l2, c2 = {};
-        if (t2.x = (t2.x - this.x0) * (1 / this.a), t2.y = (t2.y - this.y0) * (1 / this.a), this.no_rot ? (i2 = t2.y, s2 = t2.x) : (i2 = t2.x * this.cosrot - t2.y * this.sinrot, s2 = t2.y * this.cosrot + t2.x * this.sinrot + this.u_0), n2 = 0.5 * ((e2 = Math.exp(-this.BrA * i2)) - 1 / e2), r2 = 0.5 * (e2 + 1 / e2), l2 = ((o2 = Math.sin(this.BrA * s2)) * this.cosgam + n2 * this.singam) / r2, Math.abs(Math.abs(l2) - 1) < h) c2.x = 0, c2.y = l2 < 0 ? -a : a;
+        var s2, i2, e2, r2, n2, o2, l2, c2 = {};
+        if (t2.x = (t2.x - this.x0) * (1 / this.a), t2.y = (t2.y - this.y0) * (1 / this.a), this.no_rot ? (i2 = t2.y, s2 = t2.x) : (i2 = t2.x * this.cosrot - t2.y * this.sinrot, s2 = t2.y * this.cosrot + t2.x * this.sinrot + this.u_0), r2 = 0.5 * ((e2 = Math.exp(-this.BrA * i2)) - 1 / e2), n2 = 0.5 * (e2 + 1 / e2), l2 = ((o2 = Math.sin(this.BrA * s2)) * this.cosgam + r2 * this.singam) / n2, Math.abs(Math.abs(l2) - 1) < h) c2.x = 0, c2.y = l2 < 0 ? -a : a;
         else {
           if (c2.y = this.E / Math.sqrt((1 + l2) / (1 - l2)), c2.y = W(this.e, Math.pow(c2.y, 1 / this.B)), c2.y === 1 / 0) throw new Error();
-          c2.x = -this.rB * Math.atan2(n2 * this.cosgam - o2 * this.singam, Math.cos(this.BrA * s2));
+          c2.x = -this.rB * Math.atan2(r2 * this.cosgam - o2 * this.singam, Math.cos(this.BrA * s2));
         }
         return c2.x += this.lam0, c2;
       }, names: ["Hotine_Oblique_Mercator", "Hotine Oblique Mercator", "Hotine_Oblique_Mercator_variant_A", "Hotine_Oblique_Mercator_Variant_B", "Hotine_Oblique_Mercator_Azimuth_Natural_Origin", "Hotine_Oblique_Mercator_Two_Point_Natural_Origin", "Hotine_Oblique_Mercator_Azimuth_Center", "Oblique_Mercator", "omerc"] };
-      var gs = { init: function() {
+      var ds = { init: function() {
         if (this.lat2 || (this.lat2 = this.lat1), this.k0 || (this.k0 = 1), this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, !(Math.abs(this.lat1 + this.lat2) < h)) {
           var t2 = this.b / this.a;
           this.e = Math.sqrt(1 - t2 * t2);
-          var s2 = Math.sin(this.lat1), i2 = Math.cos(this.lat1), e2 = F(this.e, s2, i2), n2 = H(this.e, this.lat1, s2), r2 = Math.sin(this.lat2), o2 = Math.cos(this.lat2), l2 = F(this.e, r2, o2), c2 = H(this.e, this.lat2, r2), _2 = Math.abs(Math.abs(this.lat0) - a) < h ? 0 : H(this.e, this.lat0, Math.sin(this.lat0));
-          Math.abs(this.lat1 - this.lat2) > h ? this.ns = Math.log(e2 / l2) / Math.log(n2 / c2) : this.ns = s2, isNaN(this.ns) && (this.ns = s2), this.f0 = e2 / (this.ns * Math.pow(n2, this.ns)), this.rh = this.a * this.f0 * Math.pow(_2, this.ns), this.title || (this.title = "Lambert Conformal Conic");
+          var s2 = Math.sin(this.lat1), i2 = Math.cos(this.lat1), e2 = B(this.e, s2, i2), r2 = H(this.e, this.lat1, s2), n2 = Math.sin(this.lat2), o2 = Math.cos(this.lat2), l2 = B(this.e, n2, o2), c2 = H(this.e, this.lat2, n2), u2 = Math.abs(Math.abs(this.lat0) - a) < h ? 0 : H(this.e, this.lat0, Math.sin(this.lat0));
+          Math.abs(this.lat1 - this.lat2) > h ? this.ns = Math.log(e2 / l2) / Math.log(r2 / c2) : this.ns = s2, isNaN(this.ns) && (this.ns = s2), this.f0 = e2 / (this.ns * Math.pow(r2, this.ns)), this.rh = this.a * this.f0 * Math.pow(u2, this.ns), this.title || (this.title = "Lambert Conformal Conic");
         }
       }, forward: function(t2) {
         var s2 = t2.x, i2 = t2.y;
-        Math.abs(2 * Math.abs(i2) - Math.PI) <= h && (i2 = B(i2) * (a - 2e-10));
-        var e2, n2, r2 = Math.abs(Math.abs(i2) - a);
-        if (r2 > h) e2 = H(this.e, i2, Math.sin(i2)), n2 = this.a * this.f0 * Math.pow(e2, this.ns);
+        Math.abs(2 * Math.abs(i2) - Math.PI) <= h && (i2 = z(i2) * (a - 2e-10));
+        var e2, r2, n2 = Math.abs(Math.abs(i2) - a);
+        if (n2 > h) e2 = H(this.e, i2, Math.sin(i2)), r2 = this.a * this.f0 * Math.pow(e2, this.ns);
         else {
-          if ((r2 = i2 * this.ns) <= 0) return null;
-          n2 = 0;
+          if ((n2 = i2 * this.ns) <= 0) return null;
+          r2 = 0;
         }
-        var o2 = this.ns * z(s2 - this.long0);
-        return t2.x = this.k0 * (n2 * Math.sin(o2)) + this.x0, t2.y = this.k0 * (this.rh - n2 * Math.cos(o2)) + this.y0, t2;
+        var o2 = this.ns * U(s2 - this.long0);
+        return t2.x = this.k0 * (r2 * Math.sin(o2)) + this.x0, t2.y = this.k0 * (this.rh - r2 * Math.cos(o2)) + this.y0, t2;
       }, inverse: function(t2) {
-        var s2, i2, h2, e2, n2, r2 = (t2.x - this.x0) / this.k0, o2 = this.rh - (t2.y - this.y0) / this.k0;
-        this.ns > 0 ? (s2 = Math.sqrt(r2 * r2 + o2 * o2), i2 = 1) : (s2 = -Math.sqrt(r2 * r2 + o2 * o2), i2 = -1);
+        var s2, i2, h2, e2, r2, n2 = (t2.x - this.x0) / this.k0, o2 = this.rh - (t2.y - this.y0) / this.k0;
+        this.ns > 0 ? (s2 = Math.sqrt(n2 * n2 + o2 * o2), i2 = 1) : (s2 = -Math.sqrt(n2 * n2 + o2 * o2), i2 = -1);
         var l2 = 0;
-        if (0 !== s2 && (l2 = Math.atan2(i2 * r2, i2 * o2)), 0 !== s2 || this.ns > 0) {
+        if (0 !== s2 && (l2 = Math.atan2(i2 * n2, i2 * o2)), 0 !== s2 || this.ns > 0) {
           if (i2 = 1 / this.ns, h2 = Math.pow(s2 / (this.a * this.f0), i2), -9999 === (e2 = W(this.e, h2))) return null;
         } else e2 = -a;
-        return n2 = z(l2 / this.ns + this.long0), t2.x = n2, t2.y = e2, t2;
+        return r2 = U(l2 / this.ns + this.long0), t2.x = r2, t2.y = e2, t2;
       }, names: ["Lambert Tangential Conformal Conic Projection", "Lambert_Conformal_Conic", "Lambert_Conformal_Conic_1SP", "Lambert_Conformal_Conic_2SP", "lcc", "Lambert Conic Conformal (1SP)", "Lambert Conic Conformal (2SP)"] };
       var fs = { init: function() {
         this.a = 6377397155e-3, this.es = 0.006674372230614, this.e = Math.sqrt(this.es), this.lat0 || (this.lat0 = 0.863937979737193), this.long0 || (this.long0 = 0.4334234309119251), this.k0 || (this.k0 = 0.9999), this.s45 = 0.785398163397448, this.s90 = 2 * this.s45, this.fi0 = this.lat0, this.e2 = this.es, this.e = Math.sqrt(this.e2), this.alfa = Math.sqrt(1 + this.e2 * Math.pow(Math.cos(this.fi0), 4) / (1 - this.e2)), this.uq = 1.04216856380474, this.u0 = Math.asin(Math.sin(this.fi0) / this.alfa), this.g = Math.pow((1 + this.e * Math.sin(this.fi0)) / (1 - this.e * Math.sin(this.fi0)), this.alfa * this.e / 2), this.k = Math.tan(this.u0 / 2 + this.s45) / Math.pow(Math.tan(this.fi0 / 2 + this.s45), this.alfa) * this.g, this.k1 = this.k0, this.n0 = this.a * Math.sqrt(1 - this.e2) / (1 - this.e2 * Math.pow(Math.sin(this.fi0), 2)), this.s0 = 1.37008346281555, this.n = Math.sin(this.s0), this.ro0 = this.k1 * this.n0 / Math.tan(this.s0), this.ad = this.s90 - this.uq;
       }, forward: function(t2) {
-        var s2, i2, a3, h2, e2, n2, r2, o2 = t2.x, l2 = t2.y, c2 = z(o2 - this.long0);
-        return s2 = Math.pow((1 + this.e * Math.sin(l2)) / (1 - this.e * Math.sin(l2)), this.alfa * this.e / 2), i2 = 2 * (Math.atan(this.k * Math.pow(Math.tan(l2 / 2 + this.s45), this.alfa) / s2) - this.s45), a3 = -c2 * this.alfa, h2 = Math.asin(Math.cos(this.ad) * Math.sin(i2) + Math.sin(this.ad) * Math.cos(i2) * Math.cos(a3)), e2 = Math.asin(Math.cos(i2) * Math.sin(a3) / Math.cos(h2)), n2 = this.n * e2, r2 = this.ro0 * Math.pow(Math.tan(this.s0 / 2 + this.s45), this.n) / Math.pow(Math.tan(h2 / 2 + this.s45), this.n), t2.y = r2 * Math.cos(n2) / 1, t2.x = r2 * Math.sin(n2) / 1, this.czech || (t2.y *= -1, t2.x *= -1), t2;
+        var s2, i2, a3, h2, e2, r2, n2, o2 = t2.x, l2 = t2.y, c2 = U(o2 - this.long0);
+        return s2 = Math.pow((1 + this.e * Math.sin(l2)) / (1 - this.e * Math.sin(l2)), this.alfa * this.e / 2), i2 = 2 * (Math.atan(this.k * Math.pow(Math.tan(l2 / 2 + this.s45), this.alfa) / s2) - this.s45), a3 = -c2 * this.alfa, h2 = Math.asin(Math.cos(this.ad) * Math.sin(i2) + Math.sin(this.ad) * Math.cos(i2) * Math.cos(a3)), e2 = Math.asin(Math.cos(i2) * Math.sin(a3) / Math.cos(h2)), r2 = this.n * e2, n2 = this.ro0 * Math.pow(Math.tan(this.s0 / 2 + this.s45), this.n) / Math.pow(Math.tan(h2 / 2 + this.s45), this.n), t2.y = n2 * Math.cos(r2) / 1, t2.x = n2 * Math.sin(r2) / 1, this.czech || (t2.y *= -1, t2.x *= -1), t2;
       }, inverse: function(t2) {
-        var s2, i2, a3, h2, e2, n2, r2, o2 = t2.x;
-        t2.x = t2.y, t2.y = o2, this.czech || (t2.y *= -1, t2.x *= -1), e2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), h2 = Math.atan2(t2.y, t2.x) / Math.sin(this.s0), a3 = 2 * (Math.atan(Math.pow(this.ro0 / e2, 1 / this.n) * Math.tan(this.s0 / 2 + this.s45)) - this.s45), s2 = Math.asin(Math.cos(this.ad) * Math.sin(a3) - Math.sin(this.ad) * Math.cos(a3) * Math.cos(h2)), i2 = Math.asin(Math.cos(a3) * Math.sin(h2) / Math.cos(s2)), t2.x = this.long0 - i2 / this.alfa, n2 = s2, r2 = 0;
+        var s2, i2, a3, h2, e2, r2, n2, o2 = t2.x;
+        t2.x = t2.y, t2.y = o2, this.czech || (t2.y *= -1, t2.x *= -1), e2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), h2 = Math.atan2(t2.y, t2.x) / Math.sin(this.s0), a3 = 2 * (Math.atan(Math.pow(this.ro0 / e2, 1 / this.n) * Math.tan(this.s0 / 2 + this.s45)) - this.s45), s2 = Math.asin(Math.cos(this.ad) * Math.sin(a3) - Math.sin(this.ad) * Math.cos(a3) * Math.cos(h2)), i2 = Math.asin(Math.cos(a3) * Math.sin(h2) / Math.cos(s2)), t2.x = this.long0 - i2 / this.alfa, r2 = s2, n2 = 0;
         var l2 = 0;
         do {
-          t2.y = 2 * (Math.atan(Math.pow(this.k, -1 / this.alfa) * Math.pow(Math.tan(s2 / 2 + this.s45), 1 / this.alfa) * Math.pow((1 + this.e * Math.sin(n2)) / (1 - this.e * Math.sin(n2)), this.e / 2)) - this.s45), Math.abs(n2 - t2.y) < 1e-10 && (r2 = 1), n2 = t2.y, l2 += 1;
-        } while (0 === r2 && l2 < 15);
+          t2.y = 2 * (Math.atan(Math.pow(this.k, -1 / this.alfa) * Math.pow(Math.tan(s2 / 2 + this.s45), 1 / this.alfa) * Math.pow((1 + this.e * Math.sin(r2)) / (1 - this.e * Math.sin(r2)), this.e / 2)) - this.s45), Math.abs(r2 - t2.y) < 1e-10 && (n2 = 1), r2 = t2.y, l2 += 1;
+        } while (0 === n2 && l2 < 15);
         return l2 >= 15 ? null : t2;
       }, names: ["Krovak", "krovak"] };
-      function ds(t2, s2, i2, a3, h2) {
+      function gs(t2, s2, i2, a3, h2) {
         return t2 * h2 - s2 * Math.sin(2 * h2) + i2 * Math.sin(4 * h2) - a3 * Math.sin(6 * h2);
       }
-      function ps(t2) {
+      function ms(t2) {
         return 1 - 0.25 * t2 * (1 + t2 / 16 * (3 + 1.25 * t2));
       }
-      function ms(t2) {
+      function ps(t2) {
         return 0.375 * t2 * (1 + 0.25 * t2 * (1 + 0.46875 * t2));
       }
       function ys(t2) {
         return 0.05859375 * t2 * t2 * (1 + 0.75 * t2);
       }
-      function Ss(t2) {
+      function ws(t2) {
         return t2 * t2 * t2 * (35 / 3072);
       }
       function Es(t2, s2, i2) {
         var a3 = s2 * i2;
         return t2 / Math.sqrt(1 - a3 * a3);
       }
-      function ws(t2) {
-        return Math.abs(t2) < a ? t2 : t2 - B(t2) * Math.PI;
+      function vs(t2) {
+        return Math.abs(t2) < a ? t2 : t2 - z(t2) * Math.PI;
       }
-      function vs(t2, s2, i2, a3, h2) {
-        var e2, n2;
+      function xs(t2, s2, i2, a3, h2) {
+        var e2, r2;
         e2 = t2 / s2;
-        for (var r2 = 0; r2 < 15; r2++) if (e2 += n2 = (t2 - (s2 * e2 - i2 * Math.sin(2 * e2) + a3 * Math.sin(4 * e2) - h2 * Math.sin(6 * e2))) / (s2 - 2 * i2 * Math.cos(2 * e2) + 4 * a3 * Math.cos(4 * e2) - 6 * h2 * Math.cos(6 * e2)), Math.abs(n2) <= 1e-10) return e2;
+        for (var n2 = 0; n2 < 15; n2++) if (e2 += r2 = (t2 - (s2 * e2 - i2 * Math.sin(2 * e2) + a3 * Math.sin(4 * e2) - h2 * Math.sin(6 * e2))) / (s2 - 2 * i2 * Math.cos(2 * e2) + 4 * a3 * Math.cos(4 * e2) - 6 * h2 * Math.cos(6 * e2)), Math.abs(r2) <= 1e-10) return e2;
         return NaN;
       }
-      var Gs = { init: function() {
-        this.sphere || (this.e0 = ps(this.es), this.e1 = ms(this.es), this.e2 = ys(this.es), this.e3 = Ss(this.es), this.ml0 = this.a * ds(this.e0, this.e1, this.e2, this.e3, this.lat0));
+      var Ss = { init: function() {
+        this.sphere || (this.e0 = ms(this.es), this.e1 = ps(this.es), this.e2 = ys(this.es), this.e3 = ws(this.es), this.ml0 = this.a * gs(this.e0, this.e1, this.e2, this.e3, this.lat0));
       }, forward: function(t2) {
         var s2, i2, a3 = t2.x, h2 = t2.y;
-        if (a3 = z(a3 - this.long0), this.sphere) s2 = this.a * Math.asin(Math.cos(h2) * Math.sin(a3)), i2 = this.a * (Math.atan2(Math.tan(h2), Math.cos(a3)) - this.lat0);
+        if (a3 = U(a3 - this.long0), this.sphere) s2 = this.a * Math.asin(Math.cos(h2) * Math.sin(a3)), i2 = this.a * (Math.atan2(Math.tan(h2), Math.cos(a3)) - this.lat0);
         else {
-          var e2 = Math.sin(h2), n2 = Math.cos(h2), r2 = Es(this.a, this.e, e2), o2 = Math.tan(h2) * Math.tan(h2), l2 = a3 * Math.cos(h2), c2 = l2 * l2, _2 = this.es * n2 * n2 / (1 - this.es);
-          s2 = r2 * l2 * (1 - c2 * o2 * (1 / 6 - (8 - o2 + 8 * _2) * c2 / 120)), i2 = this.a * ds(this.e0, this.e1, this.e2, this.e3, h2) - this.ml0 + r2 * e2 / n2 * c2 * (0.5 + (5 - o2 + 6 * _2) * c2 / 24);
+          var e2 = Math.sin(h2), r2 = Math.cos(h2), n2 = Es(this.a, this.e, e2), o2 = Math.tan(h2) * Math.tan(h2), l2 = a3 * Math.cos(h2), c2 = l2 * l2, u2 = this.es * r2 * r2 / (1 - this.es);
+          s2 = n2 * l2 * (1 - c2 * o2 * (1 / 6 - (8 - o2 + 8 * u2) * c2 / 120)), i2 = this.a * gs(this.e0, this.e1, this.e2, this.e3, h2) - this.ml0 + n2 * e2 / r2 * c2 * (0.5 + (5 - o2 + 6 * u2) * c2 / 24);
         }
         return t2.x = s2 + this.x0, t2.y = i2 + this.y0, t2;
       }, inverse: function(t2) {
         t2.x -= this.x0, t2.y -= this.y0;
-        var s2, i2, e2 = t2.x / this.a, n2 = t2.y / this.a;
+        var s2, i2, e2 = t2.x / this.a, r2 = t2.y / this.a;
         if (this.sphere) {
-          var r2 = n2 + this.lat0;
-          s2 = Math.asin(Math.sin(r2) * Math.cos(e2)), i2 = Math.atan2(Math.tan(e2), Math.cos(r2));
+          var n2 = r2 + this.lat0;
+          s2 = Math.asin(Math.sin(n2) * Math.cos(e2)), i2 = Math.atan2(Math.tan(e2), Math.cos(n2));
         } else {
-          var o2 = vs(this.ml0 / this.a + n2, this.e0, this.e1, this.e2, this.e3);
-          if (Math.abs(Math.abs(o2) - a) <= h) return t2.x = this.long0, t2.y = a, n2 < 0 && (t2.y *= -1), t2;
-          var l2 = Es(this.a, this.e, Math.sin(o2)), c2 = l2 * l2 * l2 / this.a / this.a * (1 - this.es), _2 = Math.pow(Math.tan(o2), 2), u2 = e2 * this.a / l2, M5 = u2 * u2;
-          s2 = o2 - l2 * Math.tan(o2) / c2 * u2 * u2 * (0.5 - (1 + 3 * _2) * u2 * u2 / 24), i2 = u2 * (1 - M5 * (_2 / 3 + (1 + 3 * _2) * _2 * M5 / 15)) / Math.cos(o2);
+          var o2 = xs(this.ml0 / this.a + r2, this.e0, this.e1, this.e2, this.e3);
+          if (Math.abs(Math.abs(o2) - a) <= h) return t2.x = this.long0, t2.y = a, r2 < 0 && (t2.y *= -1), t2;
+          var l2 = Es(this.a, this.e, Math.sin(o2)), c2 = l2 * l2 * l2 / this.a / this.a * (1 - this.es), u2 = Math.pow(Math.tan(o2), 2), _2 = e2 * this.a / l2, M5 = _2 * _2;
+          s2 = o2 - l2 * Math.tan(o2) / c2 * _2 * _2 * (0.5 - (1 + 3 * u2) * _2 * _2 / 24), i2 = _2 * (1 - M5 * (u2 / 3 + (1 + 3 * u2) * u2 * M5 / 15)) / Math.cos(o2);
         }
-        return t2.x = z(i2 + this.long0), t2.y = ws(s2), t2;
+        return t2.x = U(i2 + this.long0), t2.y = vs(s2), t2;
       }, names: ["Cassini", "Cassini_Soldner", "cass"] };
-      function xs(t2, s2) {
+      function Gs(t2, s2) {
         var i2;
         return t2 > 1e-7 ? (1 - t2 * t2) * (s2 / (1 - (i2 = t2 * s2) * i2) - 0.5 / t2 * Math.log((1 - i2) / (1 + i2))) : 2 * s2;
       }
-      var Ps = 0.3333333333333333, bs = 0.17222222222222222, As = 0.10257936507936508, Cs = 0.06388888888888888, Ns = 0.0664021164021164, Is = 0.016415012942191543;
-      var Ls = { init: function() {
+      var Ps = 0.3333333333333333, bs = 0.17222222222222222, Ns = 0.10257936507936508, As = 0.06388888888888888, Is = 0.0664021164021164, Cs = 0.016415012942191543;
+      var ks = { init: function() {
         var t2, s2 = Math.abs(this.lat0);
-        if (Math.abs(s2 - a) < h ? this.mode = this.lat0 < 0 ? this.S_POLE : this.N_POLE : Math.abs(s2) < h ? this.mode = this.EQUIT : this.mode = this.OBLIQ, this.es > 0) switch (this.qp = xs(this.e, 1), this.mmf = 0.5 / (1 - this.es), this.apa = function(t3) {
+        if (Math.abs(s2 - a) < h ? this.mode = this.lat0 < 0 ? 1 : 2 : Math.abs(s2) < h ? this.mode = 3 : this.mode = 4, this.es > 0) switch (this.qp = Gs(this.e, 1), this.mmf = 0.5 / (1 - this.es), this.apa = function(t3) {
           var s3, i2 = [];
-          return i2[0] = t3 * Ps, s3 = t3 * t3, i2[0] += s3 * bs, i2[1] = s3 * Cs, s3 *= t3, i2[0] += s3 * As, i2[1] += s3 * Ns, i2[2] = s3 * Is, i2;
+          return i2[0] = t3 * Ps, s3 = t3 * t3, i2[0] += s3 * bs, i2[1] = s3 * As, s3 *= t3, i2[0] += s3 * Ns, i2[1] += s3 * Is, i2[2] = s3 * Cs, i2;
         }(this.es), this.mode) {
-          case this.N_POLE:
-          case this.S_POLE:
+          case 2:
+          case 1:
             this.dd = 1;
             break;
-          case this.EQUIT:
+          case 3:
             this.rq = Math.sqrt(0.5 * this.qp), this.dd = 1 / this.rq, this.xmf = 1, this.ymf = 0.5 * this.qp;
             break;
-          case this.OBLIQ:
-            this.rq = Math.sqrt(0.5 * this.qp), t2 = Math.sin(this.lat0), this.sinb1 = xs(this.e, t2) / this.qp, this.cosb1 = Math.sqrt(1 - this.sinb1 * this.sinb1), this.dd = Math.cos(this.lat0) / (Math.sqrt(1 - this.es * t2 * t2) * this.rq * this.cosb1), this.ymf = (this.xmf = this.rq) / this.dd, this.xmf *= this.dd;
+          case 4:
+            this.rq = Math.sqrt(0.5 * this.qp), t2 = Math.sin(this.lat0), this.sinb1 = Gs(this.e, t2) / this.qp, this.cosb1 = Math.sqrt(1 - this.sinb1 * this.sinb1), this.dd = Math.cos(this.lat0) / (Math.sqrt(1 - this.es * t2 * t2) * this.rq * this.cosb1), this.ymf = (this.xmf = this.rq) / this.dd, this.xmf *= this.dd;
         }
-        else this.mode === this.OBLIQ && (this.sinph0 = Math.sin(this.lat0), this.cosph0 = Math.cos(this.lat0));
+        else 4 === this.mode && (this.sinph0 = Math.sin(this.lat0), this.cosph0 = Math.cos(this.lat0));
       }, forward: function(t2) {
-        var s2, i2, e2, n2, o2, l2, c2, _2, u2, M5, g2 = t2.x, f2 = t2.y;
-        if (g2 = z(g2 - this.long0), this.sphere) {
-          if (o2 = Math.sin(f2), M5 = Math.cos(f2), e2 = Math.cos(g2), this.mode === this.OBLIQ || this.mode === this.EQUIT) {
+        var s2, i2, e2, r2, o2, l2, c2, u2, _2, M5, d2 = t2.x, f2 = t2.y;
+        if (d2 = U(d2 - this.long0), this.sphere) {
+          if (o2 = Math.sin(f2), M5 = Math.cos(f2), e2 = Math.cos(d2), this.mode === this.OBLIQ || this.mode === this.EQUIT) {
             if ((i2 = this.mode === this.EQUIT ? 1 + M5 * e2 : 1 + this.sinph0 * o2 + this.cosph0 * M5 * e2) <= h) return null;
-            s2 = (i2 = Math.sqrt(2 / i2)) * M5 * Math.sin(g2), i2 *= this.mode === this.EQUIT ? o2 : this.cosph0 * o2 - this.sinph0 * M5 * e2;
+            s2 = (i2 = Math.sqrt(2 / i2)) * M5 * Math.sin(d2), i2 *= this.mode === this.EQUIT ? o2 : this.cosph0 * o2 - this.sinph0 * M5 * e2;
           } else if (this.mode === this.N_POLE || this.mode === this.S_POLE) {
             if (this.mode === this.N_POLE && (e2 = -e2), Math.abs(f2 + this.lat0) < h) return null;
-            i2 = r - 0.5 * f2, s2 = (i2 = 2 * (this.mode === this.S_POLE ? Math.cos(i2) : Math.sin(i2))) * Math.sin(g2), i2 *= e2;
+            i2 = n - 0.5 * f2, s2 = (i2 = 2 * (this.mode === this.S_POLE ? Math.cos(i2) : Math.sin(i2))) * Math.sin(d2), i2 *= e2;
           }
         } else {
-          switch (c2 = 0, _2 = 0, u2 = 0, e2 = Math.cos(g2), n2 = Math.sin(g2), o2 = Math.sin(f2), l2 = xs(this.e, o2), this.mode !== this.OBLIQ && this.mode !== this.EQUIT || (c2 = l2 / this.qp, _2 = Math.sqrt(1 - c2 * c2)), this.mode) {
+          switch (c2 = 0, u2 = 0, _2 = 0, e2 = Math.cos(d2), r2 = Math.sin(d2), o2 = Math.sin(f2), l2 = Gs(this.e, o2), this.mode !== this.OBLIQ && this.mode !== this.EQUIT || (c2 = l2 / this.qp, u2 = Math.sqrt(1 - c2 * c2)), this.mode) {
             case this.OBLIQ:
-              u2 = 1 + this.sinb1 * c2 + this.cosb1 * _2 * e2;
+              _2 = 1 + this.sinb1 * c2 + this.cosb1 * u2 * e2;
               break;
             case this.EQUIT:
-              u2 = 1 + _2 * e2;
+              _2 = 1 + u2 * e2;
               break;
             case this.N_POLE:
-              u2 = a + f2, l2 = this.qp - l2;
+              _2 = a + f2, l2 = this.qp - l2;
               break;
             case this.S_POLE:
-              u2 = f2 - a, l2 = this.qp + l2;
+              _2 = f2 - a, l2 = this.qp + l2;
           }
-          if (Math.abs(u2) < h) return null;
+          if (Math.abs(_2) < h) return null;
           switch (this.mode) {
             case this.OBLIQ:
             case this.EQUIT:
-              u2 = Math.sqrt(2 / u2), i2 = this.mode === this.OBLIQ ? this.ymf * u2 * (this.cosb1 * c2 - this.sinb1 * _2 * e2) : (u2 = Math.sqrt(2 / (1 + _2 * e2))) * c2 * this.ymf, s2 = this.xmf * u2 * _2 * n2;
+              _2 = Math.sqrt(2 / _2), i2 = this.mode === this.OBLIQ ? this.ymf * _2 * (this.cosb1 * c2 - this.sinb1 * u2 * e2) : (_2 = Math.sqrt(2 / (1 + u2 * e2))) * c2 * this.ymf, s2 = this.xmf * _2 * u2 * r2;
               break;
             case this.N_POLE:
             case this.S_POLE:
-              l2 >= 0 ? (s2 = (u2 = Math.sqrt(l2)) * n2, i2 = e2 * (this.mode === this.S_POLE ? u2 : -u2)) : s2 = i2 = 0;
+              l2 >= 0 ? (s2 = (_2 = Math.sqrt(l2)) * r2, i2 = e2 * (this.mode === this.S_POLE ? _2 : -_2)) : s2 = i2 = 0;
           }
         }
         return t2.x = this.a * s2 + this.x0, t2.y = this.a * i2 + this.y0, t2;
       }, inverse: function(t2) {
         t2.x -= this.x0, t2.y -= this.y0;
-        var s2, i2, e2, n2, r2, o2, l2, c2, _2, u2, M5 = t2.x / this.a, g2 = t2.y / this.a;
+        var s2, i2, e2, r2, n2, o2, l2, c2, u2, _2, M5 = t2.x / this.a, d2 = t2.y / this.a;
         if (this.sphere) {
-          var f2, d2 = 0, p5 = 0;
-          if ((i2 = 0.5 * (f2 = Math.sqrt(M5 * M5 + g2 * g2))) > 1) return null;
-          switch (i2 = 2 * Math.asin(i2), this.mode !== this.OBLIQ && this.mode !== this.EQUIT || (p5 = Math.sin(i2), d2 = Math.cos(i2)), this.mode) {
+          var f2, g2 = 0, m2 = 0;
+          if ((i2 = 0.5 * (f2 = Math.sqrt(M5 * M5 + d2 * d2))) > 1) return null;
+          switch (i2 = 2 * Math.asin(i2), this.mode !== this.OBLIQ && this.mode !== this.EQUIT || (m2 = Math.sin(i2), g2 = Math.cos(i2)), this.mode) {
             case this.EQUIT:
-              i2 = Math.abs(f2) <= h ? 0 : Math.asin(g2 * p5 / f2), M5 *= p5, g2 = d2 * f2;
+              i2 = Math.abs(f2) <= h ? 0 : Math.asin(d2 * m2 / f2), M5 *= m2, d2 = g2 * f2;
               break;
             case this.OBLIQ:
-              i2 = Math.abs(f2) <= h ? this.lat0 : Math.asin(d2 * this.sinph0 + g2 * p5 * this.cosph0 / f2), M5 *= p5 * this.cosph0, g2 = (d2 - Math.sin(i2) * this.sinph0) * f2;
+              i2 = Math.abs(f2) <= h ? this.lat0 : Math.asin(g2 * this.sinph0 + d2 * m2 * this.cosph0 / f2), M5 *= m2 * this.cosph0, d2 = (g2 - Math.sin(i2) * this.sinph0) * f2;
               break;
             case this.N_POLE:
-              g2 = -g2, i2 = a - i2;
+              d2 = -d2, i2 = a - i2;
               break;
             case this.S_POLE:
               i2 -= a;
           }
-          s2 = 0 !== g2 || this.mode !== this.EQUIT && this.mode !== this.OBLIQ ? Math.atan2(M5, g2) : 0;
+          s2 = 0 !== d2 || this.mode !== this.EQUIT && this.mode !== this.OBLIQ ? Math.atan2(M5, d2) : 0;
         } else {
           if (l2 = 0, this.mode === this.OBLIQ || this.mode === this.EQUIT) {
-            if (M5 /= this.dd, g2 *= this.dd, (o2 = Math.sqrt(M5 * M5 + g2 * g2)) < h) return t2.x = this.long0, t2.y = this.lat0, t2;
-            n2 = 2 * Math.asin(0.5 * o2 / this.rq), e2 = Math.cos(n2), M5 *= n2 = Math.sin(n2), this.mode === this.OBLIQ ? (l2 = e2 * this.sinb1 + g2 * n2 * this.cosb1 / o2, r2 = this.qp * l2, g2 = o2 * this.cosb1 * e2 - g2 * this.sinb1 * n2) : (l2 = g2 * n2 / o2, r2 = this.qp * l2, g2 = o2 * e2);
+            if (M5 /= this.dd, d2 *= this.dd, (o2 = Math.sqrt(M5 * M5 + d2 * d2)) < h) return t2.x = this.long0, t2.y = this.lat0, t2;
+            r2 = 2 * Math.asin(0.5 * o2 / this.rq), e2 = Math.cos(r2), M5 *= r2 = Math.sin(r2), this.mode === this.OBLIQ ? (l2 = e2 * this.sinb1 + d2 * r2 * this.cosb1 / o2, n2 = this.qp * l2, d2 = o2 * this.cosb1 * e2 - d2 * this.sinb1 * r2) : (l2 = d2 * r2 / o2, n2 = this.qp * l2, d2 = o2 * e2);
           } else if (this.mode === this.N_POLE || this.mode === this.S_POLE) {
-            if (this.mode === this.N_POLE && (g2 = -g2), !(r2 = M5 * M5 + g2 * g2)) return t2.x = this.long0, t2.y = this.lat0, t2;
-            l2 = 1 - r2 / this.qp, this.mode === this.S_POLE && (l2 = -l2);
+            if (this.mode === this.N_POLE && (d2 = -d2), !(n2 = M5 * M5 + d2 * d2)) return t2.x = this.long0, t2.y = this.lat0, t2;
+            l2 = 1 - n2 / this.qp, this.mode === this.S_POLE && (l2 = -l2);
           }
-          s2 = Math.atan2(M5, g2), c2 = Math.asin(l2), _2 = this.apa, u2 = c2 + c2, i2 = c2 + _2[0] * Math.sin(u2) + _2[1] * Math.sin(u2 + u2) + _2[2] * Math.sin(u2 + u2 + u2);
+          s2 = Math.atan2(M5, d2), c2 = Math.asin(l2), u2 = this.apa, _2 = c2 + c2, i2 = c2 + u2[0] * Math.sin(_2) + u2[1] * Math.sin(_2 + _2) + u2[2] * Math.sin(_2 + _2 + _2);
         }
-        return t2.x = z(this.long0 + s2), t2.y = i2, t2;
+        return t2.x = U(this.long0 + s2), t2.y = i2, t2;
       }, names: ["Lambert Azimuthal Equal Area", "Lambert_Azimuthal_Equal_Area", "laea"], S_POLE: 1, N_POLE: 2, EQUIT: 3, OBLIQ: 4 };
-      function Os(t2) {
+      function Rs(t2) {
         return Math.abs(t2) > 1 && (t2 = t2 > 1 ? 1 : -1), Math.asin(t2);
       }
-      var Rs = { init: function() {
-        Math.abs(this.lat1 + this.lat2) < h || (this.temp = this.b / this.a, this.es = 1 - Math.pow(this.temp, 2), this.e3 = Math.sqrt(this.es), this.sin_po = Math.sin(this.lat1), this.cos_po = Math.cos(this.lat1), this.t1 = this.sin_po, this.con = this.sin_po, this.ms1 = F(this.e3, this.sin_po, this.cos_po), this.qs1 = xs(this.e3, this.sin_po), this.sin_po = Math.sin(this.lat2), this.cos_po = Math.cos(this.lat2), this.t2 = this.sin_po, this.ms2 = F(this.e3, this.sin_po, this.cos_po), this.qs2 = xs(this.e3, this.sin_po), this.sin_po = Math.sin(this.lat0), this.cos_po = Math.cos(this.lat0), this.t3 = this.sin_po, this.qs0 = xs(this.e3, this.sin_po), Math.abs(this.lat1 - this.lat2) > h ? this.ns0 = (this.ms1 * this.ms1 - this.ms2 * this.ms2) / (this.qs2 - this.qs1) : this.ns0 = this.con, this.c = this.ms1 * this.ms1 + this.ns0 * this.qs1, this.rh = this.a * Math.sqrt(this.c - this.ns0 * this.qs0) / this.ns0);
+      var Os = { init: function() {
+        Math.abs(this.lat1 + this.lat2) < h || (this.temp = this.b / this.a, this.es = 1 - Math.pow(this.temp, 2), this.e3 = Math.sqrt(this.es), this.sin_po = Math.sin(this.lat1), this.cos_po = Math.cos(this.lat1), this.t1 = this.sin_po, this.con = this.sin_po, this.ms1 = B(this.e3, this.sin_po, this.cos_po), this.qs1 = Gs(this.e3, this.sin_po), this.sin_po = Math.sin(this.lat2), this.cos_po = Math.cos(this.lat2), this.t2 = this.sin_po, this.ms2 = B(this.e3, this.sin_po, this.cos_po), this.qs2 = Gs(this.e3, this.sin_po), this.sin_po = Math.sin(this.lat0), this.cos_po = Math.cos(this.lat0), this.t3 = this.sin_po, this.qs0 = Gs(this.e3, this.sin_po), Math.abs(this.lat1 - this.lat2) > h ? this.ns0 = (this.ms1 * this.ms1 - this.ms2 * this.ms2) / (this.qs2 - this.qs1) : this.ns0 = this.con, this.c = this.ms1 * this.ms1 + this.ns0 * this.qs1, this.rh = this.a * Math.sqrt(this.c - this.ns0 * this.qs0) / this.ns0);
       }, forward: function(t2) {
         var s2 = t2.x, i2 = t2.y;
         this.sin_phi = Math.sin(i2), this.cos_phi = Math.cos(i2);
-        var a3 = xs(this.e3, this.sin_phi), h2 = this.a * Math.sqrt(this.c - this.ns0 * a3) / this.ns0, e2 = this.ns0 * z(s2 - this.long0), n2 = h2 * Math.sin(e2) + this.x0, r2 = this.rh - h2 * Math.cos(e2) + this.y0;
-        return t2.x = n2, t2.y = r2, t2;
+        var a3 = Gs(this.e3, this.sin_phi), h2 = this.a * Math.sqrt(this.c - this.ns0 * a3) / this.ns0, e2 = this.ns0 * U(s2 - this.long0), r2 = h2 * Math.sin(e2) + this.x0, n2 = this.rh - h2 * Math.cos(e2) + this.y0;
+        return t2.x = r2, t2.y = n2, t2;
       }, inverse: function(t2) {
-        var s2, i2, a3, h2, e2, n2;
-        return t2.x -= this.x0, t2.y = this.rh - t2.y + this.y0, this.ns0 >= 0 ? (s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), a3 = 1) : (s2 = -Math.sqrt(t2.x * t2.x + t2.y * t2.y), a3 = -1), h2 = 0, 0 !== s2 && (h2 = Math.atan2(a3 * t2.x, a3 * t2.y)), a3 = s2 * this.ns0 / this.a, this.sphere ? n2 = Math.asin((this.c - a3 * a3) / (2 * this.ns0)) : (i2 = (this.c - a3 * a3) / this.ns0, n2 = this.phi1z(this.e3, i2)), e2 = z(h2 / this.ns0 + this.long0), t2.x = e2, t2.y = n2, t2;
+        var s2, i2, a3, h2, e2, r2;
+        return t2.x -= this.x0, t2.y = this.rh - t2.y + this.y0, this.ns0 >= 0 ? (s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), a3 = 1) : (s2 = -Math.sqrt(t2.x * t2.x + t2.y * t2.y), a3 = -1), h2 = 0, 0 !== s2 && (h2 = Math.atan2(a3 * t2.x, a3 * t2.y)), a3 = s2 * this.ns0 / this.a, this.sphere ? r2 = Math.asin((this.c - a3 * a3) / (2 * this.ns0)) : (i2 = (this.c - a3 * a3) / this.ns0, r2 = this.phi1z(this.e3, i2)), e2 = U(h2 / this.ns0 + this.long0), t2.x = e2, t2.y = r2, t2;
       }, names: ["Albers_Conic_Equal_Area", "Albers_Equal_Area", "Albers", "aea"], phi1z: function(t2, s2) {
-        var i2, a3, e2, n2, r2 = Os(0.5 * s2);
-        if (t2 < h) return r2;
-        for (var o2 = t2 * t2, l2 = 1; l2 <= 25; l2++) if (r2 += n2 = 0.5 * (e2 = 1 - (a3 = t2 * (i2 = Math.sin(r2))) * a3) * e2 / Math.cos(r2) * (s2 / (1 - o2) - i2 / e2 + 0.5 / t2 * Math.log((1 - a3) / (1 + a3))), Math.abs(n2) <= 1e-7) return r2;
+        var i2, a3, e2, r2, n2 = Rs(0.5 * s2);
+        if (t2 < h) return n2;
+        for (var o2 = t2 * t2, l2 = 1; l2 <= 25; l2++) if (n2 += r2 = 0.5 * (e2 = 1 - (a3 = t2 * (i2 = Math.sin(n2))) * a3) * e2 / Math.cos(n2) * (s2 / (1 - o2) - i2 / e2 + 0.5 / t2 * Math.log((1 - a3) / (1 + a3))), Math.abs(r2) <= 1e-7) return n2;
         return null;
       } };
       var qs = { init: function() {
         this.sin_p14 = Math.sin(this.lat0), this.cos_p14 = Math.cos(this.lat0), this.infinity_dist = 1e3 * this.a, this.rc = 1;
       }, forward: function(t2) {
-        var s2, i2, a3, e2, n2, r2, o2, l2 = t2.x, c2 = t2.y;
-        return a3 = z(l2 - this.long0), s2 = Math.sin(c2), i2 = Math.cos(c2), e2 = Math.cos(a3), (n2 = this.sin_p14 * s2 + this.cos_p14 * i2 * e2) > 0 || Math.abs(n2) <= h ? (r2 = this.x0 + 1 * this.a * i2 * Math.sin(a3) / n2, o2 = this.y0 + 1 * this.a * (this.cos_p14 * s2 - this.sin_p14 * i2 * e2) / n2) : (r2 = this.x0 + this.infinity_dist * i2 * Math.sin(a3), o2 = this.y0 + this.infinity_dist * (this.cos_p14 * s2 - this.sin_p14 * i2 * e2)), t2.x = r2, t2.y = o2, t2;
+        var s2, i2, a3, e2, r2, n2, o2, l2 = t2.x, c2 = t2.y;
+        return a3 = U(l2 - this.long0), s2 = Math.sin(c2), i2 = Math.cos(c2), e2 = Math.cos(a3), (r2 = this.sin_p14 * s2 + this.cos_p14 * i2 * e2) > 0 || Math.abs(r2) <= h ? (n2 = this.x0 + 1 * this.a * i2 * Math.sin(a3) / r2, o2 = this.y0 + 1 * this.a * (this.cos_p14 * s2 - this.sin_p14 * i2 * e2) / r2) : (n2 = this.x0 + this.infinity_dist * i2 * Math.sin(a3), o2 = this.y0 + this.infinity_dist * (this.cos_p14 * s2 - this.sin_p14 * i2 * e2)), t2.x = n2, t2.y = o2, t2;
       }, inverse: function(t2) {
-        var s2, i2, a3, h2, e2, n2;
-        return t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a, t2.x /= this.k0, t2.y /= this.k0, (s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) ? (h2 = Math.atan2(s2, this.rc), i2 = Math.sin(h2), n2 = Os((a3 = Math.cos(h2)) * this.sin_p14 + t2.y * i2 * this.cos_p14 / s2), e2 = Math.atan2(t2.x * i2, s2 * this.cos_p14 * a3 - t2.y * this.sin_p14 * i2), e2 = z(this.long0 + e2)) : (n2 = this.phic0, e2 = 0), t2.x = e2, t2.y = n2, t2;
+        var s2, i2, a3, h2, e2, r2;
+        return t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a, t2.x /= this.k0, t2.y /= this.k0, (s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) ? (h2 = Math.atan2(s2, this.rc), i2 = Math.sin(h2), r2 = Rs((a3 = Math.cos(h2)) * this.sin_p14 + t2.y * i2 * this.cos_p14 / s2), e2 = Math.atan2(t2.x * i2, s2 * this.cos_p14 * a3 - t2.y * this.sin_p14 * i2), e2 = U(this.long0 + e2)) : (r2 = this.phic0, e2 = 0), t2.x = e2, t2.y = r2, t2;
       }, names: ["gnom"] };
-      var Ts = { init: function() {
-        this.sphere || (this.k0 = F(this.e, Math.sin(this.lat_ts), Math.cos(this.lat_ts)));
+      var js = { init: function() {
+        this.sphere || (this.k0 = B(this.e, Math.sin(this.lat_ts), Math.cos(this.lat_ts)));
       }, forward: function(t2) {
-        var s2, i2, a3 = t2.x, h2 = t2.y, e2 = z(a3 - this.long0);
+        var s2, i2, a3 = t2.x, h2 = t2.y, e2 = U(a3 - this.long0);
         if (this.sphere) s2 = this.x0 + this.a * e2 * Math.cos(this.lat_ts), i2 = this.y0 + this.a * Math.sin(h2) / Math.cos(this.lat_ts);
         else {
-          var n2 = xs(this.e, Math.sin(h2));
-          s2 = this.x0 + this.a * this.k0 * e2, i2 = this.y0 + this.a * n2 * 0.5 / this.k0;
+          var r2 = Gs(this.e, Math.sin(h2));
+          s2 = this.x0 + this.a * this.k0 * e2, i2 = this.y0 + this.a * r2 * 0.5 / this.k0;
         }
         return t2.x = s2, t2.y = i2, t2;
       }, inverse: function(t2) {
         var s2, i2;
-        return t2.x -= this.x0, t2.y -= this.y0, this.sphere ? (s2 = z(this.long0 + t2.x / this.a / Math.cos(this.lat_ts)), i2 = Math.asin(t2.y / this.a * Math.cos(this.lat_ts))) : (i2 = function(t3, s3) {
+        return t2.x -= this.x0, t2.y -= this.y0, this.sphere ? (s2 = U(this.long0 + t2.x / this.a / Math.cos(this.lat_ts)), i2 = Math.asin(t2.y / this.a * Math.cos(this.lat_ts))) : (i2 = function(t3, s3) {
           var i3 = 1 - (1 - t3 * t3) / (2 * t3) * Math.log((1 - t3) / (1 + t3));
           if (Math.abs(Math.abs(s3) - i3) < 1e-6) return s3 < 0 ? -1 * a : a;
-          for (var h2, e2, n2, r2, o2 = Math.asin(0.5 * s3), l2 = 0; l2 < 30; l2++) if (e2 = Math.sin(o2), n2 = Math.cos(o2), r2 = t3 * e2, o2 += h2 = Math.pow(1 - r2 * r2, 2) / (2 * n2) * (s3 / (1 - t3 * t3) - e2 / (1 - r2 * r2) + 0.5 / t3 * Math.log((1 - r2) / (1 + r2))), Math.abs(h2) <= 1e-10) return o2;
+          for (var h2, e2, r2, n2, o2 = Math.asin(0.5 * s3), l2 = 0; l2 < 30; l2++) if (e2 = Math.sin(o2), r2 = Math.cos(o2), n2 = t3 * e2, o2 += h2 = Math.pow(1 - n2 * n2, 2) / (2 * r2) * (s3 / (1 - t3 * t3) - e2 / (1 - n2 * n2) + 0.5 / t3 * Math.log((1 - n2) / (1 + n2))), Math.abs(h2) <= 1e-10) return o2;
           return NaN;
-        }(this.e, 2 * t2.y * this.k0 / this.a), s2 = z(this.long0 + t2.x / (this.a * this.k0))), t2.x = s2, t2.y = i2, t2;
+        }(this.e, 2 * t2.y * this.k0 / this.a), s2 = U(this.long0 + t2.x / (this.a * this.k0))), t2.x = s2, t2.y = i2, t2;
       }, names: ["cea"] };
-      var ks = { init: function() {
+      var Ts = { init: function() {
         this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, this.lat0 = this.lat0 || 0, this.long0 = this.long0 || 0, this.lat_ts = this.lat_ts || 0, this.title = this.title || "Equidistant Cylindrical (Plate Carre)", this.rc = Math.cos(this.lat_ts);
       }, forward: function(t2) {
-        var s2 = t2.x, i2 = t2.y, a3 = z(s2 - this.long0), h2 = ws(i2 - this.lat0);
+        var s2 = t2.x, i2 = t2.y, a3 = U(s2 - this.long0), h2 = vs(i2 - this.lat0);
         return t2.x = this.x0 + this.a * a3 * this.rc, t2.y = this.y0 + this.a * h2, t2;
       }, inverse: function(t2) {
         var s2 = t2.x, i2 = t2.y;
-        return t2.x = z(this.long0 + (s2 - this.x0) / (this.a * this.rc)), t2.y = ws(this.lat0 + (i2 - this.y0) / this.a), t2;
+        return t2.x = U(this.long0 + (s2 - this.x0) / (this.a * this.rc)), t2.y = vs(this.lat0 + (i2 - this.y0) / this.a), t2;
       }, names: ["Equirectangular", "Equidistant_Cylindrical", "Equidistant_Cylindrical_Spherical", "eqc"] };
-      var Ds = { init: function() {
-        this.temp = this.b / this.a, this.es = 1 - Math.pow(this.temp, 2), this.e = Math.sqrt(this.es), this.e0 = ps(this.es), this.e1 = ms(this.es), this.e2 = ys(this.es), this.e3 = Ss(this.es), this.ml0 = this.a * ds(this.e0, this.e1, this.e2, this.e3, this.lat0);
+      var Ls = { init: function() {
+        this.temp = this.b / this.a, this.es = 1 - Math.pow(this.temp, 2), this.e = Math.sqrt(this.es), this.e0 = ms(this.es), this.e1 = ps(this.es), this.e2 = ys(this.es), this.e3 = ws(this.es), this.ml0 = this.a * gs(this.e0, this.e1, this.e2, this.e3, this.lat0);
       }, forward: function(t2) {
-        var s2, i2, a3, e2 = t2.x, n2 = t2.y, r2 = z(e2 - this.long0);
-        if (a3 = r2 * Math.sin(n2), this.sphere) Math.abs(n2) <= h ? (s2 = this.a * r2, i2 = -1 * this.a * this.lat0) : (s2 = this.a * Math.sin(a3) / Math.tan(n2), i2 = this.a * (ws(n2 - this.lat0) + (1 - Math.cos(a3)) / Math.tan(n2)));
-        else if (Math.abs(n2) <= h) s2 = this.a * r2, i2 = -1 * this.ml0;
+        var s2, i2, a3, e2 = t2.x, r2 = t2.y, n2 = U(e2 - this.long0);
+        if (a3 = n2 * Math.sin(r2), this.sphere) Math.abs(r2) <= h ? (s2 = this.a * n2, i2 = -1 * this.a * this.lat0) : (s2 = this.a * Math.sin(a3) / Math.tan(r2), i2 = this.a * (vs(r2 - this.lat0) + (1 - Math.cos(a3)) / Math.tan(r2)));
+        else if (Math.abs(r2) <= h) s2 = this.a * n2, i2 = -1 * this.ml0;
         else {
-          var o2 = Es(this.a, this.e, Math.sin(n2)) / Math.tan(n2);
-          s2 = o2 * Math.sin(a3), i2 = this.a * ds(this.e0, this.e1, this.e2, this.e3, n2) - this.ml0 + o2 * (1 - Math.cos(a3));
+          var o2 = Es(this.a, this.e, Math.sin(r2)) / Math.tan(r2);
+          s2 = o2 * Math.sin(a3), i2 = this.a * gs(this.e0, this.e1, this.e2, this.e3, r2) - this.ml0 + o2 * (1 - Math.cos(a3));
         }
         return t2.x = s2 + this.x0, t2.y = i2 + this.y0, t2;
       }, inverse: function(t2) {
-        var s2, i2, a3, e2, n2, r2, o2, l2, c2;
-        if (a3 = t2.x - this.x0, e2 = t2.y - this.y0, this.sphere) if (Math.abs(e2 + this.a * this.lat0) <= h) s2 = z(a3 / this.a + this.long0), i2 = 0;
+        var s2, i2, a3, e2, r2, n2, o2, l2, c2;
+        if (a3 = t2.x - this.x0, e2 = t2.y - this.y0, this.sphere) if (Math.abs(e2 + this.a * this.lat0) <= h) s2 = U(a3 / this.a + this.long0), i2 = 0;
         else {
-          var _2;
-          for (r2 = this.lat0 + e2 / this.a, o2 = a3 * a3 / this.a / this.a + r2 * r2, l2 = r2, n2 = 20; n2; --n2) if (l2 += c2 = -1 * (r2 * (l2 * (_2 = Math.tan(l2)) + 1) - l2 - 0.5 * (l2 * l2 + o2) * _2) / ((l2 - r2) / _2 - 1), Math.abs(c2) <= h) {
+          var u2;
+          for (n2 = this.lat0 + e2 / this.a, o2 = a3 * a3 / this.a / this.a + n2 * n2, l2 = n2, r2 = 20; r2; --r2) if (l2 += c2 = -1 * (n2 * (l2 * (u2 = Math.tan(l2)) + 1) - l2 - 0.5 * (l2 * l2 + o2) * u2) / ((l2 - n2) / u2 - 1), Math.abs(c2) <= h) {
             i2 = l2;
             break;
           }
-          s2 = z(this.long0 + Math.asin(a3 * Math.tan(l2) / this.a) / Math.sin(i2));
+          s2 = U(this.long0 + Math.asin(a3 * Math.tan(l2) / this.a) / Math.sin(i2));
         }
-        else if (Math.abs(e2 + this.ml0) <= h) i2 = 0, s2 = z(this.long0 + a3 / this.a);
+        else if (Math.abs(e2 + this.ml0) <= h) i2 = 0, s2 = U(this.long0 + a3 / this.a);
         else {
-          var u2, M5, g2, f2, d2;
-          for (r2 = (this.ml0 + e2) / this.a, o2 = a3 * a3 / this.a / this.a + r2 * r2, l2 = r2, n2 = 20; n2; --n2) if (d2 = this.e * Math.sin(l2), u2 = Math.sqrt(1 - d2 * d2) * Math.tan(l2), M5 = this.a * ds(this.e0, this.e1, this.e2, this.e3, l2), g2 = this.e0 - 2 * this.e1 * Math.cos(2 * l2) + 4 * this.e2 * Math.cos(4 * l2) - 6 * this.e3 * Math.cos(6 * l2), l2 -= c2 = (r2 * (u2 * (f2 = M5 / this.a) + 1) - f2 - 0.5 * u2 * (f2 * f2 + o2)) / (this.es * Math.sin(2 * l2) * (f2 * f2 + o2 - 2 * r2 * f2) / (4 * u2) + (r2 - f2) * (u2 * g2 - 2 / Math.sin(2 * l2)) - g2), Math.abs(c2) <= h) {
+          var _2, M5, d2, f2, g2;
+          for (n2 = (this.ml0 + e2) / this.a, o2 = a3 * a3 / this.a / this.a + n2 * n2, l2 = n2, r2 = 20; r2; --r2) if (g2 = this.e * Math.sin(l2), _2 = Math.sqrt(1 - g2 * g2) * Math.tan(l2), M5 = this.a * gs(this.e0, this.e1, this.e2, this.e3, l2), d2 = this.e0 - 2 * this.e1 * Math.cos(2 * l2) + 4 * this.e2 * Math.cos(4 * l2) - 6 * this.e3 * Math.cos(6 * l2), l2 -= c2 = (n2 * (_2 * (f2 = M5 / this.a) + 1) - f2 - 0.5 * _2 * (f2 * f2 + o2)) / (this.es * Math.sin(2 * l2) * (f2 * f2 + o2 - 2 * n2 * f2) / (4 * _2) + (n2 - f2) * (_2 * d2 - 2 / Math.sin(2 * l2)) - d2), Math.abs(c2) <= h) {
             i2 = l2;
             break;
           }
-          u2 = Math.sqrt(1 - this.es * Math.pow(Math.sin(i2), 2)) * Math.tan(i2), s2 = z(this.long0 + Math.asin(a3 * u2 / this.a) / Math.sin(i2));
+          _2 = Math.sqrt(1 - this.es * Math.pow(Math.sin(i2), 2)) * Math.tan(i2), s2 = U(this.long0 + Math.asin(a3 * _2 / this.a) / Math.sin(i2));
         }
         return t2.x = s2, t2.y = i2, t2;
       }, names: ["Polyconic", "American_Polyconic", "poly"] };
-      var js = { init: function() {
+      var Fs = { init: function() {
         this.A = [], this.A[1] = 0.6399175073, this.A[2] = -0.1358797613, this.A[3] = 0.063294409, this.A[4] = -0.02526853, this.A[5] = 0.0117879, this.A[6] = -55161e-7, this.A[7] = 26906e-7, this.A[8] = -1333e-6, this.A[9] = 67e-5, this.A[10] = -34e-5, this.B_re = [], this.B_im = [], this.B_re[1] = 0.7557853228, this.B_im[1] = 0, this.B_re[2] = 0.249204646, this.B_im[2] = 3371507e-9, this.B_re[3] = -1541739e-9, this.B_im[3] = 0.04105856, this.B_re[4] = -0.10162907, this.B_im[4] = 0.01727609, this.B_re[5] = -0.26623489, this.B_im[5] = -0.36249218, this.B_re[6] = -0.6870983, this.B_im[6] = -1.1651967, this.C_re = [], this.C_im = [], this.C_re[1] = 1.3231270439, this.C_im[1] = 0, this.C_re[2] = -0.577245789, this.C_im[2] = -7809598e-9, this.C_re[3] = 0.508307513, this.C_im[3] = -0.112208952, this.C_re[4] = -0.15094762, this.C_im[4] = 0.18200602, this.C_re[5] = 1.01418179, this.C_im[5] = 1.64497696, this.C_re[6] = 1.9660549, this.C_im[6] = 2.5127645, this.D = [], this.D[1] = 1.5627014243, this.D[2] = 0.5185406398, this.D[3] = -0.03333098, this.D[4] = -0.1052906, this.D[5] = -0.0368594, this.D[6] = 7317e-6, this.D[7] = 0.0122, this.D[8] = 394e-5, this.D[9] = -13e-4;
       }, forward: function(t2) {
-        var s2, a3 = t2.x, h2 = t2.y - this.lat0, e2 = a3 - this.long0, n2 = h2 / i * 1e-5, r2 = e2, o2 = 1, l2 = 0;
-        for (s2 = 1; s2 <= 10; s2++) o2 *= n2, l2 += this.A[s2] * o2;
-        var c2, _2 = l2, u2 = r2, M5 = 1, g2 = 0, f2 = 0, d2 = 0;
-        for (s2 = 1; s2 <= 6; s2++) c2 = g2 * _2 + M5 * u2, M5 = M5 * _2 - g2 * u2, g2 = c2, f2 = f2 + this.B_re[s2] * M5 - this.B_im[s2] * g2, d2 = d2 + this.B_im[s2] * M5 + this.B_re[s2] * g2;
-        return t2.x = d2 * this.a + this.x0, t2.y = f2 * this.a + this.y0, t2;
+        var s2, a3 = t2.x, h2 = t2.y - this.lat0, e2 = a3 - this.long0, r2 = h2 / i * 1e-5, n2 = e2, o2 = 1, l2 = 0;
+        for (s2 = 1; s2 <= 10; s2++) o2 *= r2, l2 += this.A[s2] * o2;
+        var c2, u2 = l2, _2 = n2, M5 = 1, d2 = 0, f2 = 0, g2 = 0;
+        for (s2 = 1; s2 <= 6; s2++) c2 = d2 * u2 + M5 * _2, M5 = M5 * u2 - d2 * _2, d2 = c2, f2 = f2 + this.B_re[s2] * M5 - this.B_im[s2] * d2, g2 = g2 + this.B_im[s2] * M5 + this.B_re[s2] * d2;
+        return t2.x = g2 * this.a + this.x0, t2.y = f2 * this.a + this.y0, t2;
       }, inverse: function(t2) {
-        var s2, a3, h2 = t2.x, e2 = t2.y, n2 = h2 - this.x0, r2 = (e2 - this.y0) / this.a, o2 = n2 / this.a, l2 = 1, c2 = 0, _2 = 0, u2 = 0;
-        for (s2 = 1; s2 <= 6; s2++) a3 = c2 * r2 + l2 * o2, l2 = l2 * r2 - c2 * o2, c2 = a3, _2 = _2 + this.C_re[s2] * l2 - this.C_im[s2] * c2, u2 = u2 + this.C_im[s2] * l2 + this.C_re[s2] * c2;
+        var s2, a3, h2 = t2.x, e2 = t2.y, r2 = h2 - this.x0, n2 = (e2 - this.y0) / this.a, o2 = r2 / this.a, l2 = 1, c2 = 0, u2 = 0, _2 = 0;
+        for (s2 = 1; s2 <= 6; s2++) a3 = c2 * n2 + l2 * o2, l2 = l2 * n2 - c2 * o2, c2 = a3, u2 = u2 + this.C_re[s2] * l2 - this.C_im[s2] * c2, _2 = _2 + this.C_im[s2] * l2 + this.C_re[s2] * c2;
         for (var M5 = 0; M5 < this.iterations; M5++) {
-          var g2, f2 = _2, d2 = u2, p5 = r2, m2 = o2;
-          for (s2 = 2; s2 <= 6; s2++) g2 = d2 * _2 + f2 * u2, f2 = f2 * _2 - d2 * u2, d2 = g2, p5 += (s2 - 1) * (this.B_re[s2] * f2 - this.B_im[s2] * d2), m2 += (s2 - 1) * (this.B_im[s2] * f2 + this.B_re[s2] * d2);
-          f2 = 1, d2 = 0;
-          var y2 = this.B_re[1], S2 = this.B_im[1];
-          for (s2 = 2; s2 <= 6; s2++) g2 = d2 * _2 + f2 * u2, f2 = f2 * _2 - d2 * u2, d2 = g2, y2 += s2 * (this.B_re[s2] * f2 - this.B_im[s2] * d2), S2 += s2 * (this.B_im[s2] * f2 + this.B_re[s2] * d2);
-          var E5 = y2 * y2 + S2 * S2;
-          _2 = (p5 * y2 + m2 * S2) / E5, u2 = (m2 * y2 - p5 * S2) / E5;
+          var d2, f2 = u2, g2 = _2, m2 = n2, p5 = o2;
+          for (s2 = 2; s2 <= 6; s2++) d2 = g2 * u2 + f2 * _2, f2 = f2 * u2 - g2 * _2, g2 = d2, m2 += (s2 - 1) * (this.B_re[s2] * f2 - this.B_im[s2] * g2), p5 += (s2 - 1) * (this.B_im[s2] * f2 + this.B_re[s2] * g2);
+          f2 = 1, g2 = 0;
+          var y2 = this.B_re[1], w2 = this.B_im[1];
+          for (s2 = 2; s2 <= 6; s2++) d2 = g2 * u2 + f2 * _2, f2 = f2 * u2 - g2 * _2, g2 = d2, y2 += s2 * (this.B_re[s2] * f2 - this.B_im[s2] * g2), w2 += s2 * (this.B_im[s2] * f2 + this.B_re[s2] * g2);
+          var E5 = y2 * y2 + w2 * w2;
+          u2 = (m2 * y2 + p5 * w2) / E5, _2 = (p5 * y2 - m2 * w2) / E5;
         }
-        var w2 = _2, v2 = u2, G2 = 1, x2 = 0;
-        for (s2 = 1; s2 <= 9; s2++) G2 *= w2, x2 += this.D[s2] * G2;
-        var P6 = this.lat0 + x2 * i * 1e5, b3 = this.long0 + v2;
+        var v2 = u2, x2 = _2, S2 = 1, G2 = 0;
+        for (s2 = 1; s2 <= 9; s2++) S2 *= v2, G2 += this.D[s2] * S2;
+        var P6 = this.lat0 + G2 * i * 1e5, b3 = this.long0 + x2;
         return t2.x = b3, t2.y = P6, t2;
       }, names: ["New_Zealand_Map_Grid", "nzmg"] };
-      var Us = { init: function() {
+      var Ds = { init: function() {
       }, forward: function(t2) {
-        var s2 = t2.x, i2 = t2.y, a3 = z(s2 - this.long0), h2 = this.x0 + this.a * a3, e2 = this.y0 + this.a * Math.log(Math.tan(Math.PI / 4 + i2 / 2.5)) * 1.25;
+        var s2 = t2.x, i2 = t2.y, a3 = U(s2 - this.long0), h2 = this.x0 + this.a * a3, e2 = this.y0 + this.a * Math.log(Math.tan(Math.PI / 4 + i2 / 2.5)) * 1.25;
         return t2.x = h2, t2.y = e2, t2;
       }, inverse: function(t2) {
         t2.x -= this.x0, t2.y -= this.y0;
-        var s2 = z(this.long0 + t2.x / this.a), i2 = 2.5 * (Math.atan(Math.exp(0.8 * t2.y / this.a)) - Math.PI / 4);
+        var s2 = U(this.long0 + t2.x / this.a), i2 = 2.5 * (Math.atan(Math.exp(0.8 * t2.y / this.a)) - Math.PI / 4);
         return t2.x = s2, t2.y = i2, t2;
       }, names: ["Miller_Cylindrical", "mill"] };
-      var Fs = { init: function() {
-        this.sphere ? (this.n = 1, this.m = 0, this.es = 0, this.C_y = Math.sqrt((this.m + 1) / this.n), this.C_x = this.C_y / (this.m + 1)) : this.en = Jt(this.es);
+      var Bs = { init: function() {
+        this.sphere ? (this.n = 1, this.m = 0, this.es = 0, this.C_y = Math.sqrt((this.m + 1) / this.n), this.C_x = this.C_y / (this.m + 1)) : this.en = Vt(this.es);
       }, forward: function(t2) {
         var s2, i2, a3 = t2.x, e2 = t2.y;
-        if (a3 = z(a3 - this.long0), this.sphere) {
-          if (this.m) for (var n2 = this.n * Math.sin(e2), r2 = 20; r2; --r2) {
-            var o2 = (this.m * e2 + Math.sin(e2) - n2) / (this.m + Math.cos(e2));
+        if (a3 = U(a3 - this.long0), this.sphere) {
+          if (this.m) for (var r2 = this.n * Math.sin(e2), n2 = 20; n2; --n2) {
+            var o2 = (this.m * e2 + Math.sin(e2) - r2) / (this.m + Math.cos(e2));
             if (e2 -= o2, Math.abs(o2) < h) break;
           }
           else e2 = 1 !== this.n ? Math.asin(this.n * Math.sin(e2)) : e2;
           s2 = this.a * this.C_x * a3 * (this.m + Math.cos(e2)), i2 = this.a * this.C_y * e2;
         } else {
           var l2 = Math.sin(e2), c2 = Math.cos(e2);
-          i2 = this.a * Zt(e2, l2, c2, this.en), s2 = this.a * a3 * c2 / Math.sqrt(1 - this.es * l2 * l2);
+          i2 = this.a * Kt(e2, l2, c2, this.en), s2 = this.a * a3 * c2 / Math.sqrt(1 - this.es * l2 * l2);
         }
         return t2.x = s2, t2.y = i2, t2;
       }, inverse: function(t2) {
         var s2, i2, e2;
-        return t2.x -= this.x0, i2 = t2.x / this.a, t2.y -= this.y0, s2 = t2.y / this.a, this.sphere ? (s2 /= this.C_y, i2 /= this.C_x * (this.m + Math.cos(s2)), this.m ? s2 = Os((this.m * s2 + Math.sin(s2)) / this.n) : 1 !== this.n && (s2 = Os(Math.sin(s2) / this.n)), i2 = z(i2 + this.long0), s2 = ws(s2)) : (s2 = Yt(t2.y / this.a, this.es, this.en), (e2 = Math.abs(s2)) < a ? (e2 = Math.sin(s2), i2 = z(this.long0 + t2.x * Math.sqrt(1 - this.es * e2 * e2) / (this.a * Math.cos(s2)))) : e2 - h < a && (i2 = this.long0)), t2.x = i2, t2.y = s2, t2;
+        return t2.x -= this.x0, i2 = t2.x / this.a, t2.y -= this.y0, s2 = t2.y / this.a, this.sphere ? (s2 /= this.C_y, i2 /= this.C_x * (this.m + Math.cos(s2)), this.m ? s2 = Rs((this.m * s2 + Math.sin(s2)) / this.n) : 1 !== this.n && (s2 = Rs(Math.sin(s2) / this.n)), i2 = U(i2 + this.long0), s2 = vs(s2)) : (s2 = Zt(t2.y / this.a, this.es, this.en), (e2 = Math.abs(s2)) < a ? (e2 = Math.sin(s2), i2 = U(this.long0 + t2.x * Math.sqrt(1 - this.es * e2 * e2) / (this.a * Math.cos(s2)))) : e2 - h < a && (i2 = this.long0)), t2.x = i2, t2.y = s2, t2;
       }, names: ["Sinusoidal", "sinu"] };
-      var Bs = { init: function() {
+      var zs = { init: function() {
       }, forward: function(t2) {
-        for (var s2 = t2.x, i2 = t2.y, a3 = z(s2 - this.long0), e2 = i2, n2 = Math.PI * Math.sin(i2); ; ) {
-          var r2 = -(e2 + Math.sin(e2) - n2) / (1 + Math.cos(e2));
-          if (e2 += r2, Math.abs(r2) < h) break;
+        for (var s2 = t2.x, i2 = t2.y, a3 = U(s2 - this.long0), e2 = i2, r2 = Math.PI * Math.sin(i2); ; ) {
+          var n2 = -(e2 + Math.sin(e2) - r2) / (1 + Math.cos(e2));
+          if (e2 += n2, Math.abs(n2) < h) break;
         }
         e2 /= 2, Math.PI / 2 - Math.abs(i2) < h && (a3 = 0);
         var o2 = 0.900316316158 * this.a * a3 * Math.cos(e2) + this.x0, l2 = 1.4142135623731 * this.a * Math.sin(e2) + this.y0;
@@ -1560,447 +1552,220 @@ var require_proj4 = __commonJS({
       }, inverse: function(t2) {
         var s2, i2;
         t2.x -= this.x0, t2.y -= this.y0, i2 = t2.y / (1.4142135623731 * this.a), Math.abs(i2) > 0.999999999999 && (i2 = 0.999999999999), s2 = Math.asin(i2);
-        var a3 = z(this.long0 + t2.x / (0.900316316158 * this.a * Math.cos(s2)));
+        var a3 = U(this.long0 + t2.x / (0.900316316158 * this.a * Math.cos(s2)));
         a3 < -Math.PI && (a3 = -Math.PI), a3 > Math.PI && (a3 = Math.PI), i2 = (2 * s2 + Math.sin(2 * s2)) / Math.PI, Math.abs(i2) > 1 && (i2 = 1);
         var h2 = Math.asin(i2);
         return t2.x = a3, t2.y = h2, t2;
       }, names: ["Mollweide", "moll"] };
-      var zs = { init: function() {
-        Math.abs(this.lat1 + this.lat2) < h || (this.lat2 = this.lat2 || this.lat1, this.temp = this.b / this.a, this.es = 1 - Math.pow(this.temp, 2), this.e = Math.sqrt(this.es), this.e0 = ps(this.es), this.e1 = ms(this.es), this.e2 = ys(this.es), this.e3 = Ss(this.es), this.sinphi = Math.sin(this.lat1), this.cosphi = Math.cos(this.lat1), this.ms1 = F(this.e, this.sinphi, this.cosphi), this.ml1 = ds(this.e0, this.e1, this.e2, this.e3, this.lat1), Math.abs(this.lat1 - this.lat2) < h ? this.ns = this.sinphi : (this.sinphi = Math.sin(this.lat2), this.cosphi = Math.cos(this.lat2), this.ms2 = F(this.e, this.sinphi, this.cosphi), this.ml2 = ds(this.e0, this.e1, this.e2, this.e3, this.lat2), this.ns = (this.ms1 - this.ms2) / (this.ml2 - this.ml1)), this.g = this.ml1 + this.ms1 / this.ns, this.ml0 = ds(this.e0, this.e1, this.e2, this.e3, this.lat0), this.rh = this.a * (this.g - this.ml0));
+      var Us = { init: function() {
+        Math.abs(this.lat1 + this.lat2) < h || (this.lat2 = this.lat2 || this.lat1, this.temp = this.b / this.a, this.es = 1 - Math.pow(this.temp, 2), this.e = Math.sqrt(this.es), this.e0 = ms(this.es), this.e1 = ps(this.es), this.e2 = ys(this.es), this.e3 = ws(this.es), this.sin_phi = Math.sin(this.lat1), this.cos_phi = Math.cos(this.lat1), this.ms1 = B(this.e, this.sin_phi, this.cos_phi), this.ml1 = gs(this.e0, this.e1, this.e2, this.e3, this.lat1), Math.abs(this.lat1 - this.lat2) < h ? this.ns = this.sin_phi : (this.sin_phi = Math.sin(this.lat2), this.cos_phi = Math.cos(this.lat2), this.ms2 = B(this.e, this.sin_phi, this.cos_phi), this.ml2 = gs(this.e0, this.e1, this.e2, this.e3, this.lat2), this.ns = (this.ms1 - this.ms2) / (this.ml2 - this.ml1)), this.g = this.ml1 + this.ms1 / this.ns, this.ml0 = gs(this.e0, this.e1, this.e2, this.e3, this.lat0), this.rh = this.a * (this.g - this.ml0));
       }, forward: function(t2) {
         var s2, i2 = t2.x, a3 = t2.y;
         if (this.sphere) s2 = this.a * (this.g - a3);
         else {
-          var h2 = ds(this.e0, this.e1, this.e2, this.e3, a3);
+          var h2 = gs(this.e0, this.e1, this.e2, this.e3, a3);
           s2 = this.a * (this.g - h2);
         }
-        var e2 = this.ns * z(i2 - this.long0), n2 = this.x0 + s2 * Math.sin(e2), r2 = this.y0 + this.rh - s2 * Math.cos(e2);
-        return t2.x = n2, t2.y = r2, t2;
+        var e2 = this.ns * U(i2 - this.long0), r2 = this.x0 + s2 * Math.sin(e2), n2 = this.y0 + this.rh - s2 * Math.cos(e2);
+        return t2.x = r2, t2.y = n2, t2;
       }, inverse: function(t2) {
         var s2, i2, a3, h2;
         t2.x -= this.x0, t2.y = this.rh - t2.y + this.y0, this.ns >= 0 ? (i2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), s2 = 1) : (i2 = -Math.sqrt(t2.x * t2.x + t2.y * t2.y), s2 = -1);
         var e2 = 0;
-        return 0 !== i2 && (e2 = Math.atan2(s2 * t2.x, s2 * t2.y)), this.sphere ? (h2 = z(this.long0 + e2 / this.ns), a3 = ws(this.g - i2 / this.a), t2.x = h2, t2.y = a3, t2) : (a3 = vs(this.g - i2 / this.a, this.e0, this.e1, this.e2, this.e3), h2 = z(this.long0 + e2 / this.ns), t2.x = h2, t2.y = a3, t2);
+        return 0 !== i2 && (e2 = Math.atan2(s2 * t2.x, s2 * t2.y)), this.sphere ? (h2 = U(this.long0 + e2 / this.ns), a3 = vs(this.g - i2 / this.a), t2.x = h2, t2.y = a3, t2) : (a3 = xs(this.g - i2 / this.a, this.e0, this.e1, this.e2, this.e3), h2 = U(this.long0 + e2 / this.ns), t2.x = h2, t2.y = a3, t2);
       }, names: ["Equidistant_Conic", "eqdc"] };
-      var Hs, Ws = { init: function() {
+      var Hs = { init: function() {
         this.R = this.a;
       }, forward: function(t2) {
-        var s2, i2, e2 = t2.x, n2 = t2.y, r2 = z(e2 - this.long0);
-        Math.abs(n2) <= h && (s2 = this.x0 + this.R * r2, i2 = this.y0);
-        var o2 = Os(2 * Math.abs(n2 / Math.PI));
-        (Math.abs(r2) <= h || Math.abs(Math.abs(n2) - a) <= h) && (s2 = this.x0, i2 = n2 >= 0 ? this.y0 + Math.PI * this.R * Math.tan(0.5 * o2) : this.y0 + Math.PI * this.R * -Math.tan(0.5 * o2));
-        var l2 = 0.5 * Math.abs(Math.PI / r2 - r2 / Math.PI), c2 = l2 * l2, _2 = Math.sin(o2), u2 = Math.cos(o2), M5 = u2 / (_2 + u2 - 1), g2 = M5 * M5, f2 = M5 * (2 / _2 - 1), d2 = f2 * f2, p5 = Math.PI * this.R * (l2 * (M5 - d2) + Math.sqrt(c2 * (M5 - d2) * (M5 - d2) - (d2 + c2) * (g2 - d2))) / (d2 + c2);
-        r2 < 0 && (p5 = -p5), s2 = this.x0 + p5;
-        var m2 = c2 + M5;
-        return p5 = Math.PI * this.R * (f2 * m2 - l2 * Math.sqrt((d2 + c2) * (c2 + 1) - m2 * m2)) / (d2 + c2), i2 = n2 >= 0 ? this.y0 + p5 : this.y0 - p5, t2.x = s2, t2.y = i2, t2;
+        var s2, i2, e2 = t2.x, r2 = t2.y, n2 = U(e2 - this.long0);
+        Math.abs(r2) <= h && (s2 = this.x0 + this.R * n2, i2 = this.y0);
+        var o2 = Rs(2 * Math.abs(r2 / Math.PI));
+        (Math.abs(n2) <= h || Math.abs(Math.abs(r2) - a) <= h) && (s2 = this.x0, i2 = r2 >= 0 ? this.y0 + Math.PI * this.R * Math.tan(0.5 * o2) : this.y0 + Math.PI * this.R * -Math.tan(0.5 * o2));
+        var l2 = 0.5 * Math.abs(Math.PI / n2 - n2 / Math.PI), c2 = l2 * l2, u2 = Math.sin(o2), _2 = Math.cos(o2), M5 = _2 / (u2 + _2 - 1), d2 = M5 * M5, f2 = M5 * (2 / u2 - 1), g2 = f2 * f2, m2 = Math.PI * this.R * (l2 * (M5 - g2) + Math.sqrt(c2 * (M5 - g2) * (M5 - g2) - (g2 + c2) * (d2 - g2))) / (g2 + c2);
+        n2 < 0 && (m2 = -m2), s2 = this.x0 + m2;
+        var p5 = c2 + M5;
+        return m2 = Math.PI * this.R * (f2 * p5 - l2 * Math.sqrt((g2 + c2) * (c2 + 1) - p5 * p5)) / (g2 + c2), i2 = r2 >= 0 ? this.y0 + m2 : this.y0 - m2, t2.x = s2, t2.y = i2, t2;
       }, inverse: function(t2) {
-        var s2, i2, a3, e2, n2, r2, o2, l2, c2, _2, u2, M5;
-        return t2.x -= this.x0, t2.y -= this.y0, u2 = Math.PI * this.R, n2 = (a3 = t2.x / u2) * a3 + (e2 = t2.y / u2) * e2, u2 = 3 * (e2 * e2 / (l2 = -2 * (r2 = -Math.abs(e2) * (1 + n2)) + 1 + 2 * e2 * e2 + n2 * n2) + (2 * (o2 = r2 - 2 * e2 * e2 + a3 * a3) * o2 * o2 / l2 / l2 / l2 - 9 * r2 * o2 / l2 / l2) / 27) / (c2 = (r2 - o2 * o2 / 3 / l2) / l2) / (_2 = 2 * Math.sqrt(-c2 / 3)), Math.abs(u2) > 1 && (u2 = u2 >= 0 ? 1 : -1), M5 = Math.acos(u2) / 3, i2 = t2.y >= 0 ? (-_2 * Math.cos(M5 + Math.PI / 3) - o2 / 3 / l2) * Math.PI : -(-_2 * Math.cos(M5 + Math.PI / 3) - o2 / 3 / l2) * Math.PI, s2 = Math.abs(a3) < h ? this.long0 : z(this.long0 + Math.PI * (n2 - 1 + Math.sqrt(1 + 2 * (a3 * a3 - e2 * e2) + n2 * n2)) / 2 / a3), t2.x = s2, t2.y = i2, t2;
-      }, names: ["Van_der_Grinten_I", "VanDerGrinten", "Van_der_Grinten", "vandg"] }, Qs = { exports: {} };
-      var Ks = (Hs || (Hs = 1, function(t2) {
-        var s2, i2, a3, h2;
-        (h2 = {}).Constants = {}, h2.Math = {}, h2.Accumulator = {}, (s2 = h2.Constants).WGS84 = { a: 6378137, f: 1 / 298.257223563 }, s2.version = { major: 2, minor: 1, patch: 1 }, s2.version_string = "2.1.1", (i2 = h2.Math).digits = 53, i2.epsilon = Math.pow(0.5, i2.digits - 1), i2.degree = Math.PI / 180, i2.sq = function(t3) {
-          return t3 * t3;
-        }, i2.hypot = function(t3, s3) {
-          return Math.sqrt(t3 * t3 + s3 * s3);
-        }, i2.cbrt = Math.cbrt || function(t3) {
-          var s3 = Math.pow(Math.abs(t3), 1 / 3);
-          return t3 > 0 ? s3 : t3 < 0 ? -s3 : t3;
-        }, i2.log1p = Math.log1p || function(t3) {
-          var s3 = 1 + t3, i3 = s3 - 1;
-          return 0 === i3 ? t3 : t3 * Math.log(s3) / i3;
-        }, i2.atanh = Math.atanh || function(t3) {
-          var s3 = Math.abs(t3);
-          return s3 = i2.log1p(2 * s3 / (1 - s3)) / 2, t3 > 0 ? s3 : t3 < 0 ? -s3 : t3;
-        }, i2.copysign = function(t3, s3) {
-          return Math.abs(t3) * (s3 < 0 || 0 === s3 && 1 / s3 < 0 ? -1 : 1);
-        }, i2.sum = function(t3, s3) {
-          var i3 = t3 + s3, a4 = i3 - s3, h3 = i3 - a4;
-          return a4 -= t3, { s: i3, t: i3 ? 0 - (a4 + (h3 -= s3)) : i3 };
-        }, i2.polyval = function(t3, s3, i3, a4) {
-          for (var h3 = t3 < 0 ? 0 : s3[i3++]; --t3 >= 0; ) h3 = h3 * a4 + s3[i3++];
-          return h3;
-        }, i2.AngRound = function(t3) {
-          var s3 = 1 / 16, a4 = Math.abs(t3);
-          return a4 = a4 < s3 ? s3 - (s3 - a4) : a4, i2.copysign(a4, t3);
-        }, i2.remainder = function(t3, s3) {
-          return (t3 %= s3) < -s3 / 2 ? t3 + s3 : t3 < s3 / 2 ? t3 : t3 - s3;
-        }, i2.AngNormalize = function(t3) {
-          var s3 = i2.remainder(t3, 360);
-          return 180 === Math.abs(s3) ? i2.copysign(180, t3) : s3;
-        }, i2.LatFix = function(t3) {
-          return Math.abs(t3) > 90 ? NaN : t3;
-        }, i2.AngDiff = function(t3, s3) {
-          var a4, h3, e2 = i2.sum(i2.remainder(-t3, 360), i2.remainder(s3, 360));
-          return a4 = (e2 = i2.sum(i2.remainder(e2.s, 360), e2.t)).s, h3 = e2.t, 0 !== a4 && 180 !== Math.abs(a4) || (a4 = i2.copysign(a4, 0 === h3 ? s3 - t3 : -h3)), { d: a4, e: h3 };
-        }, i2.sincosd = function(t3) {
-          var s3, a4, h3, e2, n2, r2, o2;
-          switch (s3 = t3 % 360, a4 = (s3 -= 90 * (h3 = Math.round(s3 / 90))) * this.degree, e2 = Math.sin(a4), n2 = Math.cos(a4), 45 === Math.abs(s3) ? (n2 = Math.sqrt(0.5), e2 = i2.copysign(n2, a4)) : 30 === Math.abs(s3) && (n2 = Math.sqrt(0.75), e2 = i2.copysign(0.5, a4)), 3 & h3) {
-            case 0:
-              r2 = e2, o2 = n2;
-              break;
-            case 1:
-              r2 = n2, o2 = -e2;
-              break;
-            case 2:
-              r2 = -e2, o2 = -n2;
-              break;
-            default:
-              r2 = -n2, o2 = e2;
-          }
-          return o2 += 0, 0 === r2 && (r2 = i2.copysign(r2, t3)), { s: r2, c: o2 };
-        }, i2.sincosde = function(t3, s3) {
-          var a4, h3, e2, n2, r2, o2, l2;
-          switch (a4 = t3 % 360, e2 = Math.round(a4 / 90), h3 = (a4 = i2.AngRound(a4 - 90 * e2 + s3)) * this.degree, n2 = Math.sin(h3), r2 = Math.cos(h3), 45 === Math.abs(a4) ? (r2 = Math.sqrt(0.5), n2 = i2.copysign(r2, h3)) : 30 === Math.abs(a4) && (r2 = Math.sqrt(0.75), n2 = i2.copysign(0.5, h3)), 3 & e2) {
-            case 0:
-              o2 = n2, l2 = r2;
-              break;
-            case 1:
-              o2 = r2, l2 = -n2;
-              break;
-            case 2:
-              o2 = -n2, l2 = -r2;
-              break;
-            default:
-              o2 = -r2, l2 = n2;
-          }
-          return l2 += 0, 0 === o2 && (o2 = i2.copysign(o2, t3 + s3)), { s: o2, c: l2 };
-        }, i2.atan2d = function(t3, s3) {
-          var a4, h3 = 0;
-          switch (Math.abs(t3) > Math.abs(s3) && ([t3, s3] = [s3, t3], h3 = 2), i2.copysign(1, s3) < 0 && (s3 = -s3, ++h3), a4 = Math.atan2(t3, s3) / this.degree, h3) {
-            case 1:
-              a4 = i2.copysign(180, t3) - a4;
-              break;
-            case 2:
-              a4 = 90 - a4;
-              break;
-            case 3:
-              a4 = -90 + a4;
-          }
-          return a4;
-        }, function(t3, s3) {
-          t3.Accumulator = function(t4) {
-            this.Set(t4);
-          }, t3.Accumulator.prototype.Set = function(s4) {
-            s4 || (s4 = 0), s4.constructor === t3.Accumulator ? (this._s = s4._s, this._t = s4._t) : (this._s = s4, this._t = 0);
-          }, t3.Accumulator.prototype.Add = function(t4) {
-            var i3 = s3.sum(t4, this._t), a4 = s3.sum(i3.s, this._s);
-            i3 = i3.t, this._s = a4.s, this._t = a4.t, 0 === this._s ? this._s = i3 : this._t += i3;
-          }, t3.Accumulator.prototype.Sum = function(s4) {
-            var i3;
-            return s4 ? ((i3 = new t3.Accumulator(this)).Add(s4), i3._s) : this._s;
-          }, t3.Accumulator.prototype.Negate = function() {
-            this._s *= -1, this._t *= -1;
-          }, t3.Accumulator.prototype.Remainder = function(t4) {
-            this._s = s3.remainder(this._s, t4), this.Add(0);
-          };
-        }(h2.Accumulator, h2.Math), h2.Geodesic = {}, h2.GeodesicLine = {}, h2.PolygonArea = {}, function(t3, s3, i3, a4, h3) {
-          var e2, n2, r2, o2, l2, c2, _2, u2, M5, g2, f2, d2 = 20 + a4.digits + 10, p5 = a4.epsilon, m2 = 200 * p5, y2 = Math.sqrt(p5), S2 = p5, E5 = 1e3 * y2;
-          t3.tiny_ = Math.sqrt(Number.MIN_VALUE / Number.EPSILON), t3.nC1_ = 6, t3.nC1p_ = 6, t3.nC2_ = 6, t3.nC3_ = 6, t3.nC4_ = 6, e2 = t3.nC3_ * (t3.nC3_ - 1) / 2, n2 = t3.nC4_ * (t3.nC4_ + 1) / 2, t3.CAP_C1 = 1, t3.CAP_C1p = 2, t3.CAP_C2 = 4, t3.CAP_C3 = 8, t3.CAP_C4 = 16, t3.NONE = 0, t3.ARC = 64, t3.LATITUDE = 128, t3.LONGITUDE = 256 | t3.CAP_C3, t3.AZIMUTH = 512, t3.DISTANCE = 1024 | t3.CAP_C1, t3.STANDARD = t3.LATITUDE | t3.LONGITUDE | t3.AZIMUTH | t3.DISTANCE, t3.DISTANCE_IN = 2048 | t3.CAP_C1 | t3.CAP_C1p, t3.REDUCEDLENGTH = 4096 | t3.CAP_C1 | t3.CAP_C2, t3.GEODESICSCALE = 8192 | t3.CAP_C1 | t3.CAP_C2, t3.AREA = 16384 | t3.CAP_C4, t3.ALL = 32671, t3.LONG_UNROLL = 32768, t3.OUT_MASK = 32640 | t3.LONG_UNROLL, t3.SinCosSeries = function(t4, s4, i4, a5) {
-            var h4 = a5.length, e3 = h4 - (t4 ? 1 : 0), n3 = 2 * (i4 - s4) * (i4 + s4), r3 = 1 & e3 ? a5[--h4] : 0, o3 = 0;
-            for (e3 = Math.floor(e3 / 2); e3--; ) r3 = n3 * (o3 = n3 * r3 - o3 + a5[--h4]) - r3 + a5[--h4];
-            return t4 ? 2 * s4 * i4 * r3 : i4 * (r3 - o3);
-          }, r2 = function(t4, s4) {
-            var i4, h4, e3, n3, r3, o3, l3, c3, _3, u3, M6, g3, f3 = a4.sq(t4), d3 = a4.sq(s4), p6 = (f3 + d3 - 1) / 6;
-            return 0 === d3 && p6 <= 0 ? i4 = 0 : (o3 = p6, (r3 = (h4 = f3 * d3 / 4) * (h4 + 2 * (n3 = p6 * (e3 = a4.sq(p6))))) >= 0 ? (l3 = h4 + n3, l3 += l3 < 0 ? -Math.sqrt(r3) : Math.sqrt(r3), o3 += (c3 = a4.cbrt(l3)) + (0 !== c3 ? e3 / c3 : 0)) : (_3 = Math.atan2(Math.sqrt(-r3), -(h4 + n3)), o3 += 2 * p6 * Math.cos(_3 / 3)), u3 = Math.sqrt(a4.sq(o3) + d3), g3 = ((M6 = o3 < 0 ? d3 / (u3 - o3) : o3 + u3) - d3) / (2 * u3), i4 = M6 / (Math.sqrt(M6 + a4.sq(g3)) + g3)), i4;
-          }, o2 = [1, 4, 64, 0, 256], t3.A1m1f = function(t4) {
-            var s4 = Math.floor(3);
-            return (a4.polyval(s4, o2, 0, a4.sq(t4)) / o2[s4 + 1] + t4) / (1 - t4);
-          }, l2 = [-1, 6, -16, 32, -9, 64, -128, 2048, 9, -16, 768, 3, -5, 512, -7, 1280, -7, 2048], t3.C1f = function(s4, i4) {
-            var h4, e3, n3 = a4.sq(s4), r3 = s4, o3 = 0;
-            for (h4 = 1; h4 <= t3.nC1_; ++h4) e3 = Math.floor((t3.nC1_ - h4) / 2), i4[h4] = r3 * a4.polyval(e3, l2, o3, n3) / l2[o3 + e3 + 1], o3 += e3 + 2, r3 *= s4;
-          }, c2 = [205, -432, 768, 1536, 4005, -4736, 3840, 12288, -225, 116, 384, -7173, 2695, 7680, 3467, 7680, 38081, 61440], t3.C1pf = function(s4, i4) {
-            var h4, e3, n3 = a4.sq(s4), r3 = s4, o3 = 0;
-            for (h4 = 1; h4 <= t3.nC1p_; ++h4) e3 = Math.floor((t3.nC1p_ - h4) / 2), i4[h4] = r3 * a4.polyval(e3, c2, o3, n3) / c2[o3 + e3 + 1], o3 += e3 + 2, r3 *= s4;
-          }, _2 = [-11, -28, -192, 0, 256], t3.A2m1f = function(t4) {
-            var s4 = Math.floor(3);
-            return (a4.polyval(s4, _2, 0, a4.sq(t4)) / _2[s4 + 1] - t4) / (1 + t4);
-          }, u2 = [1, 2, 16, 32, 35, 64, 384, 2048, 15, 80, 768, 7, 35, 512, 63, 1280, 77, 2048], t3.C2f = function(s4, i4) {
-            var h4, e3, n3 = a4.sq(s4), r3 = s4, o3 = 0;
-            for (h4 = 1; h4 <= t3.nC2_; ++h4) e3 = Math.floor((t3.nC2_ - h4) / 2), i4[h4] = r3 * a4.polyval(e3, u2, o3, n3) / u2[o3 + e3 + 1], o3 += e3 + 2, r3 *= s4;
-          }, t3.Geodesic = function(t4, s4) {
-            if (this.a = t4, this.f = s4, this._f1 = 1 - this.f, this._e2 = this.f * (2 - this.f), this._ep2 = this._e2 / a4.sq(this._f1), this._n = this.f / (2 - this.f), this._b = this.a * this._f1, this._c2 = (a4.sq(this.a) + a4.sq(this._b) * (0 === this._e2 ? 1 : (this._e2 > 0 ? a4.atanh(Math.sqrt(this._e2)) : Math.atan(Math.sqrt(-this._e2))) / Math.sqrt(Math.abs(this._e2)))) / 2, this._etol2 = 0.1 * y2 / Math.sqrt(Math.max(1e-3, Math.abs(this.f)) * Math.min(1, 1 - this.f / 2) / 2), !(isFinite(this.a) && this.a > 0)) throw new Error("Equatorial radius is not positive");
-            if (!(isFinite(this._b) && this._b > 0)) throw new Error("Polar semi-axis is not positive");
-            this._A3x = new Array(6), this._C3x = new Array(e2), this._C4x = new Array(n2), this.A3coeff(), this.C3coeff(), this.C4coeff();
-          }, M5 = [-3, 128, -2, -3, 64, -1, -3, -1, 16, 3, -1, -2, 8, 1, -1, 2, 1, 1], t3.Geodesic.prototype.A3coeff = function() {
-            var t4, s4, i4 = 0, h4 = 0;
-            for (t4 = 5; t4 >= 0; --t4) s4 = Math.min(6 - t4 - 1, t4), this._A3x[h4++] = a4.polyval(s4, M5, i4, this._n) / M5[i4 + s4 + 1], i4 += s4 + 2;
-          }, g2 = [3, 128, 2, 5, 128, -1, 3, 3, 64, -1, 0, 1, 8, -1, 1, 4, 5, 256, 1, 3, 128, -3, -2, 3, 64, 1, -3, 2, 32, 7, 512, -10, 9, 384, 5, -9, 5, 192, 7, 512, -14, 7, 512, 21, 2560], t3.Geodesic.prototype.C3coeff = function() {
-            var s4, i4, h4, e3 = 0, n3 = 0;
-            for (s4 = 1; s4 < t3.nC3_; ++s4) for (i4 = t3.nC3_ - 1; i4 >= s4; --i4) h4 = Math.min(t3.nC3_ - i4 - 1, i4), this._C3x[n3++] = a4.polyval(h4, g2, e3, this._n) / g2[e3 + h4 + 1], e3 += h4 + 2;
-          }, f2 = [97, 15015, 1088, 156, 45045, -224, -4784, 1573, 45045, -10656, 14144, -4576, -858, 45045, 64, 624, -4576, 6864, -3003, 15015, 100, 208, 572, 3432, -12012, 30030, 45045, 1, 9009, -2944, 468, 135135, 5792, 1040, -1287, 135135, 5952, -11648, 9152, -2574, 135135, -64, -624, 4576, -6864, 3003, 135135, 8, 10725, 1856, -936, 225225, -8448, 4992, -1144, 225225, -1440, 4160, -4576, 1716, 225225, -136, 63063, 1024, -208, 105105, 3584, -3328, 1144, 315315, -128, 135135, -2560, 832, 405405, 128, 99099], t3.Geodesic.prototype.C4coeff = function() {
-            var s4, i4, h4, e3 = 0, n3 = 0;
-            for (s4 = 0; s4 < t3.nC4_; ++s4) for (i4 = t3.nC4_ - 1; i4 >= s4; --i4) h4 = t3.nC4_ - i4 - 1, this._C4x[n3++] = a4.polyval(h4, f2, e3, this._n) / f2[e3 + h4 + 1], e3 += h4 + 2;
-          }, t3.Geodesic.prototype.A3f = function(t4) {
-            return a4.polyval(5, this._A3x, 0, t4);
-          }, t3.Geodesic.prototype.C3f = function(s4, i4) {
-            var h4, e3, n3 = 1, r3 = 0;
-            for (h4 = 1; h4 < t3.nC3_; ++h4) e3 = t3.nC3_ - h4 - 1, n3 *= s4, i4[h4] = n3 * a4.polyval(e3, this._C3x, r3, s4), r3 += e3 + 1;
-          }, t3.Geodesic.prototype.C4f = function(s4, i4) {
-            var h4, e3, n3 = 1, r3 = 0;
-            for (h4 = 0; h4 < t3.nC4_; ++h4) e3 = t3.nC4_ - h4 - 1, i4[h4] = n3 * a4.polyval(e3, this._C4x, r3, s4), r3 += e3 + 1, n3 *= s4;
-          }, t3.Geodesic.prototype.Lengths = function(s4, i4, a5, h4, e3, n3, r3, o3, l3, c3, _3, u3, M6) {
-            var g3, f3, d3, p6, m3 = {}, y3 = 0, S3 = 0, E6 = 0, w2 = 0;
-            if ((_3 &= t3.OUT_MASK) & (t3.DISTANCE | t3.REDUCEDLENGTH | t3.GEODESICSCALE) && (E6 = t3.A1m1f(s4), t3.C1f(s4, u3), _3 & (t3.REDUCEDLENGTH | t3.GEODESICSCALE) && (w2 = t3.A2m1f(s4), t3.C2f(s4, M6), y3 = E6 - w2, w2 = 1 + w2), E6 = 1 + E6), _3 & t3.DISTANCE) g3 = t3.SinCosSeries(true, n3, r3, u3) - t3.SinCosSeries(true, a5, h4, u3), m3.s12b = E6 * (i4 + g3), _3 & (t3.REDUCEDLENGTH | t3.GEODESICSCALE) && (S3 = y3 * i4 + (E6 * g3 - w2 * (t3.SinCosSeries(true, n3, r3, M6) - t3.SinCosSeries(true, a5, h4, M6))));
-            else if (_3 & (t3.REDUCEDLENGTH | t3.GEODESICSCALE)) {
-              for (f3 = 1; f3 <= t3.nC2_; ++f3) M6[f3] = E6 * u3[f3] - w2 * M6[f3];
-              S3 = y3 * i4 + (t3.SinCosSeries(true, n3, r3, M6) - t3.SinCosSeries(true, a5, h4, M6));
-            }
-            return _3 & t3.REDUCEDLENGTH && (m3.m0 = y3, m3.m12b = o3 * (h4 * n3) - e3 * (a5 * r3) - h4 * r3 * S3), _3 & t3.GEODESICSCALE && (d3 = h4 * r3 + a5 * n3, p6 = this._ep2 * (l3 - c3) * (l3 + c3) / (e3 + o3), m3.M12 = d3 + (p6 * n3 - r3 * S3) * a5 / e3, m3.M21 = d3 - (p6 * a5 - h4 * S3) * n3 / o3), m3;
-          }, t3.Geodesic.prototype.InverseStart = function(s4, i4, h4, e3, n3, o3, l3, c3, _3, u3, M6) {
-            var g3, f3, d3, p6, y3, S3, w2, v2, G2, x2, P6, b3, A2, C2, N2, I2, L2, O2, R3, q2, T2 = {}, k2 = e3 * i4 - n3 * s4, D2 = n3 * i4 + e3 * s4;
-            return T2.sig12 = -1, g3 = e3 * i4, g3 += n3 * s4, (f3 = D2 >= 0 && k2 < 0.5 && n3 * l3 < 0.5) ? (p6 = a4.sq(s4 + e3), p6 /= p6 + a4.sq(i4 + n3), T2.dnm = Math.sqrt(1 + this._ep2 * p6), d3 = l3 / (this._f1 * T2.dnm), y3 = Math.sin(d3), S3 = Math.cos(d3)) : (y3 = c3, S3 = _3), T2.salp1 = n3 * y3, T2.calp1 = S3 >= 0 ? k2 + n3 * s4 * a4.sq(y3) / (1 + S3) : g3 - n3 * s4 * a4.sq(y3) / (1 - S3), v2 = a4.hypot(T2.salp1, T2.calp1), G2 = s4 * e3 + i4 * n3 * S3, f3 && v2 < this._etol2 ? (T2.salp2 = i4 * y3, T2.calp2 = k2 - i4 * e3 * (S3 >= 0 ? a4.sq(y3) / (1 + S3) : 1 - S3), w2 = a4.hypot(T2.salp2, T2.calp2), T2.salp2 /= w2, T2.calp2 /= w2, T2.sig12 = Math.atan2(v2, G2)) : Math.abs(this._n) > 0.1 || G2 >= 0 || v2 >= 6 * Math.abs(this._n) * Math.PI * a4.sq(i4) || (q2 = Math.atan2(-c3, -_3), this.f >= 0 ? (C2 = (A2 = a4.sq(s4) * this._ep2) / (2 * (1 + Math.sqrt(1 + A2)) + A2), x2 = q2 / (b3 = this.f * i4 * this.A3f(C2) * Math.PI), P6 = g3 / (b3 * i4)) : (N2 = n3 * i4 - e3 * s4, I2 = Math.atan2(g3, N2), P6 = l3 / (b3 = ((x2 = (L2 = this.Lengths(this._n, Math.PI + I2, s4, -i4, h4, e3, n3, o3, i4, n3, t3.REDUCEDLENGTH, u3, M6)).m12b / (i4 * n3 * L2.m0 * Math.PI) - 1) < -0.01 ? g3 / x2 : -this.f * a4.sq(i4) * Math.PI) / i4)), P6 > -m2 && x2 > -1 - E5 ? this.f >= 0 ? (T2.salp1 = Math.min(1, -x2), T2.calp1 = -Math.sqrt(1 - a4.sq(T2.salp1))) : (T2.calp1 = Math.max(x2 > -m2 ? 0 : -1, x2), T2.salp1 = Math.sqrt(1 - a4.sq(T2.calp1))) : (O2 = r2(x2, P6), R3 = b3 * (this.f >= 0 ? -x2 * O2 / (1 + O2) : -P6 * (1 + O2) / O2), y3 = Math.sin(R3), S3 = -Math.cos(R3), T2.salp1 = n3 * y3, T2.calp1 = g3 - n3 * s4 * a4.sq(y3) / (1 - S3))), T2.salp1 <= 0 ? (T2.salp1 = 1, T2.calp1 = 0) : (w2 = a4.hypot(T2.salp1, T2.calp1), T2.salp1 /= w2, T2.calp1 /= w2), T2;
-          }, t3.Geodesic.prototype.Lambda12 = function(s4, i4, h4, e3, n3, r3, o3, l3, c3, _3, u3, M6, g3, f3) {
-            var d3, p6, m3, y3, S3, E6, w2, v2, G2, x2, P6, b3, A2, C2 = {};
-            return 0 === s4 && 0 === l3 && (l3 = -t3.tiny_), p6 = o3 * i4, m3 = a4.hypot(l3, o3 * s4), C2.ssig1 = s4, y3 = p6 * s4, C2.csig1 = S3 = l3 * i4, d3 = a4.hypot(C2.ssig1, C2.csig1), C2.ssig1 /= d3, C2.csig1 /= d3, C2.salp2 = n3 !== i4 ? p6 / n3 : o3, C2.calp2 = n3 !== i4 || Math.abs(e3) !== -s4 ? Math.sqrt(a4.sq(l3 * i4) + (i4 < -s4 ? (n3 - i4) * (i4 + n3) : (s4 - e3) * (s4 + e3))) / n3 : Math.abs(l3), C2.ssig2 = e3, E6 = p6 * e3, C2.csig2 = w2 = C2.calp2 * n3, d3 = a4.hypot(C2.ssig2, C2.csig2), C2.ssig2 /= d3, C2.csig2 /= d3, C2.sig12 = Math.atan2(Math.max(0, C2.csig1 * C2.ssig2 - C2.ssig1 * C2.csig2), C2.csig1 * C2.csig2 + C2.ssig1 * C2.ssig2), v2 = Math.max(0, S3 * E6 - y3 * w2), G2 = S3 * w2 + y3 * E6, P6 = Math.atan2(v2 * _3 - G2 * c3, G2 * _3 + v2 * c3), b3 = a4.sq(m3) * this._ep2, C2.eps = b3 / (2 * (1 + Math.sqrt(1 + b3)) + b3), this.C3f(C2.eps, f3), x2 = t3.SinCosSeries(true, C2.ssig2, C2.csig2, f3) - t3.SinCosSeries(true, C2.ssig1, C2.csig1, f3), C2.domg12 = -this.f * this.A3f(C2.eps) * p6 * (C2.sig12 + x2), C2.lam12 = P6 + C2.domg12, u3 && (0 === C2.calp2 ? C2.dlam12 = -2 * this._f1 * h4 / s4 : (A2 = this.Lengths(C2.eps, C2.sig12, C2.ssig1, C2.csig1, h4, C2.ssig2, C2.csig2, r3, i4, n3, t3.REDUCEDLENGTH, M6, g3), C2.dlam12 = A2.m12b, C2.dlam12 *= this._f1 / (C2.calp2 * n3))), C2;
-          }, t3.Geodesic.prototype.Inverse = function(s4, i4, h4, e3, n3) {
-            var r3, o3;
-            return n3 || (n3 = t3.STANDARD), n3 === t3.LONG_UNROLL && (n3 |= t3.STANDARD), n3 &= t3.OUT_MASK, o3 = (r3 = this.InverseInt(s4, i4, h4, e3, n3)).vals, n3 & t3.AZIMUTH && (o3.azi1 = a4.atan2d(r3.salp1, r3.calp1), o3.azi2 = a4.atan2d(r3.salp2, r3.calp2)), o3;
-          }, t3.Geodesic.prototype.InverseInt = function(s4, i4, h4, e3, n3) {
-            var r3, o3, l3, c3, _3, u3, M6, g3, f3, m3, y3, E6, w2, v2, G2, x2, P6, b3, A2, C2, N2, I2, L2, O2, R3, q2, T2, k2, D2, j2, U2, F2, B2, z2, H2, W2, Q2, K2, X2, V2, J2, Z2, Y2, $2, tt2, st2, it2, at2, ht2, et2, nt2, rt2, ot2, lt2, ct2, _t2, ut2, Mt2, gt2, ft2, dt2, pt2, mt2, yt2, St2, Et2 = {};
-            if (Et2.lat1 = s4 = a4.LatFix(s4), Et2.lat2 = h4 = a4.LatFix(h4), s4 = a4.AngRound(s4), h4 = a4.AngRound(h4), o3 = (r3 = a4.AngDiff(i4, e3)).e, r3 = r3.d, n3 & t3.LONG_UNROLL ? (Et2.lon1 = i4, Et2.lon2 = i4 + r3 + o3) : (Et2.lon1 = a4.AngNormalize(i4), Et2.lon2 = a4.AngNormalize(e3)), o3 *= l3 = a4.copysign(1, r3), G2 = (r3 *= l3) * a4.degree, x2 = (c3 = a4.sincosde(r3, o3)).s, P6 = c3.c, o3 = 180 - r3 - o3, (_3 = Math.abs(s4) < Math.abs(h4) || isNaN(h4) ? -1 : 1) < 0 && (l3 *= -1, [h4, s4] = [s4, h4]), s4 *= u3 = a4.copysign(1, -s4), h4 *= u3, c3 = a4.sincosd(s4), M6 = this._f1 * c3.s, g3 = c3.c, M6 /= c3 = a4.hypot(M6, g3), g3 /= c3, g3 = Math.max(t3.tiny_, g3), c3 = a4.sincosd(h4), f3 = this._f1 * c3.s, m3 = c3.c, f3 /= c3 = a4.hypot(f3, m3), m3 /= c3, m3 = Math.max(t3.tiny_, m3), g3 < -M6 ? m3 === g3 && (f3 = a4.copysign(M6, f3)) : Math.abs(f3) === -M6 && (m3 = g3), w2 = Math.sqrt(1 + this._ep2 * a4.sq(M6)), v2 = Math.sqrt(1 + this._ep2 * a4.sq(f3)), L2 = new Array(t3.nC1_ + 1), O2 = new Array(t3.nC2_ + 1), R3 = new Array(t3.nC3_), (q2 = -90 === s4 || 0 === x2) && (C2 = x2, I2 = 0, k2 = M6, D2 = (A2 = P6) * g3, j2 = f3, U2 = (N2 = 1) * m3, b3 = Math.atan2(Math.max(0, D2 * j2 - k2 * U2), D2 * U2 + k2 * j2), y3 = (T2 = this.Lengths(this._n, b3, k2, D2, w2, j2, U2, v2, g3, m3, n3 | t3.DISTANCE | t3.REDUCEDLENGTH, L2, O2)).s12b, E6 = T2.m12b, n3 & t3.GEODESICSCALE && (Et2.M12 = T2.M12, Et2.M21 = T2.M21), b3 < 1 || E6 >= 0 ? ((b3 < 3 * t3.tiny_ || b3 < p5 && (y3 < 0 || E6 < 0)) && (b3 = E6 = y3 = 0), E6 *= this._b, y3 *= this._b, Et2.a12 = b3 / a4.degree) : q2 = false), ut2 = 2, !q2 && 0 === M6 && (this.f <= 0 || o3 >= 180 * this.f)) A2 = N2 = 0, C2 = I2 = 1, y3 = this.a * G2, b3 = B2 = G2 / this._f1, E6 = this._b * Math.sin(b3), n3 & t3.GEODESICSCALE && (Et2.M12 = Et2.M21 = Math.cos(b3)), Et2.a12 = r3 / this._f1;
-            else if (!q2) if (b3 = (T2 = this.InverseStart(M6, g3, w2, f3, m3, v2, G2, x2, P6, L2, O2)).sig12, C2 = T2.salp1, A2 = T2.calp1, b3 >= 0) I2 = T2.salp2, N2 = T2.calp2, z2 = T2.dnm, y3 = b3 * this._b * z2, E6 = a4.sq(z2) * this._b * Math.sin(b3 / z2), n3 & t3.GEODESICSCALE && (Et2.M12 = Et2.M21 = Math.cos(b3 / z2)), Et2.a12 = b3 / a4.degree, B2 = G2 / (this._f1 * z2);
-            else {
-              for (H2 = 0, W2 = t3.tiny_, Q2 = 1, K2 = t3.tiny_, X2 = -1, V2 = false, J2 = false; Z2 = (T2 = this.Lambda12(M6, g3, w2, f3, m3, v2, C2, A2, x2, P6, H2 < 20, L2, O2, R3)).lam12, I2 = T2.salp2, N2 = T2.calp2, b3 = T2.sig12, k2 = T2.ssig1, D2 = T2.csig1, j2 = T2.ssig2, U2 = T2.csig2, F2 = T2.eps, gt2 = T2.domg12, Y2 = T2.dlam12, !J2 && Math.abs(Z2) >= (V2 ? 8 : 1) * p5 && H2 != d2; ++H2) Z2 > 0 && (H2 < 20 || A2 / C2 > X2 / K2) ? (K2 = C2, X2 = A2) : Z2 < 0 && (H2 < 20 || A2 / C2 < Q2 / W2) && (W2 = C2, Q2 = A2), H2 < 20 && Y2 > 0 && ($2 = -Z2 / Y2, Math.abs($2) < Math.PI && (tt2 = Math.sin($2), (it2 = C2 * (st2 = Math.cos($2)) + A2 * tt2) > 0)) ? (A2 = A2 * st2 - C2 * tt2, C2 = it2, C2 /= c3 = a4.hypot(C2, A2), A2 /= c3, V2 = Math.abs(Z2) <= 16 * p5) : (C2 = (W2 + K2) / 2, A2 = (Q2 + X2) / 2, C2 /= c3 = a4.hypot(C2, A2), A2 /= c3, V2 = false, J2 = Math.abs(W2 - C2) + (Q2 - A2) < S2 || Math.abs(C2 - K2) + (A2 - X2) < S2);
-              at2 = n3 | (n3 & (t3.REDUCEDLENGTH | t3.GEODESICSCALE) ? t3.DISTANCE : t3.NONE), y3 = (T2 = this.Lengths(F2, b3, k2, D2, w2, j2, U2, v2, g3, m3, at2, L2, O2)).s12b, E6 = T2.m12b, n3 & t3.GEODESICSCALE && (Et2.M12 = T2.M12, Et2.M21 = T2.M21), E6 *= this._b, y3 *= this._b, Et2.a12 = b3 / a4.degree, n3 & t3.AREA && (yt2 = Math.sin(gt2), ut2 = x2 * (St2 = Math.cos(gt2)) - P6 * yt2, Mt2 = P6 * St2 + x2 * yt2);
-            }
-            return n3 & t3.DISTANCE && (Et2.s12 = 0 + y3), n3 & t3.REDUCEDLENGTH && (Et2.m12 = 0 + E6), n3 & t3.AREA && (ht2 = C2 * g3, 0 !== (et2 = a4.hypot(A2, C2 * M6)) && 0 !== ht2 ? (k2 = M6, D2 = A2 * g3, j2 = f3, U2 = N2 * m3, F2 = (rt2 = a4.sq(et2) * this._ep2) / (2 * (1 + Math.sqrt(1 + rt2)) + rt2), ot2 = a4.sq(this.a) * et2 * ht2 * this._e2, k2 /= c3 = a4.hypot(k2, D2), D2 /= c3, j2 /= c3 = a4.hypot(j2, U2), U2 /= c3, lt2 = new Array(t3.nC4_), this.C4f(F2, lt2), ct2 = t3.SinCosSeries(false, k2, D2, lt2), _t2 = t3.SinCosSeries(false, j2, U2, lt2), Et2.S12 = ot2 * (_t2 - ct2)) : Et2.S12 = 0, q2 || 2 != ut2 || (ut2 = Math.sin(B2), Mt2 = Math.cos(B2)), !q2 && Mt2 > -0.7071 && f3 - M6 < 1.75 ? (gt2 = 1 + Mt2, ft2 = 1 + g3, dt2 = 1 + m3, nt2 = 2 * Math.atan2(ut2 * (M6 * dt2 + f3 * ft2), gt2 * (M6 * f3 + ft2 * dt2))) : (mt2 = N2 * A2 + I2 * C2, 0 == (pt2 = I2 * A2 - N2 * C2) && mt2 < 0 && (pt2 = t3.tiny_ * A2, mt2 = -1), nt2 = Math.atan2(pt2, mt2)), Et2.S12 += this._c2 * nt2, Et2.S12 *= _3 * l3 * u3, Et2.S12 += 0), _3 < 0 && ([I2, C2] = [C2, I2], [N2, A2] = [A2, N2], n3 & t3.GEODESICSCALE && ([Et2.M21, Et2.M12] = [Et2.M12, Et2.M21])), { vals: Et2, salp1: C2 *= _3 * l3, calp1: A2 *= _3 * u3, salp2: I2 *= _3 * l3, calp2: N2 *= _3 * u3 };
-          }, t3.Geodesic.prototype.GenDirect = function(i4, a5, h4, e3, n3, r3) {
-            return r3 ? r3 === t3.LONG_UNROLL && (r3 |= t3.STANDARD) : r3 = t3.STANDARD, e3 || (r3 |= t3.DISTANCE_IN), new s3.GeodesicLine(this, i4, a5, h4, r3).GenPosition(e3, n3, r3);
-          }, t3.Geodesic.prototype.Direct = function(t4, s4, i4, a5, h4) {
-            return this.GenDirect(t4, s4, i4, false, a5, h4);
-          }, t3.Geodesic.prototype.ArcDirect = function(t4, s4, i4, a5, h4) {
-            return this.GenDirect(t4, s4, i4, true, a5, h4);
-          }, t3.Geodesic.prototype.Line = function(t4, i4, a5, h4) {
-            return new s3.GeodesicLine(this, t4, i4, a5, h4);
-          }, t3.Geodesic.prototype.DirectLine = function(t4, s4, i4, a5, h4) {
-            return this.GenDirectLine(t4, s4, i4, false, a5, h4);
-          }, t3.Geodesic.prototype.ArcDirectLine = function(t4, s4, i4, a5, h4) {
-            return this.GenDirectLine(t4, s4, i4, true, a5, h4);
-          }, t3.Geodesic.prototype.GenDirectLine = function(i4, a5, h4, e3, n3, r3) {
-            var o3;
-            return r3 || (r3 = t3.STANDARD | t3.DISTANCE_IN), e3 || (r3 |= t3.DISTANCE_IN), (o3 = new s3.GeodesicLine(this, i4, a5, h4, r3)).GenSetDistance(e3, n3), o3;
-          }, t3.Geodesic.prototype.InverseLine = function(i4, h4, e3, n3, r3) {
-            var o3, l3, c3;
-            return r3 || (r3 = t3.STANDARD | t3.DISTANCE_IN), o3 = this.InverseInt(i4, h4, e3, n3, t3.ARC), c3 = a4.atan2d(o3.salp1, o3.calp1), r3 & t3.OUT_MASK & t3.DISTANCE_IN && (r3 |= t3.DISTANCE), (l3 = new s3.GeodesicLine(this, i4, h4, c3, r3, o3.salp1, o3.calp1)).SetArc(o3.vals.a12), l3;
-          }, t3.Geodesic.prototype.Polygon = function(t4) {
-            return new i3.PolygonArea(this, t4);
-          }, t3.WGS84 = new t3.Geodesic(h3.WGS84.a, h3.WGS84.f);
-        }(h2.Geodesic, h2.GeodesicLine, h2.PolygonArea, h2.Math, h2.Constants), function(t3, s3, i3) {
-          s3.GeodesicLine = function(s4, a4, h3, e2, n2, r2, o2) {
-            var l2, c2, _2, u2, M5, g2;
-            n2 || (n2 = t3.STANDARD | t3.DISTANCE_IN), this.a = s4.a, this.f = s4.f, this._b = s4._b, this._c2 = s4._c2, this._f1 = s4._f1, this.caps = n2 | t3.LATITUDE | t3.AZIMUTH | t3.LONG_UNROLL, this.lat1 = i3.LatFix(a4), this.lon1 = h3, void 0 === r2 || void 0 === o2 ? (this.azi1 = i3.AngNormalize(e2), l2 = i3.sincosd(i3.AngRound(this.azi1)), this.salp1 = l2.s, this.calp1 = l2.c) : (this.azi1 = e2, this.salp1 = r2, this.calp1 = o2), l2 = i3.sincosd(i3.AngRound(this.lat1)), _2 = this._f1 * l2.s, c2 = l2.c, _2 /= l2 = i3.hypot(_2, c2), c2 /= l2, c2 = Math.max(t3.tiny_, c2), this._dn1 = Math.sqrt(1 + s4._ep2 * i3.sq(_2)), this._salp0 = this.salp1 * c2, this._calp0 = i3.hypot(this.calp1, this.salp1 * _2), this._ssig1 = _2, this._somg1 = this._salp0 * _2, this._csig1 = this._comg1 = 0 !== _2 || 0 !== this.calp1 ? c2 * this.calp1 : 1, l2 = i3.hypot(this._ssig1, this._csig1), this._ssig1 /= l2, this._csig1 /= l2, this._k2 = i3.sq(this._calp0) * s4._ep2, u2 = this._k2 / (2 * (1 + Math.sqrt(1 + this._k2)) + this._k2), this.caps & t3.CAP_C1 && (this._A1m1 = t3.A1m1f(u2), this._C1a = new Array(t3.nC1_ + 1), t3.C1f(u2, this._C1a), this._B11 = t3.SinCosSeries(true, this._ssig1, this._csig1, this._C1a), M5 = Math.sin(this._B11), g2 = Math.cos(this._B11), this._stau1 = this._ssig1 * g2 + this._csig1 * M5, this._ctau1 = this._csig1 * g2 - this._ssig1 * M5), this.caps & t3.CAP_C1p && (this._C1pa = new Array(t3.nC1p_ + 1), t3.C1pf(u2, this._C1pa)), this.caps & t3.CAP_C2 && (this._A2m1 = t3.A2m1f(u2), this._C2a = new Array(t3.nC2_ + 1), t3.C2f(u2, this._C2a), this._B21 = t3.SinCosSeries(true, this._ssig1, this._csig1, this._C2a)), this.caps & t3.CAP_C3 && (this._C3a = new Array(t3.nC3_), s4.C3f(u2, this._C3a), this._A3c = -this.f * this._salp0 * s4.A3f(u2), this._B31 = t3.SinCosSeries(true, this._ssig1, this._csig1, this._C3a)), this.caps & t3.CAP_C4 && (this._C4a = new Array(t3.nC4_), s4.C4f(u2, this._C4a), this._A4 = i3.sq(this.a) * this._calp0 * this._salp0 * s4._e2, this._B41 = t3.SinCosSeries(false, this._ssig1, this._csig1, this._C4a)), this.a13 = this.s13 = NaN;
-          }, s3.GeodesicLine.prototype.GenPosition = function(s4, a4, h3) {
-            var e2, n2, r2, o2, l2, c2, _2, u2, M5, g2, f2, d2, p5, m2, y2, S2, E5, w2, v2, G2, x2, P6, b3, A2, C2, N2, I2 = {};
-            return h3 ? h3 === t3.LONG_UNROLL && (h3 |= t3.STANDARD) : h3 = t3.STANDARD, h3 &= this.caps & t3.OUT_MASK, I2.lat1 = this.lat1, I2.azi1 = this.azi1, I2.lon1 = h3 & t3.LONG_UNROLL ? this.lon1 : i3.AngNormalize(this.lon1), s4 ? I2.a12 = a4 : I2.s12 = a4, s4 || this.caps & t3.DISTANCE_IN & t3.OUT_MASK ? (o2 = 0, l2 = 0, s4 ? (e2 = a4 * i3.degree, n2 = (b3 = i3.sincosd(a4)).s, r2 = b3.c) : (u2 = a4 / (this._b * (1 + this._A1m1)), M5 = Math.sin(u2), g2 = Math.cos(u2), e2 = u2 - ((o2 = -t3.SinCosSeries(true, this._stau1 * g2 + this._ctau1 * M5, this._ctau1 * g2 - this._stau1 * M5, this._C1pa)) - this._B11), n2 = Math.sin(e2), r2 = Math.cos(e2), Math.abs(this.f) > 0.01 && (c2 = this._ssig1 * r2 + this._csig1 * n2, _2 = this._csig1 * r2 - this._ssig1 * n2, o2 = t3.SinCosSeries(true, c2, _2, this._C1a), e2 -= ((1 + this._A1m1) * (e2 + (o2 - this._B11)) - a4 / this._b) / Math.sqrt(1 + this._k2 * i3.sq(c2)), n2 = Math.sin(e2), r2 = Math.cos(e2))), c2 = this._ssig1 * r2 + this._csig1 * n2, _2 = this._csig1 * r2 - this._ssig1 * n2, v2 = Math.sqrt(1 + this._k2 * i3.sq(c2)), h3 & (t3.DISTANCE | t3.REDUCEDLENGTH | t3.GEODESICSCALE) && ((s4 || Math.abs(this.f) > 0.01) && (o2 = t3.SinCosSeries(true, c2, _2, this._C1a)), l2 = (1 + this._A1m1) * (o2 - this._B11)), p5 = this._calp0 * c2, 0 === (m2 = i3.hypot(this._salp0, this._calp0 * _2)) && (m2 = _2 = t3.tiny_), E5 = this._salp0, w2 = this._calp0 * _2, s4 && h3 & t3.DISTANCE && (I2.s12 = this._b * ((1 + this._A1m1) * e2 + l2)), h3 & t3.LONGITUDE && (y2 = this._salp0 * c2, S2 = _2, d2 = i3.copysign(1, this._salp0), f2 = ((h3 & t3.LONG_UNROLL ? d2 * (e2 - (Math.atan2(c2, _2) - Math.atan2(this._ssig1, this._csig1)) + (Math.atan2(d2 * y2, S2) - Math.atan2(d2 * this._somg1, this._comg1))) : Math.atan2(y2 * this._comg1 - S2 * this._somg1, S2 * this._comg1 + y2 * this._somg1)) + this._A3c * (e2 + (t3.SinCosSeries(true, c2, _2, this._C3a) - this._B31))) / i3.degree, I2.lon2 = h3 & t3.LONG_UNROLL ? this.lon1 + f2 : i3.AngNormalize(i3.AngNormalize(this.lon1) + i3.AngNormalize(f2))), h3 & t3.LATITUDE && (I2.lat2 = i3.atan2d(p5, this._f1 * m2)), h3 & t3.AZIMUTH && (I2.azi2 = i3.atan2d(E5, w2)), h3 & (t3.REDUCEDLENGTH | t3.GEODESICSCALE) && (G2 = t3.SinCosSeries(true, c2, _2, this._C2a), x2 = (1 + this._A2m1) * (G2 - this._B21), P6 = (this._A1m1 - this._A2m1) * e2 + (l2 - x2), h3 & t3.REDUCEDLENGTH && (I2.m12 = this._b * (v2 * (this._csig1 * c2) - this._dn1 * (this._ssig1 * _2) - this._csig1 * _2 * P6)), h3 & t3.GEODESICSCALE && (b3 = this._k2 * (c2 - this._ssig1) * (c2 + this._ssig1) / (this._dn1 + v2), I2.M12 = r2 + (b3 * c2 - _2 * P6) * this._ssig1 / this._dn1, I2.M21 = r2 - (b3 * this._ssig1 - this._csig1 * P6) * c2 / v2)), h3 & t3.AREA && (A2 = t3.SinCosSeries(false, c2, _2, this._C4a), 0 === this._calp0 || 0 === this._salp0 ? (C2 = E5 * this.calp1 - w2 * this.salp1, N2 = w2 * this.calp1 + E5 * this.salp1) : (C2 = this._calp0 * this._salp0 * (r2 <= 0 ? this._csig1 * (1 - r2) + n2 * this._ssig1 : n2 * (this._csig1 * n2 / (1 + r2) + this._ssig1)), N2 = i3.sq(this._salp0) + i3.sq(this._calp0) * this._csig1 * _2), I2.S12 = this._c2 * Math.atan2(C2, N2) + this._A4 * (A2 - this._B41)), s4 || (I2.a12 = e2 / i3.degree), I2) : (I2.a12 = NaN, I2);
-          }, s3.GeodesicLine.prototype.Position = function(t4, s4) {
-            return this.GenPosition(false, t4, s4);
-          }, s3.GeodesicLine.prototype.ArcPosition = function(t4, s4) {
-            return this.GenPosition(true, t4, s4);
-          }, s3.GeodesicLine.prototype.GenSetDistance = function(t4, s4) {
-            t4 ? this.SetArc(s4) : this.SetDistance(s4);
-          }, s3.GeodesicLine.prototype.SetDistance = function(s4) {
-            var i4;
-            this.s13 = s4, i4 = this.GenPosition(false, this.s13, t3.ARC), this.a13 = 0 + i4.a12;
-          }, s3.GeodesicLine.prototype.SetArc = function(s4) {
-            var i4;
-            this.a13 = s4, i4 = this.GenPosition(true, this.a13, t3.DISTANCE), this.s13 = 0 + i4.s12;
-          };
-        }(h2.Geodesic, h2.GeodesicLine, h2.Math), function(t3, s3, i3, a4) {
-          var h3, e2, n2, r2;
-          h3 = function(t4, s4) {
-            var a5 = i3.AngDiff(t4, s4).d;
-            return t4 = i3.AngNormalize(t4), s4 = i3.AngNormalize(s4), a5 > 0 && (t4 < 0 && s4 >= 0 || t4 > 0 && 0 === s4) ? 1 : a5 < 0 && t4 >= 0 && s4 < 0 ? -1 : 0;
-          }, e2 = function(t4, s4) {
-            return (0 <= (s4 %= 720) && s4 < 360 || s4 < -360 ? 0 : 1) - (0 <= (t4 %= 720) && t4 < 360 || t4 < -360 ? 0 : 1);
-          }, n2 = function(t4, s4, i4, a5, h4) {
-            return t4.Remainder(s4), 1 & i4 && t4.Add((t4.Sum() < 0 ? 1 : -1) * s4 / 2), a5 || t4.Negate(), h4 ? t4.Sum() > s4 / 2 ? t4.Add(-s4) : t4.Sum() <= -s4 / 2 && t4.Add(+s4) : t4.Sum() >= s4 ? t4.Add(-s4) : t4.Sum() < 0 && t4.Add(+s4), 0 + t4.Sum();
-          }, r2 = function(t4, s4, a5, h4, e3) {
-            return t4 = i3.remainder(t4, s4), 1 & a5 && (t4 += (t4 < 0 ? 1 : -1) * s4 / 2), h4 || (t4 *= -1), e3 ? t4 > s4 / 2 ? t4 -= s4 : t4 <= -s4 / 2 && (t4 += s4) : t4 >= s4 ? t4 -= s4 : t4 < 0 && (t4 += s4), 0 + t4;
-          }, t3.PolygonArea = function(t4, i4) {
-            this._geod = t4, this.a = this._geod.a, this.f = this._geod.f, this._area0 = 4 * Math.PI * t4._c2, this.polyline = i4 || false, this._mask = s3.LATITUDE | s3.LONGITUDE | s3.DISTANCE | (this.polyline ? s3.NONE : s3.AREA | s3.LONG_UNROLL), this.polyline || (this._areasum = new a4.Accumulator(0)), this._perimetersum = new a4.Accumulator(0), this.Clear();
-          }, t3.PolygonArea.prototype.Clear = function() {
-            this.num = 0, this._crossings = 0, this.polyline || this._areasum.Set(0), this._perimetersum.Set(0), this._lat0 = this._lon0 = this.lat = this.lon = NaN;
-          }, t3.PolygonArea.prototype.AddPoint = function(t4, s4) {
-            var i4;
-            0 === this.num ? (this._lat0 = this.lat = t4, this._lon0 = this.lon = s4) : (i4 = this._geod.Inverse(this.lat, this.lon, t4, s4, this._mask), this._perimetersum.Add(i4.s12), this.polyline || (this._areasum.Add(i4.S12), this._crossings += h3(this.lon, s4)), this.lat = t4, this.lon = s4), ++this.num;
-          }, t3.PolygonArea.prototype.AddEdge = function(t4, s4) {
-            var i4;
-            this.num && (i4 = this._geod.Direct(this.lat, this.lon, t4, s4, this._mask), this._perimetersum.Add(s4), this.polyline || (this._areasum.Add(i4.S12), this._crossings += e2(this.lon, i4.lon2)), this.lat = i4.lat2, this.lon = i4.lon2), ++this.num;
-          }, t3.PolygonArea.prototype.Compute = function(t4, s4) {
-            var i4, e3, r3 = { number: this.num };
-            return this.num < 2 ? (r3.perimeter = 0, this.polyline || (r3.area = 0), r3) : this.polyline ? (r3.perimeter = this._perimetersum.Sum(), r3) : (i4 = this._geod.Inverse(this.lat, this.lon, this._lat0, this._lon0, this._mask), r3.perimeter = this._perimetersum.Sum(i4.s12), (e3 = new a4.Accumulator(this._areasum)).Add(i4.S12), r3.area = n2(e3, this._area0, this._crossings + h3(this.lon, this._lon0), t4, s4), r3);
-          }, t3.PolygonArea.prototype.TestPoint = function(t4, s4, i4, a5) {
-            var e3, n3, o2, l2, c2 = { number: this.num + 1 };
-            if (0 === this.num) return c2.perimeter = 0, this.polyline || (c2.area = 0), c2;
-            for (c2.perimeter = this._perimetersum.Sum(), n3 = this.polyline ? 0 : this._areasum.Sum(), o2 = this._crossings, l2 = 0; l2 < (this.polyline ? 1 : 2); ++l2) e3 = this._geod.Inverse(0 === l2 ? this.lat : t4, 0 === l2 ? this.lon : s4, 0 !== l2 ? this._lat0 : t4, 0 !== l2 ? this._lon0 : s4, this._mask), c2.perimeter += e3.s12, this.polyline || (n3 += e3.S12, o2 += h3(0 === l2 ? this.lon : s4, 0 !== l2 ? this._lon0 : s4));
-            return this.polyline || (c2.area = r2(n3, this._area0, o2, i4, a5)), c2;
-          }, t3.PolygonArea.prototype.TestEdge = function(t4, s4, i4, a5) {
-            var n3, o2, l2, c2 = { number: this.num ? this.num + 1 : 0 };
-            return 0 === this.num || (c2.perimeter = this._perimetersum.Sum() + s4, this.polyline || (o2 = this._areasum.Sum(), l2 = this._crossings, o2 += (n3 = this._geod.Direct(this.lat, this.lon, t4, s4, this._mask)).S12, l2 += e2(this.lon, n3.lon2), l2 += h3(n3.lon2, this._lon0), n3 = this._geod.Inverse(n3.lat2, n3.lon2, this._lat0, this._lon0, this._mask), c2.perimeter += n3.s12, o2 += n3.S12, c2.area = r2(o2, this._area0, l2, i4, a5))), c2;
-          };
-        }(h2.PolygonArea, h2.Geodesic, h2.Math, h2.Accumulator), a3 = h2, t2.exports ? t2.exports = a3 : window.geodesic = a3;
-      }(Qs)), Qs.exports);
-      var Xs = { init: function() {
-        this.sin_p12 = Math.sin(this.lat0), this.cos_p12 = Math.cos(this.lat0), this.g = new Ks.Geodesic.Geodesic(this.a, this.es / (1 + Math.sqrt(1 - this.es)));
+        var s2, i2, a3, e2, r2, n2, o2, l2, c2, u2, _2, M5;
+        return t2.x -= this.x0, t2.y -= this.y0, _2 = Math.PI * this.R, r2 = (a3 = t2.x / _2) * a3 + (e2 = t2.y / _2) * e2, _2 = 3 * (e2 * e2 / (l2 = -2 * (n2 = -Math.abs(e2) * (1 + r2)) + 1 + 2 * e2 * e2 + r2 * r2) + (2 * (o2 = n2 - 2 * e2 * e2 + a3 * a3) * o2 * o2 / l2 / l2 / l2 - 9 * n2 * o2 / l2 / l2) / 27) / (c2 = (n2 - o2 * o2 / 3 / l2) / l2) / (u2 = 2 * Math.sqrt(-c2 / 3)), Math.abs(_2) > 1 && (_2 = _2 >= 0 ? 1 : -1), M5 = Math.acos(_2) / 3, i2 = t2.y >= 0 ? (-u2 * Math.cos(M5 + Math.PI / 3) - o2 / 3 / l2) * Math.PI : -(-u2 * Math.cos(M5 + Math.PI / 3) - o2 / 3 / l2) * Math.PI, s2 = Math.abs(a3) < h ? this.long0 : U(this.long0 + Math.PI * (r2 - 1 + Math.sqrt(1 + 2 * (a3 * a3 - e2 * e2) + r2 * r2)) / 2 / a3), t2.x = s2, t2.y = i2, t2;
+      }, names: ["Van_der_Grinten_I", "VanDerGrinten", "Van_der_Grinten", "vandg"] };
+      var Ws = { init: function() {
+        this.sin_p12 = Math.sin(this.lat0), this.cos_p12 = Math.cos(this.lat0), this.f = this.es / (1 + Math.sqrt(1 - this.es));
       }, forward: function(t2) {
-        var s2, i2, n2, r2, o2, l2, c2, _2, u2, M5, g2, f2, d2, p5, m2, y2 = t2.x, S2 = t2.y, E5 = Math.sin(t2.y), w2 = Math.cos(t2.y), v2 = z(y2 - this.long0);
-        return this.sphere ? Math.abs(this.sin_p12 - 1) <= h ? (t2.x = this.x0 + this.a * (a - S2) * Math.sin(v2), t2.y = this.y0 - this.a * (a - S2) * Math.cos(v2), t2) : Math.abs(this.sin_p12 + 1) <= h ? (t2.x = this.x0 + this.a * (a + S2) * Math.sin(v2), t2.y = this.y0 + this.a * (a + S2) * Math.cos(v2), t2) : (u2 = this.sin_p12 * E5 + this.cos_p12 * w2 * Math.cos(v2), _2 = (c2 = Math.acos(u2)) ? c2 / Math.sin(c2) : 1, t2.x = this.x0 + this.a * _2 * w2 * Math.sin(v2), t2.y = this.y0 + this.a * _2 * (this.cos_p12 * E5 - this.sin_p12 * w2 * Math.cos(v2)), t2) : (s2 = ps(this.es), i2 = ms(this.es), n2 = ys(this.es), r2 = Ss(this.es), Math.abs(this.sin_p12 - 1) <= h ? (o2 = this.a * ds(s2, i2, n2, r2, a), l2 = this.a * ds(s2, i2, n2, r2, S2), t2.x = this.x0 + (o2 - l2) * Math.sin(v2), t2.y = this.y0 - (o2 - l2) * Math.cos(v2), t2) : Math.abs(this.sin_p12 + 1) <= h ? (o2 = this.a * ds(s2, i2, n2, r2, a), l2 = this.a * ds(s2, i2, n2, r2, S2), t2.x = this.x0 + (o2 + l2) * Math.sin(v2), t2.y = this.y0 + (o2 + l2) * Math.cos(v2), t2) : Math.abs(y2) < h && Math.abs(S2 - this.lat0) < h ? (t2.x = t2.y = 0, t2) : (M5 = this.lat0 / e, g2 = this.long0 / e, f2 = S2 / e, d2 = y2 / e, m2 = (p5 = this.g.Inverse(M5, g2, f2, d2, this.g.AZIMUTH)).azi1 * e, t2.x = p5.s12 * Math.sin(m2), t2.y = p5.s12 * Math.cos(m2), t2));
+        var s2, i2, e2, r2, n2, o2, l2, c2, u2, _2, M5, d2 = t2.x, f2 = t2.y, g2 = Math.sin(t2.y), m2 = Math.cos(t2.y), p5 = U(d2 - this.long0);
+        return this.sphere ? Math.abs(this.sin_p12 - 1) <= h ? (t2.x = this.x0 + this.a * (a - f2) * Math.sin(p5), t2.y = this.y0 - this.a * (a - f2) * Math.cos(p5), t2) : Math.abs(this.sin_p12 + 1) <= h ? (t2.x = this.x0 + this.a * (a + f2) * Math.sin(p5), t2.y = this.y0 + this.a * (a + f2) * Math.cos(p5), t2) : (u2 = this.sin_p12 * g2 + this.cos_p12 * m2 * Math.cos(p5), c2 = (l2 = Math.acos(u2)) ? l2 / Math.sin(l2) : 1, t2.x = this.x0 + this.a * c2 * m2 * Math.sin(p5), t2.y = this.y0 + this.a * c2 * (this.cos_p12 * g2 - this.sin_p12 * m2 * Math.cos(p5)), t2) : (s2 = ms(this.es), i2 = ps(this.es), e2 = ys(this.es), r2 = ws(this.es), Math.abs(this.sin_p12 - 1) <= h ? (n2 = this.a * gs(s2, i2, e2, r2, a), o2 = this.a * gs(s2, i2, e2, r2, f2), t2.x = this.x0 + (n2 - o2) * Math.sin(p5), t2.y = this.y0 - (n2 - o2) * Math.cos(p5), t2) : Math.abs(this.sin_p12 + 1) <= h ? (n2 = this.a * gs(s2, i2, e2, r2, a), o2 = this.a * gs(s2, i2, e2, r2, f2), t2.x = this.x0 + (n2 + o2) * Math.sin(p5), t2.y = this.y0 + (n2 + o2) * Math.cos(p5), t2) : Math.abs(d2) < h && Math.abs(f2 - this.lat0) < h ? (t2.x = t2.y = 0, t2) : (_2 = function(t3, s3, i3, a3, h2, e3) {
+          const r3 = a3 - s3, n3 = Math.atan((1 - e3) * Math.tan(t3)), o3 = Math.atan((1 - e3) * Math.tan(i3)), l3 = Math.sin(n3), c3 = Math.cos(n3), u3 = Math.sin(o3), _3 = Math.cos(o3);
+          let M6, d3, f3, g3, m3, p6, y2, w2, E5, v2, x2, S2, G2, P6, b3, N2 = r3, A2 = 100;
+          do {
+            if (d3 = Math.sin(N2), f3 = Math.cos(N2), g3 = Math.sqrt(_3 * d3 * (_3 * d3) + (c3 * u3 - l3 * _3 * f3) * (c3 * u3 - l3 * _3 * f3)), 0 === g3) return { azi1: 0, s12: 0 };
+            m3 = l3 * u3 + c3 * _3 * f3, p6 = Math.atan2(g3, m3), y2 = c3 * _3 * d3 / g3, w2 = 1 - y2 * y2, E5 = 0 !== w2 ? m3 - 2 * l3 * u3 / w2 : 0, v2 = e3 / 16 * w2 * (4 + e3 * (4 - 3 * w2)), M6 = N2, N2 = r3 + (1 - v2) * e3 * y2 * (p6 + v2 * g3 * (E5 + v2 * m3 * (2 * E5 * E5 - 1)));
+          } while (Math.abs(N2 - M6) > 1e-12 && --A2 > 0);
+          return 0 === A2 ? { azi1: NaN, s12: NaN } : (x2 = w2 * (h2 * h2 - h2 * (1 - e3) * (h2 * (1 - e3))) / (h2 * (1 - e3) * (h2 * (1 - e3))), S2 = 1 + x2 / 16384 * (4096 + x2 * (x2 * (320 - 175 * x2) - 768)), G2 = x2 / 1024 * (256 + x2 * (x2 * (74 - 47 * x2) - 128)), P6 = G2 * g3 * (E5 + G2 / 4 * (m3 * (2 * E5 * E5 - 1) - G2 / 6 * E5 * (4 * g3 * g3 - 3) * (4 * E5 * E5 - 3))), b3 = h2 * (1 - e3) * S2 * (p6 - P6), { azi1: Math.atan2(_3 * d3, c3 * u3 - l3 * _3 * f3), s12: b3 });
+        }(this.lat0, this.long0, f2, d2, this.a, this.f), M5 = _2.azi1, t2.x = _2.s12 * Math.sin(M5), t2.y = _2.s12 * Math.cos(M5), t2));
       }, inverse: function(t2) {
-        var s2, i2, n2, r2, o2, l2, c2, _2, u2, M5, g2, f2, d2, p5, m2, y2, S2;
+        var s2, i2, e2, r2, n2, o2, l2, c2, u2, _2, M5, d2, f2, g2, m2;
         if (t2.x -= this.x0, t2.y -= this.y0, this.sphere) {
           if ((s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) > 2 * a * this.a) return;
-          return i2 = s2 / this.a, n2 = Math.sin(i2), r2 = Math.cos(i2), o2 = this.long0, Math.abs(s2) <= h ? l2 = this.lat0 : (l2 = Os(r2 * this.sin_p12 + t2.y * n2 * this.cos_p12 / s2), c2 = Math.abs(this.lat0) - a, o2 = Math.abs(c2) <= h ? this.lat0 >= 0 ? z(this.long0 + Math.atan2(t2.x, -t2.y)) : z(this.long0 - Math.atan2(-t2.x, t2.y)) : z(this.long0 + Math.atan2(t2.x * n2, s2 * this.cos_p12 * r2 - t2.y * this.sin_p12 * n2))), t2.x = o2, t2.y = l2, t2;
+          return i2 = s2 / this.a, e2 = Math.sin(i2), r2 = Math.cos(i2), n2 = this.long0, Math.abs(s2) <= h ? o2 = this.lat0 : (o2 = Rs(r2 * this.sin_p12 + t2.y * e2 * this.cos_p12 / s2), l2 = Math.abs(this.lat0) - a, n2 = Math.abs(l2) <= h ? this.lat0 >= 0 ? U(this.long0 + Math.atan2(t2.x, -t2.y)) : U(this.long0 - Math.atan2(-t2.x, t2.y)) : U(this.long0 + Math.atan2(t2.x * e2, s2 * this.cos_p12 * r2 - t2.y * this.sin_p12 * e2))), t2.x = n2, t2.y = o2, t2;
         }
-        return _2 = ps(this.es), u2 = ms(this.es), M5 = ys(this.es), g2 = Ss(this.es), Math.abs(this.sin_p12 - 1) <= h ? (l2 = vs(((f2 = this.a * ds(_2, u2, M5, g2, a)) - (s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y))) / this.a, _2, u2, M5, g2), o2 = z(this.long0 + Math.atan2(t2.x, -1 * t2.y)), t2.x = o2, t2.y = l2, t2) : Math.abs(this.sin_p12 + 1) <= h ? (f2 = this.a * ds(_2, u2, M5, g2, a), l2 = vs(((s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) - f2) / this.a, _2, u2, M5, g2), o2 = z(this.long0 + Math.atan2(t2.x, t2.y)), t2.x = o2, t2.y = l2, t2) : (d2 = this.lat0 / e, p5 = this.long0 / e, m2 = Math.atan2(t2.x, t2.y) / e, y2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), S2 = this.g.Direct(d2, p5, m2, y2, this.g.STANDARD), t2.x = S2.lon2 * e, t2.y = S2.lat2 * e, t2);
+        return c2 = ms(this.es), u2 = ps(this.es), _2 = ys(this.es), M5 = ws(this.es), Math.abs(this.sin_p12 - 1) <= h ? (o2 = xs(((d2 = this.a * gs(c2, u2, _2, M5, a)) - (s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y))) / this.a, c2, u2, _2, M5), n2 = U(this.long0 + Math.atan2(t2.x, -1 * t2.y)), t2.x = n2, t2.y = o2, t2) : Math.abs(this.sin_p12 + 1) <= h ? (d2 = this.a * gs(c2, u2, _2, M5, a), o2 = xs(((s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) - d2) / this.a, c2, u2, _2, M5), n2 = U(this.long0 + Math.atan2(t2.x, t2.y)), t2.x = n2, t2.y = o2, t2) : (f2 = Math.atan2(t2.x, t2.y), g2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y), m2 = function(t3, s3, i3, a3, h2, e3) {
+          const r3 = Math.atan((1 - e3) * Math.tan(t3)), n3 = Math.sin(r3), o3 = Math.cos(r3), l3 = Math.sin(i3), c3 = Math.cos(i3), u3 = Math.atan2(n3, o3 * c3), _3 = o3 * l3, M6 = 1 - _3 * _3, d3 = M6 * (h2 * h2 - h2 * (1 - e3) * (h2 * (1 - e3))) / (h2 * (1 - e3) * (h2 * (1 - e3))), f3 = 1 + d3 / 16384 * (4096 + d3 * (d3 * (320 - 175 * d3) - 768)), g3 = d3 / 1024 * (256 + d3 * (d3 * (74 - 47 * d3) - 128));
+          let m3, p5, y2, w2, E5, v2 = a3 / (h2 * (1 - e3) * f3), x2 = 100;
+          do {
+            p5 = Math.cos(2 * u3 + v2), y2 = Math.sin(v2), w2 = Math.cos(v2), E5 = g3 * y2 * (p5 + g3 / 4 * (w2 * (2 * p5 * p5 - 1) - g3 / 6 * p5 * (4 * y2 * y2 - 3) * (4 * p5 * p5 - 3))), m3 = v2, v2 = a3 / (h2 * (1 - e3) * f3) + E5;
+          } while (Math.abs(v2 - m3) > 1e-12 && --x2 > 0);
+          if (0 === x2) return { lat2: NaN, lon2: NaN };
+          const S2 = n3 * y2 - o3 * w2 * c3, G2 = e3 / 16 * M6 * (4 + e3 * (4 - 3 * M6));
+          return { lat2: Math.atan2(n3 * w2 + o3 * y2 * c3, (1 - e3) * Math.sqrt(_3 * _3 + S2 * S2)), lon2: s3 + (Math.atan2(y2 * l3, o3 * w2 - n3 * y2 * c3) - (1 - G2) * e3 * _3 * (v2 + G2 * y2 * (p5 + G2 * w2 * (2 * p5 * p5 - 1)))) };
+        }(this.lat0, this.long0, f2, g2, this.a, this.f), t2.x = m2.lon2, t2.y = m2.lat2, t2);
       }, names: ["Azimuthal_Equidistant", "aeqd"] };
-      var Vs = { init: function() {
+      var Qs = { init: function() {
         this.sin_p14 = Math.sin(this.lat0), this.cos_p14 = Math.cos(this.lat0);
       }, forward: function(t2) {
-        var s2, i2, a3, e2, n2, r2, o2, l2 = t2.x, c2 = t2.y;
-        return a3 = z(l2 - this.long0), s2 = Math.sin(c2), i2 = Math.cos(c2), e2 = Math.cos(a3), ((n2 = this.sin_p14 * s2 + this.cos_p14 * i2 * e2) > 0 || Math.abs(n2) <= h) && (r2 = 1 * this.a * i2 * Math.sin(a3), o2 = this.y0 + 1 * this.a * (this.cos_p14 * s2 - this.sin_p14 * i2 * e2)), t2.x = r2, t2.y = o2, t2;
+        var s2, i2, a3, e2, r2, n2, o2, l2 = t2.x, c2 = t2.y;
+        return a3 = U(l2 - this.long0), s2 = Math.sin(c2), i2 = Math.cos(c2), e2 = Math.cos(a3), ((r2 = this.sin_p14 * s2 + this.cos_p14 * i2 * e2) > 0 || Math.abs(r2) <= h) && (n2 = 1 * this.a * i2 * Math.sin(a3), o2 = this.y0 + 1 * this.a * (this.cos_p14 * s2 - this.sin_p14 * i2 * e2)), t2.x = n2, t2.y = o2, t2;
       }, inverse: function(t2) {
-        var s2, i2, e2, n2, r2, o2, l2;
-        return t2.x -= this.x0, t2.y -= this.y0, i2 = Os((s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) / this.a), e2 = Math.sin(i2), n2 = Math.cos(i2), o2 = this.long0, Math.abs(s2) <= h ? (l2 = this.lat0, t2.x = o2, t2.y = l2, t2) : (l2 = Os(n2 * this.sin_p14 + t2.y * e2 * this.cos_p14 / s2), r2 = Math.abs(this.lat0) - a, Math.abs(r2) <= h ? (o2 = this.lat0 >= 0 ? z(this.long0 + Math.atan2(t2.x, -t2.y)) : z(this.long0 - Math.atan2(-t2.x, t2.y)), t2.x = o2, t2.y = l2, t2) : (o2 = z(this.long0 + Math.atan2(t2.x * e2, s2 * this.cos_p14 * n2 - t2.y * this.sin_p14 * e2)), t2.x = o2, t2.y = l2, t2));
-      }, names: ["ortho"] }, Js = 1, Zs = 2, Ys = 3, $s = 4, ti = 5, si = 6, ii = 1, ai = 2, hi = 3, ei = 4;
-      function ni(t2, s2, i2, e2) {
-        var n2;
-        return t2 < h ? (e2.value = ii, n2 = 0) : (n2 = Math.atan2(s2, i2), Math.abs(n2) <= r ? e2.value = ii : n2 > r && n2 <= a + r ? (e2.value = ai, n2 -= a) : n2 > a + r || n2 <= -(a + r) ? (e2.value = hi, n2 = n2 >= 0 ? n2 - l : n2 + l) : (e2.value = ei, n2 += a)), n2;
+        var s2, i2, e2, r2, n2, o2, l2;
+        return t2.x -= this.x0, t2.y -= this.y0, i2 = Rs((s2 = Math.sqrt(t2.x * t2.x + t2.y * t2.y)) / this.a), e2 = Math.sin(i2), r2 = Math.cos(i2), o2 = this.long0, Math.abs(s2) <= h ? (l2 = this.lat0, t2.x = o2, t2.y = l2, t2) : (l2 = Rs(r2 * this.sin_p14 + t2.y * e2 * this.cos_p14 / s2), n2 = Math.abs(this.lat0) - a, Math.abs(n2) <= h ? (o2 = this.lat0 >= 0 ? U(this.long0 + Math.atan2(t2.x, -t2.y)) : U(this.long0 - Math.atan2(-t2.x, t2.y)), t2.x = o2, t2.y = l2, t2) : (o2 = U(this.long0 + Math.atan2(t2.x * e2, s2 * this.cos_p14 * r2 - t2.y * this.sin_p14 * e2)), t2.x = o2, t2.y = l2, t2));
+      }, names: ["ortho"] }, Xs = 1, Js = 2, Vs = 3, Ks = 4, Zs = 5, Ys = 6, $s = 1, ti = 2, si = 3, ii = 4;
+      function ai(t2, s2, i2, e2) {
+        var r2;
+        return t2 < h ? (e2.value = $s, r2 = 0) : (r2 = Math.atan2(s2, i2), Math.abs(r2) <= n ? e2.value = $s : r2 > n && r2 <= a + n ? (e2.value = ti, r2 -= a) : r2 > a + n || r2 <= -(a + n) ? (e2.value = si, r2 = r2 >= 0 ? r2 - l : r2 + l) : (e2.value = ii, r2 += a)), r2;
       }
-      function ri(t2, s2) {
+      function hi(t2, s2) {
         var i2 = t2 + s2;
         return i2 < -3.14159265359 ? i2 += o : i2 > 3.14159265359 && (i2 -= o), i2;
       }
-      var oi = { init: function() {
-        this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, this.lat0 = this.lat0 || 0, this.long0 = this.long0 || 0, this.lat_ts = this.lat_ts || 0, this.title = this.title || "Quadrilateralized Spherical Cube", this.lat0 >= a - r / 2 ? this.face = ti : this.lat0 <= -(a - r / 2) ? this.face = si : Math.abs(this.long0) <= r ? this.face = Js : Math.abs(this.long0) <= a + r ? this.face = this.long0 > 0 ? Zs : $s : this.face = Ys, 0 !== this.es && (this.one_minus_f = 1 - (this.a - this.b) / this.a, this.one_minus_f_squared = this.one_minus_f * this.one_minus_f);
+      var ei = { init: function() {
+        this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, this.lat0 = this.lat0 || 0, this.long0 = this.long0 || 0, this.lat_ts = this.lat_ts || 0, this.title = this.title || "Quadrilateralized Spherical Cube", this.lat0 >= a - n / 2 ? this.face = Zs : this.lat0 <= -(a - n / 2) ? this.face = Ys : Math.abs(this.long0) <= n ? this.face = Xs : Math.abs(this.long0) <= a + n ? this.face = this.long0 > 0 ? Js : Ks : this.face = Vs, 0 !== this.es && (this.one_minus_f = 1 - (this.a - this.b) / this.a, this.one_minus_f_squared = this.one_minus_f * this.one_minus_f);
       }, forward: function(t2) {
-        var s2, i2, h2, e2, n2, o2, c2 = { x: 0, y: 0 }, _2 = { value: 0 };
-        if (t2.x -= this.long0, s2 = 0 !== this.es ? Math.atan(this.one_minus_f_squared * Math.tan(t2.y)) : t2.y, i2 = t2.x, this.face === ti) e2 = a - s2, i2 >= r && i2 <= a + r ? (_2.value = ii, h2 = i2 - a) : i2 > a + r || i2 <= -(a + r) ? (_2.value = ai, h2 = i2 > 0 ? i2 - l : i2 + l) : i2 > -(a + r) && i2 <= -r ? (_2.value = hi, h2 = i2 + a) : (_2.value = ei, h2 = i2);
-        else if (this.face === si) e2 = a + s2, i2 >= r && i2 <= a + r ? (_2.value = ii, h2 = -i2 + a) : i2 < r && i2 >= -r ? (_2.value = ai, h2 = -i2) : i2 < -r && i2 >= -(a + r) ? (_2.value = hi, h2 = -i2 - a) : (_2.value = ei, h2 = i2 > 0 ? -i2 + l : -i2 - l);
+        var s2, i2, h2, e2, r2, o2, c2 = { x: 0, y: 0 }, u2 = { value: 0 };
+        if (t2.x -= this.long0, s2 = 0 !== this.es ? Math.atan(this.one_minus_f_squared * Math.tan(t2.y)) : t2.y, i2 = t2.x, this.face === Zs) e2 = a - s2, i2 >= n && i2 <= a + n ? (u2.value = $s, h2 = i2 - a) : i2 > a + n || i2 <= -(a + n) ? (u2.value = ti, h2 = i2 > 0 ? i2 - l : i2 + l) : i2 > -(a + n) && i2 <= -n ? (u2.value = si, h2 = i2 + a) : (u2.value = ii, h2 = i2);
+        else if (this.face === Ys) e2 = a + s2, i2 >= n && i2 <= a + n ? (u2.value = $s, h2 = -i2 + a) : i2 < n && i2 >= -n ? (u2.value = ti, h2 = -i2) : i2 < -n && i2 >= -(a + n) ? (u2.value = si, h2 = -i2 - a) : (u2.value = ii, h2 = i2 > 0 ? -i2 + l : -i2 - l);
         else {
-          var u2, M5, g2, f2, d2, p5;
-          this.face === Zs ? i2 = ri(i2, +a) : this.face === Ys ? i2 = ri(i2, 3.14159265359) : this.face === $s && (i2 = ri(i2, -a)), f2 = Math.sin(s2), d2 = Math.cos(s2), p5 = Math.sin(i2), u2 = d2 * Math.cos(i2), M5 = d2 * p5, g2 = f2, this.face === Js ? h2 = ni(e2 = Math.acos(u2), g2, M5, _2) : this.face === Zs ? h2 = ni(e2 = Math.acos(M5), g2, -u2, _2) : this.face === Ys ? h2 = ni(e2 = Math.acos(-u2), g2, -M5, _2) : this.face === $s ? h2 = ni(e2 = Math.acos(-M5), g2, u2, _2) : (e2 = h2 = 0, _2.value = ii);
+          var _2, M5, d2, f2, g2, m2;
+          this.face === Js ? i2 = hi(i2, +a) : this.face === Vs ? i2 = hi(i2, 3.14159265359) : this.face === Ks && (i2 = hi(i2, -a)), f2 = Math.sin(s2), g2 = Math.cos(s2), m2 = Math.sin(i2), _2 = g2 * Math.cos(i2), M5 = g2 * m2, d2 = f2, this.face === Xs ? h2 = ai(e2 = Math.acos(_2), d2, M5, u2) : this.face === Js ? h2 = ai(e2 = Math.acos(M5), d2, -_2, u2) : this.face === Vs ? h2 = ai(e2 = Math.acos(-_2), d2, -M5, u2) : this.face === Ks ? h2 = ai(e2 = Math.acos(-M5), d2, _2, u2) : (e2 = h2 = 0, u2.value = $s);
         }
-        return o2 = Math.atan(12 / l * (h2 + Math.acos(Math.sin(h2) * Math.cos(r)) - a)), n2 = Math.sqrt((1 - Math.cos(e2)) / (Math.cos(o2) * Math.cos(o2)) / (1 - Math.cos(Math.atan(1 / Math.cos(h2))))), _2.value === ai ? o2 += a : _2.value === hi ? o2 += l : _2.value === ei && (o2 += 1.5 * l), c2.x = n2 * Math.cos(o2), c2.y = n2 * Math.sin(o2), c2.x = c2.x * this.a + this.x0, c2.y = c2.y * this.a + this.y0, t2.x = c2.x, t2.y = c2.y, t2;
+        return o2 = Math.atan(12 / l * (h2 + Math.acos(Math.sin(h2) * Math.cos(n)) - a)), r2 = Math.sqrt((1 - Math.cos(e2)) / (Math.cos(o2) * Math.cos(o2)) / (1 - Math.cos(Math.atan(1 / Math.cos(h2))))), u2.value === ti ? o2 += a : u2.value === si ? o2 += l : u2.value === ii && (o2 += 1.5 * l), c2.x = r2 * Math.cos(o2), c2.y = r2 * Math.sin(o2), c2.x = c2.x * this.a + this.x0, c2.y = c2.y * this.a + this.y0, t2.x = c2.x, t2.y = c2.y, t2;
       }, inverse: function(t2) {
-        var s2, i2, h2, e2, n2, r2, o2, c2, _2, u2, M5, g2, f2 = { lam: 0, phi: 0 }, d2 = { value: 0 };
-        if (t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a, i2 = Math.atan(Math.sqrt(t2.x * t2.x + t2.y * t2.y)), s2 = Math.atan2(t2.y, t2.x), t2.x >= 0 && t2.x >= Math.abs(t2.y) ? d2.value = ii : t2.y >= 0 && t2.y >= Math.abs(t2.x) ? (d2.value = ai, s2 -= a) : t2.x < 0 && -t2.x >= Math.abs(t2.y) ? (d2.value = hi, s2 = s2 < 0 ? s2 + l : s2 - l) : (d2.value = ei, s2 += a), _2 = l / 12 * Math.tan(s2), n2 = Math.sin(_2) / (Math.cos(_2) - 1 / Math.sqrt(2)), r2 = Math.atan(n2), (o2 = 1 - (h2 = Math.cos(s2)) * h2 * (e2 = Math.tan(i2)) * e2 * (1 - Math.cos(Math.atan(1 / Math.cos(r2))))) < -1 ? o2 = -1 : o2 > 1 && (o2 = 1), this.face === ti) c2 = Math.acos(o2), f2.phi = a - c2, d2.value === ii ? f2.lam = r2 + a : d2.value === ai ? f2.lam = r2 < 0 ? r2 + l : r2 - l : d2.value === hi ? f2.lam = r2 - a : f2.lam = r2;
-        else if (this.face === si) c2 = Math.acos(o2), f2.phi = c2 - a, d2.value === ii ? f2.lam = -r2 + a : d2.value === ai ? f2.lam = -r2 : d2.value === hi ? f2.lam = -r2 - a : f2.lam = r2 < 0 ? -r2 - l : -r2 + l;
+        var s2, i2, h2, e2, r2, n2, o2, c2, u2, _2, M5, d2, f2 = { lam: 0, phi: 0 }, g2 = { value: 0 };
+        if (t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a, i2 = Math.atan(Math.sqrt(t2.x * t2.x + t2.y * t2.y)), s2 = Math.atan2(t2.y, t2.x), t2.x >= 0 && t2.x >= Math.abs(t2.y) ? g2.value = $s : t2.y >= 0 && t2.y >= Math.abs(t2.x) ? (g2.value = ti, s2 -= a) : t2.x < 0 && -t2.x >= Math.abs(t2.y) ? (g2.value = si, s2 = s2 < 0 ? s2 + l : s2 - l) : (g2.value = ii, s2 += a), u2 = l / 12 * Math.tan(s2), r2 = Math.sin(u2) / (Math.cos(u2) - 1 / Math.sqrt(2)), n2 = Math.atan(r2), (o2 = 1 - (h2 = Math.cos(s2)) * h2 * (e2 = Math.tan(i2)) * e2 * (1 - Math.cos(Math.atan(1 / Math.cos(n2))))) < -1 ? o2 = -1 : o2 > 1 && (o2 = 1), this.face === Zs) c2 = Math.acos(o2), f2.phi = a - c2, g2.value === $s ? f2.lam = n2 + a : g2.value === ti ? f2.lam = n2 < 0 ? n2 + l : n2 - l : g2.value === si ? f2.lam = n2 - a : f2.lam = n2;
+        else if (this.face === Ys) c2 = Math.acos(o2), f2.phi = c2 - a, g2.value === $s ? f2.lam = -n2 + a : g2.value === ti ? f2.lam = -n2 : g2.value === si ? f2.lam = -n2 - a : f2.lam = n2 < 0 ? -n2 - l : -n2 + l;
         else {
-          var p5, m2, y2;
-          _2 = (p5 = o2) * p5, m2 = (_2 += (y2 = _2 >= 1 ? 0 : Math.sqrt(1 - _2) * Math.sin(r2)) * y2) >= 1 ? 0 : Math.sqrt(1 - _2), d2.value === ai ? (_2 = m2, m2 = -y2, y2 = _2) : d2.value === hi ? (m2 = -m2, y2 = -y2) : d2.value === ei && (_2 = m2, m2 = y2, y2 = -_2), this.face === Zs ? (_2 = p5, p5 = -m2, m2 = _2) : this.face === Ys ? (p5 = -p5, m2 = -m2) : this.face === $s && (_2 = p5, p5 = m2, m2 = -_2), f2.phi = Math.acos(-y2) - a, f2.lam = Math.atan2(m2, p5), this.face === Zs ? f2.lam = ri(f2.lam, -a) : this.face === Ys ? f2.lam = ri(f2.lam, -3.14159265359) : this.face === $s && (f2.lam = ri(f2.lam, +a));
+          var m2, p5, y2;
+          u2 = (m2 = o2) * m2, p5 = (u2 += (y2 = u2 >= 1 ? 0 : Math.sqrt(1 - u2) * Math.sin(n2)) * y2) >= 1 ? 0 : Math.sqrt(1 - u2), g2.value === ti ? (u2 = p5, p5 = -y2, y2 = u2) : g2.value === si ? (p5 = -p5, y2 = -y2) : g2.value === ii && (u2 = p5, p5 = y2, y2 = -u2), this.face === Js ? (u2 = m2, m2 = -p5, p5 = u2) : this.face === Vs ? (m2 = -m2, p5 = -p5) : this.face === Ks && (u2 = m2, m2 = p5, p5 = -u2), f2.phi = Math.acos(-y2) - a, f2.lam = Math.atan2(p5, m2), this.face === Js ? f2.lam = hi(f2.lam, -a) : this.face === Vs ? f2.lam = hi(f2.lam, -3.14159265359) : this.face === Ks && (f2.lam = hi(f2.lam, +a));
         }
-        return 0 !== this.es && (u2 = f2.phi < 0 ? 1 : 0, M5 = Math.tan(f2.phi), g2 = this.b / Math.sqrt(M5 * M5 + this.one_minus_f_squared), f2.phi = Math.atan(Math.sqrt(this.a * this.a - g2 * g2) / (this.one_minus_f * g2)), u2 && (f2.phi = -f2.phi)), f2.lam += this.long0, t2.x = f2.lam, t2.y = f2.phi, t2;
-      }, names: ["Quadrilateralized Spherical Cube", "Quadrilateralized_Spherical_Cube", "qsc"] }, li = [[1, 22199e-21, -715515e-10, 31103e-10], [0.9986, -482243e-9, -24897e-9, -13309e-10], [0.9954, -83103e-8, -448605e-10, -986701e-12], [0.99, -135364e-8, -59661e-9, 36777e-10], [0.9822, -167442e-8, -449547e-11, -572411e-11], [0.973, -214868e-8, -903571e-10, 18736e-12], [0.96, -305085e-8, -900761e-10, 164917e-11], [0.9427, -382792e-8, -653386e-10, -26154e-10], [0.9216, -467746e-8, -10457e-8, 481243e-11], [0.8962, -536223e-8, -323831e-10, -543432e-11], [0.8679, -609363e-8, -113898e-9, 332484e-11], [0.835, -698325e-8, -640253e-10, 934959e-12], [0.7986, -755338e-8, -500009e-10, 935324e-12], [0.7597, -798324e-8, -35971e-9, -227626e-11], [0.7186, -851367e-8, -701149e-10, -86303e-10], [0.6732, -986209e-8, -199569e-9, 191974e-10], [0.6213, -0.010418, 883923e-10, 624051e-11], [0.5722, -906601e-8, 182e-6, 624051e-11], [0.5322, -677797e-8, 275608e-9, 624051e-11]], ci = [[-520417e-23, 0.0124, 121431e-23, -845284e-16], [0.062, 0.0124, -126793e-14, 422642e-15], [0.124, 0.0124, 507171e-14, -160604e-14], [0.186, 0.0123999, -190189e-13, 600152e-14], [0.248, 0.0124002, 710039e-13, -224e-10], [0.31, 0.0123992, -264997e-12, 835986e-13], [0.372, 0.0124029, 988983e-12, -311994e-12], [0.434, 0.0123893, -369093e-11, -435621e-12], [0.4958, 0.0123198, -102252e-10, -345523e-12], [0.5571, 0.0121916, -154081e-10, -582288e-12], [0.6176, 0.0119938, -241424e-10, -525327e-12], [0.6769, 0.011713, -320223e-10, -516405e-12], [0.7346, 0.0113541, -397684e-10, -609052e-12], [0.7903, 0.0109107, -489042e-10, -104739e-11], [0.8435, 0.0103431, -64615e-9, -140374e-14], [0.8936, 969686e-8, -64636e-9, -8547e-9], [0.9394, 840947e-8, -192841e-9, -42106e-10], [0.9761, 616527e-8, -256e-6, -42106e-10], [1, 328947e-8, -319159e-9, -42106e-10]], _i = 0.8487, ui = 1.3523, Mi = n / 5, gi = 1 / Mi, fi = 18, di = function(t2, s2) {
+        return 0 !== this.es && (_2 = f2.phi < 0 ? 1 : 0, M5 = Math.tan(f2.phi), d2 = this.b / Math.sqrt(M5 * M5 + this.one_minus_f_squared), f2.phi = Math.atan(Math.sqrt(this.a * this.a - d2 * d2) / (this.one_minus_f * d2)), _2 && (f2.phi = -f2.phi)), f2.lam += this.long0, t2.x = f2.lam, t2.y = f2.phi, t2;
+      }, names: ["Quadrilateralized Spherical Cube", "Quadrilateralized_Spherical_Cube", "qsc"] }, ri = [[1, 22199e-21, -715515e-10, 31103e-10], [0.9986, -482243e-9, -24897e-9, -13309e-10], [0.9954, -83103e-8, -448605e-10, -986701e-12], [0.99, -135364e-8, -59661e-9, 36777e-10], [0.9822, -167442e-8, -449547e-11, -572411e-11], [0.973, -214868e-8, -903571e-10, 18736e-12], [0.96, -305085e-8, -900761e-10, 164917e-11], [0.9427, -382792e-8, -653386e-10, -26154e-10], [0.9216, -467746e-8, -10457e-8, 481243e-11], [0.8962, -536223e-8, -323831e-10, -543432e-11], [0.8679, -609363e-8, -113898e-9, 332484e-11], [0.835, -698325e-8, -640253e-10, 934959e-12], [0.7986, -755338e-8, -500009e-10, 935324e-12], [0.7597, -798324e-8, -35971e-9, -227626e-11], [0.7186, -851367e-8, -701149e-10, -86303e-10], [0.6732, -986209e-8, -199569e-9, 191974e-10], [0.6213, -0.010418, 883923e-10, 624051e-11], [0.5722, -906601e-8, 182e-6, 624051e-11], [0.5322, -677797e-8, 275608e-9, 624051e-11]], ni = [[-520417e-23, 0.0124, 121431e-23, -845284e-16], [0.062, 0.0124, -126793e-14, 422642e-15], [0.124, 0.0124, 507171e-14, -160604e-14], [0.186, 0.0123999, -190189e-13, 600152e-14], [0.248, 0.0124002, 710039e-13, -224e-10], [0.31, 0.0123992, -264997e-12, 835986e-13], [0.372, 0.0124029, 988983e-12, -311994e-12], [0.434, 0.0123893, -369093e-11, -435621e-12], [0.4958, 0.0123198, -102252e-10, -345523e-12], [0.5571, 0.0121916, -154081e-10, -582288e-12], [0.6176, 0.0119938, -241424e-10, -525327e-12], [0.6769, 0.011713, -320223e-10, -516405e-12], [0.7346, 0.0113541, -397684e-10, -609052e-12], [0.7903, 0.0109107, -489042e-10, -104739e-11], [0.8435, 0.0103431, -64615e-9, -140374e-14], [0.8936, 969686e-8, -64636e-9, -8547e-9], [0.9394, 840947e-8, -192841e-9, -42106e-10], [0.9761, 616527e-8, -256e-6, -42106e-10], [1, 328947e-8, -319159e-9, -42106e-10]], oi = 0.8487, li = 1.3523, ci = r / 5, ui = 1 / ci, _i = 18, Mi = function(t2, s2) {
         return t2[0] + s2 * (t2[1] + s2 * (t2[2] + s2 * t2[3]));
       };
-      var pi = { init: function() {
+      var di = { init: function() {
         this.x0 = this.x0 || 0, this.y0 = this.y0 || 0, this.long0 = this.long0 || 0, this.es = 0, this.title = this.title || "Robinson";
       }, forward: function(t2) {
-        var s2 = z(t2.x - this.long0), i2 = Math.abs(t2.y), a3 = Math.floor(i2 * Mi);
-        a3 < 0 ? a3 = 0 : a3 >= fi && (a3 = 17);
-        var h2 = { x: di(li[a3], i2 = n * (i2 - gi * a3)) * s2, y: di(ci[a3], i2) };
-        return t2.y < 0 && (h2.y = -h2.y), h2.x = h2.x * this.a * _i + this.x0, h2.y = h2.y * this.a * ui + this.y0, h2;
+        var s2 = U(t2.x - this.long0), i2 = Math.abs(t2.y), a3 = Math.floor(i2 * ci);
+        a3 < 0 ? a3 = 0 : a3 >= _i && (a3 = 17);
+        var h2 = { x: Mi(ri[a3], i2 = r * (i2 - ui * a3)) * s2, y: Mi(ni[a3], i2) };
+        return t2.y < 0 && (h2.y = -h2.y), h2.x = h2.x * this.a * oi + this.x0, h2.y = h2.y * this.a * li + this.y0, h2;
       }, inverse: function(t2) {
-        var s2 = { x: (t2.x - this.x0) / (this.a * _i), y: Math.abs(t2.y - this.y0) / (this.a * ui) };
-        if (s2.y >= 1) s2.x /= li[18][0], s2.y = t2.y < 0 ? -a : a;
+        var s2 = { x: (t2.x - this.x0) / (this.a * oi), y: Math.abs(t2.y - this.y0) / (this.a * li) };
+        if (s2.y >= 1) s2.x /= ri[18][0], s2.y = t2.y < 0 ? -a : a;
         else {
-          var i2 = Math.floor(s2.y * fi);
-          for (i2 < 0 ? i2 = 0 : i2 >= fi && (i2 = 17); ; ) if (ci[i2][0] > s2.y) --i2;
+          var i2 = Math.floor(s2.y * _i);
+          for (i2 < 0 ? i2 = 0 : i2 >= _i && (i2 = 17); ; ) if (ni[i2][0] > s2.y) --i2;
           else {
-            if (!(ci[i2 + 1][0] <= s2.y)) break;
+            if (!(ni[i2 + 1][0] <= s2.y)) break;
             ++i2;
           }
-          var n2 = ci[i2], r2 = 5 * (s2.y - n2[0]) / (ci[i2 + 1][0] - n2[0]);
-          r2 = function(t3, s3, i3, a3) {
+          var r2 = ni[i2], n2 = 5 * (s2.y - r2[0]) / (ni[i2 + 1][0] - r2[0]);
+          n2 = function(t3, s3, i3, a3) {
             for (var h2 = s3; a3; --a3) {
               var e2 = t3(h2);
               if (h2 -= e2, Math.abs(e2) < i3) break;
             }
             return h2;
           }(function(t3) {
-            return (di(n2, t3) - s2.y) / function(t4, s3) {
+            return (Mi(r2, t3) - s2.y) / function(t4, s3) {
               return t4[1] + s3 * (2 * t4[2] + 3 * s3 * t4[3]);
-            }(n2, t3);
-          }, r2, h, 100), s2.x /= di(li[i2], r2), s2.y = (5 * i2 + r2) * e, t2.y < 0 && (s2.y = -s2.y);
+            }(r2, t3);
+          }, n2, h, 100), s2.x /= Mi(ri[i2], n2), s2.y = (5 * i2 + n2) * e, t2.y < 0 && (s2.y = -s2.y);
         }
-        return s2.x = z(s2.x + this.long0), s2;
+        return s2.x = U(s2.x + this.long0), s2;
       }, names: ["Robinson", "robin"] };
-      var mi = { init: function() {
+      var fi = { init: function() {
         this.name = "geocent";
       }, forward: function(t2) {
-        return gt(t2, this.es, this.a);
+        return dt(t2, this.es, this.a);
       }, inverse: function(t2) {
         return ft(t2, this.es, this.a, this.b);
-      }, names: ["Geocentric", "geocentric", "geocent", "Geocent"] }, yi = 0, Si = 1, Ei = 2, wi = 3, vi = { h: { def: 1e5, num: true }, azi: { def: 0, num: true, degrees: true }, tilt: { def: 0, num: true, degrees: true }, long0: { def: 0, num: true }, lat0: { def: 0, num: true } };
-      var Gi = { init: function() {
-        if (Object.keys(vi).forEach(function(t3) {
-          if (void 0 === this[t3]) this[t3] = vi[t3].def;
+      }, names: ["Geocentric", "geocentric", "geocent", "Geocent"] }, gi = 0, mi = 1, pi = 2, yi = 3, wi = { h: { def: 1e5, num: true }, azi: { def: 0, num: true, degrees: true }, tilt: { def: 0, num: true, degrees: true }, long0: { def: 0, num: true }, lat0: { def: 0, num: true } };
+      var Ei = { init: function() {
+        if (Object.keys(wi).forEach(function(t3) {
+          if (void 0 === this[t3]) this[t3] = wi[t3].def;
           else {
-            if (vi[t3].num && isNaN(this[t3])) throw new Error("Invalid parameter value, must be numeric " + t3 + " = " + this[t3]);
-            vi[t3].num && (this[t3] = parseFloat(this[t3]));
+            if (wi[t3].num && isNaN(this[t3])) throw new Error("Invalid parameter value, must be numeric " + t3 + " = " + this[t3]);
+            wi[t3].num && (this[t3] = parseFloat(this[t3]));
           }
-          vi[t3].degrees && (this[t3] = this[t3] * e);
-        }.bind(this)), Math.abs(Math.abs(this.lat0) - a) < h ? this.mode = this.lat0 < 0 ? Si : yi : Math.abs(this.lat0) < h ? this.mode = Ei : (this.mode = wi, this.sinph0 = Math.sin(this.lat0), this.cosph0 = Math.cos(this.lat0)), this.pn1 = this.h / this.a, this.pn1 <= 0 || this.pn1 > 1e10) throw new Error("Invalid height");
+          wi[t3].degrees && (this[t3] = this[t3] * e);
+        }.bind(this)), Math.abs(Math.abs(this.lat0) - a) < h ? this.mode = this.lat0 < 0 ? mi : gi : Math.abs(this.lat0) < h ? this.mode = pi : (this.mode = yi, this.sinph0 = Math.sin(this.lat0), this.cosph0 = Math.cos(this.lat0)), this.pn1 = this.h / this.a, this.pn1 <= 0 || this.pn1 > 1e10) throw new Error("Invalid height");
         this.p = 1 + this.pn1, this.rp = 1 / this.p, this.h1 = 1 / this.pn1, this.pfact = (this.p + 1) * this.h1, this.es = 0;
         var t2 = this.tilt, s2 = this.azi;
         this.cg = Math.cos(s2), this.sg = Math.sin(s2), this.cw = Math.cos(t2), this.sw = Math.sin(t2);
       }, forward: function(t2) {
         t2.x -= this.long0;
-        var s2, i2, a3, h2, e2 = Math.sin(t2.y), n2 = Math.cos(t2.y), r2 = Math.cos(t2.x);
+        var s2, i2, a3, h2, e2 = Math.sin(t2.y), r2 = Math.cos(t2.y), n2 = Math.cos(t2.x);
         switch (this.mode) {
-          case wi:
-            i2 = this.sinph0 * e2 + this.cosph0 * n2 * r2;
+          case yi:
+            i2 = this.sinph0 * e2 + this.cosph0 * r2 * n2;
             break;
-          case Ei:
-            i2 = n2 * r2;
+          case pi:
+            i2 = r2 * n2;
             break;
-          case Si:
+          case mi:
             i2 = -e2;
             break;
-          case yi:
+          case gi:
             i2 = e2;
         }
-        switch (s2 = (i2 = this.pn1 / (this.p - i2)) * n2 * Math.sin(t2.x), this.mode) {
-          case wi:
-            i2 *= this.cosph0 * e2 - this.sinph0 * n2 * r2;
+        switch (s2 = (i2 = this.pn1 / (this.p - i2)) * r2 * Math.sin(t2.x), this.mode) {
+          case yi:
+            i2 *= this.cosph0 * e2 - this.sinph0 * r2 * n2;
             break;
-          case Ei:
+          case pi:
             i2 *= e2;
             break;
-          case yi:
-            i2 *= -n2 * r2;
+          case gi:
+            i2 *= -r2 * n2;
             break;
-          case Si:
-            i2 *= n2 * r2;
+          case mi:
+            i2 *= r2 * n2;
         }
         return h2 = 1 / ((a3 = i2 * this.cg + s2 * this.sg) * this.sw * this.h1 + this.cw), s2 = (s2 * this.cg - i2 * this.sg) * this.cw * h2, i2 = a3 * h2, t2.x = s2 * this.a, t2.y = i2 * this.a, t2;
       }, inverse: function(t2) {
         t2.x /= this.a, t2.y /= this.a;
         var s2, i2, a3, e2 = { x: t2.x, y: t2.y };
         a3 = 1 / (this.pn1 - t2.y * this.sw), s2 = this.pn1 * t2.x * a3, i2 = this.pn1 * t2.y * this.cw * a3, t2.x = s2 * this.cg + i2 * this.sg, t2.y = i2 * this.cg - s2 * this.sg;
-        var n2 = ss(t2.x, t2.y);
-        if (Math.abs(n2) < h) e2.x = 0, e2.y = t2.y;
+        var r2 = ts(t2.x, t2.y);
+        if (Math.abs(r2) < h) e2.x = 0, e2.y = t2.y;
         else {
-          var r2, o2;
-          switch (o2 = 1 - n2 * n2 * this.pfact, o2 = (this.p - Math.sqrt(o2)) / (this.pn1 / n2 + n2 / this.pn1), r2 = Math.sqrt(1 - o2 * o2), this.mode) {
-            case wi:
-              e2.y = Math.asin(r2 * this.sinph0 + t2.y * o2 * this.cosph0 / n2), t2.y = (r2 - this.sinph0 * Math.sin(e2.y)) * n2, t2.x *= o2 * this.cosph0;
-              break;
-            case Ei:
-              e2.y = Math.asin(t2.y * o2 / n2), t2.y = r2 * n2, t2.x *= o2;
-              break;
+          var n2, o2;
+          switch (o2 = 1 - r2 * r2 * this.pfact, o2 = (this.p - Math.sqrt(o2)) / (this.pn1 / r2 + r2 / this.pn1), n2 = Math.sqrt(1 - o2 * o2), this.mode) {
             case yi:
-              e2.y = Math.asin(r2), t2.y = -t2.y;
+              e2.y = Math.asin(n2 * this.sinph0 + t2.y * o2 * this.cosph0 / r2), t2.y = (n2 - this.sinph0 * Math.sin(e2.y)) * r2, t2.x *= o2 * this.cosph0;
               break;
-            case Si:
-              e2.y = -Math.asin(r2);
+            case pi:
+              e2.y = Math.asin(t2.y * o2 / r2), t2.y = n2 * r2, t2.x *= o2;
+              break;
+            case gi:
+              e2.y = Math.asin(n2), t2.y = -t2.y;
+              break;
+            case mi:
+              e2.y = -Math.asin(n2);
           }
           e2.x = Math.atan2(t2.x, t2.y);
         }
         return t2.x = e2.x + this.long0, t2.y = e2.y, t2;
       }, names: ["Tilted_Perspective", "tpers"] };
-      var xi = { init: function() {
+      var vi = { init: function() {
         if (this.flip_axis = "x" === this.sweep ? 1 : 0, this.h = Number(this.h), this.radius_g_1 = this.h / this.a, this.radius_g_1 <= 0 || this.radius_g_1 > 1e10) throw new Error();
         if (this.radius_g = 1 + this.radius_g_1, this.C = this.radius_g * this.radius_g - 1, 0 !== this.es) {
           var t2 = 1 - this.es, s2 = 1 / t2;
@@ -2008,68 +1773,75 @@ var require_proj4 = __commonJS({
         } else this.radius_p = 1, this.radius_p2 = 1, this.radius_p_inv2 = 1, this.shape = "sphere";
         this.title || (this.title = "Geostationary Satellite View");
       }, forward: function(t2) {
-        var s2, i2, a3, h2, e2 = t2.x, n2 = t2.y;
+        var s2, i2, a3, h2, e2 = t2.x, r2 = t2.y;
         if (e2 -= this.long0, "ellipse" === this.shape) {
-          n2 = Math.atan(this.radius_p2 * Math.tan(n2));
-          var r2 = this.radius_p / ss(this.radius_p * Math.cos(n2), Math.sin(n2));
-          if (i2 = r2 * Math.cos(e2) * Math.cos(n2), a3 = r2 * Math.sin(e2) * Math.cos(n2), h2 = r2 * Math.sin(n2), (this.radius_g - i2) * i2 - a3 * a3 - h2 * h2 * this.radius_p_inv2 < 0) return t2.x = Number.NaN, t2.y = Number.NaN, t2;
-          s2 = this.radius_g - i2, this.flip_axis ? (t2.x = this.radius_g_1 * Math.atan(a3 / ss(h2, s2)), t2.y = this.radius_g_1 * Math.atan(h2 / s2)) : (t2.x = this.radius_g_1 * Math.atan(a3 / s2), t2.y = this.radius_g_1 * Math.atan(h2 / ss(a3, s2)));
-        } else "sphere" === this.shape && (s2 = Math.cos(n2), i2 = Math.cos(e2) * s2, a3 = Math.sin(e2) * s2, h2 = Math.sin(n2), s2 = this.radius_g - i2, this.flip_axis ? (t2.x = this.radius_g_1 * Math.atan(a3 / ss(h2, s2)), t2.y = this.radius_g_1 * Math.atan(h2 / s2)) : (t2.x = this.radius_g_1 * Math.atan(a3 / s2), t2.y = this.radius_g_1 * Math.atan(h2 / ss(a3, s2))));
+          r2 = Math.atan(this.radius_p2 * Math.tan(r2));
+          var n2 = this.radius_p / ts(this.radius_p * Math.cos(r2), Math.sin(r2));
+          if (i2 = n2 * Math.cos(e2) * Math.cos(r2), a3 = n2 * Math.sin(e2) * Math.cos(r2), h2 = n2 * Math.sin(r2), (this.radius_g - i2) * i2 - a3 * a3 - h2 * h2 * this.radius_p_inv2 < 0) return t2.x = Number.NaN, t2.y = Number.NaN, t2;
+          s2 = this.radius_g - i2, this.flip_axis ? (t2.x = this.radius_g_1 * Math.atan(a3 / ts(h2, s2)), t2.y = this.radius_g_1 * Math.atan(h2 / s2)) : (t2.x = this.radius_g_1 * Math.atan(a3 / s2), t2.y = this.radius_g_1 * Math.atan(h2 / ts(a3, s2)));
+        } else "sphere" === this.shape && (s2 = Math.cos(r2), i2 = Math.cos(e2) * s2, a3 = Math.sin(e2) * s2, h2 = Math.sin(r2), s2 = this.radius_g - i2, this.flip_axis ? (t2.x = this.radius_g_1 * Math.atan(a3 / ts(h2, s2)), t2.y = this.radius_g_1 * Math.atan(h2 / s2)) : (t2.x = this.radius_g_1 * Math.atan(a3 / s2), t2.y = this.radius_g_1 * Math.atan(h2 / ts(a3, s2))));
         return t2.x = t2.x * this.a, t2.y = t2.y * this.a, t2;
       }, inverse: function(t2) {
-        var s2, i2, a3, h2, e2 = -1, n2 = 0, r2 = 0;
+        var s2, i2, a3, h2, e2 = -1, r2 = 0, n2 = 0;
         if (t2.x = t2.x / this.a, t2.y = t2.y / this.a, "ellipse" === this.shape) {
-          this.flip_axis ? (r2 = Math.tan(t2.y / this.radius_g_1), n2 = Math.tan(t2.x / this.radius_g_1) * ss(1, r2)) : (n2 = Math.tan(t2.x / this.radius_g_1), r2 = Math.tan(t2.y / this.radius_g_1) * ss(1, n2));
-          var o2 = r2 / this.radius_p;
-          if (s2 = n2 * n2 + o2 * o2 + e2 * e2, (a3 = (i2 = 2 * this.radius_g * e2) * i2 - 4 * s2 * this.C) < 0) return t2.x = Number.NaN, t2.y = Number.NaN, t2;
-          h2 = (-i2 - Math.sqrt(a3)) / (2 * s2), e2 = this.radius_g + h2 * e2, n2 *= h2, r2 *= h2, t2.x = Math.atan2(n2, e2), t2.y = Math.atan(r2 * Math.cos(t2.x) / e2), t2.y = Math.atan(this.radius_p_inv2 * Math.tan(t2.y));
+          this.flip_axis ? (n2 = Math.tan(t2.y / this.radius_g_1), r2 = Math.tan(t2.x / this.radius_g_1) * ts(1, n2)) : (r2 = Math.tan(t2.x / this.radius_g_1), n2 = Math.tan(t2.y / this.radius_g_1) * ts(1, r2));
+          var o2 = n2 / this.radius_p;
+          if (s2 = r2 * r2 + o2 * o2 + e2 * e2, (a3 = (i2 = 2 * this.radius_g * e2) * i2 - 4 * s2 * this.C) < 0) return t2.x = Number.NaN, t2.y = Number.NaN, t2;
+          h2 = (-i2 - Math.sqrt(a3)) / (2 * s2), e2 = this.radius_g + h2 * e2, r2 *= h2, n2 *= h2, t2.x = Math.atan2(r2, e2), t2.y = Math.atan(n2 * Math.cos(t2.x) / e2), t2.y = Math.atan(this.radius_p_inv2 * Math.tan(t2.y));
         } else if ("sphere" === this.shape) {
-          if (this.flip_axis ? (r2 = Math.tan(t2.y / this.radius_g_1), n2 = Math.tan(t2.x / this.radius_g_1) * Math.sqrt(1 + r2 * r2)) : (n2 = Math.tan(t2.x / this.radius_g_1), r2 = Math.tan(t2.y / this.radius_g_1) * Math.sqrt(1 + n2 * n2)), s2 = n2 * n2 + r2 * r2 + e2 * e2, (a3 = (i2 = 2 * this.radius_g * e2) * i2 - 4 * s2 * this.C) < 0) return t2.x = Number.NaN, t2.y = Number.NaN, t2;
-          h2 = (-i2 - Math.sqrt(a3)) / (2 * s2), e2 = this.radius_g + h2 * e2, n2 *= h2, r2 *= h2, t2.x = Math.atan2(n2, e2), t2.y = Math.atan(r2 * Math.cos(t2.x) / e2);
+          if (this.flip_axis ? (n2 = Math.tan(t2.y / this.radius_g_1), r2 = Math.tan(t2.x / this.radius_g_1) * Math.sqrt(1 + n2 * n2)) : (r2 = Math.tan(t2.x / this.radius_g_1), n2 = Math.tan(t2.y / this.radius_g_1) * Math.sqrt(1 + r2 * r2)), s2 = r2 * r2 + n2 * n2 + e2 * e2, (a3 = (i2 = 2 * this.radius_g * e2) * i2 - 4 * s2 * this.C) < 0) return t2.x = Number.NaN, t2.y = Number.NaN, t2;
+          h2 = (-i2 - Math.sqrt(a3)) / (2 * s2), e2 = this.radius_g + h2 * e2, r2 *= h2, n2 *= h2, t2.x = Math.atan2(r2, e2), t2.y = Math.atan(n2 * Math.cos(t2.x) / e2);
         }
         return t2.x = t2.x + this.long0, t2;
-      }, names: ["Geostationary Satellite View", "Geostationary_Satellite", "geos"] }, Pi = 1.340264, bi = -0.081106, Ai = 893e-6, Ci = 3796e-6, Ni = Math.sqrt(3) / 2;
-      var Ii = { init: function() {
+      }, names: ["Geostationary Satellite View", "Geostationary_Satellite", "geos"] }, xi = 1.340264, Si = -0.081106, Gi = 893e-6, Pi = 3796e-6, bi = Math.sqrt(3) / 2;
+      var Ni = { init: function() {
         this.es = 0, this.long0 = void 0 !== this.long0 ? this.long0 : 0;
       }, forward: function(t2) {
-        var s2 = z(t2.x - this.long0), i2 = t2.y, a3 = Math.asin(Ni * Math.sin(i2)), h2 = a3 * a3, e2 = h2 * h2 * h2;
-        return t2.x = s2 * Math.cos(a3) / (Ni * (Pi + 3 * bi * h2 + e2 * (7 * Ai + 9 * Ci * h2))), t2.y = a3 * (Pi + bi * h2 + e2 * (Ai + Ci * h2)), t2.x = this.a * t2.x + this.x0, t2.y = this.a * t2.y + this.y0, t2;
+        var s2 = U(t2.x - this.long0), i2 = t2.y, a3 = Math.asin(bi * Math.sin(i2)), h2 = a3 * a3, e2 = h2 * h2 * h2;
+        return t2.x = s2 * Math.cos(a3) / (bi * (xi + 3 * Si * h2 + e2 * (7 * Gi + 9 * Pi * h2))), t2.y = a3 * (xi + Si * h2 + e2 * (Gi + Pi * h2)), t2.x = this.a * t2.x + this.x0, t2.y = this.a * t2.y + this.y0, t2;
       }, inverse: function(t2) {
         t2.x = (t2.x - this.x0) / this.a, t2.y = (t2.y - this.y0) / this.a;
         var s2, i2, a3, h2, e2 = t2.y;
-        for (h2 = 0; h2 < 12 && (e2 -= a3 = (e2 * (Pi + bi * (s2 = e2 * e2) + (i2 = s2 * s2 * s2) * (Ai + Ci * s2)) - t2.y) / (Pi + 3 * bi * s2 + i2 * (7 * Ai + 9 * Ci * s2)), !(Math.abs(a3) < 1e-9)); ++h2) ;
-        return i2 = (s2 = e2 * e2) * s2 * s2, t2.x = Ni * t2.x * (Pi + 3 * bi * s2 + i2 * (7 * Ai + 9 * Ci * s2)) / Math.cos(e2), t2.y = Math.asin(Math.sin(e2) / Ni), t2.x = z(t2.x + this.long0), t2;
-      }, names: ["eqearth", "Equal Earth", "Equal_Earth"] }, Li = 1e-10;
-      function Oi(t2) {
-        var s2, i2, a3, h2 = z(t2.x - (this.long0 || 0)), e2 = t2.y;
-        return s2 = this.am1 + this.m1 - Zt(e2, i2 = Math.sin(e2), a3 = Math.cos(e2), this.en), i2 = a3 * h2 / (s2 * Math.sqrt(1 - this.es * i2 * i2)), t2.x = s2 * Math.sin(i2), t2.y = this.am1 - s2 * Math.cos(i2), t2.x = this.a * t2.x + (this.x0 || 0), t2.y = this.a * t2.y + (this.y0 || 0), t2;
+        for (h2 = 0; h2 < 12 && (e2 -= a3 = (e2 * (xi + Si * (s2 = e2 * e2) + (i2 = s2 * s2 * s2) * (Gi + Pi * s2)) - t2.y) / (xi + 3 * Si * s2 + i2 * (7 * Gi + 9 * Pi * s2)), !(Math.abs(a3) < 1e-9)); ++h2) ;
+        return i2 = (s2 = e2 * e2) * s2 * s2, t2.x = bi * t2.x * (xi + 3 * Si * s2 + i2 * (7 * Gi + 9 * Pi * s2)) / Math.cos(e2), t2.y = Math.asin(Math.sin(e2) / bi), t2.x = U(t2.x + this.long0), t2;
+      }, names: ["eqearth", "Equal Earth", "Equal_Earth"] }, Ai = 1e-10;
+      function Ii(t2) {
+        var s2, i2, a3, h2 = U(t2.x - (this.long0 || 0)), e2 = t2.y;
+        return s2 = this.am1 + this.m1 - Kt(e2, i2 = Math.sin(e2), a3 = Math.cos(e2), this.en), i2 = a3 * h2 / (s2 * Math.sqrt(1 - this.es * i2 * i2)), t2.x = s2 * Math.sin(i2), t2.y = this.am1 - s2 * Math.cos(i2), t2.x = this.a * t2.x + (this.x0 || 0), t2.y = this.a * t2.y + (this.y0 || 0), t2;
       }
-      function Ri(t2) {
+      function Ci(t2) {
         var s2, i2, h2, e2;
-        if (t2.x = (t2.x - (this.x0 || 0)) / this.a, t2.y = (t2.y - (this.y0 || 0)) / this.a, i2 = ss(t2.x, t2.y = this.am1 - t2.y), e2 = Yt(this.am1 + this.m1 - i2, this.es, this.en), (s2 = Math.abs(e2)) < a) s2 = Math.sin(e2), h2 = i2 * Math.atan2(t2.x, t2.y) * Math.sqrt(1 - this.es * s2 * s2) / Math.cos(e2);
+        if (t2.x = (t2.x - (this.x0 || 0)) / this.a, t2.y = (t2.y - (this.y0 || 0)) / this.a, i2 = ts(t2.x, t2.y = this.am1 - t2.y), e2 = Zt(this.am1 + this.m1 - i2, this.es, this.en), (s2 = Math.abs(e2)) < a) s2 = Math.sin(e2), h2 = i2 * Math.atan2(t2.x, t2.y) * Math.sqrt(1 - this.es * s2 * s2) / Math.cos(e2);
         else {
-          if (!(Math.abs(s2 - a) <= Li)) throw new Error();
+          if (!(Math.abs(s2 - a) <= Ai)) throw new Error();
           h2 = 0;
         }
-        return t2.x = z(h2 + (this.long0 || 0)), t2.y = ws(e2), t2;
+        return t2.x = U(h2 + (this.long0 || 0)), t2.y = vs(e2), t2;
       }
-      function qi(t2) {
-        var s2, i2, a3 = z(t2.x - (this.long0 || 0)), h2 = t2.y;
-        return i2 = this.cphi1 + this.phi1 - h2, Math.abs(i2) > Li ? (t2.x = i2 * Math.sin(s2 = a3 * Math.cos(h2) / i2), t2.y = this.cphi1 - i2 * Math.cos(s2)) : t2.x = t2.y = 0, t2.x = this.a * t2.x + (this.x0 || 0), t2.y = this.a * t2.y + (this.y0 || 0), t2;
+      function ki(t2) {
+        var s2, i2, a3 = U(t2.x - (this.long0 || 0)), h2 = t2.y;
+        return i2 = this.cphi1 + this.phi1 - h2, Math.abs(i2) > Ai ? (t2.x = i2 * Math.sin(s2 = a3 * Math.cos(h2) / i2), t2.y = this.cphi1 - i2 * Math.cos(s2)) : t2.x = t2.y = 0, t2.x = this.a * t2.x + (this.x0 || 0), t2.y = this.a * t2.y + (this.y0 || 0), t2;
       }
-      function Ti(t2) {
+      function Ri(t2) {
         var s2, i2;
         t2.x = (t2.x - (this.x0 || 0)) / this.a, t2.y = (t2.y - (this.y0 || 0)) / this.a;
-        var h2 = ss(t2.x, t2.y = this.cphi1 - t2.y);
+        var h2 = ts(t2.x, t2.y = this.cphi1 - t2.y);
         if (i2 = this.cphi1 + this.phi1 - h2, Math.abs(i2) > a) throw new Error();
-        return s2 = Math.abs(Math.abs(i2) - a) <= Li ? 0 : h2 * Math.atan2(t2.x, t2.y) / Math.cos(i2), t2.x = z(s2 + (this.long0 || 0)), t2.y = ws(i2), t2;
+        return s2 = Math.abs(Math.abs(i2) - a) <= Ai ? 0 : h2 * Math.atan2(t2.x, t2.y) / Math.cos(i2), t2.x = U(s2 + (this.long0 || 0)), t2.y = vs(i2), t2;
       }
-      var ki = { init: function() {
+      var Oi = { init: function() {
         var t2;
-        if (this.phi1 = this.lat1, Math.abs(this.phi1) < Li) throw new Error();
-        this.es ? (this.en = Jt(this.es), this.m1 = Zt(this.phi1, this.am1 = Math.sin(this.phi1), t2 = Math.cos(this.phi1), this.en), this.am1 = t2 / (Math.sqrt(1 - this.es * this.am1 * this.am1) * this.am1), this.inverse = Ri, this.forward = Oi) : (Math.abs(this.phi1) + Li >= a ? this.cphi1 = 0 : this.cphi1 = 1 / Math.tan(this.phi1), this.inverse = Ti, this.forward = qi);
+        if (this.phi1 = this.lat1, Math.abs(this.phi1) < Ai) throw new Error();
+        this.es ? (this.en = Vt(this.es), this.m1 = Kt(this.phi1, this.am1 = Math.sin(this.phi1), t2 = Math.cos(this.phi1), this.en), this.am1 = t2 / (Math.sqrt(1 - this.es * this.am1 * this.am1) * this.am1), this.inverse = Ci, this.forward = Ii) : (Math.abs(this.phi1) + Ai >= a ? this.cphi1 = 0 : this.cphi1 = 1 / Math.tan(this.phi1), this.inverse = Ri, this.forward = ki);
       }, names: ["bonne", "Bonne (Werner lat_1=90)"] };
-      return At.defaultDatum = "WGS84", At.Proj = Mt, At.WGS84 = new At.Proj("WGS84"), At.Point = Qt, At.toPoint = wt, At.defs = k, At.nadgrid = function(t2, s2, i2) {
+      const qi = Object.assign(function(t2, s2, i2) {
+        var a3, h2, e2, r2 = false;
+        return void 0 === s2 ? (h2 = bt(t2), a3 = Gt, r2 = true) : (void 0 !== s2.x || Array.isArray(s2)) && (i2 = s2, h2 = bt(t2), a3 = Gt, r2 = true), a3 || (a3 = bt(t2)), h2 || (h2 = bt(s2)), i2 ? Pt(a3, h2, i2) : (e2 = { forward: function(t3, s3) {
+          return Pt(a3, h2, t3, s3);
+        }, inverse: function(t3, s3) {
+          return Pt(h2, a3, t3, s3);
+        } }, r2 && (e2.oProj = h2), e2);
+      }, { defaultDatum: "WGS84", Proj: Mt, WGS84: new Mt("WGS84"), Point: Wt, toPoint: vt, defs: T, nadgrid: function(t2, s2, i2) {
         return s2 instanceof ArrayBuffer ? function(t3, s3, i3) {
           var a3 = true;
           void 0 !== i3 && false === i3.includeErrorFields && (a3 = false);
@@ -2078,22 +1850,23 @@ var require_proj4 = __commonJS({
             if (11 === s4) return false;
             s4 = t4.getInt32(8, true), 11 !== s4 && console.warn("Failed to detect nadgrid endian-ness, defaulting to little-endian");
             return true;
-          }(h2), n2 = function(t4, s4) {
+          }(h2), r2 = function(t4, s4) {
             return { nFields: t4.getInt32(8, s4), nSubgridFields: t4.getInt32(24, s4), nSubgrids: t4.getInt32(40, s4), shiftType: lt(t4, 56, 64).trim(), fromSemiMajorAxis: t4.getFloat64(120, s4), fromSemiMinorAxis: t4.getFloat64(136, s4), toSemiMajorAxis: t4.getFloat64(152, s4), toSemiMinorAxis: t4.getFloat64(168, s4) };
-          }(h2, e2), r2 = function(t4, s4, i4, a4) {
-            for (var h3 = 176, e3 = [], n3 = 0; n3 < s4.nSubgrids; n3++) {
-              var r3 = _t(t4, h3, i4), o3 = ut(t4, h3, r3, i4, a4), l2 = Math.round(1 + (r3.upperLongitude - r3.lowerLongitude) / r3.longitudeInterval), c2 = Math.round(1 + (r3.upperLatitude - r3.lowerLatitude) / r3.latitudeInterval);
-              e3.push({ ll: [ot(r3.lowerLongitude), ot(r3.lowerLatitude)], del: [ot(r3.longitudeInterval), ot(r3.latitudeInterval)], lim: [l2, c2], count: r3.gridNodeCount, cvs: ct(o3) });
-              var _2 = 16;
-              false === a4 && (_2 = 8), h3 += 176 + r3.gridNodeCount * _2;
+          }(h2, e2), n2 = function(t4, s4, i4, a4) {
+            for (var h3 = 176, e3 = [], r3 = 0; r3 < s4.nSubgrids; r3++) {
+              var n3 = ut(t4, h3, i4), o3 = _t(t4, h3, n3, i4, a4), l2 = Math.round(1 + (n3.upperLongitude - n3.lowerLongitude) / n3.longitudeInterval), c2 = Math.round(1 + (n3.upperLatitude - n3.lowerLatitude) / n3.latitudeInterval);
+              e3.push({ ll: [ot(n3.lowerLongitude), ot(n3.lowerLatitude)], del: [ot(n3.longitudeInterval), ot(n3.latitudeInterval)], lim: [l2, c2], count: n3.gridNodeCount, cvs: ct(o3) });
+              var u2 = 16;
+              false === a4 && (u2 = 8), h3 += 176 + n3.gridNodeCount * u2;
             }
             return e3;
-          }(h2, n2, e2, a3), o2 = { header: n2, subgrids: r2 };
+          }(h2, r2, e2, a3), o2 = { header: r2, subgrids: n2 };
           return ht[t3] = o2, o2;
         }(t2, s2, i2) : { ready: et(t2, s2) };
-      }, At.transform = Gt, At.mgrs = Tt, At.version = "2.17.0", function(t2) {
-        t2.Proj.projections.add($t), t2.Proj.projections.add(es), t2.Proj.projections.add(ns), t2.Proj.projections.add(ls), t2.Proj.projections.add(cs), t2.Proj.projections.add(_s), t2.Proj.projections.add(Ms), t2.Proj.projections.add(gs), t2.Proj.projections.add(fs), t2.Proj.projections.add(Gs), t2.Proj.projections.add(Ls), t2.Proj.projections.add(Rs), t2.Proj.projections.add(qs), t2.Proj.projections.add(Ts), t2.Proj.projections.add(ks), t2.Proj.projections.add(Ds), t2.Proj.projections.add(js), t2.Proj.projections.add(Us), t2.Proj.projections.add(Fs), t2.Proj.projections.add(Bs), t2.Proj.projections.add(zs), t2.Proj.projections.add(Ws), t2.Proj.projections.add(Xs), t2.Proj.projections.add(Vs), t2.Proj.projections.add(oi), t2.Proj.projections.add(pi), t2.Proj.projections.add(mi), t2.Proj.projections.add(Gi), t2.Proj.projections.add(xi), t2.Proj.projections.add(Ii), t2.Proj.projections.add(ki);
-      }(At), At;
+      }, transform: St, mgrs: qt, version: "2.19.5" });
+      return function(t2) {
+        t2.Proj.projections.add(Yt), t2.Proj.projections.add(hs), t2.Proj.projections.add(es), t2.Proj.projections.add(os), t2.Proj.projections.add(cs), t2.Proj.projections.add(us), t2.Proj.projections.add(Ms), t2.Proj.projections.add(ds), t2.Proj.projections.add(fs), t2.Proj.projections.add(Ss), t2.Proj.projections.add(ks), t2.Proj.projections.add(Os), t2.Proj.projections.add(qs), t2.Proj.projections.add(js), t2.Proj.projections.add(Ts), t2.Proj.projections.add(Ls), t2.Proj.projections.add(Fs), t2.Proj.projections.add(Ds), t2.Proj.projections.add(Bs), t2.Proj.projections.add(zs), t2.Proj.projections.add(Us), t2.Proj.projections.add(Hs), t2.Proj.projections.add(Ws), t2.Proj.projections.add(Qs), t2.Proj.projections.add(ei), t2.Proj.projections.add(di), t2.Proj.projections.add(fi), t2.Proj.projections.add(Ei), t2.Proj.projections.add(vi), t2.Proj.projections.add(Ni), t2.Proj.projections.add(Oi);
+      }(qi), qi;
     });
   }
 });
@@ -9097,6 +8870,10 @@ var fontRegExMatchIndex = [
   "lineHeight",
   "family"
 ];
+var fontWeights = {
+  normal: 400,
+  bold: 700
+};
 var getFontParameters = function(fontSpec) {
   const match = fontSpec.match(fontRegEx);
   if (!match) {
@@ -9108,17 +8885,20 @@ var getFontParameters = function(fontSpec) {
       lineHeight: "normal",
       size: "1.2em",
       style: "normal",
-      weight: "normal",
+      weight: "400",
       variant: "normal"
     }
   );
   for (let i = 0, ii = fontRegExMatchIndex.length; i < ii; ++i) {
     const value = match[i + 1];
     if (value !== void 0) {
-      style[fontRegExMatchIndex[i]] = value;
+      style[fontRegExMatchIndex[i]] = typeof value === "string" ? value.trim() : value;
     }
   }
-  style.families = style.family.split(/,\s?/);
+  if (isNaN(Number(style.weight)) && style.weight in fontWeights) {
+    style.weight = fontWeights[style.weight];
+  }
+  style.families = style.family.split(/,\s?/).map((f) => f.trim().replace(/^['"]|['"]$/g, ""));
   return style;
 };
 
@@ -9947,7 +9727,7 @@ var focusWithTabindex = function(event) {
 var always = TRUE;
 var mouseActionButton = function(mapBrowserEvent) {
   const originalEvent = mapBrowserEvent.originalEvent;
-  return originalEvent instanceof PointerEvent && originalEvent.button == 0 && !(WEBKIT && MAC && originalEvent.ctrlKey);
+  return "pointerId" in originalEvent && originalEvent.button == 0 && !(WEBKIT && MAC && originalEvent.ctrlKey);
 };
 var noModifierKeys = function(mapBrowserEvent) {
   const originalEvent = (
@@ -9977,11 +9757,11 @@ var targetNotEditable = function(mapBrowserEvent) {
 };
 var mouseOnly = function(mapBrowserEvent) {
   const pointerEvent = mapBrowserEvent.originalEvent;
-  return pointerEvent instanceof PointerEvent && pointerEvent.pointerType == "mouse";
+  return "pointerId" in pointerEvent && pointerEvent.pointerType == "mouse";
 };
 var primaryAction = function(mapBrowserEvent) {
   const pointerEvent = mapBrowserEvent.originalEvent;
-  return pointerEvent instanceof PointerEvent && pointerEvent.isPrimary && pointerEvent.button === 0;
+  return "pointerId" in pointerEvent && pointerEvent.isPrimary && pointerEvent.button === 0;
 };
 
 // node_modules/ol/interaction/Pointer.js
@@ -10752,6 +10532,8 @@ var KeyboardZoom = class extends Interaction_default {
 var KeyboardZoom_default = KeyboardZoom;
 
 // node_modules/ol/interaction/MouseWheelZoom.js
+var DELTA_LINE_MULTIPLIER = 40;
+var DELTA_PAGE_MULTIPLIER = 300;
 var MouseWheelZoom = class extends Interaction_default {
   /**
    * @param {Options} [options] Options.
@@ -10819,12 +10601,15 @@ var MouseWheelZoom = class extends Interaction_default {
     if (this.useAnchor_) {
       this.lastAnchor_ = mapBrowserEvent.pixel;
     }
-    let delta;
-    if (mapBrowserEvent.type == EventType_default.WHEEL) {
-      delta = wheelEvent.deltaY;
-      if (wheelEvent.deltaMode === WheelEvent.DOM_DELTA_LINE) {
-        delta *= 40;
-      }
+    let delta = wheelEvent.deltaY;
+    switch (wheelEvent.deltaMode) {
+      case WheelEvent.DOM_DELTA_LINE:
+        delta *= DELTA_LINE_MULTIPLIER;
+        break;
+      case WheelEvent.DOM_DELTA_PAGE:
+        delta *= DELTA_PAGE_MULTIPLIER;
+        break;
+      default:
     }
     if (delta === 0) {
       return false;
@@ -11869,7 +11654,6 @@ var Layer = class extends Base_default {
           this.dispatchEvent("sourceready");
         }, 0);
       }
-      this.clearRenderer();
     }
     this.changed();
   }
@@ -14452,75 +14236,100 @@ var checkedFonts = new Object_default();
 var measureContext = null;
 var measureFont;
 var textHeights = {};
-var registerFont = function() {
+var genericFontFamilies = /* @__PURE__ */ new Set([
+  "serif",
+  "sans-serif",
+  "monospace",
+  "cursive",
+  "fantasy",
+  "system-ui",
+  "ui-serif",
+  "ui-sans-serif",
+  "ui-monospace",
+  "ui-rounded",
+  "emoji",
+  "math",
+  "fangsong"
+]);
+function getFontKey(style, weight, family) {
+  return `${style} ${weight} 16px "${family}"`;
+}
+var registerFont = /* @__PURE__ */ function() {
   const retries = 100;
-  const size = "32px ";
-  const referenceFonts = ["monospace", "serif"];
-  const len = referenceFonts.length;
-  const text = "wmytzilWMYTZIL@#/&?$%10\uF013";
-  let interval, referenceWidth;
-  function isAvailable(fontStyle, fontWeight, fontFamily) {
-    let available = true;
-    for (let i = 0; i < len; ++i) {
-      const referenceFont = referenceFonts[i];
-      referenceWidth = measureTextWidth(
-        fontStyle + " " + fontWeight + " " + size + referenceFont,
-        text
-      );
-      if (fontFamily != referenceFont) {
-        const width = measureTextWidth(
-          fontStyle + " " + fontWeight + " " + size + fontFamily + "," + referenceFont,
-          text
-        );
-        available = available && width != referenceWidth;
+  let timeout, fontFaceSet;
+  async function isAvailable(fontSpec) {
+    await fontFaceSet.ready;
+    const fontFaces = await fontFaceSet.load(fontSpec);
+    if (fontFaces.length === 0) {
+      return false;
+    }
+    const font = getFontParameters(fontSpec);
+    const checkFamily = font.families[0].toLowerCase();
+    const checkWeight = font.weight;
+    return fontFaces.some(
+      /**
+       * @param {import('../css.js').FontParameters} f Font.
+       * @return {boolean} Font matches.
+       */
+      (f) => {
+        const family = f.family.replace(/^['"]|['"]$/g, "").toLowerCase();
+        const weight = fontWeights[f.weight] || f.weight;
+        return family === checkFamily && f.style === font.style && weight == checkWeight;
       }
-    }
-    if (available) {
-      return true;
-    }
-    return false;
+    );
   }
-  function check() {
+  async function check() {
+    await fontFaceSet.ready;
     let done = true;
-    const fonts = checkedFonts.getKeys();
-    for (let i = 0, ii = fonts.length; i < ii; ++i) {
+    const checkedFontsProperties = checkedFonts.getProperties();
+    const fonts = Object.keys(checkedFontsProperties).filter(
+      (key) => checkedFontsProperties[key] < retries
+    );
+    for (let i = fonts.length - 1; i >= 0; --i) {
       const font = fonts[i];
-      if (checkedFonts.get(font) < retries) {
-        const [style, weight, family] = font.split("\n");
-        if (isAvailable(style, weight, family)) {
+      let currentRetries = checkedFontsProperties[font];
+      if (currentRetries < retries) {
+        if (await isAvailable(font)) {
           clear(textHeights);
-          measureContext = null;
-          measureFont = void 0;
           checkedFonts.set(font, retries);
         } else {
-          checkedFonts.set(font, checkedFonts.get(font) + 1, true);
-          done = false;
+          currentRetries += 10;
+          checkedFonts.set(font, currentRetries, true);
+          if (currentRetries < retries) {
+            done = false;
+          }
         }
       }
     }
-    if (done) {
-      clearInterval(interval);
-      interval = void 0;
+    timeout = void 0;
+    if (!done) {
+      timeout = setTimeout(check, 100);
     }
   }
-  return function(fontSpec) {
+  return async function(fontSpec) {
+    if (!fontFaceSet) {
+      fontFaceSet = WORKER_OFFSCREEN_CANVAS ? self.fonts : document.fonts;
+    }
     const font = getFontParameters(fontSpec);
     if (!font) {
       return;
     }
     const families = font.families;
-    for (let i = 0, ii = families.length; i < ii; ++i) {
-      const family = families[i];
-      const key = font.style + "\n" + font.weight + "\n" + family;
-      if (checkedFonts.get(key) === void 0) {
-        checkedFonts.set(key, retries, true);
-        if (!isAvailable(font.style, font.weight, family)) {
-          checkedFonts.set(key, 0, true);
-          if (interval === void 0) {
-            interval = setInterval(check, 32);
-          }
-        }
+    let needCheck = false;
+    for (const family of families) {
+      if (genericFontFamilies.has(family)) {
+        continue;
       }
+      const key = getFontKey(font.style, font.weight, family);
+      if (checkedFonts.get(key) !== void 0) {
+        continue;
+      }
+      checkedFonts.set(key, 0, true);
+      needCheck = true;
+    }
+    if (needCheck) {
+      clearTimeout(timeout);
+      timeout = setTimeout(check, 100);
     }
   };
 }();
@@ -19054,7 +18863,10 @@ var Map = class extends Object_default {
    * Redraws all text after new fonts have loaded
    */
   redrawText() {
-    const layerStates = this.getLayerGroup().getLayerStatesArray();
+    if (!this.frameState_) {
+      return;
+    }
+    const layerStates = this.frameState_.layerStatesArray;
     for (let i = 0, ii = layerStates.length; i < ii; ++i) {
       const layer = layerStates[i].layer;
       if (layer.hasRenderer()) {
@@ -20632,8 +20444,8 @@ var Overlay = class extends Object_default {
     const offset = this.getOffset();
     const positioning = this.getPositioning();
     this.setVisible(true);
-    const x = Math.round(pixel[0] + offset[0]) + "px";
-    const y = Math.round(pixel[1] + offset[1]) + "px";
+    const x = `${pixel[0] + offset[0]}px`;
+    const y = `${pixel[1] + offset[1]}px`;
     let posX = "0%";
     let posY = "0%";
     if (positioning == "bottom-right" || positioning == "center-right" || positioning == "top-right") {
@@ -22727,7 +22539,7 @@ var VectorSource = class extends Source_default {
    * @param {function(FeatureType):boolean} [filter] Feature filter function.
    *     The filter function will receive one argument, the {@link module:ol/Feature~Feature feature}
    *     and it should return a boolean value. By default, no filtering is made.
-   * @return {FeatureType} Closest feature.
+   * @return {FeatureType|null} Closest feature (or `null` if none found).
    * @api
    */
   getClosestFeatureToCoordinate(coordinate, filter) {
@@ -23707,9 +23519,7 @@ var CanvasBuilder = class extends VectorContext_default {
   updateFillStyle(state, createFill) {
     const fillStyle = state.fillStyle;
     if (typeof fillStyle !== "string" || state.currentFillStyle != fillStyle) {
-      if (fillStyle !== void 0) {
-        this.instructions.push(createFill.call(this, state));
-      }
+      this.instructions.push(createFill.call(this, state));
       state.currentFillStyle = fillStyle;
     }
   }
@@ -23726,9 +23536,7 @@ var CanvasBuilder = class extends VectorContext_default {
     const lineWidth = state.lineWidth;
     const miterLimit = state.miterLimit;
     if (state.currentStrokeStyle != strokeStyle || state.currentLineCap != lineCap || lineDash != state.currentLineDash && !equals(state.currentLineDash, lineDash) || state.currentLineDashOffset != lineDashOffset || state.currentLineJoin != lineJoin || state.currentLineWidth != lineWidth || state.currentMiterLimit != miterLimit) {
-      if (strokeStyle !== void 0) {
-        applyStroke.call(this, state);
-      }
+      applyStroke.call(this, state);
       state.currentStrokeStyle = strokeStyle;
       state.currentLineCap = lineCap;
       state.currentLineDash = lineDash;
@@ -24349,13 +24157,8 @@ var CanvasPolygonBuilder = class extends Builder_default {
    */
   setFillStrokeStyles_() {
     const state = this.state;
-    const fillStyle = state.fillStyle;
-    if (fillStyle !== void 0) {
-      this.updateFillStyle(state, this.createFill);
-    }
-    if (state.strokeStyle !== void 0) {
-      this.updateStrokeStyle(state, this.applyStroke);
-    }
+    this.updateFillStyle(state, this.createFill);
+    this.updateStrokeStyle(state, this.applyStroke);
   }
 };
 var PolygonBuilder_default = CanvasPolygonBuilder;
@@ -25555,6 +25358,9 @@ var Executor = class {
   setStrokeStyle_(context, instruction) {
     context.strokeStyle = /** @type {import("../../colorlike.js").ColorLike} */
     instruction[1];
+    if (!instruction[1]) {
+      return;
+    }
     context.lineWidth = /** @type {number} */
     instruction[2];
     context.lineCap = /** @type {CanvasLineCap} */
@@ -26513,7 +26319,7 @@ var ExecutorGroup = class {
           }
           if (zIndexContext) {
             zIndexContext.offset();
-            const index = zs[i] * maxBuilderTypes + j;
+            const index = zs[i] * maxBuilderTypes + ALL.indexOf(builderType);
             if (!this.deferredZIndexContexts_[index]) {
               this.deferredZIndexContexts_[index] = [];
             }
@@ -28389,7 +28195,7 @@ var CanvasVectorLayerRenderer = class extends Layer_default3 {
    * @private
    */
   resetDrawContext_() {
-    if (this.opacity_ !== 1) {
+    if (this.opacity_ !== 1 && this.targetContext_) {
       const alpha = this.targetContext_.globalAlpha;
       this.targetContext_.globalAlpha = this.opacity_;
       this.targetContext_.drawImage(this.context.canvas, 0, 0);
@@ -30850,8 +30656,8 @@ var LRUCache = class {
 var LRUCache_default = LRUCache;
 
 // node_modules/ol/renderer/canvas/TileLayer.js
-function getCacheKey2(sourceKey, z, x, y) {
-  return `${sourceKey},${getKeyZXY(z, x, y)}`;
+function getCacheKey2(source, sourceKey, z, x, y) {
+  return `${getUid(source)},${sourceKey},${getKeyZXY(z, x, y)}`;
 }
 function addTileToLookup(tilesByZ, tile, z) {
   if (!(z in tilesByZ)) {
@@ -30905,7 +30711,6 @@ var CanvasTileLayerRenderer = class extends Layer_default3 {
     this.renderedExtent_ = null;
     this.renderedPixelRatio;
     this.renderedProjection = null;
-    this.renderedRevision_;
     this.renderedTiles = [];
     this.renderedSourceKey_;
     this.renderedSourceRevision_;
@@ -30936,7 +30741,7 @@ var CanvasTileLayerRenderer = class extends Layer_default3 {
     const tileCache = this.tileCache_;
     const tileLayer = this.getLayer();
     const tileSource = tileLayer.getSource();
-    const cacheKey = getCacheKey2(tileSource.getKey(), z, x, y);
+    const cacheKey = getCacheKey2(tileSource, tileSource.getKey(), z, x, y);
     let tile;
     if (tileCache.containsKey(cacheKey)) {
       tile = tileCache.get(cacheKey);
@@ -31046,10 +30851,10 @@ var CanvasTileLayerRenderer = class extends Layer_default3 {
       return false;
     }
     const sourceRevision = source.getRevision();
-    if (!this.renderedRevision_) {
-      this.renderedRevision_ = sourceRevision;
-    } else if (this.renderedRevision_ !== sourceRevision) {
-      this.renderedRevision_ = sourceRevision;
+    if (!this.renderedSourceRevision_) {
+      this.renderedSourceRevision_ = sourceRevision;
+    } else if (this.renderedSourceRevision_ !== sourceRevision) {
+      this.renderedSourceRevision_ = sourceRevision;
       if (this.renderedSourceKey_ === source.getKey()) {
         this.tileCache_.clear();
       }
@@ -31144,7 +30949,13 @@ var CanvasTileLayerRenderer = class extends Layer_default3 {
     const y = tileCoord[2];
     const staleKeys = this.getStaleKeys();
     for (let i = 0; i < staleKeys.length; ++i) {
-      const cacheKey = getCacheKey2(staleKeys[i], z, x, y);
+      const cacheKey = getCacheKey2(
+        this.getLayer().getSource(),
+        staleKeys[i],
+        z,
+        x,
+        y
+      );
       if (tileCache.containsKey(cacheKey)) {
         const tile = tileCache.peek(cacheKey);
         if (tile.getState() === TileState_default.LOADED) {
@@ -31181,7 +30992,7 @@ var CanvasTileLayerRenderer = class extends Layer_default3 {
     const sourceKey = source.getKey();
     for (let x = tileRange.minX; x <= tileRange.maxX; ++x) {
       for (let y = tileRange.minY; y <= tileRange.maxY; ++y) {
-        const cacheKey = getCacheKey2(sourceKey, altZ, x, y);
+        const cacheKey = getCacheKey2(source, sourceKey, altZ, x, y);
         let loaded = false;
         if (tileCache.containsKey(cacheKey)) {
           const tile = tileCache.peek(cacheKey);
@@ -32903,6 +32714,75 @@ var TileWMS = class extends TileImage_default {
 };
 var TileWMS_default = TileWMS;
 
+// node_modules/@dataforsyningen/retry/src/constants.js
+var RETRY_ATTEMPTS = 4;
+var RETRY_TIMEOUT = 500;
+var RETRY_GROWTH_FACTOR = 2;
+var RETRY_STATUS_CODES = [408, 500, 502, 503, 504, 506, 507, 508, 510];
+var RETRY_DYNAMTIC_TIMEOUT = true;
+
+// node_modules/@dataforsyningen/retry/src/retry.js
+var retryOptions = {
+  retries: RETRY_ATTEMPTS,
+  timeout: RETRY_TIMEOUT,
+  growthFactor: RETRY_GROWTH_FACTOR,
+  statusCodes: RETRY_STATUS_CODES,
+  dynamicTimeout: RETRY_DYNAMTIC_TIMEOUT
+};
+var fetchCount = 0;
+var fetchResponseTimeSum = 0;
+function getAverageResponseTime() {
+  return fetchResponseTimeSum / fetchCount;
+}
+function updateBaseTimeout(responseTime) {
+  if (!retryOptions.dynamicTimeout) return;
+  fetchCount += 1;
+  fetchResponseTimeSum += responseTime;
+  if (getAverageResponseTime() > retryOptions.timeout / 2) {
+    retryOptions.timeout *= retryOptions.growthFactor;
+  } else if (getAverageResponseTime() < retryOptions.timeout / 4) {
+    retryOptions.timeout *= 1 / retryOptions.growthFactor * 1.5;
+  }
+}
+async function fetchWithTimeout(url, options = {}) {
+  const { timeout = retryOptions.timeout } = options;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  const response = await fetch(url, {
+    ...options,
+    signal: controller.signal
+  });
+  clearTimeout(timer);
+  return response;
+}
+async function fetchWithRetry(url, options = {}) {
+  const {
+    retries = retryOptions.retries,
+    timeout = retryOptions.timeout,
+    growthFactor = retryOptions.growthFactor,
+    statusCodes = retryOptions.statusCodes
+  } = options;
+  const startTime = Date.now();
+  try {
+    const response = await fetchWithTimeout(url, options);
+    if (statusCodes.includes(response.status)) {
+      throw new Error("Bad response");
+    }
+    updateBaseTimeout(Date.now() - startTime);
+    return response;
+  } catch (error) {
+    updateBaseTimeout(Date.now() - startTime);
+    if (retries > 0) {
+      const optionsCopy = JSON.parse(JSON.stringify(options));
+      optionsCopy.retries = retries - 1;
+      optionsCopy.timeout = timeout * growthFactor;
+      return fetchWithRetry(url, optionsCopy);
+    } else {
+      throw new Error(`All retries failed. Url: ${url}`);
+    }
+  }
+}
+
 // src/constants.js
 var Center = [10.61010906, 56.15950977];
 var Extent = [12e4, 59e5, 1e6, 65e5];
@@ -32911,6 +32791,7 @@ var MatrixIds = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10
 var Size = [256, 256];
 
 // src/CreateLayer.js
+retryOptions.timeout = 200;
 var ccbyText = "(CC BY)";
 var ccbyLink = "https://creativecommons.org/licenses/by/4.0/deed.da";
 var createAttribution = function(link, text) {
@@ -32919,13 +32800,31 @@ var createAttribution = function(link, text) {
 var createUrl = function(service, auth) {
   if (auth.source === "kf") {
     const baseUrl = "https://api.dataforsyningen.dk/";
-    return baseUrl + service + "?token=" + auth.token;
+    return baseUrl + service;
   } else if (auth.source === "df") {
     const baseUrl = "https://services.datafordeler.dk/";
     return baseUrl + service + "?username=" + auth.username + "&password=" + auth.password;
   }
   console.error('Unknown source: "' + auth.source + '"');
   return null;
+};
+var getTileLoadFunction = (auth) => {
+  return (tile, src) => {
+    const options = {};
+    if (auth.source === "kf") {
+      options.headers = { token: auth.token };
+    }
+    fetchWithRetry(src, options).then((response) => {
+      if (!response.ok) {
+        tile.setState(TileState.ERROR);
+      }
+      return response.blob();
+    }).then((blob) => {
+      tile.getImage().src = URL.createObjectURL(blob);
+    }).catch((e) => {
+      tile.setState(TileState.ERROR);
+    });
+  };
 };
 var createLayer2 = function(opt) {
   const name = opt.name || "";
@@ -32941,7 +32840,7 @@ var createLayer2 = function(opt) {
   const matrixSet = opt.matrixSet;
   const format = opt.format || "";
   const tileGrid = opt.tileGrid;
-  const attributionText = createAttribution(opt.attribution.link, opt.attribution.text);
+  const attributionText = createAttribution(opt.attribution?.link || "", opt.attribution?.text || "");
   let source = null;
   if (type === "WMTS") {
     source = new WMTS_default2({
@@ -32953,7 +32852,8 @@ var createLayer2 = function(opt) {
       format,
       tileGrid,
       style,
-      size: Size
+      size: Size,
+      tileLoadFunction: getTileLoadFunction(auth)
     });
   } else if (type === "WMS") {
     source = new TileWMS_default({
@@ -32966,7 +32866,8 @@ var createLayer2 = function(opt) {
         "TRANSPARENT": "true",
         "FORMAT": format,
         "STYLES": style
-      }
+      },
+      tileLoadFunction: getTileLoadFunction(auth)
     });
   } else {
     console.error('Unknown service type: "' + type + '"');
@@ -33536,4 +33437,3 @@ export {
   Initialize_default as Initialize,
   Map2 as Map
 };
-//# sourceMappingURL=okapi.js.map

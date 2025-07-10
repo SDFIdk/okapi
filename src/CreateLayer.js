@@ -1,7 +1,11 @@
 import TileLayer from 'ol/layer/Tile'
 import WMTS from 'ol/source/WMTS'
 import TileWMS from 'ol/source/TileWMS'
+import { retryOptions, fetchWithRetry } from '@dataforsyningen/retry/index.js'
 import { Size } from './constants'
+
+// Set the default retry timeout for webservices.
+retryOptions.timeout = 200
 
 const ccbyText = '(CC BY)'
 const ccbyLink = 'https://creativecommons.org/licenses/by/4.0/deed.da'
@@ -14,16 +18,36 @@ const createAttribution = function (link, text) {
 const createUrl = function (service, auth) {
   if (auth.source === 'kf') {
     const baseUrl = 'https://api.dataforsyningen.dk/'
-
-    return baseUrl + service + '?token=' + auth.token
+    return baseUrl + service
   } else if (auth.source === 'df') {
     const baseUrl = 'https://services.datafordeler.dk/'
-
     return baseUrl + service + '?username=' + auth.username + '&password=' + auth.password
   }
   console.error('Unknown source: "' + auth.source + '"')
   return null
+}
 
+// Custom setTileLoadFunction to add a header with a token
+const getTileLoadFunction = (auth) => {
+  return (tile, src) => {
+    const options = {}
+    if (auth.source === 'kf') {
+      options.headers = { token: auth.token }
+    }
+    fetchWithRetry(src, options)
+      .then(response => {
+        if (!response.ok) {
+          tile.setState(TileState.ERROR)
+        }
+        return response.blob()
+      })
+      .then(blob => {
+        tile.getImage().src = URL.createObjectURL(blob)
+      })
+      .catch((e) => {
+        tile.setState(TileState.ERROR)
+      })
+  }
 }
 
 export const createLayer = function (opt) {
@@ -40,7 +64,7 @@ export const createLayer = function (opt) {
   const matrixSet = opt.matrixSet
   const format = opt.format || ''
   const tileGrid = opt.tileGrid
-  const attributionText = createAttribution(opt.attribution.link, opt.attribution.text)
+  const attributionText = createAttribution(opt.attribution?.link || '', opt.attribution?.text || '')
 
   let source = null
 
@@ -54,7 +78,8 @@ export const createLayer = function (opt) {
       format: format,
       tileGrid: tileGrid,
       style: style,
-      size: Size
+      size: Size,
+      tileLoadFunction: getTileLoadFunction(auth)
     })
   } else if (type === 'WMS') {
     source = new TileWMS({
@@ -67,7 +92,8 @@ export const createLayer = function (opt) {
         'TRANSPARENT': 'true',
         'FORMAT': format,
         'STYLES': style
-      }
+      },
+      tileLoadFunction: getTileLoadFunction(auth)
     })
   } else {
     console.error('Unknown service type: "' + type + '"')
