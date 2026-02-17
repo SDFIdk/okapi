@@ -141,6 +141,7 @@ if (this._username && this._password) { // Datafordeleren bruger
 } else if (this._token) { // Dataforsyningen bruger
       layers.push(createLayer({
         /* some attributes */
+        // This is a duplicate service 0:
         service: 'topo_skaermkort_wmts_DAF',
          /* some attributes */
         auth: kfAuth,
