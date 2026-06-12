@@ -20,7 +20,7 @@ const createUrl = function (service, auth) {
     const baseUrl = 'https://api.dataforsyningen.dk/'
     return baseUrl + service
   } else if (auth.source === 'df') {
-    const baseUrl = 'https://services.datafordeler.dk/'
+    const baseUrl = 'https://wmts.datafordeler.dk/'
     return baseUrl + service + '?username=' + auth.username + '&password=' + auth.password
   }
   console.error('Unknown source: "' + auth.source + '"')
