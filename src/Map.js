@@ -150,56 +150,6 @@ export default class Map {
           text: 'GeoDanmark'
         }
       }))
-    } else if (this._token) { // Dataforsyningen bruger
-      layers.push(createLayer({
-        name: 'dtk_skaermkort',
-        type: 'WMTS',
-        title: 'Skærmkort',
-        visible: background === 'dtk_skaermkort',
-        service: 'topo_skaermkort_wmts_DAF',
-        layer: 'topo_skaermkort',
-        matrixSet: 'View1',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth,
-        attribution: {
-          link: 'https://dataforsyningen.dk/data/962',
-          text: 'KDS'
-        }
-      }))
-      layers.push(createLayer({
-        name: 'dtk_skaermkort_daempet',
-        type: 'WMTS',
-        title: 'Skærmkort dæmpet',
-        visible: background !== 'orto_foraar' && background !== 'forvaltning' &&
-        background !== 'dtk_skaermkort',
-        service: 'topo_skaermkort_daempet_DAF',
-        layer: 'topo_skaermkort_daempet',
-        matrixSet: 'View1',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth,
-        attribution: {
-          link: 'https://dataforsyningen.dk/data/962',
-          text: 'KDS'
-        }
-      }))
-      layers.push(createLayer({
-        name: 'orto_foraar',
-        type: 'WMTS',
-        title: 'Ortofoto',
-        color: 'white',
-        visible: background === 'orto_foraar',
-        service: 'orto_foraar_wmts_DAF',
-        layer: 'orto_foraar_wmts',
-        matrixSet: 'KortforsyningTilingDK',
-        format: 'image/jpeg',
-        tileGrid: kfTileGrid,
-        auth: kfAuth,attribution: {
-          link: 'https://dataforsyningen.dk/data/981',
-          text: 'GeoDanmark'
-        }
-      }))
     }
     if (this._token) { // Dataforsyningen bruger
       layers.push(createLayer({
