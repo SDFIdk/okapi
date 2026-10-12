@@ -32802,7 +32802,7 @@ var createUrl = function(service, auth) {
     const baseUrl = "https://api.dataforsyningen.dk/";
     return baseUrl + service;
   } else if (auth.source === "df") {
-    const baseUrl = "https://services.datafordeler.dk/";
+    const baseUrl = "https://wmts.datafordeler.dk/";
     return baseUrl + service + "?username=" + auth.username + "&password=" + auth.password;
   }
   console.error('Unknown source: "' + auth.source + '"');
@@ -33010,7 +33010,7 @@ var Map2 = class {
     const dfTileGrid = new WMTS_default({
       extent: Extent,
       resolutions: Resolutions,
-      matrixIds: ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13"]
+      matrixIds: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "1", "11", "12", "13"]
     });
     const kfAuth = {
       source: "kf",
@@ -33067,56 +33067,6 @@ var Map2 = class {
         format: "image/jpeg",
         tileGrid: dfTileGrid,
         auth: dfAuth,
-        attribution: {
-          link: "https://dataforsyningen.dk/data/981",
-          text: "GeoDanmark"
-        }
-      }));
-    } else if (this._token) {
-      layers.push(createLayer2({
-        name: "dtk_skaermkort",
-        type: "WMTS",
-        title: "Sk\xE6rmkort",
-        visible: background === "dtk_skaermkort",
-        service: "topo_skaermkort_wmts_DAF",
-        layer: "topo_skaermkort",
-        matrixSet: "View1",
-        format: "image/jpeg",
-        tileGrid: kfTileGrid,
-        auth: kfAuth,
-        attribution: {
-          link: "https://dataforsyningen.dk/data/962",
-          text: "KDS"
-        }
-      }));
-      layers.push(createLayer2({
-        name: "dtk_skaermkort_daempet",
-        type: "WMTS",
-        title: "Sk\xE6rmkort d\xE6mpet",
-        visible: background !== "orto_foraar" && background !== "forvaltning" && background !== "dtk_skaermkort",
-        service: "topo_skaermkort_daempet_DAF",
-        layer: "topo_skaermkort_daempet",
-        matrixSet: "View1",
-        format: "image/jpeg",
-        tileGrid: kfTileGrid,
-        auth: kfAuth,
-        attribution: {
-          link: "https://dataforsyningen.dk/data/962",
-          text: "KDS"
-        }
-      }));
-      layers.push(createLayer2({
-        name: "orto_foraar",
-        type: "WMTS",
-        title: "Ortofoto",
-        color: "white",
-        visible: background === "orto_foraar",
-        service: "orto_foraar_wmts_DAF",
-        layer: "orto_foraar_wmts",
-        matrixSet: "KortforsyningTilingDK",
-        format: "image/jpeg",
-        tileGrid: kfTileGrid,
-        auth: kfAuth,
         attribution: {
           link: "https://dataforsyningen.dk/data/981",
           text: "GeoDanmark"
@@ -33437,3 +33387,4 @@ export {
   Initialize_default as Initialize,
   Map2 as Map
 };
+//# sourceMappingURL=okapi.js.map
